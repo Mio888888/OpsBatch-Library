@@ -1,0 +1,42 @@
+name: 查看网络接口与 IP 地址
+command: |
+  if [ "$(uname -s)" = "Linux" ]; then
+    if command -v ip >/dev/null 2>&1; then
+      echo "== interfaces (brief) =="
+      ip -brief address
+
+      echo
+      echo "== link state =="
+      ip -brief link
+    elif command -v ifconfig >/dev/null 2>&1; then
+      ifconfig -a
+    else
+      echo "Neither ip nor ifconfig is installed."
+    fi
+  elif [ "$(uname -s)" = "Darwin" ]; then
+    if command -v ifconfig >/dev/null 2>&1; then
+      echo "== active interface addresses =="
+      ifconfig -a
+    else
+      echo "ifconfig not available."
+    fi
+
+    if command -v networksetup >/dev/null 2>&1; then
+      echo
+      echo "== network services =="
+      networksetup -listallhardwareports 2>/dev/null || true
+    fi
+  else
+    echo "No supported network interface command found."
+  fi
+category: network
+tags:
+  - inspection
+  - network
+  - interface
+  - ip
+risk: low
+description: 查看网络接口、链路状态和 IP 地址。Linux 优先使用 ip，macOS 使用 ifconfig 并补充 networksetup 服务映射，只读不修改系统状态。
+platform:
+  - linux
+  - macos

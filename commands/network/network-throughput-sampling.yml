@@ -1,0 +1,52 @@
+name: 采样网络接口吞吐
+command: |
+  SAMPLE_SECONDS="${SAMPLE_SECONDS:-5}"
+
+  if [ "$(uname -s)" = "Linux" ]; then
+    if command -v sar >/dev/null 2>&1; then
+      sar -n DEV 1 "$SAMPLE_SECONDS"
+    elif command -v ifstat >/dev/null 2>&1; then
+      ifstat 1 "$SAMPLE_SECONDS"
+    elif [ -r /proc/net/dev ]; then
+      echo "== /proc/net/dev before =="
+      cat /proc/net/dev
+      echo
+      echo "Sleeping ${SAMPLE_SECONDS}s before second sample..."
+      sleep "$SAMPLE_SECONDS"
+      echo
+      echo "== /proc/net/dev after =="
+      cat /proc/net/dev
+      echo
+      echo "Install sysstat or ifstat for calculated per-second rates."
+    else
+      echo "No supported throughput sampling source found."
+    fi
+  elif [ "$(uname -s)" = "Darwin" ]; then
+    if command -v nettop >/dev/null 2>&1; then
+      nettop -L 1 -P -x -n 2>/dev/null | head -80 || true
+    elif command -v netstat >/dev/null 2>&1; then
+      echo "== interface counters before =="
+      netstat -ib
+      echo
+      echo "Sleeping ${SAMPLE_SECONDS}s before second sample..."
+      sleep "$SAMPLE_SECONDS"
+      echo
+      echo "== interface counters after =="
+      netstat -ib
+    else
+      echo "No supported macOS throughput command found."
+    fi
+  else
+    echo "No supported throughput sampling command found."
+  fi
+category: network
+tags:
+  - troubleshooting
+  - network
+  - throughput
+  - sampling
+risk: medium
+description: 短时间采样网络接口吞吐和计数器。默认采样 5 秒，可通过 SAMPLE_SECONDS 调整；命令只读但会等待并产生较多输出。
+platform:
+  - linux
+  - macos

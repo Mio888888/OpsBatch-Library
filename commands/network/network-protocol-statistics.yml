@@ -1,0 +1,37 @@
+name: 查看网络协议统计
+command: |
+  if [ "$(uname -s)" = "Linux" ]; then
+    if command -v nstat >/dev/null 2>&1; then
+      echo "== nstat counters =="
+      nstat -az | head -160
+    elif command -v netstat >/dev/null 2>&1; then
+      echo "== netstat protocol statistics =="
+      netstat -s | head -160
+    elif [ -r /proc/net/snmp ]; then
+      echo "== /proc/net/snmp =="
+      cat /proc/net/snmp
+    else
+      echo "No protocol statistics command found."
+    fi
+  elif [ "$(uname -s)" = "Darwin" ]; then
+    if command -v netstat >/dev/null 2>&1; then
+      echo "== protocol statistics =="
+      netstat -s | head -160
+    else
+      echo "netstat not available."
+    fi
+  else
+    echo "No supported protocol statistics command found."
+  fi
+category: network
+tags:
+  - troubleshooting
+  - network
+  - statistics
+  - tcp
+  - udp
+risk: low
+description: 查看 TCP/UDP/IP 协议栈统计计数器，辅助分析重传、错误、连接失败和协议层异常。只读不修改系统状态。
+platform:
+  - linux
+  - macos

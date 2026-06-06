@@ -1,0 +1,51 @@
+name: 查看防火墙状态摘要
+command: |
+  if [ "$(uname -s)" = "Linux" ]; then
+    if command -v ufw >/dev/null 2>&1; then
+      echo "== ufw status =="
+      sudo ufw status verbose 2>/dev/null || ufw status verbose 2>/dev/null || true
+    fi
+
+    if command -v firewall-cmd >/dev/null 2>&1; then
+      echo
+      echo "== firewalld status =="
+      firewall-cmd --state 2>/dev/null || true
+      firewall-cmd --list-all 2>/dev/null || true
+    fi
+
+    if command -v nft >/dev/null 2>&1; then
+      echo
+      echo "== nftables ruleset summary =="
+      sudo nft list ruleset 2>/dev/null | head -120 || nft list ruleset 2>/dev/null | head -120 || true
+    elif command -v iptables >/dev/null 2>&1; then
+      echo
+      echo "== iptables rules summary =="
+      sudo iptables -S 2>/dev/null | head -120 || iptables -S 2>/dev/null | head -120 || true
+    fi
+  elif [ "$(uname -s)" = "Darwin" ]; then
+    if command -v /usr/libexec/ApplicationFirewall/socketfilterfw >/dev/null 2>&1; then
+      echo "== application firewall =="
+      /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate 2>/dev/null || true
+      /usr/libexec/ApplicationFirewall/socketfilterfw --getblockall 2>/dev/null || true
+      /usr/libexec/ApplicationFirewall/socketfilterfw --getstealthmode 2>/dev/null || true
+    fi
+
+    if command -v pfctl >/dev/null 2>&1; then
+      echo
+      echo "== pf status =="
+      sudo pfctl -s info 2>/dev/null || pfctl -s info 2>/dev/null || true
+    fi
+  else
+    echo "No supported firewall status command found."
+  fi
+category: network
+tags:
+  - inspection
+  - network
+  - firewall
+  - security
+risk: medium
+description: 查看本机防火墙状态和规则摘要。命令只读，但可能需要 sudo 才能读取完整规则，输出可能包含本机访问控制细节；不会修改防火墙配置。
+platform:
+  - linux
+  - macos

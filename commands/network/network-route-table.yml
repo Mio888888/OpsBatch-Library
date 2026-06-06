@@ -1,0 +1,38 @@
+name: 查看路由表与默认网关
+command: |
+  if [ "$(uname -s)" = "Linux" ]; then
+    if command -v ip >/dev/null 2>&1; then
+      echo "== default route =="
+      ip route show default || true
+
+      echo
+      echo "== route table =="
+      ip route show table main
+    elif command -v route >/dev/null 2>&1; then
+      route -n
+    elif command -v netstat >/dev/null 2>&1; then
+      netstat -rn
+    else
+      echo "No route inspection command found."
+    fi
+  elif [ "$(uname -s)" = "Darwin" ]; then
+    echo "== default route =="
+    route -n get default 2>/dev/null || true
+
+    echo
+    echo "== route table =="
+    netstat -rn
+  else
+    echo "No supported route inspection command found."
+  fi
+category: network
+tags:
+  - inspection
+  - network
+  - route
+  - gateway
+risk: low
+description: 查看默认网关和主路由表，用于确认出网路径、网关配置和路由优先级。只读不修改系统路由。
+platform:
+  - linux
+  - macos

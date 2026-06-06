@@ -1,0 +1,21 @@
+name: 查看代理环境变量
+command: |
+  echo "== proxy-related environment variables =="
+  env | grep -Ei '^(http_proxy|https_proxy|all_proxy|no_proxy|HTTP_PROXY|HTTPS_PROXY|ALL_PROXY|NO_PROXY)=' | sort || echo "No proxy environment variables found."
+
+  if [ "$(uname -s)" = "Darwin" ] && command -v scutil >/dev/null 2>&1; then
+    echo
+    echo "== macOS proxy configuration summary =="
+    scutil --proxy
+  fi
+category: network
+tags:
+  - inspection
+  - network
+  - proxy
+  - environment
+risk: low
+description: 查看当前进程环境中的代理变量，并在 macOS 上补充系统代理配置摘要，辅助排查 curl、包管理器或应用出网异常。只读不修改代理配置。
+platform:
+  - linux
+  - macos

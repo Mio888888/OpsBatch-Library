@@ -1,0 +1,25 @@
+name: 查看网络连接对应进程
+command: |
+  if command -v lsof >/dev/null 2>&1; then
+    echo "== network sockets by process =="
+    lsof -nP -iTCP -iUDP 2>/dev/null | head -120 || true
+  elif [ "$(uname -s)" = "Linux" ] && command -v ss >/dev/null 2>&1; then
+    echo "== sockets with process info =="
+    ss -tulpen 2>/dev/null || ss -tuln
+  elif command -v netstat >/dev/null 2>&1; then
+    echo "== sockets =="
+    netstat -tunap 2>/dev/null || netstat -tuna 2>/dev/null || netstat -an
+  else
+    echo "No supported socket/process command found. Install lsof or iproute2."
+  fi
+category: network
+tags:
+  - troubleshooting
+  - network
+  - process
+  - socket
+risk: medium
+description: 查看网络端口和连接对应的进程信息。命令只读，但部分平台需要更高权限才能显示完整进程，且输出可能包含本机进程和连接细节。
+platform:
+  - linux
+  - macos
