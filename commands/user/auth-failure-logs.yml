@@ -20,9 +20,9 @@ command: |
   else
     echo "No supported authentication log source found."
   fi
-category: log
+category: user
 tags:
-  - log
+  - user
   - security
   - auth
   - troubleshooting

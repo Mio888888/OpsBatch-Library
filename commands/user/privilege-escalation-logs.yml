@@ -20,9 +20,9 @@ command: |
   else
     echo "No supported privilege log source found."
   fi
-category: log
+category: user
 tags:
-  - log
+  - user
   - sudo
   - security
   - privilege

@@ -1,0 +1,78 @@
+{
+  "name": "用户与账号安全巡检",
+  "description": "串联本地账号、组成员、sudo 权限、登录会话、密码策略、SSH 授权密钥、异常 UID/GID、家目录和认证日志等只读检查，适合用户账号安全基线巡检。",
+  "category": "inspection",
+  "risk": "medium",
+  "tags": [
+    "user",
+    "account",
+    "security",
+    "inspection"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "查看本地用户账户摘要",
+      "type": "command",
+      "ref": "commands/user/local-user-summary.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看用户组和成员关系",
+      "type": "command",
+      "ref": "commands/user/group-membership-summary.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看 sudoers 权限摘要",
+      "type": "command",
+      "ref": "commands/user/sudoers-summary.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看用户登录会话详情",
+      "type": "command",
+      "ref": "commands/user/login-session-detail.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看密码与过期策略",
+      "type": "command",
+      "ref": "commands/user/password-policy-aging.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "检查 SSH 授权密钥",
+      "type": "command",
+      "ref": "commands/user/ssh-authorized-keys-audit.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查找异常 UID/GID 账号",
+      "type": "command",
+      "ref": "commands/user/uid-gid-anomalies.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "检查用户家目录状态",
+      "type": "command",
+      "ref": "commands/user/home-directory-audit.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看 SSH 登录日志",
+      "type": "command",
+      "ref": "commands/user/ssh-login-logs.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看认证失败日志",
+      "type": "command",
+      "ref": "commands/user/auth-failure-logs.yml",
+      "continueOnError": true
+    }
+  ]
+}

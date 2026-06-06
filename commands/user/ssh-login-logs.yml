@@ -24,9 +24,9 @@ command: |
   else
     echo "No supported SSH log source found."
   fi
-category: log
+category: user
 tags:
-  - log
+  - user
   - ssh
   - security
   - login

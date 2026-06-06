@@ -13,6 +13,7 @@
       "network",
       "disk",
       "log",
+      "user",
       "service",
       "troubleshooting"
     ],

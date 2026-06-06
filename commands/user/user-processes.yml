@@ -1,0 +1,25 @@
+name: 查看指定用户进程
+command: |
+  TARGET_USER="${TARGET_USER:-$(whoami 2>/dev/null || true)}"
+
+  if [ -z "$TARGET_USER" ]; then
+    echo "Refusing to run: set TARGET_USER explicitly."
+    exit 0
+  fi
+
+  echo "== process summary for $TARGET_USER =="
+  ps -u "$TARGET_USER" -o pid,ppid,stat,%cpu,%mem,etime,command 2>/dev/null | head -n "${LINES:-80}" || echo "Cannot list processes for $TARGET_USER."
+
+  echo
+  echo "== top CPU/memory processes for $TARGET_USER =="
+  ps -u "$TARGET_USER" -o pid,%cpu,%mem,etime,command 2>/dev/null | sort -k2,2nr | head -n 20 || true
+category: user
+tags:
+  - troubleshooting
+  - user
+  - process
+risk: low
+description: 查看指定用户运行中的进程摘要和资源占用排行。默认查看当前用户，可通过 TARGET_USER 指定。
+platform:
+  - linux
+  - macos

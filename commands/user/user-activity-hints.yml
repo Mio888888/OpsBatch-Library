@@ -1,0 +1,31 @@
+name: 查看账号最近活动线索
+command: |
+  TARGET_USER="${TARGET_USER:-}"
+  LINES="${LINES:-50}"
+
+  if [ -z "$TARGET_USER" ]; then
+    echo "Refusing to run: set TARGET_USER explicitly."
+    exit 0
+  fi
+
+  echo "== recent login records for $TARGET_USER =="
+  last -n "$LINES" "$TARGET_USER" 2>/dev/null || echo "No recent login records found or last is unavailable."
+
+  echo
+  echo "== failed login records for $TARGET_USER =="
+  lastb -n "$LINES" "$TARGET_USER" 2>/dev/null || echo "lastb unavailable or requires permission."
+
+  echo
+  echo "== current processes for $TARGET_USER =="
+  ps -u "$TARGET_USER" -o pid,stat,etime,command 2>/dev/null | head -n "$LINES" || true
+category: user
+tags:
+  - troubleshooting
+  - user
+  - activity
+  - login
+risk: medium
+description: 查看指定账号最近登录、失败登录和当前进程活动线索。只读查询，可能输出来源地址、用户名和命令行信息。
+platform:
+  - linux
+  - macos
