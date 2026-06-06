@@ -1,0 +1,28 @@
+name: 查看 Page Cache 详情
+command: |
+  if [ "$(uname -s)" = "Linux" ]; then
+    if [ -r /proc/meminfo ]; then
+      echo "== Page cache related fields =="
+      grep -E '^(Cached|SwapCached|Buffers|Dirty|Writeback|WritebackTmp|Active\(file\)|Inactive\(file\)|Mapped|Shmem|SReclaimable):' /proc/meminfo || true
+    else
+      echo "/proc/meminfo is not available."
+    fi
+
+    echo
+    echo "== Cache-related vm settings (read-only) =="
+    for file in /proc/sys/vm/dirty_background_ratio /proc/sys/vm/dirty_ratio /proc/sys/vm/vfs_cache_pressure; do
+      [ -r "$file" ] && echo "$file=$(cat "$file")"
+    done
+  else
+    echo "Page Cache details in this command rely on Linux /proc/meminfo and /proc/sys/vm."
+  fi
+category: memory
+tags:
+  - inspection
+  - memory
+  - page-cache
+  - cache
+risk: low
+description: 查看 Linux Page Cache、Dirty、Writeback 与文件页相关字段，并只读展示部分缓存相关 vm 参数。
+platform:
+  - linux
