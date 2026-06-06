@@ -1,0 +1,21 @@
+name: 查看文件系统与挂载概览
+command: |
+  echo "Mounted filesystems:"
+  if command -v findmnt >/dev/null 2>&1; then
+    findmnt -D
+  else
+    mount | head -50
+  fi
+  echo "Disk usage summary:"
+  df -h
+category: system
+tags:
+  - inspection
+  - system
+  - filesystem
+  - mount
+risk: low
+description: 查看文件系统挂载概览和磁盘使用摘要，辅助了解主机存储布局。
+platform:
+  - linux
+  - macos

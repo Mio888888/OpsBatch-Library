@@ -1,0 +1,27 @@
+name: 查看系统时间与时区
+command: |
+  echo "Local time: $(date)"
+  echo "UTC time: $(date -u)"
+  if command -v timedatectl >/dev/null 2>&1; then
+    timedatectl status
+  elif [ -f /etc/localtime ]; then
+    echo "Timezone file: /etc/localtime"
+    if command -v readlink >/dev/null 2>&1; then
+      readlink /etc/localtime || true
+    fi
+  elif command -v systemsetup >/dev/null 2>&1; then
+    systemsetup -gettimezone 2>/dev/null || true
+  else
+    echo "No supported timezone detail command found."
+  fi
+category: system
+tags:
+  - inspection
+  - system
+  - time
+  - timezone
+risk: low
+description: 查看本地时间、UTC 时间和时区配置，辅助排查时间漂移和日志时间不一致问题。
+platform:
+  - linux
+  - macos

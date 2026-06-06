@@ -1,0 +1,17 @@
+name: 查看主机名与用户身份
+command: |
+  echo "Hostname: $(hostname 2>/dev/null || echo unknown)"
+  echo "FQDN: $(hostname -f 2>/dev/null || hostname 2>/dev/null || echo unknown)"
+  echo "Current user: $(whoami 2>/dev/null || id -un 2>/dev/null || echo unknown)"
+  echo "User id: $(id 2>/dev/null || echo unavailable)"
+category: system
+tags:
+  - inspection
+  - system
+  - identity
+  - hostname
+risk: low
+description: 查看当前主机名、可能的 FQDN、当前用户与用户组身份信息。
+platform:
+  - linux
+  - macos

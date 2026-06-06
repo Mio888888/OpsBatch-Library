@@ -1,0 +1,24 @@
+name: 查看 CPU 概况
+command: |
+  if command -v lscpu >/dev/null 2>&1; then
+    lscpu
+  elif command -v sysctl >/dev/null 2>&1; then
+    sysctl -n machdep.cpu.brand_string 2>/dev/null || true
+    sysctl hw.ncpu 2>/dev/null || true
+    sysctl hw.physicalcpu 2>/dev/null || true
+    sysctl hw.logicalcpu 2>/dev/null || true
+  elif [ -f /proc/cpuinfo ]; then
+    grep -E '^(model name|cpu cores|processor)' /proc/cpuinfo | head -40
+  else
+    echo "No supported CPU information command found."
+  fi
+category: system
+tags:
+  - inspection
+  - system
+  - cpu
+risk: low
+description: 查看 CPU 型号、核心数和逻辑 CPU 等基础信息。Linux 优先使用 lscpu，macOS 使用 sysctl。
+platform:
+  - linux
+  - macos

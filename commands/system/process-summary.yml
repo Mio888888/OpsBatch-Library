@@ -1,0 +1,17 @@
+name: 查看进程概览
+command: |
+  echo "Process count: $(ps -A -o pid= 2>/dev/null | wc -l | tr -d ' ')"
+  echo "Top processes by CPU:"
+  ps aux | sort -nrk 3 | head -10
+  echo "Top processes by memory:"
+  ps aux | sort -nrk 4 | head -10
+category: system
+tags:
+  - inspection
+  - system
+  - process
+risk: low
+description: 查看进程总数，并分别按 CPU 和内存使用率展示前 10 个进程。
+platform:
+  - linux
+  - macos

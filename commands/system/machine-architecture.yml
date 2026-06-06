@@ -1,0 +1,18 @@
+name: 查看系统架构
+command: |
+  echo "Machine: $(uname -m)"
+  echo "Processor: $(uname -p 2>/dev/null || echo unknown)"
+  echo "Hardware platform: $(uname -i 2>/dev/null || echo unknown)"
+  if command -v arch >/dev/null 2>&1; then
+    echo "arch: $(arch)"
+  fi
+category: system
+tags:
+  - inspection
+  - system
+  - architecture
+risk: low
+description: 查看机器架构、处理器架构和硬件平台，辅助判断软件包和脚本兼容性。
+platform:
+  - linux
+  - macos
