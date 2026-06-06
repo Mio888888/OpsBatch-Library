@@ -10,6 +10,7 @@
 ├── commands/                    # 运维命令 YAML
 │   ├── system/                  # 系统巡检
 │   ├── cpu/                     # CPU 巡检与排障
+│   ├── memory/                  # 内存巡检与排障
 │   ├── network/                 # 网络排障
 │   ├── disk/                    # 磁盘检查
 │   ├── log/                     # 日志查看

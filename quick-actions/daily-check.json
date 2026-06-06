@@ -22,7 +22,7 @@
     {
       "name": "检查内存使用",
       "type": "command",
-      "ref": "commands/system/check-memory.yml",
+      "ref": "commands/memory/memory-usage-summary.yml",
       "continueOnError": true
     },
     {

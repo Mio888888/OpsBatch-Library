@@ -8,6 +8,7 @@
     "commands": [
       "system",
       "cpu",
+      "memory",
       "network",
       "disk",
       "log",
