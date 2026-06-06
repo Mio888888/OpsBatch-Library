@@ -1,0 +1,38 @@
+name: 查看容器日志
+command: |
+  CONTAINER_NAME="${CONTAINER_NAME:-}"
+  LINES="${LINES:-120}"
+  SINCE="${SINCE:-2h}"
+
+  if [ -z "$CONTAINER_NAME" ]; then
+    echo "Refusing to run: set CONTAINER_NAME explicitly."
+    echo "Available containers:"
+    if command -v docker >/dev/null 2>&1; then
+      docker ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}' 2>/dev/null || true
+    elif command -v podman >/dev/null 2>&1; then
+      podman ps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}' 2>/dev/null || true
+    else
+      echo "docker or podman not found."
+    fi
+    exit 0
+  fi
+
+  echo "== container logs: $CONTAINER_NAME =="
+  if command -v docker >/dev/null 2>&1; then
+    docker logs --since "$SINCE" --tail "$LINES" "$CONTAINER_NAME" 2>&1 || echo "docker logs failed; check container name and permissions."
+  elif command -v podman >/dev/null 2>&1; then
+    podman logs --since "$SINCE" --tail "$LINES" "$CONTAINER_NAME" 2>&1 || echo "podman logs failed; check container name and permissions."
+  else
+    echo "docker or podman not found."
+  fi
+category: log
+tags:
+  - log
+  - container
+  - docker
+  - podman
+risk: medium
+description: 查看单个 Docker 或 Podman 容器的近期日志。必须设置 CONTAINER_NAME，默认限制最近 2 小时和 120 行；容器日志可能包含敏感业务数据。
+platform:
+  - linux
+  - macos

@@ -1,0 +1,42 @@
+name: 受保护截断单个日志文件
+command: |
+  LOG_FILE="${LOG_FILE:-}"
+  CONFIRM_TRUNCATE="${CONFIRM_TRUNCATE:-}"
+
+  if [ -z "$LOG_FILE" ]; then
+    echo "Refusing to run: set LOG_FILE explicitly, for example LOG_FILE=/var/log/myapp/app.log."
+    exit 0
+  fi
+
+  if [ ! -f "$LOG_FILE" ]; then
+    echo "LOG_FILE is not a file or cannot be found: $LOG_FILE"
+    exit 0
+  fi
+
+  echo "== target log file =="
+  ls -lh "$LOG_FILE" 2>/dev/null || true
+  echo
+  echo "== last 20 lines before truncate =="
+  tail -n 20 "$LOG_FILE" 2>/dev/null || true
+
+  if [ "$CONFIRM_TRUNCATE" != "TRUNCATE_LOG_FILE" ]; then
+    echo
+    echo "Dry-run only. Set CONFIRM_TRUNCATE=TRUNCATE_LOG_FILE to truncate this single file after confirming the writer process and backup requirements."
+    exit 0
+  fi
+
+  echo
+  echo "Truncating $LOG_FILE. This preserves the file inode but removes existing content."
+  : > "$LOG_FILE"
+  ls -lh "$LOG_FILE" 2>/dev/null || true
+category: log
+tags:
+  - remediation
+  - log
+  - truncate
+  - cleanup
+risk: high
+description: 受保护截断单个日志文件示例。默认只展示目标文件大小和尾部内容；只有显式设置 LOG_FILE 和 CONFIRM_TRUNCATE=TRUNCATE_LOG_FILE 后才清空该文件内容。误用会丢失日志证据和排障上下文，执行前必须确认备份、保留要求和写入进程行为。
+platform:
+  - linux
+  - macos

@@ -1,0 +1,25 @@
+name: 按服务查看日志
+command: |
+  SERVICE_NAME="${SERVICE_NAME:-ssh}"
+  SINCE="${SINCE:-2 hours ago}"
+  LINES="${LINES:-120}"
+
+  echo "== service logs: $SERVICE_NAME since $SINCE =="
+  if [ "$(uname -s)" = "Linux" ] && command -v journalctl >/dev/null 2>&1; then
+    journalctl -u "$SERVICE_NAME" --since "$SINCE" -n "$LINES" --no-pager 2>/dev/null || echo "No journal entries found or insufficient permission for service: $SERVICE_NAME"
+  elif [ "$(uname -s)" = "Darwin" ] && command -v log >/dev/null 2>&1; then
+    log show --last 2h --style compact --predicate "process == \"$SERVICE_NAME\"" 2>/dev/null | tail -n "$LINES" || true
+  else
+    echo "No supported service log command found. Set SERVICE_NAME to the target service/process name."
+  fi
+category: log
+tags:
+  - log
+  - service
+  - troubleshooting
+  - journal
+risk: medium
+description: 按单个服务或进程名称查看近期日志。默认服务名为 ssh，可通过 SERVICE_NAME、SINCE、LINES 覆盖；日志可能包含用户、路径和业务上下文。
+platform:
+  - linux
+  - macos

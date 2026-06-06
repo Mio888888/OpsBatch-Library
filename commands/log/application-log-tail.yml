@@ -1,0 +1,28 @@
+name: 查看指定应用日志文件
+command: |
+  LOG_FILE="${LOG_FILE:-}"
+  LINES="${LINES:-120}"
+
+  if [ -z "$LOG_FILE" ]; then
+    echo "Refusing to run: set LOG_FILE explicitly, for example LOG_FILE=/var/log/app/app.log."
+    exit 0
+  fi
+
+  if [ ! -f "$LOG_FILE" ]; then
+    echo "LOG_FILE is not a file or cannot be found: $LOG_FILE"
+    exit 0
+  fi
+
+  echo "== tail $LINES lines from $LOG_FILE =="
+  tail -n "$LINES" "$LOG_FILE" 2>/dev/null || echo "Cannot read $LOG_FILE; check permissions."
+category: log
+tags:
+  - log
+  - application
+  - tail
+  - troubleshooting
+risk: medium
+description: 查看显式指定应用日志文件的最后若干行。必须设置 LOG_FILE，默认只读取 120 行；日志可能包含业务数据、用户标识或请求上下文。
+platform:
+  - linux
+  - macos
