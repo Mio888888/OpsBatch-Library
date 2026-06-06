@@ -1,0 +1,26 @@
+name: 查看 CPU 缓存信息
+command: |
+  if command -v lscpu >/dev/null 2>&1; then
+    lscpu | grep -E 'cache|L1d|L1i|L2|L3' || true
+  elif [ "$(uname -s)" = "Linux" ] && ls /sys/devices/system/cpu/cpu0/cache/index* >/dev/null 2>&1; then
+    for index in /sys/devices/system/cpu/cpu0/cache/index*; do
+      echo "== ${index##*/} =="
+      for field in level type size ways_of_associativity coherency_line_size shared_cpu_list; do
+        [ -r "$index/$field" ] && echo "$field: $(cat "$index/$field")"
+      done
+    done
+  elif [ "$(uname -s)" = "Darwin" ]; then
+    sysctl hw.l1icachesize hw.l1dcachesize hw.l2cachesize hw.l3cachesize 2>/dev/null || true
+  else
+    echo "No supported CPU cache command found."
+  fi
+category: cpu
+tags:
+  - inspection
+  - cpu
+  - cache
+risk: low
+description: 查看 CPU L1/L2/L3 缓存大小与共享关系，辅助分析计算密集型任务的性能瓶颈。
+platform:
+  - linux
+  - macos

@@ -1,0 +1,23 @@
+name: 查找高 CPU 进程
+command: |
+  if [ "$(uname -s)" = "Darwin" ]; then
+    ps -axo pid,ppid,user,comm,%cpu,%mem,etime | {
+      IFS= read -r header
+      printf '%s\n' "$header"
+      sort -nrk 5 | head -10
+    }
+  elif ps -eo pid,ppid,user,comm,%cpu,%mem,etime --sort=-%cpu >/dev/null 2>&1; then
+    ps -eo pid,ppid,user,comm,%cpu,%mem,etime --sort=-%cpu | head -11
+  else
+    ps aux | sort -nrk 3 | head -10
+  fi
+category: cpu
+tags:
+  - troubleshooting
+  - process
+  - cpu
+risk: low
+description: 按 CPU 使用率排序展示进程，用于快速定位高负载来源。
+platform:
+  - linux
+  - macos

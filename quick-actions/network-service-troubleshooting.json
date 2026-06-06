@@ -38,7 +38,7 @@
     {
       "name": "查找高 CPU 进程",
       "type": "command",
-      "ref": "commands/troubleshooting/top-cpu-processes.yml",
+      "ref": "commands/cpu/top-cpu-processes.yml",
       "continueOnError": true
     }
   ]

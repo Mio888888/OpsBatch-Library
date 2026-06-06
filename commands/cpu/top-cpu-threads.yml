@@ -1,0 +1,27 @@
+name: 查找高 CPU 线程
+command: |
+  if [ "$(uname -s)" = "Linux" ]; then
+    if ps -eLo pid,tid,ppid,user,comm,pcpu,pmem,stat --sort=-pcpu >/dev/null 2>&1; then
+      ps -eLo pid,tid,ppid,user,comm,pcpu,pmem,stat --sort=-pcpu | head -15
+    elif command -v top >/dev/null 2>&1; then
+      top -H -bn1 | head -30
+    else
+      echo "No supported Linux thread CPU command found."
+    fi
+  elif [ "$(uname -s)" = "Darwin" ] && command -v top >/dev/null 2>&1; then
+    echo "macOS top shows process CPU and thread counts; detailed per-thread CPU usually requires Instruments or privileged tools."
+    top -l 1 | head -30
+  else
+    echo "No supported thread CPU command found."
+  fi
+category: cpu
+tags:
+  - troubleshooting
+  - cpu
+  - thread
+  - process
+risk: low
+description: 查看 CPU 使用率最高的线程或线程相关摘要，适合定位单进程内热点线程。Linux 支持更完整的线程级排序。
+platform:
+  - linux
+  - macos
