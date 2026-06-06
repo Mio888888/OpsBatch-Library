@@ -16,10 +16,10 @@ command: |
   if command -v brew >/dev/null 2>&1; then
     brew --cache 2>/dev/null | while read -r cache_dir; do du -sh "$cache_dir" 2>/dev/null; done
   fi
-category: disk
+category: package-management
 tags:
   - inspection
-  - disk
+  - package-management
   - package-cache
   - cleanup
 risk: low

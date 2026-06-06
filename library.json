@@ -12,6 +12,7 @@
       "memory",
       "network",
       "disk",
+      "package-management",
       "log",
       "user",
       "security",

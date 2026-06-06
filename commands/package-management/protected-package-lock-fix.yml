@@ -1,0 +1,76 @@
+name: 受保护修复包管理锁与事务
+command: |
+  PACKAGE_MANAGER="${PACKAGE_MANAGER:-auto}"
+  LOCK_FIX_ACTION="${LOCK_FIX_ACTION:-audit}"
+  TARGET_LOCK_FIX_SCOPE="${TARGET_LOCK_FIX_SCOPE:-}"
+  TARGET_LOCK_FILE="${TARGET_LOCK_FILE:-}"
+  CONFIRM_LOCK_FIX="${CONFIRM_LOCK_FIX:-}"
+
+  if [ "$PACKAGE_MANAGER" = "auto" ]; then
+    if command -v dpkg >/dev/null 2>&1; then PACKAGE_MANAGER="apt"
+    elif command -v dnf >/dev/null 2>&1; then PACKAGE_MANAGER="dnf"
+    elif command -v yum >/dev/null 2>&1; then PACKAGE_MANAGER="yum"
+    elif command -v pacman >/dev/null 2>&1; then PACKAGE_MANAGER="pacman"
+    elif command -v apk >/dev/null 2>&1; then PACKAGE_MANAGER="apk"
+    elif command -v zypper >/dev/null 2>&1; then PACKAGE_MANAGER="zypper"
+    else PACKAGE_MANAGER="unsupported"; fi
+  fi
+
+  echo "== protected package lock/transaction fix plan =="
+  echo "PACKAGE_MANAGER=$PACKAGE_MANAGER"
+  echo "LOCK_FIX_ACTION=$LOCK_FIX_ACTION"
+  echo "TARGET_LOCK_FIX_SCOPE=$TARGET_LOCK_FIX_SCOPE"
+  echo "TARGET_LOCK_FILE=$TARGET_LOCK_FILE"
+  echo
+  echo "Active package manager processes:"
+  ps -eo pid,ppid,user,comm,args 2>/dev/null | grep -E '[a]pt|[d]pkg|[d]nf|[y]um|[r]pm|[p]acman|[a]pk|[z]ypper' | sed -n '1,40p' || true
+
+  if [ -n "$TARGET_LOCK_FILE" ] && [ -e "$TARGET_LOCK_FILE" ]; then
+    ls -l "$TARGET_LOCK_FILE" 2>/dev/null || true
+    if command -v lsof >/dev/null 2>&1; then lsof "$TARGET_LOCK_FILE" 2>/dev/null | sed -n '1,20p' || true; fi
+  fi
+
+  case "$PACKAGE_MANAGER" in
+    apt) dpkg --audit 2>/dev/null || true; echo "Potential fix after no active process: sudo dpkg --configure -a" ;;
+    dnf) dnf history list 2>/dev/null | sed -n '1,20p' || true; echo "Potential fix: sudo dnf history sync or sudo rpm --rebuilddb after backup" ;;
+    yum) yum history list 2>/dev/null | sed -n '1,20p' || true; echo "Potential fix: sudo yum-complete-transaction if available, or rpmdb recovery after backup" ;;
+    pacman) echo "Potential fix after no active process: sudo rm /var/lib/pacman/db.lck" ;;
+    apk) echo "Potential fix after no active process: remove stale apk lock and rerun apk fix only after review" ;;
+    zypper) echo "Potential fix after no active process: sudo zypper ps; inspect /var/run/zypp.pid" ;;
+    *) echo "Unsupported package manager; audit only." ;;
+  esac
+
+  if [ -z "$TARGET_LOCK_FIX_SCOPE" ]; then
+    echo
+    echo "Refusing automated repair: set TARGET_LOCK_FIX_SCOPE explicitly, for example TARGET_LOCK_FIX_SCOPE=dpkg-configure or TARGET_LOCK_FIX_SCOPE=pacman-lock-file."
+    echo "Set LOCK_FIX_ACTION and CONFIRM_LOCK_FIX=FIX_PACKAGE_LOCK only after proving no package manager process is active and backups are available."
+    exit 0
+  fi
+
+  if [ "$CONFIRM_LOCK_FIX" != "FIX_PACKAGE_LOCK" ]; then
+    echo
+    echo "Dry-run only. Set TARGET_LOCK_FIX_SCOPE, LOCK_FIX_ACTION, and CONFIRM_LOCK_FIX=FIX_PACKAGE_LOCK only after proving no package manager process is active and backups are available."
+    exit 0
+  fi
+
+  case "$PACKAGE_MANAGER:$LOCK_FIX_ACTION:$TARGET_LOCK_FIX_SCOPE" in
+    apt:configure:dpkg-configure) sudo dpkg --configure -a ;;
+    pacman:remove-lock:pacman-lock-file)
+      if [ "$TARGET_LOCK_FILE" != "/var/lib/pacman/db.lck" ]; then
+        echo "Refusing pacman lock removal unless TARGET_LOCK_FILE=/var/lib/pacman/db.lck"
+        exit 0
+      fi
+      sudo rm -i "$TARGET_LOCK_FILE"
+      ;;
+    *) echo "No automated fix for this PACKAGE_MANAGER/LOCK_FIX_ACTION combination; perform the reviewed recovery manually." ;;
+  esac
+category: package-management
+tags:
+  - remediation
+  - package-management
+  - locks
+  - protected
+risk: high
+description: 受保护的包管理锁和事务修复模板。默认只审计进程、锁文件和可选修复方案；只有显式设置 TARGET_LOCK_FIX_SCOPE、LOCK_FIX_ACTION、必要的 TARGET_LOCK_FILE 和 CONFIRM_LOCK_FIX=FIX_PACKAGE_LOCK 后才执行有限修复。误删锁或错误修复事务可能破坏包数据库，执行前必须确认无活动包管理进程、已有备份并了解回滚路径。
+platform:
+  - linux
