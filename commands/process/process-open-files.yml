@@ -1,0 +1,33 @@
+name: 查看进程打开文件
+command: |
+  pid="${PID:-1}"
+  limit="${PROCESS_LIMIT:-80}"
+  echo "Inspecting open files for PID=$pid. Override with PID=<pid>; limit rows with PROCESS_LIMIT=<n>."
+
+  if command -v lsof >/dev/null 2>&1; then
+    echo "== open regular files from lsof =="
+    lsof -nP -p "$pid" 2>/dev/null | awk 'NR==1 || $5 == "REG" || $5 == "DIR"' | head -n "$limit" || echo "Process $pid not found or lsof needs more permission."
+  elif [ "$(uname -s)" = "Linux" ] && [ -d "/proc/$pid/fd" ]; then
+    echo "lsof not found. Showing readable /proc/$pid/fd targets."
+    for fd in /proc/"$pid"/fd/*; do
+      [ -e "$fd" ] || continue
+      target=$(readlink "$fd" 2>/dev/null || true)
+      case "$target" in
+        socket:*|pipe:*|anon_inode:*) continue ;;
+      esac
+      printf '%s -> %s\n' "$(basename "$fd")" "$target"
+    done | head -n "$limit"
+  else
+    echo "No supported open-file command found. Install lsof or inspect /proc on Linux."
+  fi
+category: process
+tags:
+  - troubleshooting
+  - process
+  - file
+  - lsof
+risk: medium
+description: 查看指定进程打开的普通文件和目录。命令只读，但可能输出业务路径、日志文件、临时文件等敏感路径信息。
+platform:
+  - linux
+  - macos

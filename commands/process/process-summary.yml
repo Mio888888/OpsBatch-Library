@@ -1,0 +1,43 @@
+name: 查看进程总览
+command: |
+  echo "== process counts =="
+  total=$(ps -e -o pid= 2>/dev/null | wc -l | tr -d ' ')
+  echo "total_processes=${total:-unknown}"
+
+  echo
+  echo "== process states =="
+  if [ "$(uname -s)" = "Linux" ]; then
+    ps -eo stat= 2>/dev/null | awk '{state=substr($1,1,1); count[state]++} END {for (s in count) print s, count[s]}' | sort || true
+  else
+    ps -axo stat= 2>/dev/null | awk '{state=substr($1,1,1); count[state]++} END {for (s in count) print s, count[s]}' | sort || true
+  fi
+
+  echo
+  echo "== top CPU processes =="
+  if [ "$(uname -s)" = "Darwin" ]; then
+    ps -axo pid,ppid,user,comm,%cpu,%mem,etime | { IFS= read -r header; printf '%s\n' "$header"; sort -nrk 5 | head -10; }
+  elif ps -eo pid,ppid,user,comm,%cpu,%mem,etime --sort=-%cpu >/dev/null 2>&1; then
+    ps -eo pid,ppid,user,comm,%cpu,%mem,etime --sort=-%cpu | head -11
+  else
+    ps aux | sort -nrk 3 | head -10
+  fi
+
+  echo
+  echo "== top memory processes =="
+  if [ "$(uname -s)" = "Darwin" ]; then
+    ps -axo pid,ppid,user,comm,%cpu,%mem,rss,etime | { IFS= read -r header; printf '%s\n' "$header"; sort -nrk 6 | head -10; }
+  elif ps -eo pid,ppid,user,comm,%cpu,%mem,rss,etime --sort=-%mem >/dev/null 2>&1; then
+    ps -eo pid,ppid,user,comm,%cpu,%mem,rss,etime --sort=-%mem | head -11
+  else
+    ps aux | sort -nrk 4 | head -10
+  fi
+category: process
+tags:
+  - inspection
+  - process
+  - summary
+risk: low
+description: 查看进程数量、状态分布以及 CPU/内存占用 Top 进程，用于快速获得进程层面的巡检快照。
+platform:
+  - linux
+  - macos

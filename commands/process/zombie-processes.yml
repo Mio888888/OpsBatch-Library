@@ -1,0 +1,23 @@
+name: 查找僵尸进程
+command: |
+  echo "== zombie processes =="
+  if [ "$(uname -s)" = "Darwin" ]; then
+    ps -axo pid,ppid,user,stat,etime,comm | awk 'NR==1 || $4 ~ /^Z/'
+  elif ps -eo pid,ppid,user,stat,etime,comm >/dev/null 2>&1; then
+    ps -eo pid,ppid,user,stat,etime,comm | awk 'NR==1 || $4 ~ /^Z/'
+  else
+    ps aux | awk 'NR==1 || $8 ~ /^Z/'
+  fi
+
+  echo
+  echo "If zombies exist, inspect their PPID and parent process behavior; zombies usually need the parent to reap them."
+category: process
+tags:
+  - troubleshooting
+  - process
+  - zombie
+risk: low
+description: 查找 STAT 为 Z 的僵尸进程，并提示关注父进程回收行为。命令只读，不会终止进程。
+platform:
+  - linux
+  - macos

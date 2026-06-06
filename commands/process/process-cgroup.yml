@@ -1,0 +1,29 @@
+name: 查看进程 cgroup 归属
+command: |
+  pid="${PID:-1}"
+  echo "Inspecting cgroup membership for PID=$pid. Override with PID=<pid> if needed."
+
+  if [ "$(uname -s)" = "Linux" ]; then
+    if [ -r "/proc/$pid/cgroup" ]; then
+      echo "== /proc/$pid/cgroup =="
+      cat "/proc/$pid/cgroup"
+      echo
+      echo "== container hints =="
+      grep -E 'docker|kubepods|containerd|crio|libpod|lxc' "/proc/$pid/cgroup" || echo "No common container runtime keyword found in cgroup path."
+    else
+      echo "Process $pid not found or /proc/$pid/cgroup is not readable."
+    fi
+  else
+    echo "cgroup is Linux-specific; no cgroup information is available on $(uname -s)."
+  fi
+category: process
+tags:
+  - troubleshooting
+  - process
+  - cgroup
+  - container
+risk: low
+description: 查看指定进程的 Linux cgroup 归属，并尝试提示容器运行时线索。macOS 不支持 cgroup，会输出平台说明。
+platform:
+  - linux
+  - macos

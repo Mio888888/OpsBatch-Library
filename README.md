@@ -9,6 +9,7 @@
 ├── library.json                 # 运维库元信息
 ├── commands/                    # 运维命令 YAML
 │   ├── system/                  # 系统巡检
+│   ├── process/                 # 进程巡检与排障
 │   ├── cpu/                     # CPU 巡检与排障
 │   ├── memory/                  # 内存巡检与排障
 │   ├── network/                 # 网络排障

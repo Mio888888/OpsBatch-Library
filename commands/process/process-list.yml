@@ -1,0 +1,22 @@
+name: 查看进程列表快照
+command: |
+  limit="${PROCESS_LIMIT:-40}"
+  echo "Showing up to $limit processes. Override with PROCESS_LIMIT=<n> if needed."
+
+  if [ "$(uname -s)" = "Darwin" ]; then
+    ps -axo pid,ppid,user,stat,%cpu,%mem,etime,comm | head -n "$((limit + 1))"
+  elif ps -eo pid,ppid,user,stat,%cpu,%mem,etime,comm --sort=pid >/dev/null 2>&1; then
+    ps -eo pid,ppid,user,stat,%cpu,%mem,etime,comm --sort=pid | head -n "$((limit + 1))"
+  else
+    ps aux | head -n "$((limit + 1))"
+  fi
+category: process
+tags:
+  - inspection
+  - process
+  - list
+risk: low
+description: 展示进程列表快照，包含 PID、PPID、用户、状态、CPU/内存占用和运行时长。默认最多显示 40 行，可通过 PROCESS_LIMIT 调整。
+platform:
+  - linux
+  - macos

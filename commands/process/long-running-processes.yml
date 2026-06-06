@@ -1,0 +1,25 @@
+name: 查找长运行进程
+command: |
+  limit="${PROCESS_LIMIT:-30}"
+  echo "Showing top $limit long-running processes. Override with PROCESS_LIMIT=<n> if needed."
+
+  if [ "$(uname -s)" = "Darwin" ]; then
+    ps -axo pid,ppid,user,lstart,etime,comm | head -n "$((limit + 1))"
+  elif ps -eo pid,ppid,user,lstart,etime,comm --sort=start_time >/dev/null 2>&1; then
+    ps -eo pid,ppid,user,lstart,etime,comm --sort=start_time | head -n "$((limit + 1))"
+  else
+    ps aux | awk 'NR==1 || NR<=31'
+  fi
+
+  echo
+  echo "Long-running processes are not necessarily abnormal; compare with expected service lifetimes and deployment history."
+category: process
+tags:
+  - inspection
+  - process
+  - uptime
+risk: low
+description: 按启动时间展示长运行进程，用于核对服务生命周期、部署后遗留进程和异常长期驻留进程。
+platform:
+  - linux
+  - macos

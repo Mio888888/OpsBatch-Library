@@ -1,0 +1,23 @@
+name: 查找 D 状态进程
+command: |
+  echo "== uninterruptible sleep / D-state processes =="
+  if [ "$(uname -s)" = "Darwin" ]; then
+    ps -axo pid,ppid,user,stat,etime,comm,wchan 2>/dev/null | awk 'NR==1 || $4 ~ /^D/'
+  elif ps -eo pid,ppid,user,stat,etime,comm,wchan >/dev/null 2>&1; then
+    ps -eo pid,ppid,user,stat,etime,comm,wchan | awk 'NR==1 || $4 ~ /^D/'
+  else
+    ps aux | awk 'NR==1 || $8 ~ /^D/'
+  fi
+
+  echo
+  echo "D-state often points to blocked I/O, filesystem, device, or kernel wait paths. Correlate with disk/network/kernel logs."
+category: process
+tags:
+  - troubleshooting
+  - process
+  - blocked
+risk: low
+description: 查找不可中断睡眠 D 状态进程，并尽量展示等待通道，用于排查 I/O、设备或内核等待导致的卡死线索。
+platform:
+  - linux
+  - macos

@@ -1,0 +1,28 @@
+name: 查看进程启动参数
+command: |
+  pid="${PID:-1}"
+  echo "Inspecting command line for PID=$pid. Override with PID=<pid> if needed."
+
+  echo
+  echo "== ps command =="
+  ps -p "$pid" -o pid,ppid,user,etime,args 2>/dev/null || echo "Process $pid not found by ps."
+
+  if [ "$(uname -s)" = "Linux" ]; then
+    if [ -r "/proc/$pid/cmdline" ]; then
+      echo
+      echo "== /proc/$pid/cmdline =="
+      tr '\0' ' ' < "/proc/$pid/cmdline"; echo
+    else
+      echo "/proc/$pid/cmdline is not readable."
+    fi
+  fi
+category: process
+tags:
+  - troubleshooting
+  - process
+  - command-line
+risk: medium
+description: 查看指定进程的启动命令和参数。命令只读，但启动参数可能包含 Token、密码、连接串或业务路径等敏感信息。
+platform:
+  - linux
+  - macos
