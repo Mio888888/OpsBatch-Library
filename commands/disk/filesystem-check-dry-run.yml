@@ -1,0 +1,32 @@
+name: 文件系统检查 dry-run
+command: |
+  TARGET_DEVICE="${TARGET_DEVICE:-}"
+  if [ -z "$TARGET_DEVICE" ]; then
+    echo "Set TARGET_DEVICE before running, for example TARGET_DEVICE=/dev/sdb1."
+    exit 0
+  fi
+
+  if [ "$(uname -s)" = "Linux" ]; then
+    if command -v fsck >/dev/null 2>&1; then
+      echo "Running fsck in no-write mode where supported. Device should be unmounted for reliable results."
+      sudo fsck -N "$TARGET_DEVICE" 2>/dev/null || fsck -N "$TARGET_DEVICE" 2>/dev/null || true
+      sudo fsck -n "$TARGET_DEVICE" 2>/dev/null || fsck -n "$TARGET_DEVICE" 2>/dev/null || true
+    else
+      echo "fsck not installed."
+    fi
+  elif [ "$(uname -s)" = "Darwin" ]; then
+    diskutil verifyVolume "$TARGET_DEVICE" 2>/dev/null || true
+  else
+    echo "No supported filesystem check command found."
+  fi
+category: disk
+tags:
+  - troubleshooting
+  - disk
+  - filesystem
+  - fsck
+risk: medium
+description: 对指定设备或卷执行文件系统检查预览/只读验证。需先设置 TARGET_DEVICE；Linux 使用 fsck -N/-n，macOS 使用 diskutil verifyVolume。检查块设备仍可能较耗时，建议在维护窗口和卸载状态下执行。
+platform:
+  - linux
+  - macos

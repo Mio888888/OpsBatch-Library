@@ -1,0 +1,26 @@
+name: 检查 fstab 配置
+command: |
+  if [ "$(uname -s)" = "Linux" ]; then
+    echo "== /etc/fstab entries =="
+    grep -Ev '^\s*(#|$)' /etc/fstab 2>/dev/null || true
+
+    echo
+    echo "== findmnt verify =="
+    if command -v findmnt >/dev/null 2>&1; then
+      findmnt --verify --verbose 2>/dev/null || true
+    else
+      echo "findmnt not installed; cannot verify fstab."
+    fi
+  else
+    echo "fstab verification is Linux-specific in this command. macOS uses different mount configuration mechanisms."
+  fi
+category: disk
+tags:
+  - troubleshooting
+  - disk
+  - fstab
+  - mount
+risk: low
+description: 查看并校验 Linux /etc/fstab 挂载配置，适用于排查开机挂载失败、UUID 错误或挂载参数异常。只读不修改配置。
+platform:
+  - linux

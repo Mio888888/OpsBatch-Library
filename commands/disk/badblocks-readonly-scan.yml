@@ -1,0 +1,28 @@
+name: 检查磁盘坏块 dry-run
+command: |
+  TARGET_DEVICE="${TARGET_DEVICE:-}"
+  if [ -z "$TARGET_DEVICE" ]; then
+    echo "Set TARGET_DEVICE before running, for example TARGET_DEVICE=/dev/sdb."
+    exit 0
+  fi
+
+  if [ "$(uname -s)" = "Linux" ]; then
+    if command -v badblocks >/dev/null 2>&1; then
+      echo "Running read-only badblocks scan. This can take a long time and should be scheduled carefully."
+      sudo badblocks -sv "$TARGET_DEVICE"
+    else
+      echo "badblocks not installed."
+    fi
+  else
+    echo "badblocks scan is Linux-specific in this command."
+  fi
+category: disk
+tags:
+  - troubleshooting
+  - disk
+  - badblocks
+  - health
+risk: high
+description: 对指定设备执行只读坏块扫描。虽然不写入磁盘，但会长时间顺序读取整个设备，可能影响生产 I/O 性能；必须显式设置 TARGET_DEVICE，并建议在维护窗口执行。
+platform:
+  - linux

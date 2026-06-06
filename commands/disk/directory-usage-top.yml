@@ -1,0 +1,23 @@
+name: 查看目录占用排行
+command: |
+  TARGET_DIR="${TARGET_DIR:-.}"
+  DEPTH="${DEPTH:-1}"
+
+  echo "== top directory usage: $TARGET_DIR (depth=$DEPTH) =="
+  if [ -d "$TARGET_DIR" ]; then
+    du -xh -d "$DEPTH" "$TARGET_DIR" 2>/dev/null | sort -hr | head -30
+  else
+    echo "TARGET_DIR is not a directory: $TARGET_DIR"
+    echo "Usage: TARGET_DIR=/var DEPTH=1 sh -c '<this command>'"
+  fi
+category: disk
+tags:
+  - troubleshooting
+  - disk
+  - capacity
+  - directory
+risk: medium
+description: 统计指定目录的磁盘占用排行，默认检查当前目录且不跨文件系统。扫描大目录可能较慢并产生较多 I/O，但只读不修改系统状态。
+platform:
+  - linux
+  - macos

@@ -1,0 +1,36 @@
+name: 查找重复文件候选
+command: |
+  TARGET_DIR="${TARGET_DIR:-.}"
+  MIN_SIZE="${MIN_SIZE:-10M}"
+
+  if [ ! -d "$TARGET_DIR" ]; then
+    echo "TARGET_DIR is not a directory: $TARGET_DIR"
+    exit 0
+  fi
+
+  if command -v shasum >/dev/null 2>&1; then
+    HASH_CMD="shasum -a 256"
+  elif command -v sha256sum >/dev/null 2>&1; then
+    HASH_CMD="sha256sum"
+  else
+    echo "No sha256 hash command found."
+    exit 0
+  fi
+
+  echo "== duplicate file candidates under $TARGET_DIR larger than $MIN_SIZE =="
+  find "$TARGET_DIR" -xdev -type f -size +"$MIN_SIZE" -print0 2>/dev/null \
+    | xargs -0 $HASH_CMD 2>/dev/null \
+    | sort \
+    | awk 'seen[$1]++ || count[$1] {print}' \
+    | head -100
+category: disk
+tags:
+  - troubleshooting
+  - disk
+  - cleanup
+  - duplicate-files
+risk: medium
+description: 通过哈希查找指定目录下超过阈值的重复文件候选，默认当前目录、阈值 10M、不跨文件系统。只展示候选不删除文件；计算哈希可能产生较多磁盘 I/O。
+platform:
+  - linux
+  - macos

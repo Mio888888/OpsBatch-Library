@@ -1,13 +1,19 @@
-name: 检查磁盘空间
+name: 检查磁盘空间总览
 command: |
+  echo "== filesystem usage =="
   df -h
+
+  echo
+  echo "== filesystem usage by inode-aware POSIX format =="
+  df -P 2>/dev/null || true
 category: disk
 tags:
   - inspection
   - disk
   - capacity
+  - filesystem
 risk: low
-description: 查看文件系统磁盘空间使用情况，帮助发现容量告警风险。
+description: 查看文件系统磁盘空间使用情况，并补充 POSIX 格式输出，帮助发现容量告警和挂载点空间不足风险。只读不修改系统状态。
 platform:
   - linux
   - macos

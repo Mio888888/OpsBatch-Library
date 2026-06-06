@@ -1,0 +1,29 @@
+name: 查看包管理器缓存占用
+command: |
+  echo "== package manager cache usage =="
+  if command -v apt-get >/dev/null 2>&1; then
+    du -sh /var/cache/apt /var/lib/apt/lists 2>/dev/null || true
+  fi
+  if command -v dnf >/dev/null 2>&1; then
+    du -sh /var/cache/dnf 2>/dev/null || true
+  fi
+  if command -v yum >/dev/null 2>&1; then
+    du -sh /var/cache/yum 2>/dev/null || true
+  fi
+  if command -v pacman >/dev/null 2>&1; then
+    du -sh /var/cache/pacman/pkg 2>/dev/null || true
+  fi
+  if command -v brew >/dev/null 2>&1; then
+    brew --cache 2>/dev/null | while read -r cache_dir; do du -sh "$cache_dir" 2>/dev/null; done
+  fi
+category: disk
+tags:
+  - inspection
+  - disk
+  - package-cache
+  - cleanup
+risk: low
+description: 查看常见包管理器缓存目录占用，帮助判断是否存在可清理空间。只读不执行缓存清理。
+platform:
+  - linux
+  - macos

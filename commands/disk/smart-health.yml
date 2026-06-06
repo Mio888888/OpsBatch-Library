@@ -1,0 +1,31 @@
+name: 查看磁盘 SMART 健康状态
+command: |
+  TARGET_DEVICE="${TARGET_DEVICE:-}"
+  if [ -z "$TARGET_DEVICE" ]; then
+    echo "Set TARGET_DEVICE before running, for example /dev/sda or disk0."
+    if [ "$(uname -s)" = "Linux" ] && command -v lsblk >/dev/null 2>&1; then
+      lsblk -d -o NAME,SIZE,MODEL,SERIAL
+    elif [ "$(uname -s)" = "Darwin" ]; then
+      diskutil list 2>/dev/null || true
+    fi
+    exit 0
+  fi
+
+  if command -v smartctl >/dev/null 2>&1; then
+    sudo smartctl -H "$TARGET_DEVICE" 2>/dev/null || smartctl -H "$TARGET_DEVICE" 2>/dev/null || true
+  elif [ "$(uname -s)" = "Darwin" ]; then
+    diskutil info "$TARGET_DEVICE" 2>/dev/null | grep -E 'SMART Status|Device / Media Name|Disk Size|Protocol' || true
+  else
+    echo "smartctl not installed. Install smartmontools to check SMART health."
+  fi
+category: disk
+tags:
+  - inspection
+  - disk
+  - smart
+  - health
+risk: low
+description: 查看指定磁盘 SMART 健康状态。需先设置 TARGET_DEVICE，避免误查错误设备；命令只读不修改磁盘状态，部分环境需要 sudo 或 smartmontools。
+platform:
+  - linux
+  - macos

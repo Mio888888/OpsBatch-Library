@@ -1,0 +1,22 @@
+name: 查找打开但已删除的文件
+command: |
+  if command -v lsof >/dev/null 2>&1; then
+    echo "== deleted files still held open =="
+    sudo lsof +L1 2>/dev/null || lsof +L1 2>/dev/null || true
+  elif [ "$(uname -s)" = "Linux" ]; then
+    echo "lsof not installed; fallback scanning /proc file descriptors."
+    find /proc/*/fd -lname '* (deleted)' -print 2>/dev/null | head -100
+  else
+    echo "lsof is required on this platform."
+  fi
+category: disk
+tags:
+  - troubleshooting
+  - disk
+  - deleted-files
+  - process
+risk: low
+description: 查找已删除但仍被进程打开的文件，适用于排查 df 显示空间未释放的问题。只读不修改系统状态；完整进程信息可能需要 sudo。
+platform:
+  - linux
+  - macos

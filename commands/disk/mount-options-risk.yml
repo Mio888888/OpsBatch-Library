@@ -1,0 +1,19 @@
+name: 检查挂载参数风险
+command: |
+  echo "== mounts with selected options =="
+  if [ "$(uname -s)" = "Linux" ] && command -v findmnt >/dev/null 2>&1; then
+    findmnt -A -o TARGET,FSTYPE,OPTIONS | grep -E '(^TARGET|ro|rw|noexec|nosuid|nodev|relatime|sync|errors=)' || true
+  else
+    mount | grep -E 'ro|rw|noexec|nosuid|nodev|sync|errors=' || true
+  fi
+category: disk
+tags:
+  - inspection
+  - disk
+  - mount
+  - security
+risk: low
+description: 快速筛选挂载参数中的 ro、rw、noexec、nosuid、nodev、sync 等关键选项，帮助定位只读挂载、安全选项或同步写入导致的性能影响。只读不修改系统状态。
+platform:
+  - linux
+  - macos

@@ -1,0 +1,19 @@
+name: 检查 inode 使用情况
+command: |
+  echo "== inode usage =="
+  df -ih
+
+  echo
+  echo "== inode usage POSIX format =="
+  df -Pi 2>/dev/null || true
+category: disk
+tags:
+  - inspection
+  - disk
+  - inode
+  - filesystem
+risk: low
+description: 查看各文件系统 inode 使用率，适用于排查磁盘空间未满但无法创建新文件的场景。只读不修改系统状态。
+platform:
+  - linux
+  - macos

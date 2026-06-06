@@ -1,0 +1,22 @@
+name: 查看日志目录磁盘占用
+command: |
+  echo "== common log directory usage =="
+  for dir in /var/log /Library/Logs "$HOME/Library/Logs"; do
+    if [ -d "$dir" ]; then
+      echo "-- $dir --"
+      du -sh "$dir" 2>/dev/null || true
+      du -xh -d 1 "$dir" 2>/dev/null | sort -hr | head -20 || true
+      echo
+    fi
+  done
+category: disk
+tags:
+  - troubleshooting
+  - disk
+  - log
+  - capacity
+risk: medium
+description: 查看常见日志目录及其一级子目录占用，适用于定位日志增长导致的磁盘空间不足。命令只读不删除日志，但扫描目录可能产生额外 I/O。
+platform:
+  - linux
+  - macos
