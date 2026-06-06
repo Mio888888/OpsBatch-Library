@@ -1,0 +1,31 @@
+{
+  "name": "受保护服务重启模板",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "service",
+    "restart",
+    "protected"
+  ],
+  "risk": "high",
+  "description": "先输出指定服务状态，默认不重启。真实重启可能中断业务，必须显式传入 SERVICE 并设置 CONFIRM_RESTART=RESTART_SERVICE 后才会通过 systemctl/service 重启。",
+  "parameters": [
+    {
+      "name": "service",
+      "description": "需要检查或重启的服务名称；为空时拒绝执行",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "confirm_restart",
+      "description": "真实重启确认令牌，必须为 RESTART_SERVICE",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}
