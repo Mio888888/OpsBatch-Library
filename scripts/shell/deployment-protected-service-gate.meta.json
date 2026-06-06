@@ -1,0 +1,58 @@
+{
+  "name": "受保护部署服务 Reload/Restart Gate",
+  "language": "shell",
+  "category": "deployment",
+  "tags": [
+    "deployment",
+    "protected",
+    "service",
+    "reload",
+    "restart",
+    "validation",
+    "high-risk"
+  ],
+  "risk": "high",
+  "description": "高风险受保护模板：默认仅输出服务状态、验证结果和计划；只有显式 SERVICE 且 CONFIRM_SERVICE_ACTION=APPLY_SERVICE_ACTION 时才 reload 或 restart 服务，可能中断业务。",
+  "parameters": [
+    {
+      "name": "SERVICE",
+      "description": "目标服务名，可作为第一个参数或环境变量传入。",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "SERVICE_ACTION",
+      "description": "服务动作：reload 或 restart，可作为第二个参数或环境变量传入。",
+      "required": false,
+      "default": "reload"
+    },
+    {
+      "name": "CONFIRM_SERVICE_ACTION",
+      "description": "执行真实服务动作所需确认 token；必须为 APPLY_SERVICE_ACTION，可作为第三个参数或环境变量传入。",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "VALIDATE_CMD",
+      "description": "服务动作前运行的只读验证命令，由操作员提供。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "HEALTH_URL",
+      "description": "服务动作后可选健康检查 URL；不要包含凭证或密钥。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "TIMEOUT",
+      "description": "健康探测超时秒数，最大 60。",
+      "required": false,
+      "default": "10"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

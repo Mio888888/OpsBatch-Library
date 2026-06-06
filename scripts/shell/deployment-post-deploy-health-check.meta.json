@@ -1,0 +1,58 @@
+{
+  "name": "部署后健康检查",
+  "language": "shell",
+  "category": "deployment",
+  "tags": [
+    "deployment",
+    "post-deploy",
+    "health-check",
+    "service",
+    "http",
+    "tcp",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "对服务状态、HTTP 健康 URL 和 TCP 端口执行有界只读探测；不会修改服务或部署状态，URL/主机参数中不要包含密钥。",
+  "parameters": [
+    {
+      "name": "HEALTH_URL",
+      "description": "可选健康检查 URL，可作为第一个参数或环境变量传入。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "SERVICE",
+      "description": "可选服务名，可作为第二个参数或环境变量传入。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "HOST",
+      "description": "可选 TCP 探测主机。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "PORT",
+      "description": "可选 TCP 探测端口。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "TIMEOUT",
+      "description": "单次探测超时秒数，最大 60。",
+      "required": false,
+      "default": "10"
+    },
+    {
+      "name": "ATTEMPTS",
+      "description": "HTTP 探测次数，最大 10。",
+      "required": false,
+      "default": "3"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

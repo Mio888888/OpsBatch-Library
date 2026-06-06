@@ -1,0 +1,34 @@
+{
+  "name": "网络与磁盘巡检清单",
+  "language": "shell",
+  "category": "inspection",
+  "tags": [
+    "inspection",
+    "inventory",
+    "network",
+    "disk",
+    "mount",
+    "dns",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "只读输出网络接口、路由、DNS、磁盘容量、挂载点和块设备摘要；可能包含 IP、MAC、DNS、挂载路径等敏感环境信息。",
+  "parameters": [
+    {
+      "name": "TARGET_PATH",
+      "description": "用于 df 容量检查的目标路径，可作为第一个参数或环境变量传入。",
+      "required": false,
+      "default": "/"
+    },
+    {
+      "name": "LIMIT",
+      "description": "长输出最多展示的行数。",
+      "required": false,
+      "default": "30"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

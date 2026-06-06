@@ -1,0 +1,28 @@
+{
+  "name": "安全基线与加固摘要审计",
+  "language": "shell",
+  "category": "security",
+  "tags": [
+    "security",
+    "audit",
+    "baseline",
+    "hardening",
+    "kernel",
+    "updates",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "只读输出系统版本、权限上下文、更新工具提示、内核加固键、日志审计信号和关键安全配置文件元数据；可能包含主机、安全策略和路径信息。",
+  "parameters": [
+    {
+      "name": "LIMIT",
+      "description": "长输出最多展示的行数。",
+      "required": false,
+      "default": "20"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

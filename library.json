@@ -23,7 +23,10 @@
       "shell",
       "python",
       "powershell",
-      "monitoring"
+      "monitoring",
+      "inspection",
+      "security",
+      "deployment"
     ],
     "quickActions": [
       "inspection",
