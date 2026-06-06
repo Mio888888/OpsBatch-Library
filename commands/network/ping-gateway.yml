@@ -1,0 +1,13 @@
+name: Ping 网关
+command: |
+  ping -c 4 ${GATEWAY:-192.168.1.1}
+category: network
+tags:
+  - troubleshooting
+  - network
+  - connectivity
+risk: low
+description: 对默认网关或指定网关执行 4 次 ICMP 探测，用于基础网络连通性排查。可通过 GATEWAY 环境变量覆盖目标。
+platform:
+  - linux
+  - macos

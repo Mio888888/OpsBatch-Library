@@ -1,0 +1,25 @@
+{
+  "name": "生成系统健康摘要",
+  "language": "python",
+  "category": "system",
+  "tags": [
+    "inspection",
+    "system",
+    "health"
+  ],
+  "risk": "low",
+  "description": "输出主机名、平台、负载和磁盘使用等只读健康摘要。",
+  "parameters": [
+    {
+      "name": "CHECK_PATH",
+      "description": "要检查磁盘空间的路径，可通过环境变量传入。",
+      "required": false,
+      "default": "/"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos",
+    "windows"
+  ]
+}

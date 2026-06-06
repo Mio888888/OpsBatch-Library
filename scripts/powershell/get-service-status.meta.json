@@ -1,0 +1,23 @@
+{
+  "name": "获取 Windows 服务状态",
+  "language": "powershell",
+  "category": "service",
+  "tags": [
+    "service",
+    "inspection",
+    "windows"
+  ],
+  "risk": "low",
+  "description": "读取指定 Windows 服务的状态，不会启动、停止或修改服务。",
+  "parameters": [
+    {
+      "name": "Name",
+      "description": "Windows 服务名",
+      "required": false,
+      "default": "Spooler"
+    }
+  ],
+  "platform": [
+    "windows"
+  ]
+}

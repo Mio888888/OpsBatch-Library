@@ -1,0 +1,10 @@
+name: 命令名称
+command: |
+  echo "replace with a safe, reviewable command"
+category: system
+tags:
+  - inspection
+risk: low
+description: 说明命令用途、适用场景和注意事项。
+platform:
+  - linux

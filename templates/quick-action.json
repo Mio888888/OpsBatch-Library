@@ -1,0 +1,20 @@
+{
+  "name": "快捷指令名称",
+  "description": "说明这个快捷指令串联哪些检查或操作。",
+  "category": "inspection",
+  "risk": "low",
+  "tags": [
+    "inspection"
+  ],
+  "platform": [
+    "linux"
+  ],
+  "steps": [
+    {
+      "name": "步骤名称",
+      "type": "command",
+      "ref": "commands/system/check-load.yml",
+      "continueOnError": true
+    }
+  ]
+}

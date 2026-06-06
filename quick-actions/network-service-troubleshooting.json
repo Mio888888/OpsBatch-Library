@@ -1,0 +1,45 @@
+{
+  "name": "网络与服务排障",
+  "description": "串联网关连通性、本地监听端口、TCP 端口探测和高 CPU 进程查看，辅助快速定位常见网络/服务问题。",
+  "category": "troubleshooting",
+  "risk": "low",
+  "tags": [
+    "network",
+    "service",
+    "troubleshooting"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "Ping 默认网关",
+      "type": "command",
+      "ref": "commands/network/ping-gateway.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看本地监听端口",
+      "type": "command",
+      "ref": "commands/network/list-listening-ports.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "检查本机 HTTP 端口",
+      "type": "script",
+      "ref": "scripts/python/check-tcp-port.py",
+      "args": [
+        "127.0.0.1",
+        "80"
+      ],
+      "continueOnError": true
+    },
+    {
+      "name": "查找高 CPU 进程",
+      "type": "command",
+      "ref": "commands/troubleshooting/top-cpu-processes.yml",
+      "continueOnError": true
+    }
+  ]
+}

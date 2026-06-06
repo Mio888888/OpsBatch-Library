@@ -1,0 +1,23 @@
+{
+  "name": "获取磁盘摘要",
+  "language": "powershell",
+  "category": "disk",
+  "tags": [
+    "inspection",
+    "disk",
+    "windows"
+  ],
+  "risk": "low",
+  "description": "输出指定路径所在磁盘的已用、可用空间和使用率。",
+  "parameters": [
+    {
+      "name": "Path",
+      "description": "要检查的路径",
+      "required": false,
+      "default": "C:\\Windows\\System32"
+    }
+  ],
+  "platform": [
+    "windows"
+  ]
+}

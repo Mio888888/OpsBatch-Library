@@ -1,0 +1,50 @@
+{
+  "name": "每日基础巡检",
+  "description": "串联系统负载、内存、磁盘、服务状态与系统健康摘要，适合作为日常只读巡检入口。",
+  "category": "inspection",
+  "risk": "low",
+  "tags": [
+    "daily",
+    "inspection",
+    "system"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "检查系统负载",
+      "type": "command",
+      "ref": "commands/system/check-load.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "检查内存使用",
+      "type": "command",
+      "ref": "commands/system/check-memory.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "检查磁盘空间",
+      "type": "command",
+      "ref": "commands/disk/disk-usage.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "检查默认服务状态",
+      "type": "script",
+      "ref": "scripts/shell/check-service.sh",
+      "args": [
+        "ssh"
+      ],
+      "continueOnError": true
+    },
+    {
+      "name": "生成系统健康摘要",
+      "type": "script",
+      "ref": "scripts/python/health-check.py",
+      "continueOnError": true
+    }
+  ]
+}

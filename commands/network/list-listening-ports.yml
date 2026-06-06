@@ -1,0 +1,19 @@
+name: 检查本地监听端口
+command: |
+  if command -v ss >/dev/null 2>&1; then
+    ss -tuln
+  elif command -v netstat >/dev/null 2>&1; then
+    netstat -tuln
+  else
+    lsof -nP -iTCP -sTCP:LISTEN
+  fi
+category: network
+tags:
+  - troubleshooting
+  - network
+  - port
+risk: low
+description: 查看当前主机监听中的 TCP/UDP 端口，辅助排查服务是否正确监听。
+platform:
+  - linux
+  - macos

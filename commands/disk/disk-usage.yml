@@ -1,0 +1,13 @@
+name: 检查磁盘空间
+command: |
+  df -h
+category: disk
+tags:
+  - inspection
+  - disk
+  - capacity
+risk: low
+description: 查看文件系统磁盘空间使用情况，帮助发现容量告警风险。
+platform:
+  - linux
+  - macos

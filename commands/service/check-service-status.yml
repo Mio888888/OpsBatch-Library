@@ -1,0 +1,19 @@
+name: 检查服务状态
+command: |
+  SERVICE=${SERVICE:-ssh}
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl status "$SERVICE" --no-pager
+  elif command -v service >/dev/null 2>&1; then
+    service "$SERVICE" status
+  else
+    pgrep -fl "$SERVICE" || true
+  fi
+category: service
+tags:
+  - service
+  - inspection
+risk: low
+description: 检查指定服务的运行状态。默认服务名为 ssh，可通过 SERVICE 环境变量覆盖。
+platform:
+  - linux
+  - macos

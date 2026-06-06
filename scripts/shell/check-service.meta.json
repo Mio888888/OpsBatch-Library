@@ -1,0 +1,23 @@
+{
+  "name": "检查服务状态",
+  "language": "shell",
+  "category": "service",
+  "tags": [
+    "service",
+    "inspection"
+  ],
+  "risk": "low",
+  "description": "检查指定服务是否处于运行状态。默认检查 ssh，可通过参数或 SERVICE 环境变量覆盖。",
+  "parameters": [
+    {
+      "name": "service",
+      "description": "服务名称",
+      "required": false,
+      "default": "ssh"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}
