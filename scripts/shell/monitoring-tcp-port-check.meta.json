@@ -1,0 +1,51 @@
+{
+  "name": "监控 TCP 端口连通性",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "tcp",
+    "port",
+    "network",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "对单个 host:port 进行 TCP 连接探测并按连接耗时阈值返回状态。默认检查 localhost:22，短超时，不做端口扫描。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。外部网络探测可能产生网络噪声，因此标记为 medium。",
+  "parameters": [
+    {
+      "name": "target_host",
+      "description": "目标主机，可通过第 1 个参数或 TARGET_HOST 设置",
+      "required": false,
+      "default": "localhost"
+    },
+    {
+      "name": "target_port",
+      "description": "目标端口 1-65535，可通过第 2 个参数或 TARGET_PORT 设置",
+      "required": false,
+      "default": "22"
+    },
+    {
+      "name": "timeout_seconds",
+      "description": "连接超时秒数，可通过第 3 个参数或 TIMEOUT_SECONDS 设置",
+      "required": false,
+      "default": "3"
+    },
+    {
+      "name": "latency_warn_ms",
+      "description": "连接耗时 warning 阈值毫秒，可通过第 4 个参数或 LATENCY_WARN_MS 设置",
+      "required": false,
+      "default": "500"
+    },
+    {
+      "name": "latency_crit_ms",
+      "description": "连接耗时 critical 阈值毫秒，可通过第 5 个参数或 LATENCY_CRIT_MS 设置",
+      "required": false,
+      "default": "1000"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

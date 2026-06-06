@@ -21,7 +21,7 @@
 │   ├── service/                 # 服务状态
 │   └── troubleshooting/         # 通用排障
 ├── scripts/                     # 运维脚本
-│   ├── shell/                   # Shell 脚本及 .meta.json
+│   ├── shell/                   # Shell 脚本及 .meta.json（可在元数据中标记 monitoring 等分类）
 │   ├── python/                  # Python 脚本及 .meta.json
 │   └── powershell/              # PowerShell 脚本及 .meta.json
 ├── quick-actions/               # 快捷指令 JSON

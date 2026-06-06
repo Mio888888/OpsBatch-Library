@@ -1,0 +1,44 @@
+{
+  "name": "监控内存与 Swap 阈值",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "memory",
+    "swap",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "读取内存和 swap 使用率并与 warning/critical 阈值比较。Linux 使用 /proc/meminfo，macOS 使用 vm_stat/sysctl 近似计算。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。默认只读。",
+  "parameters": [
+    {
+      "name": "mem_warn",
+      "description": "内存使用率 warning 百分比，可通过第 1 个参数或 MEM_WARN 设置",
+      "required": false,
+      "default": "80"
+    },
+    {
+      "name": "mem_crit",
+      "description": "内存使用率 critical 百分比，可通过第 2 个参数或 MEM_CRIT 设置",
+      "required": false,
+      "default": "90"
+    },
+    {
+      "name": "swap_warn",
+      "description": "swap 使用率 warning 百分比，可通过第 3 个参数或 SWAP_WARN 设置",
+      "required": false,
+      "default": "50"
+    },
+    {
+      "name": "swap_crit",
+      "description": "swap 使用率 critical 百分比，可通过第 4 个参数或 SWAP_CRIT 设置",
+      "required": false,
+      "default": "80"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}
