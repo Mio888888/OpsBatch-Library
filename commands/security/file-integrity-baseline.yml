@@ -1,0 +1,34 @@
+name: 生成关键文件完整性基线摘要
+command: |
+  FILE_LIST="${FILE_LIST:-/etc/passwd /etc/group /etc/hosts /etc/sudoers /etc/ssh/sshd_config}"
+
+  echo "== file metadata and hashes =="
+  for path in $FILE_LIST; do
+    if [ -e "$path" ]; then
+      echo "-- $path --"
+      ls -ld "$path" 2>/dev/null || true
+      if command -v sha256sum >/dev/null 2>&1; then
+        sha256sum "$path" 2>/dev/null || true
+      elif command -v shasum >/dev/null 2>&1; then
+        shasum -a 256 "$path" 2>/dev/null || true
+      else
+        echo "No sha256 tool found."
+      fi
+    else
+      echo "missing: $path"
+    fi
+  done
+
+  echo
+  echo "Set FILE_LIST to a space-separated allowlist of files to baseline. Do not include private keys unless output handling is approved."
+category: security
+tags:
+  - audit
+  - security
+  - integrity
+  - file
+risk: medium
+description: 对关键配置文件输出权限元数据和 SHA-256 摘要，辅助建立只读完整性基线。可能输出敏感文件路径和哈希，不读取文件内容正文。
+platform:
+  - linux
+  - macos

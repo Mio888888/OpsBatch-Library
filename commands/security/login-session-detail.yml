@@ -1,0 +1,29 @@
+name: 查看用户登录会话详情
+command: |
+  echo "== who =="
+  who 2>/dev/null || true
+
+  echo
+  echo "== w =="
+  w 2>/dev/null || true
+
+  if [ "$(uname -s)" = "Linux" ] && command -v loginctl >/dev/null 2>&1; then
+    echo
+    echo "== loginctl sessions =="
+    loginctl list-sessions 2>/dev/null || true
+  fi
+
+  echo
+  echo "== recent logins =="
+  last -n "${LINES:-20}" 2>/dev/null || echo "Recent login history unavailable."
+category: security
+tags:
+  - inspection
+  - user
+  - login
+  - session
+risk: medium
+description: 查看当前登录会话、活动终端和最近登录记录。只读查询，可能输出用户名、TTY、来源地址和登录时间。
+platform:
+  - linux
+  - macos

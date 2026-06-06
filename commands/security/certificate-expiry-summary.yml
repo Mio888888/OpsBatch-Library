@@ -1,0 +1,44 @@
+name: 查看证书过期摘要
+command: |
+  CERT_PATH="${CERT_PATH:-}"
+  CERT_DIR="${CERT_DIR:-/etc/ssl /etc/pki/tls /etc/letsencrypt/live}"
+  LIMIT="${LIMIT:-80}"
+
+  check_cert() {
+    cert="$1"
+    [ -f "$cert" ] || return 0
+    if command -v openssl >/dev/null 2>&1; then
+      echo "-- $cert --"
+      openssl x509 -in "$cert" -noout -subject -issuer -dates -fingerprint -sha256 2>/dev/null || true
+    else
+      echo "openssl not found."
+      return 1
+    fi
+  }
+
+  if [ -n "$CERT_PATH" ]; then
+    check_cert "$CERT_PATH"
+    exit 0
+  fi
+
+  echo "== certificate files under common directories =="
+  count=0
+  for dir in $CERT_DIR; do
+    [ -d "$dir" ] || continue
+    find "$dir" -type f \( -name '*.crt' -o -name '*.pem' -o -name '*.cer' \) -print 2>/dev/null | while IFS= read -r cert; do
+      check_cert "$cert"
+    done
+    count=$((count + 1))
+    [ "$count" -ge "$LIMIT" ] && break
+  done
+category: security
+tags:
+  - inspection
+  - security
+  - certificate
+  - tls
+risk: medium
+description: 查看指定证书或常见目录中证书的主题、签发者、有效期和指纹。只读查询，可能输出内部域名、路径和证书元数据；不会输出私钥内容。
+platform:
+  - linux
+  - macos

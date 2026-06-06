@@ -1,0 +1,37 @@
+name: 查看 SSH 登录日志
+command: |
+  LINES="${LINES:-120}"
+  PATTERN="${SSH_LOG_PATTERN:-sshd|Accepted|Failed|Invalid user|Disconnected|Connection closed|authentication failure}"
+
+  echo "== SSH login logs =="
+  if [ "$(uname -s)" = "Linux" ]; then
+    if command -v journalctl >/dev/null 2>&1; then
+      journalctl --since "${SINCE:-6 hours ago}" --no-pager 2>/dev/null | grep -Ei "$PATTERN" | tail -n "$LINES" || true
+      echo
+    fi
+    for file in /var/log/auth.log /var/log/secure /var/log/messages; do
+      if [ -f "$file" ]; then
+        echo "-- $file --"
+        grep -Ei "$PATTERN" "$file" 2>/dev/null | tail -n "$LINES" || true
+      fi
+    done
+  elif [ "$(uname -s)" = "Darwin" ]; then
+    if [ -f /var/log/system.log ]; then
+      grep -Ei "$PATTERN" /var/log/system.log 2>/dev/null | tail -n "$LINES" || true
+    elif command -v log >/dev/null 2>&1; then
+      log show --last 6h --style compact --predicate 'process == "sshd" OR eventMessage CONTAINS[c] "ssh"' 2>/dev/null | tail -n "$LINES" || true
+    fi
+  else
+    echo "No supported SSH log source found."
+  fi
+category: security
+tags:
+  - user
+  - ssh
+  - security
+  - login
+risk: medium
+description: 查看 SSH 登录成功、失败、无效用户、断开连接等日志。只读查询，可能输出用户名、来源 IP 和认证细节。
+platform:
+  - linux
+  - macos

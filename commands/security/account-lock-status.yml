@@ -1,0 +1,46 @@
+name: 查看账号锁定状态
+command: |
+  TARGET_USER="${TARGET_USER:-}"
+
+  if [ -z "$TARGET_USER" ]; then
+    echo "Refusing to run: set TARGET_USER explicitly."
+    exit 0
+  fi
+
+  echo "== identity =="
+  id "$TARGET_USER" 2>/dev/null || { echo "User not found: $TARGET_USER"; exit 0; }
+
+  if [ "$(uname -s)" = "Linux" ]; then
+    echo
+    echo "== passwd status =="
+    passwd -S "$TARGET_USER" 2>/dev/null || sudo passwd -S "$TARGET_USER" 2>/dev/null || echo "Cannot read passwd status."
+
+    echo
+    echo "== shadow lock marker =="
+    if command -v getent >/dev/null 2>&1; then
+      sudo getent shadow "$TARGET_USER" 2>/dev/null | awk -F: '{print "shadow_password_prefix=" substr($2,1,3)}' || true
+    else
+      echo "getent is not available."
+    fi
+
+    if command -v faillock >/dev/null 2>&1; then
+      echo
+      echo "== faillock =="
+      sudo faillock --user "$TARGET_USER" 2>/dev/null || faillock --user "$TARGET_USER" 2>/dev/null || true
+    fi
+  elif [ "$(uname -s)" = "Darwin" ] && command -v pwpolicy >/dev/null 2>&1; then
+    pwpolicy -u "$TARGET_USER" getaccountpolicies 2>/dev/null || echo "Cannot read macOS account policy for $TARGET_USER."
+  else
+    echo "No supported account lock status source found."
+  fi
+category: security
+tags:
+  - troubleshooting
+  - user
+  - account
+  - lock
+risk: medium
+description: 查看指定账号是否存在锁定、shadow 标记或认证失败锁定线索。只读查询，可能需要 sudo 并暴露账号安全状态。
+platform:
+  - linux
+  - macos

@@ -1,0 +1,45 @@
+name: 受保护应用 Linux sysctl 安全参数
+command: |
+  SYSCTL_KEY="${SYSCTL_KEY:-}"
+  SYSCTL_VALUE="${SYSCTL_VALUE:-}"
+  CONFIRM_SYSCTL="${CONFIRM_SYSCTL:-}"
+
+  if [ -z "$SYSCTL_KEY" ] || [ -z "$SYSCTL_VALUE" ]; then
+    echo "Refusing to run: set SYSCTL_KEY and SYSCTL_VALUE explicitly, for example SYSCTL_KEY=net.ipv4.tcp_syncookies SYSCTL_VALUE=1."
+    exit 0
+  fi
+
+  case "$SYSCTL_KEY" in
+    kernel.randomize_va_space|kernel.kptr_restrict|kernel.dmesg_restrict|fs.protected_hardlinks|fs.protected_symlinks|fs.suid_dumpable|net.ipv4.ip_forward|net.ipv4.conf.all.rp_filter|net.ipv4.conf.default.rp_filter|net.ipv4.conf.all.accept_redirects|net.ipv4.conf.default.accept_redirects|net.ipv4.conf.all.send_redirects|net.ipv4.tcp_syncookies)
+      ;;
+    *)
+      echo "Refusing to run: SYSCTL_KEY is not in the allowlist for this template."
+      exit 0
+      ;;
+  esac
+
+  echo "== planned sysctl change =="
+  sysctl "$SYSCTL_KEY" 2>/dev/null || true
+  printf 'Would run: sysctl -w %s=%s\n' "$SYSCTL_KEY" "$SYSCTL_VALUE"
+
+  if [ "$CONFIRM_SYSCTL" != "APPLY_SYSCTL_VALUE" ]; then
+    echo "Dry-run only. Set CONFIRM_SYSCTL=APPLY_SYSCTL_VALUE after confirming compatibility and persistence plan."
+    exit 0
+  fi
+
+  if [ "$(uname -s)" != "Linux" ]; then
+    echo "This protected sysctl template only applies changes on Linux."
+    exit 0
+  fi
+
+  sudo sysctl -w "$SYSCTL_KEY=$SYSCTL_VALUE"
+category: security
+tags:
+  - remediation
+  - security
+  - kernel
+  - hardening
+risk: high
+description: 受保护的 Linux sysctl 安全参数调整模板。默认只展示计划；只有设置 SYSCTL_KEY、SYSCTL_VALUE 和 CONFIRM_SYSCTL=APPLY_SYSCTL_VALUE 后才执行临时变更。误用可能影响网络或系统行为，执行前必须确认兼容性、持久化和回滚方案。
+platform:
+  - linux

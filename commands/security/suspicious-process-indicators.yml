@@ -1,0 +1,39 @@
+name: 查看可疑进程线索
+command: |
+  LIMIT="${PROCESS_LIMIT:-80}"
+
+  echo "== processes running from temporary or user-writable paths =="
+  if command -v ps >/dev/null 2>&1; then
+    if [ "$(uname -s)" = "Linux" ]; then
+      ps -eo pid,ppid,user,etimes,comm,args 2>/dev/null | awk 'NR==1 || $0 ~ /(\/tmp\/|\/var\/tmp\/|\/dev\/shm\/|\/run\/user\/|\/Users\/Shared\/|\/private\/tmp\/)/' | head -n "$LIMIT"
+    else
+      ps auxww 2>/dev/null | awk 'NR==1 || $0 ~ /(\/tmp\/|\/var\/tmp\/|\/Users\/Shared\/|\/private\/tmp\/)/' | head -n "$LIMIT"
+    fi
+  fi
+
+  echo
+  echo "== deleted executable or library hints on Linux =="
+  if [ "$(uname -s)" = "Linux" ] && command -v lsof >/dev/null 2>&1; then
+    lsof +L1 2>/dev/null | head -n "$LIMIT" || true
+  else
+    echo "Deleted-open-file inspection requires Linux with lsof."
+  fi
+
+  echo
+  echo "== high privilege long-running processes =="
+  if [ "$(uname -s)" = "Linux" ]; then
+    ps -eo pid,user,etimes,comm,args 2>/dev/null | awk 'NR==1 || ($2 == "root" && $3 > 86400)' | head -n "$LIMIT"
+  else
+    ps auxww 2>/dev/null | awk 'NR==1 || ($1 == "root")' | head -n "$LIMIT"
+  fi
+category: security
+tags:
+  - troubleshooting
+  - security
+  - process
+  - indicators
+risk: medium
+description: 查看从临时/可写路径运行的进程、Linux 已删除仍打开文件和高权限长时间运行进程等线索。只读查询，可能输出命令行参数和路径，需注意脱敏。
+platform:
+  - linux
+  - macos

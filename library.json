@@ -2,7 +2,7 @@
   "name": "OpsBatch 社区运维库",
   "version": "0.1.0",
   "author": "Mio",
-  "description": "用于 OpsBatch 的运维命令、脚本和快捷指令示例库，覆盖基础巡检、故障排查、日志查看与服务状态检查。",
+  "description": "用于 OpsBatch 的运维命令、脚本和快捷指令示例库，覆盖基础巡检、故障排查、日志查看、服务状态检查与安全巡检。",
   "homepage": "https://example.com/opsbatch/ops-library",
   "categories": {
     "commands": [
@@ -14,6 +14,7 @@
       "disk",
       "log",
       "user",
+      "security",
       "service",
       "troubleshooting"
     ],

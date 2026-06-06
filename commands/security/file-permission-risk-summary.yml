@@ -1,0 +1,32 @@
+name: 查看文件权限风险摘要
+command: |
+  SCAN_ROOT="${SCAN_ROOT:-/}"
+  MAX_DEPTH="${MAX_DEPTH:-3}"
+  LIMIT="${LIMIT:-100}"
+
+  echo "Scanning metadata under SCAN_ROOT=$SCAN_ROOT MAX_DEPTH=$MAX_DEPTH. This is read-only but may be expensive on large trees."
+
+  echo
+  echo "== world-writable directories without sticky bit =="
+  find "$SCAN_ROOT" -xdev -maxdepth "$MAX_DEPTH" -type d -perm -0002 ! -perm -1000 -print 2>/dev/null | head -n "$LIMIT"
+
+  echo
+  echo "== setuid/setgid files =="
+  find "$SCAN_ROOT" -xdev -maxdepth "$MAX_DEPTH" \( -perm -4000 -o -perm -2000 \) -type f -ls 2>/dev/null | head -n "$LIMIT"
+
+  echo
+  echo "== writable sensitive config hints =="
+  for path in /etc/passwd /etc/group /etc/shadow /etc/sudoers /etc/ssh/sshd_config; do
+    [ -e "$path" ] && ls -l "$path" 2>/dev/null || true
+  done
+category: security
+tags:
+  - audit
+  - security
+  - file
+  - permission
+risk: medium
+description: 查找指定文件系统范围内的全局可写目录、setuid/setgid 文件和敏感配置权限线索。只读查询，但可能较耗时并输出敏感路径；默认限定同一文件系统和深度。
+platform:
+  - linux
+  - macos
