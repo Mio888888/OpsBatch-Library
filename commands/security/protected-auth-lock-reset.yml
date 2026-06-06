@@ -31,11 +31,20 @@ command: |
   fi
 category: security
 tags:
-  - remediation
-  - user
-  - auth
-  - unlock
+- remediation
+- user
+- auth
+- unlock
 risk: high
 description: 受保护的认证失败锁定重置模板。默认只展示目标和当前 faillock 信息；只有设置 TARGET_USER 和 CONFIRM_RESET_AUTH_LOCK=RESET_TARGET_AUTH_LOCK 后才重置。重置锁定会恢复认证尝试能力，执行前必须确认失败原因和审批。
 platform:
-  - linux
+- linux
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: true
+  default: ""
+- name: CONFIRM_RESET_AUTH_LOCK
+  description: 确认重置认证锁定令牌
+  required: false
+  default: ""

@@ -15,11 +15,16 @@ command: |
   echo "Long-running processes are not necessarily abnormal; compare with expected service lifetimes and deployment history."
 category: process
 tags:
-  - inspection
-  - process
-  - uptime
+- inspection
+- process
+- uptime
 risk: low
 description: 按启动时间展示长运行进程，用于核对服务生命周期、部署后遗留进程和异常长期驻留进程。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: PROCESS_LIMIT
+  description: 显示进程数量上限
+  required: false
+  default: "30"

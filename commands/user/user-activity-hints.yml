@@ -20,12 +20,21 @@ command: |
   ps -u "$TARGET_USER" -o pid,stat,etime,command 2>/dev/null | head -n "$LINES" || true
 category: user
 tags:
-  - troubleshooting
-  - user
-  - activity
-  - login
+- troubleshooting
+- user
+- activity
+- login
 risk: medium
 description: 查看指定账号最近登录、失败登录和当前进程活动线索。只读查询，可能输出来源地址、用户名和命令行信息。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: true
+  default: ""
+- name: LINES
+  description: 显示行数
+  required: false
+  default: "50"

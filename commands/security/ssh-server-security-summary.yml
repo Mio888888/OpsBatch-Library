@@ -27,12 +27,17 @@ command: |
   fi
 category: security
 tags:
-  - inspection
-  - security
-  - ssh
-  - hardening
+- inspection
+- security
+- ssh
+- hardening
 risk: medium
 description: 查看 SSH 服务进程、监听端口和关键安全配置。只读查询，可能输出访问控制、端口和认证策略等敏感配置细节。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: SSHD_CONFIG
+  description: sshd 配置文件路径
+  required: false
+  default: /etc/ssh/sshd_config

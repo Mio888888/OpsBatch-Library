@@ -19,12 +19,25 @@ command: |
   find "$TARGET_DIR" -xdev -mindepth 1 -maxdepth 2 -mtime +"$OLDER_THAN_DAYS" -exec rm -ri {} +
 category: disk
 tags:
-  - remediation
-  - disk
-  - cleanup
-  - temp
+- remediation
+- disk
+- cleanup
+- temp
 risk: high
 description: 受保护的临时目录清理示例。默认只 dry-run 展示候选；只有显式设置 TARGET_DIR 和 CONFIRM_DELETE=DELETE_TEMP_CANDIDATES 后才逐项交互删除。误用可能删除仍被业务使用的文件，执行前必须确认路径、备份和影响范围。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_DIR
+  description: 目标目录路径
+  required: true
+  default: ""
+- name: OLDER_THAN_DAYS
+  description: 超过指定天数
+  required: false
+  default: "7"
+- name: CONFIRM_DELETE
+  description: 确认删除令牌
+  required: false
+  default: ""

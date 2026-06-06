@@ -29,12 +29,17 @@ command: |
   fi
 category: security
 tags:
-  - inspection
-  - user
-  - sudo
-  - privilege
+- inspection
+- user
+- sudo
+- privilege
 risk: medium
 description: 查看 sudo 可用性、常见 sudo 管理组、sudoers 文件位置和指定用户 sudo 权限。只读查询，可能暴露权限配置细节；TARGET_USER 可选。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: true
+  default: ""

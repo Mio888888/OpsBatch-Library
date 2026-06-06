@@ -28,12 +28,17 @@ command: |
   fi
 category: package-management
 tags:
-  - inspection
-  - package-management
-  - inventory
-  - packages
+- inspection
+- package-management
+- inventory
+- packages
 risk: medium
 description: 查看已安装软件包清单摘要，可能暴露主机软件栈与版本信息；默认限制输出行数，只读不修改系统状态。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: LIMIT
+  description: 显示数量上限
+  required: false
+  default: "80"

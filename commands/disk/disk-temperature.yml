@@ -25,12 +25,17 @@ command: |
   fi
 category: disk
 tags:
-  - inspection
-  - disk
-  - temperature
-  - smart
+- inspection
+- disk
+- temperature
+- smart
 risk: low
 description: 查看磁盘温度 SMART 属性。Linux 可自动遍历块设备或使用 TARGET_DEVICE 指定设备；macOS 通常需要 smartmontools。只读不修改磁盘状态。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_DEVICE
+  description: 目标设备路径（如 /dev/sda）
+  required: true
+  default: ""

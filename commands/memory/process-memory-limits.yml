@@ -20,11 +20,16 @@ command: |
   fi
 category: memory
 tags:
-  - troubleshooting
-  - memory
-  - process
-  - limits
+- troubleshooting
+- memory
+- process
+- limits
 risk: low
 description: 查看当前 shell ulimit 和指定 Linux 进程的内存相关资源限制。默认检查 PID 1，可通过环境变量 PID 指定目标进程。
 platform:
-  - linux
+- linux
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: "1"

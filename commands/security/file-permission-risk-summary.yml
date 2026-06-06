@@ -21,12 +21,25 @@ command: |
   done
 category: security
 tags:
-  - audit
-  - security
-  - file
-  - permission
+- audit
+- security
+- file
+- permission
 risk: medium
 description: 查找指定文件系统范围内的全局可写目录、setuid/setgid 文件和敏感配置权限线索。只读查询，但可能较耗时并输出敏感路径；默认限定同一文件系统和深度。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: SCAN_ROOT
+  description: 扫描根目录
+  required: false
+  default: /
+- name: MAX_DEPTH
+  description: 最大递归深度
+  required: false
+  default: "3"
+- name: LIMIT
+  description: 显示数量上限
+  required: false
+  default: "100"

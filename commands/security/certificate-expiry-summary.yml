@@ -33,12 +33,25 @@ command: |
   done
 category: security
 tags:
-  - inspection
-  - security
-  - certificate
-  - tls
+- inspection
+- security
+- certificate
+- tls
 risk: medium
 description: 查看指定证书或常见目录中证书的主题、签发者、有效期和指纹。只读查询，可能输出内部域名、路径和证书元数据；不会输出私钥内容。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: CERT_PATH
+  description: 证书文件路径
+  required: true
+  default: ""
+- name: CERT_DIR
+  description: 证书搜索目录
+  required: false
+  default: /etc/ssl /etc/pki/tls /etc/letsencrypt/live
+- name: LIMIT
+  description: 显示数量上限
+  required: false
+  default: "80"

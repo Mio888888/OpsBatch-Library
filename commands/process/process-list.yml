@@ -12,11 +12,16 @@ command: |
   fi
 category: process
 tags:
-  - inspection
-  - process
-  - list
+- inspection
+- process
+- list
 risk: low
 description: 展示进程列表快照，包含 PID、PPID、用户、状态、CPU/内存占用和运行时长。默认最多显示 40 行，可通过 PROCESS_LIMIT 调整。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: PROCESS_LIMIT
+  description: 显示进程数量上限
+  required: false
+  default: "40"

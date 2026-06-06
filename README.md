@@ -127,6 +127,8 @@ python3 tools/validate_library.py
 
 路径：`commands/<category>/<name>.yml`
 
+**无参数命令（静态）：**
+
 ```yaml
 name: 检查系统负载
 command: |
@@ -141,6 +143,39 @@ platform:
   - macos
 ```
 
+**含参数命令（动态）：**
+
+```yaml
+name: 按服务查看日志
+command: |
+  SERVICE_NAME="${SERVICE_NAME:-ssh}"
+  SINCE="${SINCE:-2 hours ago}"
+  LINES="${LINES:-120}"
+  journalctl -u "$SERVICE_NAME" --since "$SINCE" -n "$LINES" --no-pager
+category: log
+tags:
+  - log
+  - service
+risk: medium
+description: 按服务名查看近期日志。
+platform:
+  - linux
+  - macos
+parameters:
+  - name: SERVICE_NAME
+    description: 服务名称
+    required: false
+    default: ssh
+  - name: SINCE
+    description: 起始时间
+    required: false
+    default: 2 hours ago
+  - name: LINES
+    description: 显示行数
+    required: false
+    default: "120"
+```
+
 **字段说明：**
 
 | 字段 | 必填 | 说明 |
@@ -152,6 +187,16 @@ platform:
 | `risk` | ✅ | 风险等级：`low` / `medium` / `high` |
 | `description` | ✅ | 用途说明和注意事项 |
 | `platform` | ✅ | 适用平台数组：`linux`、`macos`、`windows` |
+| `parameters` | — | 参数定义数组（仅含动态参数的命令需要） |
+
+**`parameters` 子字段：**
+
+| 字段 | 说明 |
+| :--- | :--- |
+| `name` | 环境变量名（如 `TARGET_HOST`、`LINES`） |
+| `description` | 参数用途说明 |
+| `required` | 是否必填（`true` / `false`） |
+| `default` | 默认值（空字符串表示必须由用户指定） |
 
 > **命名约定：** `risk: high` 的命令文件名以 `protected-` 开头，便于识别和筛选。
 

@@ -1,5 +1,6 @@
 name: 命令名称
 command: |
+  TARGET="${TARGET:-default_value}"
   echo "replace with a safe, reviewable command"
 category: system
 tags:
@@ -8,3 +9,9 @@ risk: low
 description: 说明命令用途、适用场景和注意事项。
 platform:
   - linux
+# 如命令包含动态参数，取消下方注释并填写
+# parameters:
+#   - name: TARGET
+#     description: 参数说明
+#     required: false
+#     default: default_value

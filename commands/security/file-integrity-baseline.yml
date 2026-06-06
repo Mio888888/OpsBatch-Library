@@ -23,12 +23,17 @@ command: |
   echo "Set FILE_LIST to a space-separated allowlist of files to baseline. Do not include private keys unless output handling is approved."
 category: security
 tags:
-  - audit
-  - security
-  - integrity
-  - file
+- audit
+- security
+- integrity
+- file
 risk: medium
 description: 对关键配置文件输出权限元数据和 SHA-256 摘要，辅助建立只读完整性基线。可能输出敏感文件路径和哈希，不读取文件内容正文。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: FILE_LIST
+  description: 要校验的文件路径列表
+  required: false
+  default: /etc/passwd /etc/group /etc/hosts /etc/sudoers /etc/ssh/sshd_config

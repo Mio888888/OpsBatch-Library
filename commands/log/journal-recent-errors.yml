@@ -20,12 +20,21 @@ command: |
   fi
 category: log
 tags:
-  - log
-  - troubleshooting
-  - error
-  - journal
+- log
+- troubleshooting
+- error
+- journal
 risk: medium
 description: 查看近期 warning 及以上级别系统日志。默认查询最近 1 小时并限制输出行数；日志可能包含主机名、用户名、路径或业务上下文。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: SINCE
+  description: 起始时间
+  required: false
+  default: 1 hour ago
+- name: LINES
+  description: 显示行数
+  required: false
+  default: "120"

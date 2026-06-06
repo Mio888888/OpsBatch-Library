@@ -16,11 +16,16 @@ command: |
   fi
 category: process
 tags:
-  - troubleshooting
-  - process
-  - thread
+- troubleshooting
+- process
+- thread
 risk: low
 description: 按线程数排行展示进程，用于发现线程泄漏、线程池异常膨胀或高并发进程。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: PROCESS_LIMIT
+  description: 显示进程数量上限
+  required: false
+  default: "20"

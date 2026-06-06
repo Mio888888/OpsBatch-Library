@@ -18,12 +18,21 @@ command: |
   fi
 category: network
 tags:
-  - troubleshooting
-  - network
-  - connectivity
-  - http
+- troubleshooting
+- network
+- connectivity
+- http
 risk: medium
 description: 对单个目标执行基础连通性检查，包括 ICMP ping 和可选 HTTP(S) HEAD 请求。默认目标为 example.com，可通过 TARGET_HOST/TARGET_URL 覆盖；仅做少量请求，不做批量探测。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_HOST
+  description: 目标主机地址
+  required: false
+  default: example.com
+- name: TARGET_URL
+  description: 目标 URL 地址
+  required: false
+  default: https://example.com

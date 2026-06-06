@@ -18,12 +18,17 @@ command: |
   fi
 category: process
 tags:
-  - troubleshooting
-  - process
-  - cgroup
-  - container
+- troubleshooting
+- process
+- cgroup
+- container
 risk: low
 description: 查看指定进程的 Linux cgroup 归属，并尝试提示容器运行时线索。macOS 不支持 cgroup，会输出平台说明。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: "1"

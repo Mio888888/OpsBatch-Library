@@ -31,12 +31,17 @@ command: |
   fi
 category: user
 tags:
-  - troubleshooting
-  - user
-  - account
-  - detail
+- troubleshooting
+- user
+- account
+- detail
 risk: low
 description: 查看指定用户的身份、组成员关系、passwd 条目、家目录和 shell。默认查看当前用户，可通过 TARGET_USER 指定目标。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: false
+  default: $(whoami 2>/dev/null || true)

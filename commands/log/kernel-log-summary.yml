@@ -21,12 +21,21 @@ command: |
   fi
 category: log
 tags:
-  - log
-  - kernel
-  - troubleshooting
-  - error
+- log
+- kernel
+- troubleshooting
+- error
 risk: medium
 description: 汇总近期内核日志中的错误、告警、panic、OOM、超时等线索。只读查询，可能受系统权限限制并输出硬件、进程或路径信息。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: LINES
+  description: 显示行数
+  required: false
+  default: "120"
+- name: KERNEL_LOG_PATTERN
+  description: 内核日志搜索模式
+  required: false
+  default: error|fail|warn|panic|segfault|oom|blocked|hung|reset|timeout

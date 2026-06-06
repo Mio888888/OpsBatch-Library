@@ -15,11 +15,16 @@ command: |
   ps -u "$TARGET_USER" -o pid,%cpu,%mem,etime,command 2>/dev/null | sort -k2,2nr | head -n 20 || true
 category: user
 tags:
-  - troubleshooting
-  - user
-  - process
+- troubleshooting
+- user
+- process
 risk: low
 description: 查看指定用户运行中的进程摘要和资源占用排行。默认查看当前用户，可通过 TARGET_USER 指定。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: false
+  default: $(whoami 2>/dev/null || true)

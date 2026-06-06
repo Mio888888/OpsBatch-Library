@@ -20,12 +20,17 @@ command: |
   fi
 category: disk
 tags:
-  - inspection
-  - disk
-  - smart
-  - health
+- inspection
+- disk
+- smart
+- health
 risk: low
 description: 查看指定磁盘 SMART 健康状态。需先设置 TARGET_DEVICE，避免误查错误设备；命令只读不修改磁盘状态，部分环境需要 sudo 或 smartmontools。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_DEVICE
+  description: 目标设备路径（如 /dev/sda）
+  required: true
+  default: ""

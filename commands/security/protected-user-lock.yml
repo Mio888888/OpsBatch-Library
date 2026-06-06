@@ -31,12 +31,21 @@ command: |
   fi
 category: security
 tags:
-  - remediation
-  - user
-  - account
-  - lock
+- remediation
+- user
+- account
+- lock
 risk: high
 description: 受保护的账号锁定模板。默认只展示目标用户和当前进程；只有设置 TARGET_USER 和 CONFIRM_LOCK_USER=LOCK_TARGET_USER 后才锁定。锁定账号可能中断登录、服务或自动任务，执行前必须确认影响和回滚方案。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: true
+  default: ""
+- name: CONFIRM_LOCK_USER
+  description: 确认锁定令牌，需设为 LOCK_TARGET_USER 才执行
+  required: false
+  default: ""

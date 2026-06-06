@@ -19,12 +19,25 @@ command: |
   grep -Ein "$LOG_PATTERN" "$LOG_FILE" 2>/dev/null | tail -n "$LINES" || echo "No matches found or file cannot be read."
 category: log
 tags:
-  - log
-  - grep
-  - search
-  - troubleshooting
+- log
+- grep
+- search
+- troubleshooting
 risk: medium
 description: 在显式指定的日志文件中搜索关键字或正则表达式。必须设置 LOG_FILE，可通过 LOG_PATTERN 覆盖默认错误关键字；输出可能包含敏感业务上下文。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: LOG_FILE
+  description: 日志文件路径
+  required: true
+  default: ""
+- name: LOG_PATTERN
+  description: 日志搜索模式（支持正则）
+  required: false
+  default: error|fail|exception|timeout|critical
+- name: LINES
+  description: 显示行数
+  required: false
+  default: "120"

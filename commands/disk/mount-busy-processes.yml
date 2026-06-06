@@ -22,12 +22,17 @@ command: |
   fi
 category: disk
 tags:
-  - troubleshooting
-  - disk
-  - mount
-  - process
+- troubleshooting
+- disk
+- mount
+- process
 risk: medium
 description: 查看正在占用指定挂载点的进程，适用于卸载失败或设备繁忙排查。命令只读，但可能递归检查挂载点并需要 sudo。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_MOUNT
+  description: 目标挂载点路径
+  required: true
+  default: ""

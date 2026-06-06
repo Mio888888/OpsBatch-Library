@@ -52,12 +52,29 @@ command: |
   fi
 category: security
 tags:
-  - remediation
-  - user
-  - group
-  - membership
+- remediation
+- user
+- group
+- membership
 risk: high
 description: 受保护的用户组成员变更模板。默认只展示计划和当前组；只有设置 TARGET_USER、TARGET_GROUP 和 CONFIRM_GROUP_CHANGE=CHANGE_GROUP_MEMBERSHIP 后才添加或移除成员。组变更可能授予或撤销权限，执行前必须确认审批和访问影响。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: true
+  default: ""
+- name: TARGET_GROUP
+  description: 目标用户组名
+  required: true
+  default: ""
+- name: GROUP_ACTION
+  description: 组成员操作（add/remove）
+  required: false
+  default: add
+- name: CONFIRM_GROUP_CHANGE
+  description: 确认组成员变更令牌
+  required: false
+  default: ""

@@ -13,12 +13,21 @@ command: |
   fi
 category: disk
 tags:
-  - troubleshooting
-  - disk
-  - cleanup
-  - temp
+- troubleshooting
+- disk
+- cleanup
+- temp
 risk: medium
 description: 查找临时目录中超过指定天数未修改的清理候选，默认检查 /tmp 且只列出不删除。扫描和候选判断可能不适合所有业务目录，清理前需人工确认。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_DIR
+  description: 目标目录路径
+  required: false
+  default: /tmp
+- name: OLDER_THAN_DAYS
+  description: 超过指定天数
+  required: false
+  default: "7"

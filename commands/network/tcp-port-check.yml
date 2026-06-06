@@ -23,12 +23,25 @@ command: |
   fi
 category: network
 tags:
-  - troubleshooting
-  - network
-  - tcp
-  - port
+- troubleshooting
+- network
+- tcp
+- port
 risk: medium
 description: 对单个 TCP 主机端口执行连通性探测。默认检查 127.0.0.1:80，可通过 TARGET_HOST/TARGET_PORT/TIMEOUT_SECONDS 覆盖；避免批量扫描。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_HOST
+  description: 目标主机地址
+  required: false
+  default: 127.0.0.1
+- name: TARGET_PORT
+  description: 目标端口号
+  required: false
+  default: "80"
+- name: TIMEOUT_SECONDS
+  description: 超时时间（秒）
+  required: false
+  default: "5"

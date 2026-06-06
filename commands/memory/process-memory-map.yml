@@ -17,11 +17,16 @@ command: |
   fi
 category: memory
 tags:
-  - troubleshooting
-  - memory
-  - process
-  - map
+- troubleshooting
+- memory
+- process
+- map
 risk: low
 description: 查看 Linux 进程内存映射和地址空间摘要。默认检查 PID 1，可通过环境变量 PID 指定目标进程。
 platform:
-  - linux
+- linux
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: "1"

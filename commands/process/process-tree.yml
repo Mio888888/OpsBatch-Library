@@ -22,11 +22,16 @@ command: |
   fi
 category: process
 tags:
-  - troubleshooting
-  - process
-  - tree
+- troubleshooting
+- process
+- tree
 risk: low
 description: 查看进程树或 PID/PPID 关系，用于定位父子进程、supervisor、worker 和孤儿进程线索。可通过 PID 聚焦目标进程。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: true
+  default: ""

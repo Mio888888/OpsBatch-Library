@@ -34,11 +34,16 @@ command: |
   fi
 category: process
 tags:
-  - troubleshooting
-  - process
-  - detail
+- troubleshooting
+- process
+- detail
 risk: low
 description: 查看指定进程的基础信息、状态字段和路径线索。默认检查 PID 1，可通过环境变量 PID 指定目标进程。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: "1"

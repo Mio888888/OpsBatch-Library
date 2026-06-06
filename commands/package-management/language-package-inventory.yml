@@ -27,12 +27,17 @@ command: |
   fi
 category: package-management
 tags:
-  - inspection
-  - package-management
-  - pip
-  - npm
+- inspection
+- package-management
+- pip
+- npm
 risk: medium
 description: 查看 pip 与 npm 的包清单摘要，默认避免联网查询过期版本；可能暴露语言依赖和版本信息，只读不安装或升级。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: LIMIT
+  description: 显示数量上限
+  required: false
+  default: "80"

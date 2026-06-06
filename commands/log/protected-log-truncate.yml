@@ -31,12 +31,21 @@ command: |
   ls -lh "$LOG_FILE" 2>/dev/null || true
 category: log
 tags:
-  - remediation
-  - log
-  - truncate
-  - cleanup
+- remediation
+- log
+- truncate
+- cleanup
 risk: high
 description: 受保护截断单个日志文件示例。默认只展示目标文件大小和尾部内容；只有显式设置 LOG_FILE 和 CONFIRM_TRUNCATE=TRUNCATE_LOG_FILE 后才清空该文件内容。误用会丢失日志证据和排障上下文，执行前必须确认备份、保留要求和写入进程行为。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: LOG_FILE
+  description: 日志文件路径
+  required: true
+  default: ""
+- name: CONFIRM_TRUNCATE
+  description: 确认截断令牌
+  required: false
+  default: ""

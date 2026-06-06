@@ -21,11 +21,16 @@ command: |
   fi
 category: process
 tags:
-  - troubleshooting
-  - process
-  - limits
+- troubleshooting
+- process
+- limits
 risk: low
 description: 查看指定进程的资源限制。Linux 读取 /proc/PID/limits，macOS 展示当前 shell limits 并提示平台限制。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: "1"

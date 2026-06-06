@@ -38,12 +38,17 @@ command: |
   fi
 category: package-management
 tags:
-  - inspection
-  - package-management
-  - history
-  - audit
+- inspection
+- package-management
+- history
+- audit
 risk: medium
 description: 查看最近安装、升级、卸载等包管理操作历史，可能暴露软件资产和维护时间线；只读不回滚事务。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: LIMIT
+  description: 显示数量上限
+  required: false
+  default: "80"

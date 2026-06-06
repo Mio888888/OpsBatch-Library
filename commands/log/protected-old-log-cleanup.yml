@@ -32,12 +32,25 @@ command: |
     -mtime +"$OLDER_THAN_DAYS" -exec rm -i {} \;
 category: log
 tags:
-  - remediation
-  - log
-  - cleanup
-  - delete
+- remediation
+- log
+- cleanup
+- delete
 risk: high
 description: 受保护清理旧日志示例。默认只列出候选；只有显式设置 TARGET_LOG_DIR 和 CONFIRM_DELETE=DELETE_OLD_LOGS 后才逐项交互删除。误用可能删除审计证据或仍需保留的排障日志，执行前必须确认保留策略、备份和合规要求。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_LOG_DIR
+  description: 目标日志目录路径
+  required: true
+  default: ""
+- name: OLDER_THAN_DAYS
+  description: 超过指定天数
+  required: false
+  default: "30"
+- name: CONFIRM_DELETE
+  description: 确认删除令牌
+  required: false
+  default: ""

@@ -22,12 +22,21 @@ command: |
   fi
 category: process
 tags:
-  - troubleshooting
-  - process
-  - file
-  - lsof
+- troubleshooting
+- process
+- file
+- lsof
 risk: medium
 description: 查看指定进程打开的普通文件和目录。命令只读，但可能输出业务路径、日志文件、临时文件等敏感路径信息。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: "1"
+- name: PROCESS_LIMIT
+  description: 显示进程数量上限
+  required: false
+  default: "80"

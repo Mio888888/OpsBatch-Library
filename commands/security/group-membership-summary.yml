@@ -22,11 +22,16 @@ command: |
   fi
 category: security
 tags:
-  - inspection
-  - user
-  - group
+- inspection
+- user
+- group
 risk: low
 description: 查看本地用户组和成员关系。默认列出所有组；可通过 TARGET_GROUP 查看指定组详情。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters:
+- name: TARGET_GROUP
+  description: 目标用户组名
+  required: true
+  default: ""
