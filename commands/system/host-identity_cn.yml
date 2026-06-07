@@ -1,11 +1,11 @@
 name: 查看主机名与用户身份
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/host-identity_cn.sh
-category: system
+category: 系统
 tags:
-- inspection
-- system
-- identity
-- hostname
+- 巡检
+- 系统
+- 身份
+- 主机名
 risk: low
 description: 查看当前主机名、可能的 FQDN、当前用户与用户组身份信息。
 platform:

@@ -1,11 +1,11 @@
 name: 受保护清理包管理器缓存
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-cache-cleanup_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- remediation
-- package-management
-- package-cache
-- cleanup
+- 修复
+- 软件包管理
+- 软件包缓存
+- 清理
 risk: high
 description: 受保护的包管理器缓存清理示例。默认拒绝执行并要求显式 CACHE_TARGET；设置目标后也只展示缓存占用，只有显式设置 CONFIRM_CLEAN=CLEAN_PACKAGE_CACHE
   后才执行清理。可能影响离线回滚、包缓存复用或需要重新下载软件包，执行前需确认维护窗口和网络可用性。

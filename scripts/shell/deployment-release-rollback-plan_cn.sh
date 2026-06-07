@@ -8,12 +8,12 @@ CANDIDATE_RELEASE="${CANDIDATE_RELEASE:-}"
 LIMIT="${LIMIT:-10}"
 
 if [[ ! "${LIMIT}" =~ ^[1-9][0-9]*$ ]]; then
-  echo "信息：LIMIT must be a positive integer." >&2
+  echo "信息：LIMIT 必须是正整数。" >&2
   exit 2
 fi
 
 if [[ -n "${APP_DIR}" && ! -d "${APP_DIR}" ]]; then
-  echo "信息：APP_DIR does not exist or is not a directory: ${APP_DIR}" >&2
+  echo "信息：APP_DIR 不存在或不是目录: ${APP_DIR}" >&2
   exit 1
 fi
 
@@ -25,52 +25,52 @@ if [[ -z "${CURRENT_LINK}" && -n "${APP_DIR}" ]]; then
   CURRENT_LINK="${APP_DIR}/current"
 fi
 
-echo "信息：Deployment release and rollback plan"
-echo "信息：Generated at: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-echo "信息：App dir: ${APP_DIR:-<not provided>}"
-echo "信息：Releases dir: ${RELEASES_DIR:-<not provided>}"
-echo "信息：Current link: ${CURRENT_LINK:-<not provided>}"
-echo "信息：Candidate release: ${CANDIDATE_RELEASE:-<not provided>}"
-echo "信息：This script is read-only and does not switch symlinks or delete releases."
+echo "信息：部署发布与回滚计划"
+echo "信息：生成时间: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+echo "信息：应用目录: ${APP_DIR:-<未提供>}"
+echo "信息：发布目录: ${RELEASES_DIR:-<未提供>}"
+echo "信息：当前链接: ${CURRENT_LINK:-<未提供>}"
+echo "信息：候选发布: ${CANDIDATE_RELEASE:-<未提供>}"
+echo "信息：本脚本为只读，不会切换符号链接或删除发布。"
 echo
 
-echo "信息：== Current release =="
+echo "信息：== 当前发布 =="
 if [[ -n "${CURRENT_LINK}" ]]; then
   if [[ -L "${CURRENT_LINK}" ]]; then
     printf '%s -> %s\n' "${CURRENT_LINK}" "$(readlink "${CURRENT_LINK}")"
   elif [[ -e "${CURRENT_LINK}" ]]; then
-    echo "信息：Current path exists but is not a symlink: ${CURRENT_LINK}"
+    echo "信息：当前路径存在但不是符号链接: ${CURRENT_LINK}"
   else
-    echo "信息：Current link does not exist: ${CURRENT_LINK}"
+    echo "信息：当前链接不存在： ${CURRENT_LINK}"
   fi
 else
-  echo "信息：No CURRENT_LINK or APP_DIR provided."
+  echo "信息：未提供 CURRENT_LINK 或 APP_DIR。"
 fi
 echo
 
-echo "信息：== Recent releases =="
+echo "信息：== 最近发布 =="
 if [[ -n "${RELEASES_DIR}" && -d "${RELEASES_DIR}" ]]; then
   find "${RELEASES_DIR}" -mindepth 1 -maxdepth 1 -type d -print 2>/dev/null | sort | tail -n "${LIMIT}" || true
 else
-  echo "信息：Releases directory missing or not provided."
+  echo "信息：发布目录缺失或未提供。"
 fi
 echo
 
-echo "信息：== Candidate release checks =="
+echo "信息：== 候选发布检查 =="
 if [[ -n "${CANDIDATE_RELEASE}" ]]; then
   if [[ -d "${CANDIDATE_RELEASE}" ]]; then
     ls -ld "${CANDIDATE_RELEASE}" 2>/dev/null || true
   elif [[ -n "${RELEASES_DIR}" && -d "${RELEASES_DIR}/${CANDIDATE_RELEASE}" ]]; then
     ls -ld "${RELEASES_DIR}/${CANDIDATE_RELEASE}" 2>/dev/null || true
   else
-    echo "Candidate release 未找到 as absolute path or under releases dir.（Candidate release not found as absolute path or under releases dir.）"
+    echo "未以绝对路径或在发布目录下找到候选发布。"
   fi
 else
-  echo "信息：No CANDIDATE_RELEASE provided."
+  echo "信息：未提供 CANDIDATE_RELEASE。"
 fi
 echo
 
-echo "信息：== Rollback candidates =="
+echo "信息：== 回滚候选 =="
 if [[ -n "${RELEASES_DIR}" && -d "${RELEASES_DIR}" ]]; then
   current_target=""
   if [[ -n "${CURRENT_LINK}" && -L "${CURRENT_LINK}" ]]; then
@@ -78,20 +78,20 @@ if [[ -n "${RELEASES_DIR}" && -d "${RELEASES_DIR}" ]]; then
   fi
   find "${RELEASES_DIR}" -mindepth 1 -maxdepth 1 -type d -print 2>/dev/null | sort | tail -n "$((LIMIT + 1))" | while IFS= read -r release; do
     if [[ "${release}" == "${current_target}" || "$(basename "${release}")" == "$(basename "${current_target}")" ]]; then
-      printf 'current: %s\n' "${release}"
+      printf '当前: %s\n' "${release}"
     else
-      printf 'candidate: %s\n' "${release}"
+      printf '候选: %s\n' "${release}"
     fi
   done
 else
-  echo "信息：No rollback candidates available."
+  echo "信息：没有可用的回滚候选。"
 fi
 echo
 
-echo "信息：== Safe rollout checklist =="
-printf '%s\n' "1. Verify artifact checksum/signature before staging."
-printf '%s\n' "2. Validate configuration in the candidate release."
-printf '%s\n' "3. Record current symlink target and backup prerequisites."
-printf '%s\n' "4. Switch current symlink only with explicit confirmation in a protected script."
-printf '%s\n' "5. Run bounded health checks and keep rollback candidate available."
-printf '%s\n' "6. Clean old releases only after successful validation and separate approval."
+echo "信息：== 安全发布检查清单 =="
+printf '%s\n' "1. 预发布前请验证制品校验和/签名。"
+printf '%s\n' "2. 验证候选发布中的配置。"
+printf '%s\n' "3. 记录当前符号链接目标和备份前置条件。"
+printf '%s\n' "4. 仅在受保护脚本中通过显式确认切换当前符号链接。"
+printf '%s\n' "5. 运行有界健康检查，并保持回滚候选可用。"
+printf '%s\n' "6. 仅在验证成功并获得单独批准后清理旧发布。"

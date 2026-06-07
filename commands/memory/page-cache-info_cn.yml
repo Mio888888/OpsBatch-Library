@@ -1,11 +1,11 @@
 name: 查看 Page Cache 详情
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/page-cache-info_cn.sh
-category: memory
+category: 内存
 tags:
-- inspection
-- memory
-- page-cache
-- cache
+- 巡检
+- 内存
+- 页缓存
+- 缓存
 risk: low
 description: 查看 Linux Page Cache、Dirty、Writeback 与文件页相关字段，并只读展示部分缓存相关 vm 参数。
 platform:

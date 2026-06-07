@@ -11,5 +11,5 @@ elif command -v netstat >/dev/null 2>&1; then
   echo "信息：== sockets =="
   netstat -tunap 2>/dev/null || netstat -tuna 2>/dev/null || netstat -an
 else
-  echo "未找到受支持的 socket/process command found. Install lsof or iproute2.（No supported socket/process command found. Install lsof or iproute2.）"
+  echo "未找到受支持的 套接字/进程命令。 请安装 lsof 或 iproute2。"
 fi

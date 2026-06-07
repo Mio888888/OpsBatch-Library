@@ -1,11 +1,11 @@
 name: 受保护调整文件权限
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-file-permission-fix_cn.sh
-category: security
+category: 安全
 tags:
-- remediation
-- security
-- file
-- permission
+- 修复
+- 安全
+- 文件
+- 权限
 risk: high
 description: 受保护的文件/目录权限调整模板。默认只展示计划；只有设置 TARGET_PATH、TARGET_MODE 和 CONFIRM_CHMOD=APPLY_TARGET_MODE
   后才执行 chmod。误用可能导致服务不可读写或权限过宽，执行前必须确认影响和回滚方案。

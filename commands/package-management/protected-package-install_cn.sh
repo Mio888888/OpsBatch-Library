@@ -6,7 +6,7 @@ TARGET_PACKAGE="${TARGET_PACKAGE:-}"
 CONFIRM_INSTALL="${CONFIRM_INSTALL:-}"
 
 if [ -z "$TARGET_PACKAGE" ]; then
-  echo "拒绝执行： set TARGET_PACKAGE explicitly, for example TARGET_PACKAGE=htop.（Refusing to run: set TARGET_PACKAGE explicitly, for example TARGET_PACKAGE=htop.）"
+  echo "拒绝执行：请显式设置 TARGET_PACKAGE，例如 TARGET_PACKAGE=htop。"
   exit 0
 fi
 
@@ -21,7 +21,7 @@ if [ "$PACKAGE_MANAGER" = "auto" ]; then
   else PACKAGE_MANAGER="unsupported"; fi
 fi
 
-echo "信息：== protected package install plan =="
+echo "信息：== 受保护软件包安装计划 =="
 echo "信息：PACKAGE_MANAGER=$PACKAGE_MANAGER"
 echo "信息：TARGET_PACKAGE=$TARGET_PACKAGE"
 
@@ -33,12 +33,12 @@ case "$PACKAGE_MANAGER" in
   apk) apk add -s "$TARGET_PACKAGE" 2>/dev/null | sed -n '1,80p' || true ;;
   zypper) zypper --non-interactive install --dry-run "$TARGET_PACKAGE" 2>/dev/null | sed -n '1,80p' || true ;;
   brew) brew info "$TARGET_PACKAGE" 2>/dev/null | sed -n '1,80p' || true ;;
-  *) echo "Unsupported package manager. 请设置 PACKAGE_MANAGER explicitly after reviewing supported values.（Unsupported package manager. Set PACKAGE_MANAGER explicitly after reviewing supported values.）" ;;
+  *) echo "不支持的软件包管理器。请查看支持的取值后显式设置 PACKAGE_MANAGER。" ;;
 esac
 
 if [ "$CONFIRM_INSTALL" != "INSTALL_PACKAGE" ]; then
   echo
-  echo "仅试运行。 请设置 CONFIRM_INSTALL=INSTALL_PACKAGE after reviewing package source, dependencies, change window, and rollback plan.（Dry-run only. Set CONFIRM_INSTALL=INSTALL_PACKAGE after reviewing package source, dependencies, change window, and rollback plan.）"
+  echo "仅试运行。 请设置 CONFIRM_INSTALL=INSTALL_PACKAGE 在审核软件包来源、依赖、变更窗口和回滚计划后。"
   exit 0
 fi
 
@@ -50,5 +50,5 @@ case "$PACKAGE_MANAGER" in
   apk) sudo apk add "$TARGET_PACKAGE" ;;
   zypper) sudo zypper install "$TARGET_PACKAGE" ;;
   brew) brew install "$TARGET_PACKAGE" ;;
-  *) echo "信息：Unsupported package manager; no changes made." ;;
+  *) echo "信息：不支持的软件包管理器；未执行变更。" ;;
 esac

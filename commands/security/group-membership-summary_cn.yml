@@ -1,10 +1,10 @@
 name: 查看用户组和成员关系
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/group-membership-summary_cn.sh
-category: security
+category: 安全
 tags:
-- inspection
-- user
-- group
+- 巡检
+- 用户
+- 用户组
 risk: low
 description: 查看本地用户组和成员关系。默认列出所有组；可通过 TARGET_GROUP 查看指定组详情。
 platform:

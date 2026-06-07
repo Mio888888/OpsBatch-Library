@@ -37,5 +37,5 @@ elif [ "$(uname -s)" = "Darwin" ]; then
     sudo pfctl -s info 2>/dev/null || pfctl -s info 2>/dev/null || true
   fi
 else
-  echo "未找到受支持的 firewall status command found.（No supported firewall status command found.）"
+  echo "未找到受支持的 firewall status命令。"
 fi

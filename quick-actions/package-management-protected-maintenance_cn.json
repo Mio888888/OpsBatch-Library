@@ -2,13 +2,13 @@
   "name": "包管理受保护维护",
   "description": "串联安装、升级、卸载、缓存清理、软件源配置和锁/事务修复等高风险包管理维护模板。所有步骤默认只输出计划或拒绝执行，必须在单个命令中显式设置目标变量和确认变量后才会执行真实变更。",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/package-management-protected-maintenance_cn.json",
-  "category": "troubleshooting",
+  "category": "故障排查",
   "risk": "high",
   "tags": [
-    "package-management",
-    "maintenance",
-    "remediation",
-    "protected"
+    "软件包管理",
+    "维护",
+    "修复",
+    "受保护"
   ],
   "platform": [
     "linux",

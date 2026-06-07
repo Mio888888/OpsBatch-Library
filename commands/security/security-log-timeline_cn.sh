@@ -20,5 +20,5 @@ if [ "$(uname -s)" = "Linux" ]; then
 elif [ "$(uname -s)" = "Darwin" ] && command -v log >/dev/null 2>&1; then
   log show --last "${MACOS_LAST:-12h}" --style compact --predicate 'eventMessage CONTAINS[c] "failed" OR eventMessage CONTAINS[c] "denied" OR eventMessage CONTAINS[c] "sudo" OR eventMessage CONTAINS[c] "ssh" OR eventMessage CONTAINS[c] "authorization"' 2>/dev/null | tail -n "$LINES" || true
 else
-  echo "未找到受支持的 security log source found.（No supported security log source found.）"
+  echo "未找到受支持的 安全日志来源。"
 fi

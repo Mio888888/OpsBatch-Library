@@ -5,16 +5,16 @@ CACHE_TARGET="${CACHE_TARGET:-}"
 CONFIRM_CLEAN="${CONFIRM_CLEAN:-}"
 
 if [ -z "$CACHE_TARGET" ]; then
-  echo "拒绝执行： set CACHE_TARGET explicitly, for example CACHE_TARGET=apt, CACHE_TARGET=dnf, CACHE_TARGET=pacman, CACHE_TARGET=brew, or CACHE_TARGET=all.（Refusing to run: set CACHE_TARGET explicitly, for example CACHE_TARGET=apt, CACHE_TARGET=dnf, CACHE_TARGET=pacman, CACHE_TARGET=brew, or CACHE_TARGET=all.）"
+  echo "拒绝执行：请显式设置 CACHE_TARGET，例如 CACHE_TARGET=apt、dnf、pacman、brew 或 all。"
   exit 0
 fi
 
-echo "信息：== protected package cache cleanup plan =="
+echo "信息：== 受保护软件包缓存清理计划 =="
 echo "信息：CACHE_TARGET=$CACHE_TARGET"
 
 if [ "$CONFIRM_CLEAN" != "CLEAN_PACKAGE_CACHE" ]; then
-  echo "仅试运行。 请设置 CONFIRM_CLEAN=CLEAN_PACKAGE_CACHE after reviewing package manager cache impact.（Dry-run only. Set CONFIRM_CLEAN=CLEAN_PACKAGE_CACHE after reviewing package manager cache impact.）"
-  echo "信息：Detected cache locations:"
+  echo "仅试运行。 请设置 CONFIRM_CLEAN=CLEAN_PACKAGE_CACHE 在审核软件包管理器缓存影响后。"
+  echo "信息：检测到的缓存位置:"
   [ -d /var/cache/apt ] && du -sh /var/cache/apt /var/lib/apt/lists 2>/dev/null || true
   [ -d /var/cache/dnf ] && du -sh /var/cache/dnf 2>/dev/null || true
   [ -d /var/cache/yum ] && du -sh /var/cache/yum 2>/dev/null || true
@@ -38,5 +38,5 @@ case "$CACHE_TARGET" in
   pacman) sudo pacman -Sc ;;
   zypper) sudo zypper clean --all ;;
   brew) brew cleanup -s ;;
-  *) echo "信息：Unsupported CACHE_TARGET: $CACHE_TARGET. Supported values: all, apt, dnf, yum, pacman, zypper, brew." ;;
+  *) echo "信息：不支持的 CACHE_TARGET: $CACHE_TARGET。支持值：all、apt、dnf、yum、pacman、zypper、brew。" ;;
 esac

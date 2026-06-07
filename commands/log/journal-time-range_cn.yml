@@ -1,11 +1,11 @@
 name: 按时间范围查询日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/journal-time-range_cn.sh
-category: log
+category: 日志
 tags:
-- log
-- time-range
-- journal
-- troubleshooting
+- 日志
+- 时间范围
+- Journal
+- 故障排查
 risk: medium
 description: 按 SINCE/UNTIL 时间范围查询系统日志，可选 LOG_PATTERN 过滤。默认限制输出 200 行；日志可能包含主机、用户、路径和业务上下文。
 platform:

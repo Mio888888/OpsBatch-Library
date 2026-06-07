@@ -1,10 +1,10 @@
 name: Ping 网关
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/ping-gateway_cn.sh
-category: network
+category: 网络
 tags:
-- troubleshooting
-- network
-- connectivity
+- 故障排查
+- 网络
+- 连通性
 risk: low
 description: 对默认网关或指定网关执行 4 次 ICMP 探测，用于基础网络连通性排查。可通过 GATEWAY 环境变量覆盖目标。
 platform:

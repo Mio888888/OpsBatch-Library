@@ -1,12 +1,12 @@
 name: 查看网络协议统计
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-protocol-statistics_cn.sh
-category: network
+category: 网络
 tags:
-- troubleshooting
-- network
-- statistics
-- tcp
-- udp
+- 故障排查
+- 网络
+- 统计
+- TCP
+- UDP
 risk: low
 description: 查看 TCP/UDP/IP 协议栈统计计数器，辅助分析重传、错误、连接失败和协议层异常。只读不修改系统状态。
 platform:

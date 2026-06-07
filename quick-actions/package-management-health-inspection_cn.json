@@ -2,13 +2,13 @@
   "name": "包管理健康巡检",
   "description": "串联包管理器识别、已安装包摘要、软件源、更新/安全更新线索、锁与事务、缓存、完整性、历史和语言生态包管理器等只读检查，适合按包管理维度快速巡检与排障。",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/package-management-health-inspection_cn.json",
-  "category": "inspection",
+  "category": "巡检",
   "risk": "medium",
   "tags": [
-    "package-management",
-    "inspection",
-    "health",
-    "packages"
+    "软件包管理",
+    "巡检",
+    "健康",
+    "软件包"
   ],
   "platform": [
     "linux",

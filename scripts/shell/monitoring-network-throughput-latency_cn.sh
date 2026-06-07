@@ -78,14 +78,14 @@ fi
 
 first="$(read_bytes "${INTERFACE}" || true)"
 if [[ -z "${first}" ]]; then
-  unknown "could not read byte counters for interface ${INTERFACE}"
+  unknown "无法读取接口 ${INTERFACE} 的字节计数器"
 fi
 rx1="$(awk '{print $1}' <<<"${first}")"
 tx1="$(awk '{print $2}' <<<"${first}")"
 sleep "${SAMPLE_INTERVAL}"
 second="$(read_bytes "${INTERFACE}" || true)"
 if [[ -z "${second}" ]]; then
-  unknown "could not read second byte sample for interface ${INTERFACE}"
+  unknown "无法读取接口 ${INTERFACE} 的第二次字节采样"
 fi
 rx2="$(awk '{print $1}' <<<"${second}")"
 tx2="$(awk '{print $2}' <<<"${second}")"
@@ -94,7 +94,7 @@ rx_bps="$(awk -v a="${rx1}" -v b="${rx2}" -v interval="${SAMPLE_INTERVAL}" 'BEGI
 tx_bps="$(awk -v a="${tx1}" -v b="${tx2}" -v interval="${SAMPLE_INTERVAL}" 'BEGIN { delta=b-a; if (delta < 0) delta=0; printf "%.0f", delta/interval }')"
 
 latency_ms=""
-packet_loss="unknown"
+packet_loss="未知"
 if command -v ping >/dev/null 2>&1 && [[ -n "${PING_HOST}" ]]; then
   if [[ "$(uname -s)" == "Darwin" ]]; then
     ping_output="$(ping -c "${PING_COUNT}" -W 1000 "${PING_HOST}" 2>/dev/null || true)"
@@ -121,9 +121,9 @@ if [[ -n "${latency_ms}" ]]; then
 else
   status="WARNING"
   exit_code=1
-  reason="latency unavailable; throughput sample only"
+  reason="延迟不可用；仅提供吞吐采样"
 fi
 
-echo "信息：${status} - interface=${INTERFACE} rx=${rx_bps}B/s tx=${tx_bps}B/s ping_host=${PING_HOST} latency=${latency_ms:-unknown}ms loss=${packet_loss:-unknown}% (${reason})"
-echo "信息：Details: sampled byte counters for ${SAMPLE_INTERVAL}s; ping count=${PING_COUNT}; no packet capture or interface changes."
+echo "信息：${status} - interface=${INTERFACE} rx=${rx_bps}B/s tx=${tx_bps}B/s ping_host=${PING_HOST} latency=${latency_ms:-未知}ms loss=${packet_loss:-未知}% (${reason})"
+echo "信息：详情：采样字节计数器 ${SAMPLE_INTERVAL}s；ping 次数=${PING_COUNT}；未抓包或更改接口。"
 exit "${exit_code}"

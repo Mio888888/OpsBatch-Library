@@ -1,11 +1,11 @@
 name: 查看安全更新线索
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/security-update-hints_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- inspection
-- package-management
-- security
-- updates
+- 巡检
+- 软件包管理
+- 安全
+- 更新
 risk: medium
 description: 查看安全更新相关线索，不安装补丁；结果依赖本地元数据新鲜度，可能暴露软件版本和补丁状态。
 platform:

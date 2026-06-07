@@ -10,64 +10,64 @@ HEALTH_URL="${HEALTH_URL:-}"
 TIMEOUT="${TIMEOUT:-10}"
 
 if [[ ! "${SERVICE_ACTION}" =~ ^(reload|restart)$ ]]; then
-  echo "信息：SERVICE_ACTION must be reload or restart." >&2
+  echo "信息：SERVICE_ACTION 必须是 reload 或 restart。" >&2
   exit 2
 fi
 
 if [[ ! "${TIMEOUT}" =~ ^[1-9][0-9]*$ ]]; then
-  echo "信息：TIMEOUT must be a positive integer." >&2
+  echo "信息：TIMEOUT 必须是正整数。" >&2
   exit 2
 fi
 
 if (( TIMEOUT > 60 )); then
-  echo "信息：TIMEOUT is capped at 60 seconds." >&2
+  echo "信息：TIMEOUT 上限为 60 秒。" >&2
   TIMEOUT=60
 fi
 
-echo "受保护 deployment service gate（Protected deployment service gate）"
-echo "信息：Service: ${SERVICE:-<missing>}"
+echo "受保护的部署服务门禁"
+echo "信息：服务： ${SERVICE:-<缺失>}"
 echo "信息：Requested action: ${SERVICE_ACTION}"
-echo "信息：Validation command: ${VALIDATE_CMD:-<none>}"
-echo "信息：Health URL: ${HEALTH_URL:-<none>}"
-echo "默认操作： status, validation, and plan only（Default action: status, validation, and plan only）"
-echo "Reloading or restarting a service 可能中断 active workloads.（Reloading or restarting a service may interrupt active workloads.）"
+echo "信息：Validation command: ${VALIDATE_CMD:-<无>}"
+echo "信息：健康检查 URL: ${HEALTH_URL:-<无>}"
+echo "默认操作：仅状态、验证和计划"
+echo "重载或重启服务可能中断活动工作负载。"
 echo
 
 if [[ -z "${SERVICE}" ]]; then
-  echo "请设置 SERVICE or pass a service name as the first argument.（Set SERVICE or pass a service name as the first argument.）"
-  echo "信息：No service action was performed."
+  echo "请设置 SERVICE，或将服务名作为第一个参数传入。"
+  echo "信息：未执行服务操作。"
   exit 0
 fi
 
-echo "信息：== Current service status =="
+echo "信息：== 当前服务状态 =="
 if command -v systemctl >/dev/null 2>&1; then
   systemctl is-active "${SERVICE}" || true
   systemctl status "${SERVICE}" --no-pager || true
 elif command -v service >/dev/null 2>&1; then
   service "${SERVICE}" status || true
 elif command -v launchctl >/dev/null 2>&1; then
-  launchctl print "system/${SERVICE}" 2>/dev/null || launchctl print "gui/$(id -u)/${SERVICE}" 2>/dev/null || echo "未找到匹配的 launchctl service found.（No matching launchctl service found.）"
+  launchctl print "system/${SERVICE}" 2>/dev/null || launchctl print "gui/$(id -u)/${SERVICE}" 2>/dev/null || echo "未找到匹配的 launchctl 服务。"
 else
-  echo "未找到受支持的 service status command found.（No supported service status command found.）"
+  echo "未找到受支持的 service status命令。"
 fi
 echo
 
 echo "信息：== Validation =="
 if [[ -n "${VALIDATE_CMD}" ]]; then
-  echo "信息：Running validation command supplied by operator: ${VALIDATE_CMD}"
+  echo "信息：正在运行操作员提供的验证命令: ${VALIDATE_CMD}"
   bash -c "${VALIDATE_CMD}"
 else
-  echo "信息：No VALIDATE_CMD supplied."
+  echo "信息：未提供 VALIDATE_CMD。"
 fi
 echo
 
 if [[ "${CONFIRM_SERVICE_ACTION}" != "${CONFIRM_TOKEN}" ]]; then
-  echo "信息：Plan only. No ${SERVICE_ACTION} was performed."
+  echo "信息：仅计划模式。未执行 ${SERVICE_ACTION}。"
   echo "信息：To apply, rerun with CONFIRM_SERVICE_ACTION=${CONFIRM_TOKEN}."
   exit 0
 fi
 
-echo "信息：Confirmation token accepted. Applying ${SERVICE_ACTION} to ${SERVICE}."
+echo "信息：确认令牌已接受。正在对 ${SERVICE} 应用 ${SERVICE_ACTION}。"
 if command -v systemctl >/dev/null 2>&1; then
   if [[ "${SERVICE_ACTION}" == "reload" ]]; then
     systemctl reload "${SERVICE}"
@@ -77,16 +77,16 @@ if command -v systemctl >/dev/null 2>&1; then
 elif command -v service >/dev/null 2>&1; then
   service "${SERVICE}" "${SERVICE_ACTION}"
 else
-  echo "未找到受支持的 Linux service action command found. Refusing to apply ${SERVICE_ACTION}.（No supported Linux service action command found. Refusing to apply ${SERVICE_ACTION}.）" >&2
+  echo "未找到受支持的 Linux 服务操作命令。拒绝应用 ${SERVICE_ACTION}." >&2
   exit 1
 fi
 
 if [[ -n "${HEALTH_URL}" ]]; then
   echo
-  echo "信息：== Post-action health probe =="
+  echo "信息：== 操作后健康探测 =="
   if command -v curl >/dev/null 2>&1; then
     curl --fail --show-error --silent --max-time "${TIMEOUT}" --output /dev/null --write-out 'http_code=%{http_code} time_total=%{time_total}\n' "${HEALTH_URL}"
   else
-    echo "curl 不可用; health probe skipped.（curl not available; health probe skipped.）"
+    echo "curl 不可用; 已跳过健康探测."
   fi
 fi

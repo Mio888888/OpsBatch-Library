@@ -4,8 +4,8 @@ set -euo pipefail
 TARGET_PACKAGE="${TARGET_PACKAGE:-}"
 
 if [ -z "$TARGET_PACKAGE" ]; then
-  echo "请设置 TARGET_PACKAGE to verify installed package files, for example TARGET_PACKAGE=openssh-client.（Set TARGET_PACKAGE to verify installed package files, for example TARGET_PACKAGE=openssh-client.）"
-  echo "信息：This can be noisy and may reveal local file modification state."
+  echo "请设置 TARGET_PACKAGE 以验证已安装软件包文件，例如 TARGET_PACKAGE=openssh-client。"
+  echo "信息：这可能输出较多内容，并可能暴露本地文件修改状态。"
   exit 0
 fi
 

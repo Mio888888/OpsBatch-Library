@@ -4,12 +4,12 @@ set -euo pipefail
 TARGET_USER="${TARGET_USER:-$(whoami 2>/dev/null || true)}"
 
 if [ -z "$TARGET_USER" ]; then
-  echo "拒绝执行： set TARGET_USER explicitly.（Refusing to run: set TARGET_USER explicitly.）"
+  echo "拒绝执行： set TARGET_USER explicitly."
   exit 0
 fi
 
 echo "信息：== identity =="
-id "$TARGET_USER" 2>/dev/null || { echo "User 未找到: $TARGET_USER（User not found: $TARGET_USER）"; exit 0; }
+id "$TARGET_USER" 2>/dev/null || { echo "未找到用户： $TARGET_USER"; exit 0; }
 
 echo
 echo "信息：== passwd entry =="

@@ -1,10 +1,10 @@
 name: 查看容器 CPU 限制
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/container-cpu-limits_cn.sh
-category: cpu
+category: CPU
 tags:
-- troubleshooting
-- cpu
-- container
+- 故障排查
+- CPU
+- 容器
 - cgroup
 risk: low
 description: 查看 Linux cgroup v1/v2 CPU quota、period 和 cpuset 信息，用于判断容器 CPU 限制；macOS

@@ -45,7 +45,7 @@ if ! is_positive_int "${TIMEOUT_SECONDS}" || ! is_nonnegative_number "${LATENCY_
   unknown "timeout and latency thresholds must be numeric"
 fi
 if [[ "${TIMEOUT_SECONDS}" -gt 30 ]]; then
-  unknown "TIMEOUT_SECONDS must be 30 or less for a bounded TCP probe"
+  unknown "为保证 TCP 探测有界，TIMEOUT_SECONDS 必须不超过 30"
 fi
 if ! awk -v warn="${LATENCY_WARN_MS}" -v crit="${LATENCY_CRIT_MS}" 'BEGIN { exit (warn <= crit) ? 0 : 1 }'; then
   unknown "LATENCY_WARN_MS must be less than or equal to LATENCY_CRIT_MS"
@@ -67,7 +67,7 @@ else
       connect_ok="true"
     fi
   else
-    unknown "nc or timeout is required for a bounded TCP probe"
+    unknown "有界 TCP 探测需要 nc 或 timeout"
   fi
 fi
 
@@ -75,7 +75,7 @@ end_ms="$(now_ms)"
 elapsed_ms="$(awk -v start="${start_ms}" -v end="${end_ms}" 'BEGIN { printf "%.0f", end - start }')"
 
 if [[ "${connect_ok}" != "true" ]]; then
-  echo "信息：CRITICAL - tcp ${TARGET_HOST}:${TARGET_PORT} connection failed using ${method} within ${TIMEOUT_SECONDS}s"
+  echo "信息：CRITICAL - tcp ${TARGET_HOST}:${TARGET_PORT} 在 ${TIMEOUT_SECONDS}s 内使用 ${method} 连接失败"
   exit 2
 fi
 
@@ -90,5 +90,5 @@ elif compare_ge "${elapsed_ms}" "${LATENCY_WARN_MS}"; then
 fi
 
 echo "信息：${status} - tcp ${TARGET_HOST}:${TARGET_PORT} connected in ${elapsed_ms}ms warn=${LATENCY_WARN_MS}ms crit=${LATENCY_CRIT_MS}ms"
-echo "信息：Details: method=${method}; timeout=${TIMEOUT_SECONDS}s; single-target read-only probe."
+echo "信息：详情：method=${method}；timeout=${TIMEOUT_SECONDS}s；单目标只读探测。"
 exit "${exit_code}"

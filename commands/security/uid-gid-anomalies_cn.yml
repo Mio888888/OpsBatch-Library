@@ -1,11 +1,11 @@
 name: 查找异常 UID/GID 账号
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/uid-gid-anomalies_cn.sh
-category: security
+category: 安全
 tags:
-- audit
-- user
-- uid
-- security
+- 审计
+- 用户
+- UID
+- 安全
 risk: medium
 description: 查找 UID 0、重复 UID、系统账号可登录、主组缺失等异常账号线索。只读查询，适合账号安全基线巡检。
 platform:

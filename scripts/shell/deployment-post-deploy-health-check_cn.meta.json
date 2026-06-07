@@ -2,15 +2,15 @@
   "name": "部署后健康检查",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-post-deploy-health-check_cn.sh",
   "language": "shell",
-  "category": "deployment",
+  "category": "部署",
   "tags": [
-    "deployment",
-    "post-deploy",
-    "health-check",
-    "service",
-    "http",
-    "tcp",
-    "read-only"
+    "部署",
+    "部署后",
+    "健康检查",
+    "服务",
+    "HTTP",
+    "TCP",
+    "只读"
   ],
   "risk": "low",
   "description": "对服务状态、HTTP 健康 URL 和 TCP 端口执行有界只读探测；不会修改服务或部署状态，URL/主机参数中不要包含密钥。",

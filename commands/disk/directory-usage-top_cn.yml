@@ -1,11 +1,11 @@
 name: 查看目录占用排行
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/directory-usage-top_cn.sh
-category: disk
+category: 磁盘
 tags:
-- troubleshooting
-- disk
-- capacity
-- directory
+- 故障排查
+- 磁盘
+- 容量
+- 目录
 risk: medium
 description: 统计指定目录的磁盘占用排行，默认检查当前目录且不跨文件系统。扫描大目录可能较慢并产生较多 I/O，但只读不修改系统状态。
 platform:

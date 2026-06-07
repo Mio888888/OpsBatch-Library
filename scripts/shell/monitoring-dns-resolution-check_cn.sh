@@ -42,7 +42,7 @@ if ! is_positive_int "${TIMEOUT_SECONDS}" || ! is_nonnegative_number "${LATENCY_
   unknown "timeout and latency thresholds must be numeric"
 fi
 if [[ "${TIMEOUT_SECONDS}" -gt 30 ]]; then
-  unknown "TIMEOUT_SECONDS must be 30 or less for a bounded DNS probe"
+  unknown "为保证 DNS 探测有界，TIMEOUT_SECONDS 必须不超过 30"
 fi
 if ! awk -v warn="${LATENCY_WARN_MS}" -v crit="${LATENCY_CRIT_MS}" 'BEGIN { exit (warn <= crit) ? 0 : 1 }'; then
   unknown "LATENCY_WARN_MS must be less than or equal to LATENCY_CRIT_MS"
@@ -84,7 +84,7 @@ end_ms="$(now_ms)"
 elapsed_ms="$(awk -v start="${start_ms}" -v end="${end_ms}" 'BEGIN { printf "%.0f", end - start }')"
 
 if [[ -z "${answers}" ]]; then
-  echo "信息：CRITICAL - dns ${TARGET_HOST} returned no A records using ${method}"
+  echo "信息：CRITICAL - dns ${TARGET_HOST} 使用 ${method} 未返回 A 记录"
   exit 2
 fi
 

@@ -15,5 +15,5 @@ if [ "$(uname -s)" = "Linux" ] && command -v loginctl >/dev/null 2>&1; then
 fi
 
 echo
-echo "信息：== recent logins =="
-last -n "${LINES:-20}" 2>/dev/null || echo "信息：Recent login history unavailable."
+echo "信息：== 最近登录 =="
+last -n "${LINES:-20}" 2>/dev/null || echo "信息：近期登录历史不可用。"

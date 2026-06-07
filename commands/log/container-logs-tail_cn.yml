@@ -1,11 +1,11 @@
 name: 查看容器日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/container-logs-tail_cn.sh
-category: log
+category: 日志
 tags:
-- log
-- container
-- docker
-- podman
+- 日志
+- 容器
+- Docker
+- Podman
 risk: medium
 description: 查看单个 Docker 或 Podman 容器的近期日志。必须设置 CONTAINER_NAME，默认限制最近 2 小时和 120 行；容器日志可能包含敏感业务数据。
 platform:

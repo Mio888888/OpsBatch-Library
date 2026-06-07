@@ -1,11 +1,11 @@
 name: 受保护升级软件包
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-upgrade_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- remediation
-- package-management
-- upgrade
-- protected
+- 修复
+- 软件包管理
+- 升级
+- 受保护
 risk: high
 description: 受保护的软件包升级模板。默认只输出升级计划；只有显式设置 TARGET_PACKAGE（全量升级需写 all）和 CONFIRM_UPGRADE=UPGRADE_PACKAGE
   后才执行真实升级。升级会联网并改变系统软件状态，可能触发服务重启、兼容性问题或不可逆依赖变更，执行前必须确认变更窗口、备份和回滚方案。

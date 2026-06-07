@@ -1,11 +1,11 @@
 name: 检查计划任务和启动项
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/scheduled-startup-items-audit_cn.sh
-category: security
+category: 安全
 tags:
-- audit
-- security
-- cron
-- startup
+- 审计
+- 安全
+- Cron
+- 启动项
 risk: medium
 description: 检查用户/系统计划任务、systemd 定时器或 macOS LaunchAgent/Daemon 启动项。只读查询，可能输出任务命令、路径和用户信息。
 platform:

@@ -1,11 +1,11 @@
 name: 查看 SMART 详细属性
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/smart-attributes_cn.sh
-category: disk
+category: 磁盘
 tags:
-- inspection
-- disk
-- smart
-- health
+- 巡检
+- 磁盘
+- SMART
+- 健康
 risk: low
 description: 查看指定磁盘 SMART 详细属性，如重映射扇区、温度、通电时间和错误计数。需先设置 TARGET_DEVICE；命令只读不修改磁盘状态。
 platform:

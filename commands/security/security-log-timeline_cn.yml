@@ -1,11 +1,11 @@
 name: 查看安全事件日志时间线
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/security-log-timeline_cn.sh
-category: security
+category: 安全
 tags:
-- troubleshooting
-- security
-- logs
-- timeline
+- 故障排查
+- 安全
+- 日志
+- 时间线
 risk: medium
 description: 按时间线查看认证、防火墙、审计和内核安全相关日志线索。只读查询，可能输出用户名、来源地址、命令和主机名等敏感信息。
 platform:

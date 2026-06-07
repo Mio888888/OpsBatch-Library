@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "信息：== current user crontab =="
-crontab -l 2>/dev/null || echo "信息：No readable current-user crontab."
+echo "信息：== 当前用户 crontab =="
+crontab -l 2>/dev/null || echo "信息：当前用户 crontab 不可读。"
 
 echo
 echo "信息：== system cron directories =="
@@ -13,7 +13,7 @@ done
 if [ "$(uname -s)" = "Linux" ]; then
   if command -v systemctl >/dev/null 2>&1; then
     echo
-    echo "信息：== enabled systemd units =="
+    echo "信息：== 已启用的 systemd 单元 =="
     systemctl list-unit-files --state=enabled 2>/dev/null | head -120 || true
     echo
     echo "信息：== timers =="

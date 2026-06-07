@@ -80,5 +80,5 @@ elif compare_ge "${value}" "${LOAD_WARN}"; then
 fi
 
 echo "信息：${status} - ${metric_label}=${value} raw_load=${load_one} cpus=${cpu_count} warn=${LOAD_WARN} crit=${LOAD_CRIT}"
-echo "信息：Details: NORMALIZE_PER_CPU=${NORMALIZE_PER_CPU}; read-only load inspection only."
+echo "信息：详情：NORMALIZE_PER_CPU=${NORMALIZE_PER_CPU}；仅执行只读负载检查。"
 exit "${exit_code}"

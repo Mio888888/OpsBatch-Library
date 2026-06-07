@@ -2,12 +2,12 @@
   "name": "每日基础巡检",
   "description": "串联系统负载、内存、磁盘与服务状态检查，适合作为日常只读巡检入口。",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/daily-check_cn.json",
-  "category": "inspection",
+  "category": "巡检",
   "risk": "low",
   "tags": [
-    "daily",
-    "inspection",
-    "system"
+    "每日",
+    "巡检",
+    "系统"
   ],
   "platform": [
     "linux",

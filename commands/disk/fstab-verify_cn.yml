@@ -1,11 +1,11 @@
 name: 检查 fstab 配置
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/fstab-verify_cn.sh
-category: disk
+category: 磁盘
 tags:
-- troubleshooting
-- disk
+- 故障排查
+- 磁盘
 - fstab
-- mount
+- 挂载
 risk: low
 description: 查看并校验 Linux /etc/fstab 挂载配置，适用于排查开机挂载失败、UUID 错误或挂载参数异常。只读不修改配置。
 platform:

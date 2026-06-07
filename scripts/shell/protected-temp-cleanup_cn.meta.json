@@ -2,13 +2,13 @@
   "name": "受保护临时文件清理",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-temp-cleanup_cn.sh",
   "language": "shell",
-  "category": "maintenance",
+  "category": "维护",
   "tags": [
-    "maintenance",
-    "cleanup",
-    "temp",
-    "stale-files",
-    "protected"
+    "维护",
+    "清理",
+    "临时文件",
+    "过期文件",
+    "受保护"
   ],
   "risk": "high",
   "description": "列出指定目录内的临时/陈旧文件候选，默认只 dry-run。真实删除不可逆，必须显式传入目标目录并设置 CONFIRM_DELETE=DELETE_TEMP_CANDIDATES 后才会使用 rm -i 逐项确认删除。",

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [ "$(uname -s)" = "Linux" ]; then
-  echo "信息：== selected sysctl hardening parameters =="
+  echo "信息：== 已选择的 sysctl 加固参数 =="
   for key in \
     kernel.randomize_va_space \
     kernel.kptr_restrict \
@@ -21,15 +21,15 @@ if [ "$(uname -s)" = "Linux" ]; then
   done
 
   echo
-  echo "信息：== loaded security modules hints =="
+  echo "信息：== 已加载安全模块提示 =="
   [ -r /sys/kernel/security/lsm ] && cat /sys/kernel/security/lsm 2>/dev/null || true
   command -v sestatus >/dev/null 2>&1 && sestatus 2>/dev/null || true
   command -v aa-status >/dev/null 2>&1 && sudo aa-status 2>/dev/null || aa-status 2>/dev/null || true
 elif [ "$(uname -s)" = "Darwin" ]; then
   echo "信息：== macOS security status hints =="
-  csrutil status 2>/dev/null || echo "信息：csrutil status unavailable outside Recovery or unsupported context."
+  csrutil status 2>/dev/null || echo "信息：无法在 Recovery 之外或不支持的上下文中获取 csrutil 状态。"
   spctl --status 2>/dev/null || true
   fdesetup status 2>/dev/null || true
 else
-  echo "不支持的平台 for kernel hardening summary.（Unsupported platform for kernel hardening summary.）"
+  echo "当前平台不支持内核加固摘要。"
 fi

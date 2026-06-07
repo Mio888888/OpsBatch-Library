@@ -1,11 +1,11 @@
 name: 查看文件系统类型
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/filesystem-types_cn.sh
-category: disk
+category: 磁盘
 tags:
-- inspection
-- disk
-- filesystem
-- mount
+- 巡检
+- 磁盘
+- 文件系统
+- 挂载
 risk: low
 description: 查看已挂载文件系统类型以及块设备文件系统信息，用于判断 ext4、xfs、apfs、nfs 等类型差异。只读不修改系统状态。
 platform:

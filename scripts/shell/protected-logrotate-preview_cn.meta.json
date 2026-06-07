@@ -2,13 +2,13 @@
   "name": "受保护日志轮转预览",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-logrotate-preview_cn.sh",
   "language": "shell",
-  "category": "maintenance",
+  "category": "维护",
   "tags": [
-    "maintenance",
-    "log",
-    "rotation",
+    "维护",
+    "日志",
+    "轮转",
     "logrotate",
-    "protected"
+    "受保护"
   ],
   "risk": "high",
   "description": "对指定 logrotate 配置先执行 debug/dry-run 预览。真实轮转可能移动、压缩、截断、删除日志并运行 postrotate 钩子；必须显式传入配置并设置 CONFIRM_ROTATE=RUN_LOGROTATE 才会执行真实轮转。",

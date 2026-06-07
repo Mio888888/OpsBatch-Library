@@ -2,7 +2,7 @@
 set -euo pipefail
 
 LIMIT="${LIMIT:-80}"
-echo "信息：== installed package inventory (limit: $LIMIT) =="
+echo "信息：== 已安装软件包清单 (limit: $LIMIT) =="
 
 if command -v dpkg-query >/dev/null 2>&1; then
   echo "信息：-- dpkg packages --"
@@ -25,5 +25,5 @@ elif command -v brew >/dev/null 2>&1; then
   echo "信息：-- brew casks --"
   brew list --cask --versions 2>/dev/null | head -"$LIMIT"
 else
-  echo "未找到受支持的 package inventory command found.（No supported package inventory command found.）"
+  echo "未找到受支持的 软件包清单命令。"
 fi

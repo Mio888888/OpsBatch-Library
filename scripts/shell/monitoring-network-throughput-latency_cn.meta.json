@@ -2,14 +2,14 @@
   "name": "监控网络吞吐与延迟采样",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-network-throughput-latency_cn.sh",
   "language": "shell",
-  "category": "monitoring",
+  "category": "监控",
   "tags": [
-    "network",
-    "throughput",
-    "latency",
-    "monitoring",
-    "sampling",
-    "read-only"
+    "网络",
+    "吞吐量",
+    "延迟",
+    "监控",
+    "采样",
+    "只读"
   ],
   "risk": "medium",
   "description": "对单个网络接口进行短时间字节计数采样，并可对单个主机执行小包数 ping 延迟检查。默认自动选择第一个非 loopback 接口，ping example.com，采样 1 秒，不抓包、不扫描、不修改接口。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。外部 ping 与接口流量信息可能敏感，因此标记为 medium。",

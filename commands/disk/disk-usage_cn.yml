@@ -1,11 +1,11 @@
 name: 检查磁盘空间总览
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-usage_cn.sh
-category: disk
+category: 磁盘
 tags:
-- inspection
-- disk
-- capacity
-- filesystem
+- 巡检
+- 磁盘
+- 容量
+- 文件系统
 risk: low
 description: 查看文件系统磁盘空间使用情况，并补充 POSIX 格式输出，帮助发现容量告警和挂载点空间不足风险。只读不修改系统状态。
 platform:

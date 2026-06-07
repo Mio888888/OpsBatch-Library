@@ -2,10 +2,10 @@
 set -euo pipefail
 
 echo "信息：== security update hints =="
-echo "信息：This command uses local package manager information where possible and does not install updates."
+echo "信息：此命令尽量使用本地软件包管理器信息，不会安装更新。"
 
 if command -v apt >/dev/null 2>&1; then
-  echo "信息：-- apt security-related upgradable entries --"
+  echo "信息：-- apt 安全相关可升级条目 --"
   apt list --upgradable 2>/dev/null | grep -Ei 'security|ubuntu[/-].*-security|debian-security' | sed -n '1,80p' || true
 fi
 
@@ -24,10 +24,10 @@ fi
 
 if command -v apk >/dev/null 2>&1; then
   echo "信息：-- apk audit note --"
-  echo "Alpine security status usually 需要 comparing apk versions with advisory feeds; not querying network here.（Alpine security status usually requires comparing apk versions with advisory feeds; not querying network here.）"
+  echo "Alpine 安全状态通常需要将 apk 版本与公告源比较；此处不查询网络。"
 fi
 
 if command -v brew >/dev/null 2>&1; then
-  echo "信息：-- brew outdated casks/formulae (security triage input) --"
+  echo "信息：-- brew 过期 cask/formula（安全分诊输入） --"
   HOMEBREW_NO_AUTO_UPDATE=1 brew outdated 2>/dev/null | sed -n '1,80p' || true
 fi

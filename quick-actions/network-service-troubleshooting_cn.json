@@ -2,12 +2,12 @@
   "name": "网络与服务排障",
   "description": "串联基础连通性、DNS、路由、接口、端口监听、活动连接、网卡错误和吞吐采样，辅助快速定位常见网络/服务问题。",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/network-service-troubleshooting_cn.json",
-  "category": "troubleshooting",
+  "category": "故障排查",
   "risk": "medium",
   "tags": [
-    "network",
-    "service",
-    "troubleshooting"
+    "网络",
+    "服务",
+    "故障排查"
   ],
   "platform": [
     "linux",

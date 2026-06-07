@@ -12,5 +12,5 @@ elif [ "$(uname -s)" = "Darwin" ] && command -v sysctl >/dev/null 2>&1; then
 elif [ -f /proc/cpuinfo ]; then
   grep -E '^(model name|Hardware|Processor|cpu cores|siblings|processor)' /proc/cpuinfo | head -60
 else
-  echo "未找到受支持的 CPU information command found.（No supported CPU information command found.）"
+  echo "未找到受支持的 CPU 信息命令。"
 fi

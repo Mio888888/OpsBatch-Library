@@ -1,11 +1,11 @@
 name: 查看近期系统错误日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/journal-recent-errors_cn.sh
-category: log
+category: 日志
 tags:
-- log
-- troubleshooting
-- error
-- journal
+- 日志
+- 故障排查
+- 错误
+- Journal
 risk: medium
 description: 查看近期 warning 及以上级别系统日志。默认查询最近 1 小时并限制输出行数；日志可能包含主机名、用户名、路径或业务上下文。
 platform:

@@ -6,7 +6,7 @@ if [ "$(uname -s)" = "Linux" ]; then
     echo "信息：== numactl --hardware =="
     numactl --hardware
   else
-    echo "信息：numactl not installed; checking /sys node memory files."
+    echo "信息：未安装 numactl；检查 /sys 节点内存文件。"
   fi
 
   echo
@@ -17,8 +17,8 @@ if [ "$(uname -s)" = "Linux" ]; then
       grep -E 'MemTotal|MemFree|MemUsed|FilePages|AnonPages|Slab|HugePages' "$file" || true
     done
   else
-    echo "信息：No NUMA node meminfo files found."
+    echo "信息：未找到 NUMA 节点 meminfo 文件。"
   fi
 else
-  echo "信息：NUMA memory distribution in this command relies on Linux numactl or /sys node meminfo."
+  echo "信息：此命令中的 NUMA 内存分布检查依赖 Linux numactl 或 /sys 节点 meminfo。"
 fi

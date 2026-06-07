@@ -2,13 +2,13 @@
   "name": "监控 CPU Load 阈值",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-load-threshold_cn.sh",
   "language": "shell",
-  "category": "monitoring",
+  "category": "监控",
   "tags": [
-    "cpu",
-    "load",
-    "monitoring",
-    "threshold",
-    "read-only"
+    "CPU",
+    "负载",
+    "监控",
+    "阈值",
+    "只读"
   ],
   "risk": "low",
   "description": "读取 1 分钟 load average，可按 CPU 核数归一化后与 warning/critical 阈值比较。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。默认只读，不修改系统状态。",

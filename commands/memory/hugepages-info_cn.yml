@@ -1,10 +1,10 @@
 name: 查看 Huge Pages 信息
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/hugepages-info_cn.sh
-category: memory
+category: 内存
 tags:
-- inspection
-- memory
-- hugepages
+- 巡检
+- 内存
+- 大页
 risk: low
 description: 查看 Linux Huge Pages 与 Transparent Huge Pages 相关内存字段，并只读展示 sysfs 中的大页池状态。
 platform:

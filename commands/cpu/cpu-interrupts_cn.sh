@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [ "$(uname -s)" = "Linux" ] && [ -r /proc/interrupts ]; then
-  echo "信息：== Top interrupt lines by accumulated count =="
+  echo "信息：== 按累计次数排序的中断行 =="
   awk '
     NR == 1 { print; next }
     /^[[:space:]]*[0-9]+:/ {
@@ -14,8 +14,8 @@ if [ "$(uname -s)" = "Linux" ] && [ -r /proc/interrupts ]; then
     }
   ' /proc/interrupts | sort -nr | head -20
 elif [ "$(uname -s)" = "Darwin" ]; then
-  echo "macOS does not expose /proc/interrupts. 正在显示 CPU and load summary instead.（macOS does not expose /proc/interrupts. Showing CPU and load summary instead.）"
+  echo "macOS 不暴露 /proc/interrupts。改为显示 CPU 和负载摘要。"
   top -l 1 | head -20
 else
-  echo "未找到受支持的 CPU interrupt command found.（No supported CPU interrupt command found.）"
+  echo "未找到受支持的 CPU 中断命令。"
 fi

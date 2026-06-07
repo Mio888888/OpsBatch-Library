@@ -6,10 +6,10 @@ if [ "$(uname -s)" = "Linux" ]; then
     echo "信息：== slabtop -o =="
     slabtop -o | head -30
   elif [ -r /proc/slabinfo ]; then
-    echo "信息：slabtop not installed; showing top lines from /proc/slabinfo."
+    echo "信息：未安装 slabtop；显示 /proc/slabinfo 前几行。"
     head -30 /proc/slabinfo
   else
-    echo "信息：No readable Slab cache source found."
+    echo "信息：未找到可读的 Slab 缓存来源。"
   fi
 
   if [ -r /proc/meminfo ]; then
@@ -18,5 +18,5 @@ if [ "$(uname -s)" = "Linux" ]; then
     grep -E '^(Slab|SReclaimable|SUnreclaim):' /proc/meminfo || true
   fi
 else
-  echo "信息：Slab cache inspection in this command relies on Linux /proc/slabinfo or slabtop."
+  echo "信息：此命令中的 Slab 缓存检查依赖 Linux /proc/slabinfo 或 slabtop。"
 fi

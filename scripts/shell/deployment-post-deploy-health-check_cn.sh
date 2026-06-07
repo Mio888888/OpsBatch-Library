@@ -9,36 +9,36 @@ TIMEOUT="${TIMEOUT:-10}"
 ATTEMPTS="${ATTEMPTS:-3}"
 
 if [[ ! "${TIMEOUT}" =~ ^[1-9][0-9]*$ ]]; then
-  echo "信息：TIMEOUT must be a positive integer." >&2
+  echo "信息：TIMEOUT 必须是正整数。" >&2
   exit 2
 fi
 
 if [[ ! "${ATTEMPTS}" =~ ^[1-9][0-9]*$ ]]; then
-  echo "信息：ATTEMPTS must be a positive integer." >&2
+  echo "信息：ATTEMPTS 必须是正整数。" >&2
   exit 2
 fi
 
 if (( TIMEOUT > 60 )); then
-  echo "信息：TIMEOUT is capped at 60 seconds." >&2
+  echo "信息：TIMEOUT 上限为 60 秒。" >&2
   TIMEOUT=60
 fi
 
 if (( ATTEMPTS > 10 )); then
-  echo "信息：ATTEMPTS is capped at 10." >&2
+  echo "信息：ATTEMPTS 上限为 10。" >&2
   ATTEMPTS=10
 fi
 
-echo "信息：Deployment post-deploy health check"
-echo "信息：Generated at: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-echo "信息：Health URL: ${HEALTH_URL:-<not provided>}"
-echo "信息：Service: ${SERVICE:-<not provided>}"
-echo "信息：Host/port: ${HOST:-<not provided>}/${PORT:-<not provided>}"
-echo "信息：This script performs bounded read-only health probes only."
+echo "信息：部署后健康检查"
+echo "信息：生成时间: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+echo "信息：健康检查 URL: ${HEALTH_URL:-<未提供>}"
+echo "信息：服务： ${SERVICE:-<未提供>}"
+echo "信息：主机/端口: ${HOST:-<未提供>}/${PORT:-<未提供>}"
+echo "信息：本脚本只执行有界的只读健康探测。"
 echo
 
 status=0
 
-echo "信息：== Service health =="
+echo "信息：== 服务健康状态 =="
 if [[ -n "${SERVICE}" ]]; then
   if command -v systemctl >/dev/null 2>&1; then
     if systemctl is-active --quiet "${SERVICE}"; then
@@ -62,14 +62,14 @@ if [[ -n "${SERVICE}" ]]; then
       status=1
     fi
   else
-    echo "未找到受支持的 service manager found.（No supported service manager found.）"
+    echo "未找到受支持的 服务管理器。"
   fi
 else
-  echo "信息：No SERVICE provided."
+  echo "信息：未提供 SERVICE。"
 fi
 echo
 
-echo "信息：== HTTP health URL =="
+echo "信息：== HTTP 健康检查 URL =="
 if [[ -n "${HEALTH_URL}" ]]; then
   if command -v curl >/dev/null 2>&1; then
     success=0
@@ -84,18 +84,18 @@ if [[ -n "${HEALTH_URL}" ]]; then
       status=1
     fi
   else
-    echo "curl 不可用.（curl not available.）"
+    echo "curl 不可用."
     status=1
   fi
 else
-  echo "信息：No HEALTH_URL provided."
+  echo "信息：未提供 HEALTH_URL。"
 fi
 echo
 
-echo "信息：== TCP health =="
+echo "信息：== TCP 健康状态 =="
 if [[ -n "${HOST}" && -n "${PORT}" ]]; then
   if [[ ! "${PORT}" =~ ^[0-9]+$ ]] || (( PORT < 1 || PORT > 65535 )); then
-    echo "信息：PORT must be between 1 and 65535." >&2
+    echo "信息：PORT 必须介于 1 到 65535 之间。" >&2
     exit 2
   fi
   if command -v nc >/dev/null 2>&1; then
@@ -108,11 +108,11 @@ if [[ -n "${HOST}" && -n "${PORT}" ]]; then
       status=1
     fi
   else
-    echo "信息：No bounded TCP probe tool found."
+    echo "信息：未找到有界 TCP 探测工具。"
     status=1
   fi
 else
-  echo "信息：No HOST and PORT provided."
+  echo "信息：未提供 HOST 和 PORT。"
 fi
 
 exit "${status}"

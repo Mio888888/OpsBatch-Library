@@ -13,12 +13,12 @@ for path in $FILE_LIST; do
     elif command -v shasum >/dev/null 2>&1; then
       shasum -a 256 "$path" 2>/dev/null || true
     else
-      echo "信息：No sha256 tool found."
+      echo "信息：未找到 sha256 工具。"
     fi
   else
-    echo "信息：missing: $path"
+    echo "信息：缺失： $path"
   fi
 done
 
 echo
-echo "请设置 FILE_LIST to a space-separated allowlist of files to baseline. Do not include private keys unless output handling is approved.（Set FILE_LIST to a space-separated allowlist of files to baseline. Do not include private keys unless output handling is approved.）"
+echo "请将 FILE_LIST 设置为以空格分隔、需要建立基线的文件白名单。除非输出处理流程已获批准，否则不要包含私钥。"

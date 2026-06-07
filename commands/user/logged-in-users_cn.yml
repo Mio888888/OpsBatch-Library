@@ -1,10 +1,10 @@
 name: 查看当前登录用户
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/user/logged-in-users_cn.sh
-category: user
+category: 用户
 tags:
-- inspection
-- user
-- login
+- 巡检
+- 用户
+- 登录
 risk: low
 description: 查看当前用户、已登录会话和最近登录记录摘要，用于基础访问状态巡检。
 platform:

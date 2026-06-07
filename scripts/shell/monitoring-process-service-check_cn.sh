@@ -43,7 +43,7 @@ if [[ "${MODE}" == "service" ]]; then
       count="1"
     else
       state="$(systemctl is-active "${TARGET_NAME}" 2>/dev/null || true)"
-      detail="systemctl state=${state:-unknown}"
+      detail="systemctl state=${state:-未知}"
       count="0"
     fi
   elif command -v service >/dev/null 2>&1; then
@@ -56,7 +56,7 @@ if [[ "${MODE}" == "service" ]]; then
     fi
   else
     MODE="process"
-    detail="service manager unavailable; fell back to process matching"
+    detail="服务管理器不可用；已回退到进程匹配"
   fi
 fi
 
@@ -88,9 +88,9 @@ elif [[ "${MAX_COUNT}" -gt 0 && "${count}" -gt "${MAX_COUNT}" ]]; then
 fi
 
 echo "信息：${status} - ${MODE}=${TARGET_NAME} count=${count} min=${MIN_COUNT} max=${MAX_COUNT}"
-echo "信息：Details: ${detail}"
+echo "信息：详情：${detail}"
 if command -v pgrep >/dev/null 2>&1; then
-  echo "信息：Matched processes (bounded):"
+  echo "信息：匹配进程（有界）:"
   pgrep -fl "${TARGET_NAME}" 2>/dev/null | head -n 10 || true
 fi
 exit "${exit_code}"

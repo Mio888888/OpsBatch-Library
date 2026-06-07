@@ -2,15 +2,15 @@
   "name": "受保护部署服务 Reload/Restart Gate",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-protected-service-gate_cn.sh",
   "language": "shell",
-  "category": "deployment",
+  "category": "部署",
   "tags": [
-    "deployment",
-    "protected",
-    "service",
-    "reload",
-    "restart",
-    "validation",
-    "high-risk"
+    "部署",
+    "受保护",
+    "服务",
+    "重载",
+    "重启",
+    "验证",
+    "高风险"
   ],
   "risk": "high",
   "description": "高风险受保护模板：默认仅输出服务状态、验证结果和计划；只有显式 SERVICE 且 CONFIRM_SERVICE_ACTION=APPLY_SERVICE_ACTION 时才 reload 或 restart 服务，可能中断业务。",

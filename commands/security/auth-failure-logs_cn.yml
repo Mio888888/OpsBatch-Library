@@ -1,11 +1,11 @@
 name: 查看认证失败日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/auth-failure-logs_cn.sh
-category: security
+category: 安全
 tags:
-- user
-- security
-- auth
-- troubleshooting
+- 用户
+- 安全
+- 认证
+- 故障排查
 risk: medium
 description: 查看认证失败、PAM、登录拒绝等安全相关日志。只读查询，但输出可能包含用户名、来源 IP、主机名等敏感信息。
 platform:

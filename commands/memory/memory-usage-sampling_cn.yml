@@ -1,11 +1,11 @@
 name: 持续采样内存使用
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-usage-sampling_cn.sh
-category: memory
+category: 内存
 tags:
-- inspection
-- memory
-- sampling
-- trend
+- 巡检
+- 内存
+- 采样
+- 趋势
 risk: medium
 description: 按固定间隔持续采样内存使用情况，默认 5 次、间隔 2 秒。命令只读，但包含循环和 sleep，可能产生少量额外输出。
 platform:

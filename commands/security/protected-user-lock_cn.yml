@@ -1,11 +1,11 @@
 name: 受保护锁定用户账号
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-lock_cn.sh
-category: security
+category: 安全
 tags:
-- remediation
-- user
-- account
-- lock
+- 修复
+- 用户
+- 账号
+- 锁定
 risk: high
 description: 受保护的账号锁定模板。默认只展示目标用户和当前进程；只有设置 TARGET_USER 和 CONFIRM_LOCK_USER=LOCK_TARGET_USER
   后才锁定。锁定账号可能中断登录、服务或自动任务，执行前必须确认影响和回滚方案。

@@ -13,7 +13,7 @@ if command -v timedatectl >/dev/null 2>&1; then
 fi
 
 echo
-echo "信息：== current user and privilege context =="
+echo "信息：== 当前用户与权限上下文 =="
 id 2>/dev/null || true
 umask 2>/dev/null || true
 
@@ -35,11 +35,11 @@ if [ "$(uname -s)" = "Linux" ]; then
   elif command -v yum >/dev/null 2>&1; then
     yum check-update --security 2>/dev/null | head -40 || true
   else
-    echo "未找到受支持的 package security update checker found.（No supported package security update checker found.）"
+    echo "未找到受支持的 package security update checker。"
   fi
 elif [ "$(uname -s)" = "Darwin" ]; then
   sw_vers 2>/dev/null || true
-  softwareupdate -l 2>/dev/null | head -80 || echo "信息：Cannot list macOS software updates."
+  softwareupdate -l 2>/dev/null | head -80 || echo "信息：无法列出 macOS 软件更新。"
 else
-  echo "不支持的平台 for baseline update hints.（Unsupported platform for baseline update hints.）"
+  echo "不支持的平台 for baseline update hints."
 fi

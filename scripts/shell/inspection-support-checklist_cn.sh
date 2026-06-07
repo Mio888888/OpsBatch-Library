@@ -7,37 +7,37 @@ LIMIT="${LIMIT:-25}"
 OS_NAME="$(uname -s)"
 
 if [[ ! -e "${TARGET_PATH}" ]]; then
-  echo "Target path 未找到: ${TARGET_PATH}（Target path not found: ${TARGET_PATH}）" >&2
+  echo "目标路径未找到: ${TARGET_PATH}" >&2
   exit 1
 fi
 
 if [[ ! "${LIMIT}" =~ ^[1-9][0-9]*$ ]]; then
-  echo "信息：LIMIT must be a positive integer." >&2
+  echo "信息：LIMIT 必须是正整数。" >&2
   exit 2
 fi
 
 echo "信息：Inspection support checklist"
-echo "信息：Generated at: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-echo "信息：Host: $(hostname 2>/dev/null || echo unknown)"
-echo "信息：Target path: ${TARGET_PATH}"
-echo "信息：Output directory check: ${OUTPUT_DIR:-<not provided>}"
-echo "信息：This script is read-only and does not create support archives. Review all output before sharing."
+echo "信息：生成时间: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+echo "信息：主机: $(hostname 2>/dev/null || echo 未知)"
+echo "信息：目标路径: ${TARGET_PATH}"
+echo "信息：输出目录检查: ${OUTPUT_DIR:-<未提供>}"
+echo "信息：本脚本为只读，不会创建支持归档。共享前请审核所有输出。"
 echo
 
 echo "信息：== Preflight checklist =="
-printf 'operator_context: collect incident/change ID separately; do not paste secrets into parameters\n'
-printf 'platform: %s\n' "${OS_NAME}"
-printf 'privilege: uid=%s user=%s\n' "$(id -u 2>/dev/null || echo unknown)" "$(id -un 2>/dev/null || echo unknown)"
+printf '操作员上下文：请单独收集事件/变更 ID；不要在参数中粘贴密钥\n'
+printf '平台： %s\n' "${OS_NAME}"
+printf 'privilege: uid=%s user=%s\n' "$(id -u 2>/dev/null || echo 未知)" "$(id -un 2>/dev/null || echo 未知)"
 if [[ -n "${OUTPUT_DIR}" ]]; then
   if [[ -d "${OUTPUT_DIR}" ]]; then
-    printf 'output_dir: exists\n'
+    printf '输出目录：存在\n'
     if [[ -w "${OUTPUT_DIR}" ]]; then
-      printf 'output_dir_writable: yes\n'
+      printf '输出目录可写：是\n'
     else
-      printf 'output_dir_writable: no\n'
+      printf '输出目录可写：否\n'
     fi
   else
-    printf 'output_dir: missing (no directory was created)\n'
+    printf '输出目录：缺失（未创建目录）\n'
   fi
 fi
 echo
@@ -57,11 +57,11 @@ if command -v df >/dev/null 2>&1; then
   df -h "${TARGET_PATH}" || true
 fi
 if command -v du >/dev/null 2>&1; then
-  du -sh "${TARGET_PATH}" 2>/dev/null || echo "信息：du summary unavailable for ${TARGET_PATH}."
+  du -sh "${TARGET_PATH}" 2>/dev/null || echo "信息：du 摘要不可用： ${TARGET_PATH}."
 fi
 echo
 
-echo "信息：== Recent reboot or uptime context =="
+echo "信息：== 最近重启或运行时长上下文 =="
 if command -v uptime >/dev/null 2>&1; then
   uptime || true
 fi
@@ -70,26 +70,26 @@ if command -v who >/dev/null 2>&1; then
 fi
 echo
 
-echo "信息：== Tool availability for support collection =="
+echo "信息：== 支持信息收集工具可用性 =="
 for tool in tar gzip zip sha256sum shasum openssl journalctl dmesg log show system_profiler sysctl lsof netstat ss ip ifconfig; do
   if command -v "${tool}" >/dev/null 2>&1; then
-    printf '%s: available\n' "${tool}"
+    printf '%s: 可用\n' "${tool}"
   else
-    printf '%s: not available\n' "${tool}"
+    printf '%s: 不可用\n' "${tool}"
   fi
 done
 echo
 
-echo "信息：== Suggested bounded evidence topics =="
-printf '%s\n' "1. OS/kernel and uptime summary"
-printf '%s\n' "2. Disk capacity for the affected path"
-printf '%s\n' "3. Service status for the affected service only"
-printf '%s\n' "4. Recent application log excerpt with secrets redacted"
-printf '%s\n' "5. Network listener/route summary if relevant"
-printf '%s\n' "6. Package/version summary for affected components"
+echo "信息：== 建议的有界证据主题 =="
+printf '%s\n' "1. OS/内核和运行时长摘要"
+printf '%s\n' "2. 受影响路径的磁盘容量"
+printf '%s\n' "3. 仅受影响服务的状态"
+printf '%s\n' "4. 最近应用日志摘录（已脱敏）"
+printf '%s\n' "5. 如相关，提供网络监听/路由摘要"
+printf '%s\n' "6. 受影响组件的软件包/版本摘要"
 echo
 
-echo "信息：== Recent system log pointers =="
+echo "信息：== 最近系统日志指针 =="
 case "${OS_NAME}" in
   Linux)
     if command -v journalctl >/dev/null 2>&1; then
@@ -97,17 +97,17 @@ case "${OS_NAME}" in
     else
       for path in /var/log/syslog /var/log/messages /var/log/system.log; do
         if [[ -r "${path}" ]]; then
-          printf 'readable_log: %s\n' "${path}"
+          printf '可读日志: %s\n' "${path}"
         fi
       done
     fi
     ;;
   Darwin)
     if command -v log >/dev/null 2>&1; then
-      echo "信息：macOS unified log is available; use a narrow predicate/time window before collecting."
+      echo "信息：macOS unified log 可用；收集前请使用较窄的 predicate/时间窗口。"
     fi
     ;;
   *)
-    echo "信息：No platform-specific log pointers for ${OS_NAME}."
+    echo "信息：没有 ${OS_NAME} 的平台特定日志指引。"
     ;;
 esac

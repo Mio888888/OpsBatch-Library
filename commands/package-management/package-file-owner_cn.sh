@@ -4,11 +4,11 @@ set -euo pipefail
 TARGET_FILE="${TARGET_FILE:-}"
 
 if [ -z "$TARGET_FILE" ]; then
-  echo "请设置 TARGET_FILE to an absolute file path, for example TARGET_FILE=/usr/bin/ssh.（Set TARGET_FILE to an absolute file path, for example TARGET_FILE=/usr/bin/ssh.）"
+  echo "请将 TARGET_FILE 设置为绝对文件路径，例如 TARGET_FILE=/usr/bin/ssh。"
   exit 0
 fi
 
-echo "信息：== package owner for: $TARGET_FILE =="
+echo "信息：== 软件包归属： $TARGET_FILE =="
 if [ ! -e "$TARGET_FILE" ]; then
   echo "信息：File does not exist locally: $TARGET_FILE"
 fi

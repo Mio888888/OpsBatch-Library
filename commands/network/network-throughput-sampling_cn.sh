@@ -12,15 +12,15 @@ if [ "$(uname -s)" = "Linux" ]; then
     echo "信息：== /proc/net/dev before =="
     cat /proc/net/dev
     echo
-    echo "信息：Sleeping ${SAMPLE_SECONDS}s before second sample..."
+    echo "信息：第二次采样前等待 ${SAMPLE_SECONDS}s..."
     sleep "$SAMPLE_SECONDS"
     echo
     echo "信息：== /proc/net/dev after =="
     cat /proc/net/dev
     echo
-    echo "信息：Install sysstat or ifstat for calculated per-second rates."
+    echo "信息：请安装 sysstat 或 ifstat 以计算每秒速率。"
   else
-    echo "未找到受支持的 throughput sampling source found.（No supported throughput sampling source found.）"
+    echo "未找到受支持的 吞吐量采样来源。"
   fi
 elif [ "$(uname -s)" = "Darwin" ]; then
   if command -v nettop >/dev/null 2>&1; then
@@ -29,14 +29,14 @@ elif [ "$(uname -s)" = "Darwin" ]; then
     echo "信息：== interface counters before =="
     netstat -ib
     echo
-    echo "信息：Sleeping ${SAMPLE_SECONDS}s before second sample..."
+    echo "信息：第二次采样前等待 ${SAMPLE_SECONDS}s..."
     sleep "$SAMPLE_SECONDS"
     echo
     echo "信息：== interface counters after =="
     netstat -ib
   else
-    echo "未找到受支持的 macOS throughput command found.（No supported macOS throughput command found.）"
+    echo "未找到受支持的 macOS 吞吐量命令。"
   fi
 else
-  echo "未找到受支持的 throughput sampling command found.（No supported throughput sampling command found.）"
+  echo "未找到受支持的 吞吐量采样命令。"
 fi

@@ -2,15 +2,15 @@
   "name": "受保护 Release 切换部署/回滚",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-protected-release-switch_cn.sh",
   "language": "shell",
-  "category": "deployment",
+  "category": "部署",
   "tags": [
-    "deployment",
-    "protected",
-    "release",
-    "rollback",
-    "symlink",
-    "service",
-    "high-risk"
+    "部署",
+    "受保护",
+    "发布",
+    "回滚",
+    "符号链接",
+    "服务",
+    "高风险"
   ],
   "risk": "high",
   "description": "高风险受保护模板：默认仅输出部署/回滚计划并执行可选验证；只有显式 CURRENT_LINK/TARGET_RELEASE 且 CONFIRM_DEPLOY=SWITCH_RELEASE 时才切换 release 软链接，并可选 reload/restart 服务和健康检查。切换或重启可能中断业务。",

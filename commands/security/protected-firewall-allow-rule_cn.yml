@@ -1,11 +1,11 @@
 name: 受保护添加防火墙允许规则
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-firewall-allow-rule_cn.sh
-category: security
+category: 安全
 tags:
-- remediation
-- security
-- firewall
-- network
+- 修复
+- 安全
+- 防火墙
+- 网络
 risk: high
 description: 受保护的防火墙允许规则模板。默认只展示计划；只有设置 TARGET_PORT、TARGET_SOURCE 和 CONFIRM_FIREWALL_ALLOW=APPLY_FIREWALL_ALLOW
   后才尝试添加窄范围允许规则。误用可能扩大网络暴露面，执行前必须确认来源、窗口和回滚方案。

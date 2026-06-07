@@ -2,14 +2,14 @@
   "name": "SSH 与防火墙安全审计",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-ssh-firewall-audit_cn.sh",
   "language": "shell",
-  "category": "security",
+  "category": "安全",
   "tags": [
-    "security",
-    "audit",
-    "ssh",
-    "firewall",
-    "access-control",
-    "read-only"
+    "安全",
+    "审计",
+    "SSH",
+    "防火墙",
+    "访问控制",
+    "只读"
   ],
   "risk": "medium",
   "description": "只读输出 SSH 进程/监听、sshd 关键配置和防火墙状态摘要；可能暴露端口、访问控制策略和防火墙规则，分享前请审阅。",

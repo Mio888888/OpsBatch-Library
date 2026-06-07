@@ -1,11 +1,11 @@
 name: 受保护卸载软件包
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-uninstall_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- remediation
-- package-management
-- uninstall
-- protected
+- 修复
+- 软件包管理
+- 卸载
+- 受保护
 risk: high
 description: 受保护的软件包卸载模板。默认只输出卸载影响预览；只有显式设置 TARGET_PACKAGE 和 CONFIRM_UNINSTALL=UNINSTALL_PACKAGE
   后才执行真实卸载。卸载可能删除关键运行时或破坏依赖链，执行前必须确认服务影响、备份和回滚方案。

@@ -1,10 +1,10 @@
 name: 查看最近系统日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/recent-system-logs_cn.sh
-category: log
+category: 日志
 tags:
-- log
-- troubleshooting
-- system
+- 日志
+- 故障排查
+- 系统
 risk: low
 description: 查看最近 100 行系统日志。Linux 优先使用 journalctl，macOS 尝试读取 /var/log/system.log。
 platform:

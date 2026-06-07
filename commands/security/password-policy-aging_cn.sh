@@ -5,11 +5,11 @@ TARGET_USER="${TARGET_USER:-}"
 
 if [ "$(uname -s)" = "Linux" ]; then
   if [ -n "$TARGET_USER" ]; then
-    echo "信息：== password aging for $TARGET_USER =="
+    echo "信息：== $TARGET_USER 的密码有效期 =="
     if command -v chage >/dev/null 2>&1; then
-      sudo chage -l "$TARGET_USER" 2>/dev/null || chage -l "$TARGET_USER" 2>/dev/null || echo "无法读取 password aging for $TARGET_USER.（Cannot read password aging for $TARGET_USER.）"
+      sudo chage -l "$TARGET_USER" 2>/dev/null || chage -l "$TARGET_USER" 2>/dev/null || echo "无法读取 $TARGET_USER 的密码老化信息。"
     else
-      echo "chage is 不可用.（chage is not available.）"
+      echo "chage 不可用。"
     fi
   else
     echo "信息：== password policy files =="
@@ -20,10 +20,10 @@ if [ "$(uname -s)" = "Linux" ]; then
       fi
     done
     echo
-    echo "请设置 TARGET_USER to inspect one user's password aging with chage.（Set TARGET_USER to inspect one user's password aging with chage.）"
+    echo "请设置 TARGET_USER，以便使用 chage 检查单个用户的密码有效期。"
   fi
 elif [ "$(uname -s)" = "Darwin" ] && command -v pwpolicy >/dev/null 2>&1; then
-  pwpolicy getaccountpolicies 2>/dev/null || echo "无法读取 macOS password policies.（Cannot read macOS password policies.）"
+  pwpolicy getaccountpolicies 2>/dev/null || echo "无法读取 macOS 密码策略。"
 else
-  echo "未找到受支持的 password policy source found.（No supported password policy source found.）"
+  echo "未找到受支持的 密码策略来源。"
 fi

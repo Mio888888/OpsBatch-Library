@@ -4,10 +4,10 @@ set -euo pipefail
 TARGET_DIR="${TARGET_DIR:-.}"
 DEPTH="${DEPTH:-1}"
 
-echo "信息：== top directory usage: $TARGET_DIR (depth=$DEPTH) =="
+echo "信息：== 目录使用率排行: $TARGET_DIR (depth=$DEPTH) =="
 if [ -d "$TARGET_DIR" ]; then
   du -xh -d "$DEPTH" "$TARGET_DIR" 2>/dev/null | sort -hr | head -30
 else
-  echo "信息：TARGET_DIR is not a directory: $TARGET_DIR"
-  echo "信息：Usage: TARGET_DIR=/var DEPTH=1 sh -c '<this command>'"
+  echo "信息：TARGET_DIR 不是目录: $TARGET_DIR"
+  echo "信息：用法： TARGET_DIR=/var DEPTH=1 sh -c '<this command>'"
 fi

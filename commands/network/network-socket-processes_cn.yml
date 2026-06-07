@@ -1,11 +1,11 @@
 name: 查看网络连接对应进程
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-socket-processes_cn.sh
-category: network
+category: 网络
 tags:
-- troubleshooting
-- network
-- process
-- socket
+- 故障排查
+- 网络
+- 进程
+- 套接字
 risk: medium
 description: 查看网络端口和连接对应的进程信息。命令只读，但部分平台需要更高权限才能显示完整进程，且输出可能包含本机进程和连接细节。
 platform:

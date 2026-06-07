@@ -1,11 +1,11 @@
 name: 查看内核日志摘要
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/kernel-log-summary_cn.sh
-category: log
+category: 日志
 tags:
-- log
-- kernel
-- troubleshooting
-- error
+- 日志
+- 内核
+- 故障排查
+- 错误
 risk: medium
 description: 汇总近期内核日志中的错误、告警、panic、OOM、超时等线索。只读查询，可能受系统权限限制并输出硬件、进程或路径信息。
 platform:

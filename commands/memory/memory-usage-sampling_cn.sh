@@ -3,7 +3,7 @@ set -euo pipefail
 
 samples="${SAMPLES:-5}"
 interval="${INTERVAL:-2}"
-echo "信息：Sampling memory usage: SAMPLES=$samples INTERVAL=${interval}s. Override with SAMPLES=<n> INTERVAL=<seconds>."
+echo "信息：正在采样内存使用率：SAMPLES=$samples INTERVAL=${interval}s。需要时可用 SAMPLES=<n> INTERVAL=<seconds> 覆盖。"
 
 if [ "$(uname -s)" = "Linux" ]; then
   i=1
@@ -14,7 +14,7 @@ if [ "$(uname -s)" = "Linux" ]; then
     elif [ -r /proc/meminfo ]; then
       grep -E '^(MemTotal|MemFree|MemAvailable|Buffers|Cached|SwapTotal|SwapFree):' /proc/meminfo || true
     else
-      echo "未找到受支持的 Linux memory source found.（No supported Linux memory source found.）"
+      echo "未找到受支持的 Linux 内存来源。"
     fi
     [ "$i" -lt "$samples" ] && sleep "$interval"
     i=$((i + 1))
@@ -26,11 +26,11 @@ elif [ "$(uname -s)" = "Darwin" ]; then
     if command -v vm_stat >/dev/null 2>&1; then
       vm_stat
     else
-      echo "vm_stat 不可用.（vm_stat not available.）"
+      echo "vm_stat 不可用."
     fi
     [ "$i" -lt "$samples" ] && sleep "$interval"
     i=$((i + 1))
   done
 else
-  echo "未找到受支持的 memory sampling command found.（No supported memory sampling command found.）"
+  echo "未找到受支持的 内存采样命令。"
 fi

@@ -1,11 +1,11 @@
 name: 按服务查看日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/service-log-tail_cn.sh
-category: log
+category: 日志
 tags:
-- log
-- service
-- troubleshooting
-- journal
+- 日志
+- 服务
+- 故障排查
+- Journal
 risk: medium
 description: 按单个服务或进程名称查看近期日志。默认服务名为 ssh，可通过 SERVICE_NAME、SINCE、LINES 覆盖；日志可能包含用户、路径和业务上下文。
 platform:

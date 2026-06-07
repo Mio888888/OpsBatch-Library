@@ -1,11 +1,11 @@
 name: 查看网络接口与 IP 地址
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-interface-summary_cn.sh
-category: network
+category: 网络
 tags:
-- inspection
-- network
-- interface
-- ip
+- 巡检
+- 网络
+- 接口
+- IP
 risk: low
 description: 查看网络接口、链路状态和 IP 地址。Linux 优先使用 ip，macOS 使用 ifconfig 并补充 networksetup 服务映射，只读不修改系统状态。
 platform:

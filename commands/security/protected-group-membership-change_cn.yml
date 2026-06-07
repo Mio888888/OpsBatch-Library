@@ -1,11 +1,11 @@
 name: 受保护修改用户组成员
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-group-membership-change_cn.sh
-category: security
+category: 安全
 tags:
-- remediation
-- user
-- group
-- membership
+- 修复
+- 用户
+- 用户组
+- 成员关系
 risk: high
 description: 受保护的用户组成员变更模板。默认只展示计划和当前组；只有设置 TARGET_USER、TARGET_GROUP 和 CONFIRM_GROUP_CHANGE=CHANGE_GROUP_MEMBERSHIP
   后才添加或移除成员。组变更可能授予或撤销权限，执行前必须确认审批和访问影响。

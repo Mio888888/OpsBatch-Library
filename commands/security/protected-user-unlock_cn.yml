@@ -1,11 +1,11 @@
 name: 受保护解锁用户账号
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-unlock_cn.sh
-category: security
+category: 安全
 tags:
-- remediation
-- user
-- account
-- unlock
+- 修复
+- 用户
+- 账号
+- 解锁
 risk: high
 description: 受保护的账号解锁模板。默认只展示目标用户；只有设置 TARGET_USER 和 CONFIRM_UNLOCK_USER=UNLOCK_TARGET_USER
   后才解锁。解锁会恢复访问能力，执行前必须确认审批、凭证状态和安全事件结论。

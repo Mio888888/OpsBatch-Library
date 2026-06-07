@@ -2,15 +2,15 @@
   "name": "可疑进程连接与认证日志线索",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-suspicious-activity-indicators_cn.sh",
   "language": "shell",
-  "category": "security",
+  "category": "安全",
   "tags": [
-    "security",
-    "incident-triage",
-    "process",
-    "network",
-    "auth-log",
-    "indicators",
-    "read-only"
+    "安全",
+    "事件排障",
+    "进程",
+    "网络",
+    "认证日志",
+    "指标",
+    "只读"
   ],
   "risk": "medium",
   "description": "只读输出临时目录进程、网络连接样例、删除后仍打开文件提示和认证日志摘要；不做攻击行为，仅提供防御性线索，输出可能包含用户名、IP、命令行、路径和日志片段。",

@@ -1,11 +1,11 @@
 name: 受保护压缩旧日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/protected-log-compress_cn.sh
-category: log
+category: 日志
 tags:
-- remediation
-- log
-- compress
-- cleanup
+- 修复
+- 日志
+- 压缩
+- 清理
 risk: high
 description: 受保护压缩旧日志示例。默认只列出已轮转日志候选；只有显式设置 TARGET_LOG_DIR 和 CONFIRM_COMPRESS=COMPRESS_OLD_LOGS
   后才 gzip 匹配文件。误用可能影响仍被进程写入的日志、审计保留和排障取证，执行前必须确认备份、保留策略和业务影响。

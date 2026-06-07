@@ -2,15 +2,15 @@
   "name": "系统与工具巡检清单",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/inspection-system-inventory_cn.sh",
   "language": "shell",
-  "category": "inspection",
+  "category": "巡检",
   "tags": [
-    "inspection",
-    "inventory",
-    "system",
-    "hardware",
-    "packages",
-    "tools",
-    "read-only"
+    "巡检",
+    "清单",
+    "系统",
+    "硬件",
+    "软件包",
+    "工具",
+    "只读"
   ],
   "risk": "medium",
   "description": "只读生成系统、硬件、包管理器和常用运维工具摘要；输出可能包含主机名、内核版本、软件包名称和本机工具路径，分享前请审阅。",

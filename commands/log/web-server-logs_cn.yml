@@ -1,11 +1,11 @@
 name: 查看 Web 服务日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/web-server-logs_cn.sh
-category: log
+category: 日志
 tags:
-- log
-- web
-- nginx
-- apache
+- 日志
+- Web
+- Nginx
+- Apache
 risk: medium
 description: 查看常见 Nginx 和 Apache access/error 日志文件的最近内容。只读查询，可能输出 URL、IP、User-Agent、请求参数等敏感信息。
 platform:

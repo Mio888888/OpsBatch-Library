@@ -1,11 +1,11 @@
 name: 查找临时目录清理候选
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/temp-cleanup-candidates_cn.sh
-category: disk
+category: 磁盘
 tags:
-- troubleshooting
-- disk
-- cleanup
-- temp
+- 故障排查
+- 磁盘
+- 清理
+- 临时文件
 risk: medium
 description: 查找临时目录中超过指定天数未修改的清理候选，默认检查 /tmp 且只列出不删除。扫描和候选判断可能不适合所有业务目录，清理前需人工确认。
 platform:

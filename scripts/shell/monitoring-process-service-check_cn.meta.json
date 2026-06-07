@@ -2,13 +2,13 @@
   "name": "监控进程与服务状态",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-process-service-check_cn.sh",
   "language": "shell",
-  "category": "monitoring",
+  "category": "监控",
   "tags": [
-    "process",
-    "service",
-    "monitoring",
-    "health-check",
-    "read-only"
+    "进程",
+    "服务",
+    "监控",
+    "健康检查",
+    "只读"
   ],
   "risk": "medium",
   "description": "检查指定服务或进程是否存在，可设置最小/最大匹配数量。默认检查 ssh 服务；当服务管理工具不可用时回退到进程匹配。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。仅做只读状态检查，不重启服务。进程列表可能暴露运行时信息，因此标记为 medium。",

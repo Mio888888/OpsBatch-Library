@@ -1,11 +1,11 @@
 name: 查看指定软件包版本详情
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-version-detail_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- inspection
-- package-management
-- version
-- package
+- 巡检
+- 软件包管理
+- 版本
+- 软件包
 risk: medium
 description: 查看显式指定软件包的已安装版本、候选版本和元数据，可能暴露软件栈版本信息；只读不安装或升级。
 platform:

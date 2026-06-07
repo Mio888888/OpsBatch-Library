@@ -13,5 +13,5 @@ elif [ -f /etc/localtime ]; then
 elif command -v systemsetup >/dev/null 2>&1; then
   systemsetup -gettimezone 2>/dev/null || true
 else
-  echo "未找到受支持的 timezone detail command found.（No supported timezone detail command found.）"
+  echo "未找到受支持的 timezone detail命令。"
 fi

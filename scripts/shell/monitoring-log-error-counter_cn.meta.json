@@ -2,13 +2,13 @@
   "name": "监控日志错误计数",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-log-error-counter_cn.sh",
   "language": "shell",
-  "category": "monitoring",
+  "category": "监控",
   "tags": [
-    "log",
-    "error-count",
-    "monitoring",
-    "threshold",
-    "read-only"
+    "日志",
+    "错误计数",
+    "监控",
+    "阈值",
+    "只读"
   ],
   "risk": "medium",
   "description": "在指定日志文件末尾有限行数内统计错误模式匹配数量，并按 warning/critical 计数阈值返回状态。默认自动选择常见系统日志中的第一个可读文件，如都不可读则返回 UNKNOWN；不打印匹配日志内容，避免泄露敏感信息。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。日志路径和错误计数可能敏感，因此标记为 medium。",

@@ -6,7 +6,7 @@ if [ "$(uname -s)" = "Linux" ]; then
     echo "信息：== HugePages fields in /proc/meminfo =="
     grep -E '^(HugePages_Total|HugePages_Free|HugePages_Rsvd|HugePages_Surp|Hugepagesize|Hugetlb|AnonHugePages|ShmemHugePages|FileHugePages):' /proc/meminfo || true
   else
-    echo "/proc/meminfo is 不可用.（/proc/meminfo is not available.）"
+    echo "/proc/meminfo 不可用。"
   fi
 
   echo
@@ -19,8 +19,8 @@ if [ "$(uname -s)" = "Linux" ]; then
       done
     done
   else
-    echo "HugePages sysfs directory 未找到.（HugePages sysfs directory not found.）"
+    echo "未找到 HugePages sysfs 目录."
   fi
 else
-  echo "信息：Huge Pages inspection in this command relies on Linux /proc and /sys."
+  echo "信息：此命令中的 Huge Pages 检查依赖 Linux /proc 和 /sys。"
 fi

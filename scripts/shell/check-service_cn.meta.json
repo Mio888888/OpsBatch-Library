@@ -2,10 +2,10 @@
   "name": "检查服务状态",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/check-service_cn.sh",
   "language": "shell",
-  "category": "service",
+  "category": "服务",
   "tags": [
-    "service",
-    "inspection"
+    "服务",
+    "巡检"
   ],
   "risk": "low",
   "description": "检查指定服务是否处于运行状态。默认检查 ssh，可通过参数或 SERVICE 环境变量覆盖。",

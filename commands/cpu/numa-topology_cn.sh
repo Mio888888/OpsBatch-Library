@@ -12,11 +12,11 @@ if [ "$(uname -s)" = "Linux" ]; then
       cat "$node/cpulist" 2>/dev/null || true
     done
   else
-    echo "信息：No NUMA topology source found."
+    echo "信息：未找到 NUMA 拓扑来源。"
   fi
 elif [ "$(uname -s)" = "Darwin" ]; then
-  echo "信息：macOS does not expose Linux-style NUMA topology for common deployments."
+  echo "信息：常见部署中的 macOS 不暴露 Linux 风格 NUMA 拓扑。"
   sysctl hw.physicalcpu hw.logicalcpu 2>/dev/null || true
 else
-  echo "未找到受支持的 NUMA command found.（No supported NUMA command found.）"
+  echo "未找到受支持的 NUMA命令。"
 fi

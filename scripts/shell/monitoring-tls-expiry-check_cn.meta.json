@@ -2,15 +2,15 @@
   "name": "监控 TLS 证书有效期",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-tls-expiry-check_cn.sh",
   "language": "shell",
-  "category": "monitoring",
+  "category": "监控",
   "tags": [
-    "tls",
-    "certificate",
-    "security",
-    "network",
-    "monitoring",
-    "threshold",
-    "read-only"
+    "TLS",
+    "证书",
+    "安全",
+    "网络",
+    "监控",
+    "阈值",
+    "只读"
   ],
   "risk": "medium",
   "description": "连接单个 TLS 主机端口，读取服务端证书有效期并按剩余天数阈值返回状态。默认目标为 example.com:443，短超时，只输出证书主题/签发者/到期时间，不读取私钥。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。外部 TLS 探测和证书元数据可能敏感，因此标记为 medium。",

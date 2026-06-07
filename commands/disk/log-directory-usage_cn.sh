@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "信息：== common log directory usage =="
+echo "信息：== 常见日志目录使用率 =="
 for dir in /var/log /Library/Logs "$HOME/Library/Logs"; do
   if [ -d "$dir" ]; then
     echo "信息：-- $dir --"

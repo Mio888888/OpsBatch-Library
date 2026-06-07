@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "信息：== Load average =="
+echo "信息：== 平均负载 =="
 uptime
 
 cpu_count=""
@@ -14,8 +14,8 @@ elif command -v getconf >/dev/null 2>&1; then
 fi
 
 if [ -n "$cpu_count" ]; then
-  echo "信息：Logical CPU count: $cpu_count"
-  echo "Hint: load average 持续高于逻辑 CPU 数通常表示 CPU 或不可中断等待存在压力。"
+  echo "信息：逻辑 CPU 数: $cpu_count"
+  echo "提示： load average 持续高于逻辑 CPU 数通常表示 CPU 或不可中断等待存在压力。"
 fi
 
 if command -v vmstat >/dev/null 2>&1; then
@@ -24,8 +24,8 @@ if command -v vmstat >/dev/null 2>&1; then
   vmstat 1 5
 elif [ "$(uname -s)" = "Darwin" ] && command -v top >/dev/null 2>&1; then
   echo
-  echo "信息：== top snapshot =="
+  echo "信息：== top 快照 =="
   top -l 1 | head -20
 else
-  echo "vmstat/top 不可用; only load average was shown.（vmstat/top not available; only load average was shown.）"
+  echo "vmstat/top 不可用；仅显示平均负载。"
 fi

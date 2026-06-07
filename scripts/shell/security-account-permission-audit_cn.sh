@@ -6,27 +6,27 @@ LIMIT="${LIMIT:-30}"
 OS_NAME="$(uname -s)"
 
 if [[ ! -d "${SCAN_ROOT}" ]]; then
-  echo "信息：SCAN_ROOT must be an existing directory: ${SCAN_ROOT}" >&2
+  echo "信息：SCAN_ROOT 必须是已存在目录: ${SCAN_ROOT}" >&2
   exit 1
 fi
 
 if [[ ! "${LIMIT}" =~ ^[1-9][0-9]*$ ]]; then
-  echo "信息：LIMIT must be a positive integer." >&2
+  echo "信息：LIMIT 必须是正整数。" >&2
   exit 2
 fi
 
 echo "信息：Security account and permission audit"
-echo "信息：Generated at: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-echo "信息：Host: $(hostname 2>/dev/null || echo unknown)"
+echo "信息：生成时间: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+echo "信息：主机: $(hostname 2>/dev/null || echo 未知)"
 echo "信息：Scan root: ${SCAN_ROOT}"
-echo "信息：This script is read-only. It prints account names, group names, and file metadata but not file contents."
+echo "信息：本脚本为只读。它会打印账号名、组名和文件元数据，但不会打印文件内容。"
 echo
 
-echo "信息：== Privileged accounts =="
+echo "信息：== 特权账号 =="
 if [[ -r /etc/passwd ]]; then
   awk -F: '$3 == 0 { print "uid0_user=" $1 " home=" $6 " shell=" $7 }' /etc/passwd || true
 else
-  echo "信息：/etc/passwd not readable."
+  echo "信息：/etc/passwd 不可读."
 fi
 echo
 
@@ -44,22 +44,22 @@ echo
 
 echo "信息：== Login shells summary =="
 if [[ -r /etc/passwd ]]; then
-  awk -F: '$7 !~ /(nologin|false)$/ { print $1 ":" $6 ":" $7 }' /etc/passwd | awk -v limit="${LIMIT}" 'NR <= limit { print } END { printf "interactive_like_accounts_seen=%d\n", NR; if (NR > limit) print "...output truncated..." }' || true
+  awk -F: '$7 !~ /(nologin|false)$/ { print $1 ":" $6 ":" $7 }' /etc/passwd | awk -v limit="${LIMIT}" 'NR <= limit { print } END { printf "interactive_like_accounts_seen=%d\n", NR; if (NR > limit) print "...输出已截断..." }' || true
 else
-  echo "信息：/etc/passwd not readable."
+  echo "信息：/etc/passwd 不可读."
 fi
 echo
 
-echo "信息：== World-writable paths under scan root =="
-find "${SCAN_ROOT}" -xdev -type d -perm -0002 -print 2>/dev/null | awk -v limit="${LIMIT}" 'NR <= limit { print } END { printf "world_writable_dirs_seen=%d\n", NR; if (NR > limit) print "...output truncated..." }' || true
+echo "信息：== 扫描根目录下全局可写路径 =="
+find "${SCAN_ROOT}" -xdev -type d -perm -0002 -print 2>/dev/null | awk -v limit="${LIMIT}" 'NR <= limit { print } END { printf "world_writable_dirs_seen=%d\n", NR; if (NR > limit) print "...输出已截断..." }' || true
 echo
 
-echo "信息：== Setuid and setgid files under scan root =="
-find "${SCAN_ROOT}" -xdev -type f \( -perm -4000 -o -perm -2000 \) -print 2>/dev/null | awk -v limit="${LIMIT}" 'NR <= limit { print } END { printf "privileged_files_seen=%d\n", NR; if (NR > limit) print "...output truncated..." }' || true
+echo "信息：== 扫描根目录下的 setuid/setgid 文件 =="
+find "${SCAN_ROOT}" -xdev -type f \( -perm -4000 -o -perm -2000 \) -print 2>/dev/null | awk -v limit="${LIMIT}" 'NR <= limit { print } END { printf "privileged_files_seen=%d\n", NR; if (NR > limit) print "...输出已截断..." }' || true
 echo
 
-echo "信息：== SSH authorized key file metadata =="
-find "${SCAN_ROOT}" -xdev -path '*/.ssh/authorized_keys' -type f -print 2>/dev/null | awk -v limit="${LIMIT}" 'NR <= limit { print } END { printf "authorized_keys_files_seen=%d\n", NR; if (NR > limit) print "...output truncated..." }' | while IFS= read -r key_file; do
+echo "信息：== SSH authorized_keys 文件元数据 =="
+find "${SCAN_ROOT}" -xdev -path '*/.ssh/authorized_keys' -type f -print 2>/dev/null | awk -v limit="${LIMIT}" 'NR <= limit { print } END { printf "authorized_keys_files_seen=%d\n", NR; if (NR > limit) print "...输出已截断..." }' | while IFS= read -r key_file; do
   case "${key_file}" in
     authorized_keys_files_seen=*|...output*)
       echo "信息：${key_file}"

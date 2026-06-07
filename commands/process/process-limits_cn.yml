@@ -1,10 +1,10 @@
 name: 查看进程资源限制
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-limits_cn.sh
-category: process
+category: 进程
 tags:
-- troubleshooting
-- process
-- limits
+- 故障排查
+- 进程
+- 限制
 risk: low
 description: 查看指定进程的资源限制。Linux 读取 /proc/PID/limits，macOS 展示当前 shell limits 并提示平台限制。
 platform:

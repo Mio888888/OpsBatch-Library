@@ -1,10 +1,10 @@
 name: 查看 CPU 频率与调频策略
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-frequency-governor_cn.sh
-category: cpu
+category: CPU
 tags:
-- inspection
-- cpu
-- frequency
+- 巡检
+- CPU
+- 频率
 risk: low
 description: 查看 CPU 当前频率、频率范围和 Linux 调频 governor。仅做只读检查，不修改调频策略。
 platform:

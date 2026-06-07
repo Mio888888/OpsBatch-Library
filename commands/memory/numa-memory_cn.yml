@@ -1,10 +1,10 @@
 name: 查看 NUMA 内存分布
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/numa-memory_cn.sh
-category: memory
+category: 内存
 tags:
-- troubleshooting
-- memory
-- numa
+- 故障排查
+- 内存
+- NUMA
 risk: low
 description: 查看 Linux NUMA 节点内存容量、空闲量和节点级缓存/匿名页线索。优先使用 numactl，缺失时读取 sysfs。
 platform:

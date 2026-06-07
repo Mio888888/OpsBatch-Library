@@ -2,13 +2,13 @@
   "name": "监控文件系统挂载状态",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-filesystem-mount-check_cn.sh",
   "language": "shell",
-  "category": "monitoring",
+  "category": "监控",
   "tags": [
-    "filesystem",
-    "mount",
-    "monitoring",
-    "health-check",
-    "read-only"
+    "文件系统",
+    "挂载",
+    "监控",
+    "健康检查",
+    "只读"
   ],
   "risk": "low",
   "description": "检查指定路径对应的挂载点、文件系统类型和挂载选项，可选校验期望文件系统类型以及是否为只读挂载。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。默认只读，不执行 remount 或修复。",

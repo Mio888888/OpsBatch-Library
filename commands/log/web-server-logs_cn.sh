@@ -3,7 +3,7 @@ set -euo pipefail
 
 LINES="${LINES:-120}"
 
-echo "信息：== common web server logs =="
+echo "信息：== 常见 Web 服务器日志 =="
 found="false"
 for file in \
   /var/log/nginx/error.log \
@@ -16,10 +16,10 @@ for file in \
     found="true"
     echo
     echo "信息：-- $file --"
-    tail -n "$LINES" "$file" 2>/dev/null || echo "无法读取 $file; check permissions.（Cannot read $file; check permissions.）"
+    tail -n "$LINES" "$file" 2>/dev/null || echo "无法读取 $file; 请检查权限。"
   fi
 done
 
 if [ "$found" != "true" ]; then
-  echo "No common Nginx/Apache log file found. 请设置 LOG_FILE and use the application-log-tail command for custom paths.（No common Nginx/Apache log file found. Set LOG_FILE and use the application-log-tail command for custom paths.）"
+  echo "未找到常见的 Nginx/Apache 日志文件。自定义路径请设置 LOG_FILE 并使用 application-log-tail 命令。"
 fi

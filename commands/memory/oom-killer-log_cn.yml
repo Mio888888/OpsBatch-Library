@@ -1,11 +1,11 @@
 name: 排查 OOM Killer 日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/oom-killer-log_cn.sh
-category: memory
+category: 内存
 tags:
-- troubleshooting
-- memory
-- oom
-- log
+- 故障排查
+- 内存
+- OOM
+- 日志
 risk: low
 description: 从 Linux kernel journal 和 dmesg 中搜索 OOM Killer 相关日志。只读查询，可能受系统日志权限限制。
 platform:

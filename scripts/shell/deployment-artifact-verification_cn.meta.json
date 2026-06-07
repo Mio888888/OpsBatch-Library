@@ -2,14 +2,14 @@
   "name": "部署制品校验摘要",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-artifact-verification_cn.sh",
   "language": "shell",
-  "category": "deployment",
+  "category": "部署",
   "tags": [
-    "deployment",
-    "artifact",
-    "checksum",
-    "verification",
-    "archive",
-    "read-only"
+    "部署",
+    "制品",
+    "校验和",
+    "验证",
+    "归档",
+    "只读"
   ],
   "risk": "low",
   "description": "只读校验部署制品元数据、SHA-256 摘要、可选 checksum 文件和归档清单预览；不会解压、安装或部署制品。",

@@ -1,10 +1,10 @@
 name: 查看 CPU 使用率快照
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-usage-snapshot_cn.sh
-category: cpu
+category: CPU
 tags:
-- inspection
-- cpu
-- usage
+- 巡检
+- CPU
+- 使用率
 risk: low
 description: 查看当前 CPU 使用率快照，优先展示 user/system/iowait/idle/steal 等时间分布。
 platform:

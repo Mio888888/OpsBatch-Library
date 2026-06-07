@@ -1,11 +1,11 @@
 name: 查找指定用户拥有的文件
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/user/user-owned-files_cn.sh
-category: user
+category: 用户
 tags:
-- troubleshooting
-- user
-- files
-- ownership
+- 故障排查
+- 用户
+- 文件
+- 所有权
 risk: medium
 description: 在显式指定目录下查找指定用户拥有的文件，用于排查权限和遗留文件归属。只读但可能遍历较多文件，必须设置 TARGET_USER 和 TARGET_DIR。
 platform:

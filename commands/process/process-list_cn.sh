@@ -2,7 +2,7 @@
 set -euo pipefail
 
 limit="${PROCESS_LIMIT:-40}"
-echo "正在显示 up to $limit processes. Override with PROCESS_LIMIT=<n> if needed.（Showing up to $limit processes. Override with PROCESS_LIMIT=<n> if needed.）"
+echo "正在显示最多 $limit 个进程。需要时可用 PROCESS_LIMIT=<n> 覆盖。"
 
 if [ "$(uname -s)" = "Darwin" ]; then
   ps -axo pid,ppid,user,stat,%cpu,%mem,etime,comm | head -n "$((limit + 1))"

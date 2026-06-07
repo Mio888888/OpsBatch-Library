@@ -68,7 +68,7 @@ case "$(uname -s)" in
       speculative_pages="${speculative_pages:-0}"
       if [[ "${total_bytes}" -gt 0 ]]; then
         mem_used_pct="$(awk -v total="${total_bytes}" -v ps="${page_size}" -v free="${free_pages}" -v inactive="${inactive_pages}" -v speculative="${speculative_pages}" 'BEGIN { available=(free+inactive+speculative)*ps; used=total-available; if (used < 0) used=0; printf "%.1f", (used/total)*100 }')"
-        mem_detail="MemTotal=${total_bytes}B approximate_available_from_vm_stat"
+        mem_detail="MemTotal=${total_bytes}B vm_stat估算可用"
       fi
       swap_line="$(sysctl -n vm.swapusage 2>/dev/null || true)"
       if [[ -n "${swap_line}" ]]; then
@@ -89,7 +89,7 @@ case "$(uname -s)" in
 esac
 
 if [[ -z "${mem_used_pct}" ]]; then
-  unknown "could not determine memory usage on this platform"
+  unknown "无法确定此平台的内存使用率"
 fi
 
 status="OK"
@@ -122,5 +122,5 @@ fi
 
 echo "信息：${status} - memory_used=${mem_used_pct}% swap_used=${swap_used_pct}% (${reason_text})"
 echo "信息：Memory detail: ${mem_detail}"
-echo "Swap detail: ${swap_detail:-不可用 or not configured}（Swap detail: ${swap_detail:-not available or not configured}）"
+echo "信息：交换分区详情: ${swap_detail:-不可用或未配置}"
 exit "${exit_code}"

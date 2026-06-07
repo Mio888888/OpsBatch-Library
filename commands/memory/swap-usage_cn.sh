@@ -6,15 +6,15 @@ if [ "$(uname -s)" = "Linux" ]; then
   if command -v free >/dev/null 2>&1; then
     free -h
   else
-    echo "信息：free not installed."
+    echo "信息：未安装 free。"
   fi
 
   echo
   echo "信息：== swapon --show =="
   if command -v swapon >/dev/null 2>&1; then
-    swapon --show 2>/dev/null || echo "swapon output is 不可用.（swapon output is not available.）"
+    swapon --show 2>/dev/null || echo "swapon 输出不可用。"
   else
-    echo "信息：swapon command not installed."
+    echo "信息：未安装 swapon 命令。"
   fi
 
   if [ -r /proc/meminfo ]; then
@@ -24,7 +24,7 @@ if [ "$(uname -s)" = "Linux" ]; then
   fi
 elif [ "$(uname -s)" = "Darwin" ]; then
   echo "信息：== sysctl vm.swapusage =="
-  sysctl vm.swapusage 2>/dev/null || echo "vm.swapusage is 不可用.（vm.swapusage is not available.）"
+  sysctl vm.swapusage 2>/dev/null || echo "vm.swapusage 不可用。"
 
   if command -v vm_stat >/dev/null 2>&1; then
     echo
@@ -32,5 +32,5 @@ elif [ "$(uname -s)" = "Darwin" ]; then
     vm_stat | grep -E 'Pageins|Pageouts|Swapins|Swapouts' || true
   fi
 else
-  echo "未找到受支持的 swap usage command found.（No supported swap usage command found.）"
+  echo "未找到受支持的 交换分区使用率命令。"
 fi

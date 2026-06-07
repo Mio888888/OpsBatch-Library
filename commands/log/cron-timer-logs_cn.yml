@@ -1,11 +1,11 @@
 name: 查看定时任务日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/cron-timer-logs_cn.sh
-category: log
+category: 日志
 tags:
-- log
-- cron
-- timer
-- troubleshooting
+- 日志
+- Cron
+- 定时器
+- 故障排查
 risk: medium
 description: 查看 cron、crond、systemd timer、macOS launchd 相关日志，适用于排查定时任务未执行或执行失败。只读查询，可能输出任务命令和路径。
 platform:

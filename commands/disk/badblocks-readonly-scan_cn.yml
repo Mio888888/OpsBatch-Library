@@ -1,11 +1,11 @@
 name: 检查磁盘坏块 dry-run
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/badblocks-readonly-scan_cn.sh
-category: disk
+category: 磁盘
 tags:
-- troubleshooting
-- disk
-- badblocks
-- health
+- 故障排查
+- 磁盘
+- 坏块
+- 健康
 risk: high
 description: 对指定设备执行只读坏块扫描。虽然不写入磁盘，但会长时间顺序读取整个设备，可能影响生产 I/O 性能；必须显式设置 TARGET_DEVICE，并建议在维护窗口执行。
 platform:

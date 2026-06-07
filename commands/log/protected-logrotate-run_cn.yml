@@ -1,11 +1,11 @@
 name: 受保护执行 logrotate
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/protected-logrotate-run_cn.sh
-category: log
+category: 日志
 tags:
-- remediation
-- log
+- 修复
+- 日志
 - logrotate
-- rotation
+- 轮转
 risk: high
 description: 受保护执行 logrotate 示例。默认只运行 logrotate -d dry-run；只有同时显式设置 LOGROTATE_CONFIG
   和 CONFIRM_ROTATE=RUN_LOGROTATE 后才按指定配置执行真实轮转。误用可能移动、压缩、删除日志或触发 postrotate 脚本，执行前必须审查配置、维护窗口和业务影响。

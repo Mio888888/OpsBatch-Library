@@ -14,7 +14,7 @@ if [ "$(uname -s)" = "Linux" ]; then
   elif command -v netstat >/dev/null 2>&1; then
     netstat -rn
   else
-    echo "信息：No route inspection command found."
+    echo "信息：未找到路由检查命令。"
   fi
 elif [ "$(uname -s)" = "Darwin" ]; then
   echo "信息：== default route =="
@@ -24,5 +24,5 @@ elif [ "$(uname -s)" = "Darwin" ]; then
   echo "信息：== route table =="
   netstat -rn
 else
-  echo "未找到受支持的 route inspection command found.（No supported route inspection command found.）"
+  echo "未找到受支持的 路由检查命令。"
 fi

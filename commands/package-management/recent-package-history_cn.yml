@@ -1,11 +1,11 @@
 name: 查看最近包管理操作历史
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/recent-package-history_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- inspection
-- package-management
-- history
-- audit
+- 巡检
+- 软件包管理
+- 历史
+- 审计
 risk: medium
 description: 查看最近安装、升级、卸载等包管理操作历史，可能暴露软件资产和维护时间线；只读不回滚事务。
 platform:

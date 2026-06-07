@@ -2,10 +2,10 @@
   "name": "查看日志尾部",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/tail-log_cn.sh",
   "language": "shell",
-  "category": "log",
+  "category": "日志",
   "tags": [
-    "log",
-    "troubleshooting"
+    "日志",
+    "故障排查"
   ],
   "risk": "low",
   "description": "查看指定日志文件最后若干行。默认读取 /var/log/system.log 的最后 100 行。",

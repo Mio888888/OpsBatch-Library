@@ -1,11 +1,11 @@
 name: 查看内存使用总览
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-usage-summary_cn.sh
-category: memory
+category: 内存
 tags:
-- inspection
-- memory
-- usage
-- summary
+- 巡检
+- 内存
+- 使用率
+- 摘要
 risk: low
 description: 查看系统内存使用总览。Linux 优先展示 free 与 /proc/meminfo 关键字段，macOS 使用 vm_stat 和 sysctl，只读不修改系统状态。
 platform:

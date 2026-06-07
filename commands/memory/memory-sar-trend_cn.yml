@@ -1,11 +1,11 @@
 name: 查看内存使用趋势
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-sar-trend_cn.sh
-category: memory
+category: 内存
 tags:
-- inspection
-- memory
+- 巡检
+- 内存
 - sar
-- trend
+- 趋势
 risk: low
 description: 使用 sysstat sar 查看近期内存和 Swap 使用趋势；缺少 sar 时提示安装 sysstat 并展示当前快照。
 platform:

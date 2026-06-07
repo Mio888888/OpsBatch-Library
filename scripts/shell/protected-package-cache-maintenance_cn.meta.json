@@ -2,13 +2,13 @@
   "name": "受保护包缓存维护",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-package-cache-maintenance_cn.sh",
   "language": "shell",
-  "category": "maintenance",
+  "category": "维护",
   "tags": [
-    "maintenance",
-    "package-management",
-    "package-cache",
-    "cleanup",
-    "protected"
+    "维护",
+    "软件包管理",
+    "软件包缓存",
+    "清理",
+    "受保护"
   ],
   "risk": "high",
   "description": "显示指定包管理器缓存占用或清理预览，默认不清理。真实清理可能删除缓存包并影响离线回滚/重装便利性；必须显式选择 CACHE_TARGET 并设置 CONFIRM_CLEAN=CLEAN_PACKAGE_CACHE。",

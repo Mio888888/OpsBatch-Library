@@ -1,11 +1,11 @@
 name: 查看日志目录磁盘占用
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/log-directory-usage_cn.sh
-category: disk
+category: 磁盘
 tags:
-- troubleshooting
-- disk
-- log
-- capacity
+- 故障排查
+- 磁盘
+- 日志
+- 容量
 risk: medium
 description: 查看常见日志目录及其一级子目录占用，适用于定位日志增长导致的磁盘空间不足。命令只读不删除日志，但扫描目录可能产生额外 I/O。
 platform:

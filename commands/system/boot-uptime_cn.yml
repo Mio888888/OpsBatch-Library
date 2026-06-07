@@ -1,11 +1,11 @@
 name: 查看启动时间与运行时长
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/boot-uptime_cn.sh
-category: system
+category: 系统
 tags:
-- inspection
-- system
-- uptime
-- boot
+- 巡检
+- 系统
+- 运行时长
+- 启动
 risk: low
 description: 查看系统运行时长和启动时间。Linux 尝试 who -b，macOS 尝试 sysctl kern.boottime。
 platform:

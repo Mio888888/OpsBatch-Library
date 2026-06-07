@@ -3,7 +3,7 @@ set -euo pipefail
 
 echo "信息：== process counts =="
 total=$(ps -e -o pid= 2>/dev/null | wc -l | tr -d ' ')
-echo "信息：total_processes=${total:-unknown}"
+echo "信息：total_processes=${total:-未知}"
 
 echo
 echo "信息：== process states =="

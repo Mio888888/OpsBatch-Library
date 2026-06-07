@@ -1,11 +1,11 @@
 name: 查看进程崩溃日志线索
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-crash-log-hints_cn.sh
-category: process
+category: 进程
 tags:
-- troubleshooting
-- process
-- crash
-- logs
+- 故障排查
+- 进程
+- 崩溃
+- 日志
 risk: medium
 description: 查看进程崩溃、core dump、OOM、hung task 等系统日志线索。命令只读，但日志输出可能较多且可能包含进程名、路径和业务上下文。
 platform:

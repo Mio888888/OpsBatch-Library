@@ -21,22 +21,22 @@ if [[ "${MOUNT_PATH}" == -* ]]; then
 fi
 
 if ! command -v df >/dev/null 2>&1; then
-  unknown "df command is not available"
+  unknown "df 命令不可用"
 fi
 
 mount_point="$(df -P "${MOUNT_PATH}" 2>/dev/null | awk 'NR==2 {print $6}')"
 filesystem="$(df -P "${MOUNT_PATH}" 2>/dev/null | awk 'NR==2 {print $1}')"
 if [[ -z "${mount_point}" ]]; then
-  unknown "could not determine mount point for ${MOUNT_PATH}"
+  unknown "无法确定 ${MOUNT_PATH} 的挂载点"
 fi
 
-fs_type="unknown"
-mount_options="unknown"
+fs_type="未知"
+mount_options="未知"
 case "$(uname -s)" in
   Linux)
     if command -v findmnt >/dev/null 2>&1; then
-      fs_type="$(findmnt -n -T "${MOUNT_PATH}" -o FSTYPE 2>/dev/null || echo unknown)"
-      mount_options="$(findmnt -n -T "${MOUNT_PATH}" -o OPTIONS 2>/dev/null || echo unknown)"
+      fs_type="$(findmnt -n -T "${MOUNT_PATH}" -o FSTYPE 2>/dev/null || echo 未知)"
+      mount_options="$(findmnt -n -T "${MOUNT_PATH}" -o OPTIONS 2>/dev/null || echo 未知)"
     else
       mount_record="$(awk -v mp="${mount_point}" '$2 == mp {print}' /proc/mounts 2>/dev/null | head -n 1 || true)"
       if [[ -n "${mount_record}" ]]; then
@@ -63,7 +63,7 @@ reasons=()
 if [[ -n "${EXPECTED_TYPE}" && "${fs_type}" != "${EXPECTED_TYPE}" ]]; then
   status="WARNING"
   exit_code=1
-  reasons+=("fstype=${fs_type} expected=${EXPECTED_TYPE}")
+  reasons+=("fstype=${fs_type} 预期=${EXPECTED_TYPE}")
 fi
 
 if [[ "${FAIL_IF_READONLY}" == "true" ]] && [[ ",${mount_options}," == *,ro,* ]]; then

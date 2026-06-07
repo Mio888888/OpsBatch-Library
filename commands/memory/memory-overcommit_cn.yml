@@ -1,10 +1,10 @@
 name: 查看内存 Overcommit 设置
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-overcommit_cn.sh
-category: memory
+category: 内存
 tags:
-- troubleshooting
-- memory
-- overcommit
+- 故障排查
+- 内存
+- 内存超量分配
 risk: low
 description: 查看 Linux overcommit 策略、比例和承诺内存字段，用于判断虚拟内存承诺是否接近上限。只读不修改 sysctl。
 platform:

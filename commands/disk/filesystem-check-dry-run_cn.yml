@@ -1,10 +1,10 @@
 name: 文件系统检查 dry-run
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/filesystem-check-dry-run_cn.sh
-category: disk
+category: 磁盘
 tags:
-- troubleshooting
-- disk
-- filesystem
+- 故障排查
+- 磁盘
+- 文件系统
 - fsck
 risk: medium
 description: 对指定设备或卷执行文件系统检查预览/只读验证。需先设置 TARGET_DEVICE；Linux 使用 fsck -N/-n，macOS 使用

@@ -14,10 +14,10 @@ if [ -r /etc/passwd ]; then
   awk -F: '$3 < 1000 && $7 !~ /(false|nologin|sync|shutdown|halt)$/ {print}' /etc/passwd | sort -t: -k3,3n
 
   echo
-  echo "信息：== users with missing primary group =="
+  echo "信息：== 主组缺失的用户 =="
   while IFS=: read -r user _ uid gid _ _ _; do
     if ! awk -F: -v gid="$gid" '$3 == gid {found=1} END {exit found ? 0 : 1}' /etc/group 2>/dev/null; then
-      echo "信息：$user uid=$uid gid=$gid has no matching primary group"
+      echo "信息：$user uid=$uid gid=$gid 没有匹配的主组"
     fi
   done < /etc/passwd
 elif [ "$(uname -s)" = "Darwin" ] && command -v dscl >/dev/null 2>&1; then
@@ -27,5 +27,5 @@ elif [ "$(uname -s)" = "Darwin" ] && command -v dscl >/dev/null 2>&1; then
   echo "信息：== duplicate UIDs =="
   dscl . -list /Users UniqueID 2>/dev/null | awk '{count[$2]++; users[$2]=users[$2] " " $1} END {for (uid in count) if (count[uid] > 1) print "uid=" uid " users=" users[uid]}' | sort -n
 else
-  echo "未找到受支持的 user database found.（No supported user database found.）"
+  echo "未找到受支持的 用户数据库。"
 fi

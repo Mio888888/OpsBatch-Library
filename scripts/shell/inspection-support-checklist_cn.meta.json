@@ -2,14 +2,14 @@
   "name": "支持信息巡检清单",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/inspection-support-checklist_cn.sh",
   "language": "shell",
-  "category": "inspection",
+  "category": "巡检",
   "tags": [
-    "inspection",
-    "support-bundle",
-    "checklist",
-    "preflight",
-    "tools",
-    "read-only"
+    "巡检",
+    "支持包",
+    "检查清单",
+    "预检",
+    "工具",
+    "只读"
   ],
   "risk": "medium",
   "description": "只读生成支持信息收集前的清单、工具可用性和有界证据主题；不会创建归档，但输出可能包含主机、用户、路径和日志位置等信息。",

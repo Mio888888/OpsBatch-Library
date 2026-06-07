@@ -1,11 +1,11 @@
 name: 识别本机包管理器
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-manager-detection_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- inspection
-- package-management
-- detection
-- tools
+- 巡检
+- 软件包管理
+- 检测
+- 工具
 risk: low
 description: 识别本机可用的系统包管理器、语言生态包管理器和基础操作系统信息，只读不修改系统状态。
 platform:

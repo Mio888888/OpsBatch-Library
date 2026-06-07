@@ -1,11 +1,11 @@
 name: 查找打开但已删除的文件
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/open-deleted-files_cn.sh
-category: disk
+category: 磁盘
 tags:
-- troubleshooting
-- disk
-- deleted-files
-- process
+- 故障排查
+- 磁盘
+- 已删除文件
+- 进程
 risk: low
 description: 查找已删除但仍被进程打开的文件，适用于排查 df 显示空间未释放的问题。只读不修改系统状态；完整进程信息可能需要 sudo。
 platform:

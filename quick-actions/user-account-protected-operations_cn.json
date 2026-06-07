@@ -2,13 +2,13 @@
   "name": "账号安全受保护运维",
   "description": "串联创建、锁定、解锁、强制改密、删除、组成员变更、Shell 修改和认证锁定重置等账号安全运维模板。所有步骤默认只展示计划或拒绝执行，必须在单个命令中显式设置目标变量和确认变量后才会执行真实变更。",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/user-account-protected-operations_cn.json",
-  "category": "troubleshooting",
+  "category": "故障排查",
   "risk": "high",
   "tags": [
-    "user",
-    "account",
-    "remediation",
-    "protected"
+    "用户",
+    "账号",
+    "修复",
+    "受保护"
   ],
   "platform": [
     "linux",

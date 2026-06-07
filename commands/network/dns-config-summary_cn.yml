@@ -1,11 +1,11 @@
 name: 查看 DNS 配置
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/dns-config-summary_cn.sh
-category: network
+category: 网络
 tags:
-- inspection
-- network
-- dns
-- config
+- 巡检
+- 网络
+- DNS
+- 配置
 risk: low
 description: 查看本机 DNS 解析器配置。Linux 读取 resolv.conf 并在可用时补充 systemd-resolved 状态，macOS
   使用 scutil --dns。只读不修改配置。

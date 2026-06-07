@@ -2,13 +2,13 @@
   "name": "监控 DNS 解析",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-dns-resolution-check_cn.sh",
   "language": "shell",
-  "category": "monitoring",
+  "category": "监控",
   "tags": [
-    "dns",
-    "network",
-    "monitoring",
-    "threshold",
-    "read-only"
+    "DNS",
+    "网络",
+    "监控",
+    "阈值",
+    "只读"
   ],
   "risk": "medium",
   "description": "对单个域名执行 A 记录解析，支持指定 DNS 服务器和解析耗时阈值。默认目标为 example.com，短超时，不做批量枚举。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。外部 DNS 查询可能产生网络记录，因此标记为 medium。",

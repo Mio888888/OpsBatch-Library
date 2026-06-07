@@ -1,10 +1,10 @@
 name: 查看系统摘要
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/system-summary_cn.sh
-category: system
+category: 系统
 tags:
-- inspection
-- system
-- summary
+- 巡检
+- 系统
+- 摘要
 risk: low
 description: 汇总主机身份、内核、运行时长、CPU 数量、内存和磁盘信息，适合快速初筛。
 platform:

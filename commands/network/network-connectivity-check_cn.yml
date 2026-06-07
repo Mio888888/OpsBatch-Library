@@ -1,11 +1,11 @@
 name: 检查目标网络连通性
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-connectivity-check_cn.sh
-category: network
+category: 网络
 tags:
-- troubleshooting
-- network
-- connectivity
-- http
+- 故障排查
+- 网络
+- 连通性
+- HTTP
 risk: medium
 description: 对单个目标执行基础连通性检查，包括 ICMP ping 和可选 HTTP(S) HEAD 请求。默认目标为 example.com，可通过
   TARGET_HOST/TARGET_URL 覆盖；仅做少量请求，不做批量探测。

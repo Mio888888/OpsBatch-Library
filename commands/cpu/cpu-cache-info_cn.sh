@@ -13,5 +13,5 @@ elif [ "$(uname -s)" = "Linux" ] && ls /sys/devices/system/cpu/cpu0/cache/index*
 elif [ "$(uname -s)" = "Darwin" ]; then
   sysctl hw.l1icachesize hw.l1dcachesize hw.l2cachesize hw.l3cachesize 2>/dev/null || true
 else
-  echo "未找到受支持的 CPU cache command found.（No supported CPU cache command found.）"
+  echo "未找到受支持的 CPU 缓存命令。"
 fi

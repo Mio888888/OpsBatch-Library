@@ -1,11 +1,11 @@
 name: 查看挂载点详情
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/mounts-detail_cn.sh
-category: disk
+category: 磁盘
 tags:
-- inspection
-- disk
-- mount
-- filesystem
+- 巡检
+- 磁盘
+- 挂载
+- 文件系统
 risk: low
 description: 查看系统挂载点、来源设备、文件系统类型和挂载参数，适用于排查挂载异常、只读挂载或网络盘状态。只读不修改系统状态。
 platform:

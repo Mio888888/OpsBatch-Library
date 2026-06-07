@@ -1,10 +1,10 @@
 name: 查看语言生态包管理器配置摘要
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/language-registry-summary_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- inspection
-- package-management
-- registry
+- 巡检
+- 软件包管理
+- 注册表
 - pip
 - npm
 risk: medium

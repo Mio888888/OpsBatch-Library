@@ -9,7 +9,7 @@ if [ -r /etc/passwd ]; then
   echo "信息：Interactive-shell users:"
   awk -F: '$7 !~ /(false|nologin|sync|shutdown|halt)$/ {print $1 " " $6 " " $7}' /etc/passwd | sort
 elif [ "$(uname -s)" = "Darwin" ] && command -v dscl >/dev/null 2>&1; then
-  dscl . -list /Users UniqueID 2>/dev/null | sort -k2,2n || echo "信息：Cannot query local users with dscl."
+  dscl . -list /Users UniqueID 2>/dev/null | sort -k2,2n || echo "信息：无法使用 dscl 查询本地用户。"
 else
-  echo "未找到受支持的 local user database found.（No supported local user database found.）"
+  echo "未找到受支持的 本地用户数据库。"
 fi

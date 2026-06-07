@@ -29,7 +29,7 @@ if ! is_positive_int "${WARN_DAYS}" || ! is_positive_int "${CRIT_DAYS}" || ! is_
   unknown "WARN_DAYS, CRIT_DAYS, and TIMEOUT_SECONDS must be positive integers"
 fi
 if [[ "${TIMEOUT_SECONDS}" -gt 30 ]]; then
-  unknown "TIMEOUT_SECONDS must be 30 or less for a bounded TLS probe"
+  unknown "为保证 TLS 探测有界，TIMEOUT_SECONDS 必须不超过 30"
 fi
 if [[ "${WARN_DAYS}" -lt "${CRIT_DAYS}" ]]; then
   unknown "WARN_DAYS must be greater than or equal to CRIT_DAYS"
@@ -88,6 +88,6 @@ fi
 
 echo "信息：${status} - tls ${TARGET_HOST}:${TARGET_PORT} expires_in=${days_left}d warn=${WARN_DAYS}d crit=${CRIT_DAYS}d"
 echo "信息：Not after: ${not_after}"
-echo "信息：Subject: ${subject:-unknown}"
-echo "信息：Issuer: ${issuer:-unknown}"
+echo "信息：Subject: ${subject:-未知}"
+echo "信息：Issuer: ${issuer:-未知}"
 exit "${exit_code}"

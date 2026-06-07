@@ -1,11 +1,11 @@
 name: 查看 logrotate 状态和配置
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/logrotate-status_cn.sh
-category: log
+category: 日志
 tags:
-- log
+- 日志
 - logrotate
-- rotation
-- inspection
+- 轮转
+- 巡检
 risk: low
 description: 只读查看 logrotate 可用性、主配置、配置目录和状态文件摘要。不会执行轮转，适用于排查日志轮转配置是否存在。
 platform:

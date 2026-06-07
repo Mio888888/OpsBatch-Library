@@ -1,11 +1,11 @@
 name: 查看软件源与仓库摘要
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/repository-source-summary_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- inspection
-- package-management
-- repository
-- source
+- 巡检
+- 软件包管理
+- 仓库
+- 源
 risk: medium
 description: 汇总系统包管理器软件源、仓库和 Homebrew tap 配置，可能暴露内部镜像域名；只读不修改 repo 配置。
 platform:

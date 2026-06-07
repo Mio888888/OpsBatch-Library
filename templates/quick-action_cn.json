@@ -2,10 +2,10 @@
   "name": "快捷指令名称",
   "description": "说明这个快捷指令串联哪些检查或操作。",
   "url": "https://raw.githubusercontent.com/OWNER/REPO/BRANCH/quick-actions/quick-action_cn.json",
-  "category": "inspection",
+  "category": "巡检",
   "risk": "low",
   "tags": [
-    "inspection"
+    "巡检"
   ],
   "platform": [
     "linux"

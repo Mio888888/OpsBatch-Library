@@ -1,11 +1,11 @@
 name: 受保护创建本地用户
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-create_cn.sh
-category: security
+category: 安全
 tags:
-- remediation
-- user
-- account
-- create
+- 修复
+- 用户
+- 账号
+- 创建
 risk: high
 description: 受保护的本地用户创建模板。默认只展示计划；只有显式设置 NEW_USER 和 CONFIRM_CREATE_USER=CREATE_LOCAL_USER
   后才创建账号。创建账号会改变认证边界，执行前必须确认命名、家目录、shell、初始凭证和审批流程。

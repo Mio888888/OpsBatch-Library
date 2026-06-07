@@ -1,11 +1,11 @@
 name: 查看网络暴露面摘要
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/network-exposure-summary_cn.sh
-category: security
+category: 安全
 tags:
-- inspection
-- security
-- network
-- exposure
+- 巡检
+- 安全
+- 网络
+- 暴露面
 risk: medium
 description: 汇总监听端口、进程归属、接口和路由上下文，用于识别主机网络暴露面。只读查询，可能输出内部地址、端口和进程信息。
 platform:

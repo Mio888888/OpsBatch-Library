@@ -2,15 +2,15 @@
   "name": "安全基线与加固摘要审计",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-baseline-hardening-audit_cn.sh",
   "language": "shell",
-  "category": "security",
+  "category": "安全",
   "tags": [
-    "security",
-    "audit",
-    "baseline",
-    "hardening",
-    "kernel",
-    "updates",
-    "read-only"
+    "安全",
+    "审计",
+    "基线",
+    "加固",
+    "内核",
+    "更新",
+    "只读"
   ],
   "risk": "medium",
   "description": "只读输出系统版本、权限上下文、更新工具提示、内核加固键、日志审计信号和关键安全配置文件元数据；可能包含主机、安全策略和路径信息。",

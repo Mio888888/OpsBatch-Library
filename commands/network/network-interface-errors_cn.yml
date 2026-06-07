@@ -1,12 +1,12 @@
 name: 查看网卡错误与丢包统计
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-interface-errors_cn.sh
-category: network
+category: 网络
 tags:
-- troubleshooting
-- network
-- interface
-- errors
-- drops
+- 故障排查
+- 网络
+- 接口
+- 错误
+- 丢包
 risk: low
 description: 查看网卡收发包、错误和丢包统计，辅助定位链路质量、驱动或虚拟网卡异常。只读不修改接口状态。
 platform:

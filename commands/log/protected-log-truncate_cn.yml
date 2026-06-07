@@ -1,11 +1,11 @@
 name: 受保护截断单个日志文件
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/protected-log-truncate_cn.sh
-category: log
+category: 日志
 tags:
-- remediation
-- log
-- truncate
-- cleanup
+- 修复
+- 日志
+- 截断
+- 清理
 risk: high
 description: 受保护截断单个日志文件示例。默认只展示目标文件大小和尾部内容；只有显式设置 LOG_FILE 和 CONFIRM_TRUNCATE=TRUNCATE_LOG_FILE
   后才清空该文件内容。误用会丢失日志证据和排障上下文，执行前必须确认备份、保留要求和写入进程行为。

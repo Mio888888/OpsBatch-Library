@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "信息：== listening TCP/UDP sockets =="
+echo "信息：== 正在监听的 TCP/UDP 套接字 =="
 if command -v ss >/dev/null 2>&1; then
   ss -tulpen 2>/dev/null | head -120 || ss -tulpn 2>/dev/null | head -120 || true
 elif command -v lsof >/dev/null 2>&1; then
@@ -10,7 +10,7 @@ elif command -v lsof >/dev/null 2>&1; then
 elif command -v netstat >/dev/null 2>&1; then
   netstat -anv 2>/dev/null | grep -Ei 'listen|udp' | head -120 || true
 else
-  echo "未找到受支持的 socket listing tool found.（No supported socket listing tool found.）"
+  echo "未找到受支持的套接字列举工具。"
 fi
 
 echo

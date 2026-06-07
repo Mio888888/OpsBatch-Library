@@ -1,11 +1,11 @@
 name: 查看 Kubernetes Pod 日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/kubernetes-pod-logs_cn.sh
-category: log
+category: 日志
 tags:
-- log
-- kubernetes
-- pod
-- container
+- 日志
+- Kubernetes
+- Pod
+- 容器
 risk: medium
 description: 查看单个 Kubernetes Pod 或容器的近期日志。必须设置 POD_NAME，可通过 NAMESPACE、CONTAINER_NAME、SINCE、LINES
   控制范围；日志可能包含敏感业务数据。

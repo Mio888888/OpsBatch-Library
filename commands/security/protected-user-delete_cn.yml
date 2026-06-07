@@ -1,11 +1,11 @@
 name: 受保护删除本地用户
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-delete_cn.sh
-category: security
+category: 安全
 tags:
-- remediation
-- user
-- account
-- delete
+- 修复
+- 用户
+- 账号
+- 删除
 risk: high
 description: 受保护的本地用户删除模板。默认只展示目标用户、REMOVE_HOME 计划和当前进程；只有设置 TARGET_USER 和 CONFIRM_DELETE_USER=DELETE_TARGET_USER
   后才删除账号。删除账号可能导致业务中断或数据归属丢失，执行前必须确认备份、文件归属和审批。

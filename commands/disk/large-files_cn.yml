@@ -1,11 +1,11 @@
 name: 查找大文件候选
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/large-files_cn.sh
-category: disk
+category: 磁盘
 tags:
-- troubleshooting
-- disk
-- capacity
-- large-files
+- 故障排查
+- 磁盘
+- 容量
+- 大文件
 risk: medium
 description: 查找指定目录下超过阈值的大文件候选，默认当前目录、阈值 500M、不跨文件系统。只展示候选不删除文件，但扫描大目录可能较耗时。
 platform:

@@ -8,5 +8,5 @@ elif [ "$(uname -s)" = "Darwin" ] && command -v sysctl >/dev/null 2>&1; then
 elif [ -r /proc/cpuinfo ]; then
   grep -m 1 -E '^(flags|Features|model name|Hardware|Processor)' /proc/cpuinfo
 else
-  echo "未找到受支持的 CPU feature command found.（No supported CPU feature command found.）"
+  echo "未找到受支持的 CPU 特性命令。"
 fi

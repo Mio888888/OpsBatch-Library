@@ -2,12 +2,12 @@
   "name": "备份校验摘要",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/backup-verification-summary_cn.sh",
   "language": "shell",
-  "category": "maintenance",
+  "category": "维护",
   "tags": [
-    "maintenance",
-    "backup",
-    "verification",
-    "checksum"
+    "维护",
+    "备份",
+    "验证",
+    "校验和"
   ],
   "risk": "low",
   "description": "只读检查备份文件或目录，支持输出单文件 SHA-256 摘要或校验 manifest。不会修复、裁剪或删除备份；不要在参数或 manifest 中提交凭证。",

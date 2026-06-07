@@ -1,11 +1,11 @@
 name: 查看磁盘温度
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-temperature_cn.sh
-category: disk
+category: 磁盘
 tags:
-- inspection
-- disk
-- temperature
-- smart
+- 巡检
+- 磁盘
+- 温度
+- SMART
 risk: low
 description: 查看磁盘温度 SMART 属性。Linux 可自动遍历块设备或使用 TARGET_DEVICE 指定设备；macOS 通常需要 smartmontools。只读不修改磁盘状态。
 platform:

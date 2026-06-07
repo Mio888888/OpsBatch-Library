@@ -5,12 +5,12 @@ DAYS_BACK="${1:-${DAYS_BACK:-1}}"
 MAX_EVENTS="${2:-${MAX_EVENTS:-20}}"
 
 if [[ ! "${DAYS_BACK}" =~ ^[1-9][0-9]*$ ]]; then
-  echo "信息：DAYS_BACK must be a positive integer." >&2
+  echo "信息：DAYS_BACK 必须是正整数。" >&2
   exit 2
 fi
 
 if [[ ! "${MAX_EVENTS}" =~ ^[1-9][0-9]*$ ]]; then
-  echo "信息：MAX_EVENTS must be a positive integer." >&2
+  echo "信息：MAX_EVENTS 必须是正整数。" >&2
   exit 2
 fi
 
@@ -24,14 +24,14 @@ elif command -v powershell >/dev/null 2>&1; then
 fi
 
 if [[ -z "${POWERSHELL}" ]]; then
-  echo "PowerShell executable 未找到. Run this shell script from a Windows host with pwsh or Windows PowerShell available.（PowerShell executable not found. Run this shell script from a Windows host with pwsh or Windows PowerShell available.）" >&2
+  echo "未找到 PowerShell 可执行文件。请在具有 pwsh 或 Windows PowerShell 的 Windows 主机上运行此 shell 脚本。" >&2
   exit 1
 fi
 
-echo "信息：Windows maintenance status summary"
+echo "信息：Windows 维护状态摘要"
 echo "信息：Days back: ${DAYS_BACK}"
 echo "信息：Max events: ${MAX_EVENTS}"
-echo "信息：This script is read-only and does not install updates, clear logs, restart services, or modify tasks."
+echo "信息：本脚本为只读，不会安装更新、清理日志、重启服务或修改任务。"
 echo
 
 "${POWERSHELL}" -NoProfile -Command '

@@ -2,14 +2,14 @@
   "name": "Release 与回滚计划摘要",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-release-rollback-plan_cn.sh",
   "language": "shell",
-  "category": "deployment",
+  "category": "部署",
   "tags": [
-    "deployment",
-    "release",
-    "rollback",
-    "symlink",
-    "plan",
-    "read-only"
+    "部署",
+    "发布",
+    "回滚",
+    "符号链接",
+    "计划",
+    "只读"
   ],
   "risk": "medium",
   "description": "只读展示 Capistrano 风格 current/releases 布局、候选 release、回滚候选和上线清单；不会切换软链接或删除旧版本，输出可能包含部署路径。",

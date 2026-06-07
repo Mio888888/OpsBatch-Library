@@ -1,10 +1,10 @@
 name: 检查系统负载
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load_cn.sh
-category: system
+category: 系统
 tags:
-- inspection
-- system
-- load
+- 巡检
+- 系统
+- 负载
 risk: low
 description: 查看系统运行时间和平均负载，用于判断 CPU 压力和基础运行状态。
 platform:

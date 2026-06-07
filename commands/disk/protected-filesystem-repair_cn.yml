@@ -1,10 +1,10 @@
 name: 受保护修复文件系统
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/protected-filesystem-repair_cn.sh
-category: disk
+category: 磁盘
 tags:
-- remediation
-- disk
-- filesystem
+- 修复
+- 磁盘
+- 文件系统
 - fsck
 risk: high
 description: 受保护的文件系统修复示例。默认只预览；只有显式设置 TARGET_DEVICE 和 CONFIRM_FSCK=REPAIR_FILESYSTEM

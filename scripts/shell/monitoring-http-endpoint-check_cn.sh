@@ -45,7 +45,7 @@ if ! is_positive_int "${TIMEOUT_SECONDS}" || ! is_nonnegative_number "${LATENCY_
   unknown "timeout and latency thresholds must be numeric"
 fi
 if [[ "${TIMEOUT_SECONDS}" -gt 30 ]]; then
-  unknown "TIMEOUT_SECONDS must be 30 or less for a bounded HTTP probe"
+  unknown "为保证 HTTP 探测有界，TIMEOUT_SECONDS 必须不超过 30"
 fi
 if ! awk -v warn="${LATENCY_WARN_MS}" -v crit="${LATENCY_CRIT_MS}" 'BEGIN { exit (warn <= crit) ? 0 : 1 }'; then
   unknown "LATENCY_WARN_MS must be less than or equal to LATENCY_CRIT_MS"
@@ -75,7 +75,7 @@ else
 fi
 
 if [[ -z "${status_code}" || "${status_code}" == "000" ]]; then
-  echo "信息：CRITICAL - HTTP request failed for ${TARGET_URL} using ${method} within ${TIMEOUT_SECONDS}s"
+  echo "信息：严重 - 使用 ${method} 在 ${TIMEOUT_SECONDS}s 内请求 ${TARGET_URL} 失败"
   exit 2
 fi
 
@@ -85,7 +85,7 @@ reason="status and latency within thresholds"
 if [[ "${status_code}" != "${EXPECTED_STATUS}" ]]; then
   status="CRITICAL"
   exit_code=2
-  reason="status=${status_code} expected=${EXPECTED_STATUS}"
+  reason="status=${status_code} 预期=${EXPECTED_STATUS}"
 elif compare_ge "${elapsed_ms}" "${LATENCY_CRIT_MS}"; then
   status="CRITICAL"
   exit_code=2
@@ -97,5 +97,5 @@ elif compare_ge "${elapsed_ms}" "${LATENCY_WARN_MS}"; then
 fi
 
 echo "信息：${status} - http ${TARGET_URL} status=${status_code} latency=${elapsed_ms}ms (${reason})"
-echo "信息：Details: method=${method}; timeout=${TIMEOUT_SECONDS}s; response body and headers are not printed."
+echo "信息：详情：method=${method}；timeout=${TIMEOUT_SECONDS}s；不打印响应正文和响应头。"
 exit "${exit_code}"

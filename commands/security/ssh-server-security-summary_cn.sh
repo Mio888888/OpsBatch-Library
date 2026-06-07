@@ -14,15 +14,15 @@ elif command -v lsof >/dev/null 2>&1; then
 fi
 
 echo
-echo "信息：== sshd effective configuration keywords from $SSHD_CONFIG =="
+echo "信息：== sshd 生效配置关键字 from $SSHD_CONFIG =="
 if [ -r "$SSHD_CONFIG" ]; then
   grep -Eiv '^[[:space:]]*(#|$)' "$SSHD_CONFIG" 2>/dev/null | grep -Ei '^(PermitRootLogin|PasswordAuthentication|PubkeyAuthentication|PermitEmptyPasswords|AllowUsers|AllowGroups|DenyUsers|DenyGroups|Port|ListenAddress|X11Forwarding|AllowTcpForwarding|ClientAliveInterval|MaxAuthTries|LoginGraceTime)[[:space:]]' || true
 else
-  echo "无法读取 $SSHD_CONFIG. 请设置 SSHD_CONFIG to an alternate file if needed.（Cannot read $SSHD_CONFIG. Set SSHD_CONFIG to an alternate file if needed.）"
+  echo "无法读取 $SSHD_CONFIG。需要时请将 SSHD_CONFIG 设置为替代文件。"
 fi
 
 if command -v sshd >/dev/null 2>&1; then
   echo
-  echo "信息：== sshd -T selected effective values =="
-  sshd -T 2>/dev/null | grep -Ei '^(permitrootlogin|passwordauthentication|pubkeyauthentication|permitemptypasswords|x11forwarding|allowtcpforwarding|maxauthtries|logingracetime|clientaliveinterval|port) ' || echo "无法运行 sshd -T; 可能存在权限或配置问题.（Cannot run sshd -T; permission or configuration issue may exist.）"
+  echo "信息：== sshd -T 选定生效值 =="
+  sshd -T 2>/dev/null | grep -Ei '^(permitrootlogin|passwordauthentication|pubkeyauthentication|permitemptypasswords|x11forwarding|allowtcpforwarding|maxauthtries|logingracetime|clientaliveinterval|port) ' || echo "无法运行 sshd -T; 可能存在权限或配置问题."
 fi

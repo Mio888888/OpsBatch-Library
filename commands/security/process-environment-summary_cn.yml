@@ -1,10 +1,10 @@
 name: 查看进程环境变量摘要
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/process-environment-summary_cn.sh
-category: security
+category: 安全
 tags:
-- troubleshooting
-- process
-- environment
+- 故障排查
+- 进程
+- 环境
 risk: medium
 description: 原样查看指定进程环境变量摘要。命令只读，但可能包含 Token、密钥、密码、凭证或内部地址等敏感信息，复制输出前请先确认脱敏需求。
 platform:

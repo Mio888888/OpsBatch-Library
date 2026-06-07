@@ -1,10 +1,10 @@
 name: 查看指定用户进程
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/user/user-processes_cn.sh
-category: user
+category: 用户
 tags:
-- troubleshooting
-- user
-- process
+- 故障排查
+- 用户
+- 进程
 risk: low
 description: 查看指定用户运行中的进程摘要和资源占用排行。默认查看当前用户，可通过 TARGET_USER 指定。
 platform:

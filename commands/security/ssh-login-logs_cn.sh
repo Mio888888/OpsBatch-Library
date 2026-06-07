@@ -23,5 +23,5 @@ elif [ "$(uname -s)" = "Darwin" ]; then
     log show --last 6h --style compact --predicate 'process == "sshd" OR eventMessage CONTAINS[c] "ssh"' 2>/dev/null | tail -n "$LINES" || true
   fi
 else
-  echo "未找到受支持的 SSH log source found.（No supported SSH log source found.）"
+  echo "未找到受支持的 SSH 日志来源。"
 fi

@@ -1,10 +1,10 @@
 name: 查找高内存进程
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/top-memory-processes_cn.sh
-category: memory
+category: 内存
 tags:
-- troubleshooting
-- memory
-- process
+- 故障排查
+- 内存
+- 进程
 - top
 risk: low
 description: 按内存使用率排序展示进程，用于快速定位高 RSS/VSS 或高占用进程来源。

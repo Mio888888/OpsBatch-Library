@@ -42,7 +42,7 @@ if ! is_positive_int "${MAX_LINES}" || ! is_nonnegative_int "${WARN_COUNT}" || !
   unknown "MAX_LINES must be positive; WARN_COUNT and CRIT_COUNT must be non-negative integers"
 fi
 if [[ "${MAX_LINES}" -gt 100000 ]]; then
-  unknown "MAX_LINES must be 100000 or less for bounded log inspection"
+  unknown "为保证日志检查有界，MAX_LINES 必须不超过 100000"
 fi
 if [[ "${WARN_COUNT}" -gt "${CRIT_COUNT}" ]]; then
   unknown "WARN_COUNT must be less than or equal to CRIT_COUNT"
@@ -66,5 +66,5 @@ elif [[ "${count}" -ge "${WARN_COUNT}" ]]; then
 fi
 
 echo "信息：${status} - log_matches=${count} file=${LOG_FILE} max_lines=${MAX_LINES} warn=${WARN_COUNT} crit=${CRIT_COUNT}"
-echo "信息：Details: pattern was counted case-insensitively; matching log lines are not printed to avoid leaking sensitive content."
+echo "信息：详情：模式按大小写不敏感计数；为避免泄露敏感内容，不打印匹配日志行。"
 exit "${exit_code}"

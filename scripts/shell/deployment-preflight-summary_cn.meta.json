@@ -2,15 +2,15 @@
   "name": "部署前置检查摘要",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-preflight-summary_cn.sh",
   "language": "shell",
-  "category": "deployment",
+  "category": "部署",
   "tags": [
-    "deployment",
-    "preflight",
-    "artifact",
-    "checksum",
-    "service",
-    "health-check",
-    "read-only"
+    "部署",
+    "预检",
+    "制品",
+    "校验和",
+    "服务",
+    "健康检查",
+    "只读"
   ],
   "risk": "medium",
   "description": "只读输出部署前工具、路径、制品摘要、release 目录、服务状态、可选配置验证和健康 URL 探测；不会部署或重启，输出可能包含路径、服务名和 URL。",

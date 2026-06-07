@@ -1,10 +1,10 @@
 name: 查找高 CPU 进程
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/top-cpu-processes_cn.sh
-category: cpu
+category: CPU
 tags:
-- troubleshooting
-- process
-- cpu
+- 故障排查
+- 进程
+- CPU
 risk: low
 description: 按 CPU 使用率排序展示进程，用于快速定位高负载来源。
 platform:

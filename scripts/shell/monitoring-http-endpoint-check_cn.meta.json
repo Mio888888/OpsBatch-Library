@@ -2,14 +2,14 @@
   "name": "监控 HTTP Endpoint",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-http-endpoint-check_cn.sh",
   "language": "shell",
-  "category": "monitoring",
+  "category": "监控",
   "tags": [
-    "http",
-    "endpoint",
-    "network",
-    "monitoring",
-    "threshold",
-    "read-only"
+    "HTTP",
+    "端点",
+    "网络",
+    "监控",
+    "阈值",
+    "只读"
   ],
   "risk": "medium",
   "description": "对单个 HTTP/HTTPS URL 进行状态码和响应耗时检查。默认目标为 http://localhost/，不发送凭证，不打印响应正文或请求头。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。外部端点探测可能产生网络噪声，因此标记为 medium。",

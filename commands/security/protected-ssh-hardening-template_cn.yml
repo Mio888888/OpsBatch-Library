@@ -1,11 +1,11 @@
 name: 受保护应用 SSH 安全配置片段
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-ssh-hardening-template_cn.sh
-category: security
+category: 安全
 tags:
-- remediation
-- security
-- ssh
-- hardening
+- 修复
+- 安全
+- SSH
+- 加固
 risk: high
 description: 受保护的 SSH 安全配置示例。默认只展示候选配置并拒绝执行；只有显式设置 SSHD_CONFIG 和 CONFIRM_SSH_HARDEN=APPLY_SSH_HARDENING
   后才追加配置。误用可能导致 SSH 无法登录，执行前必须确认控制台访问、备份、语法校验和回滚方案。

@@ -1,9 +1,9 @@
 name: 查看语言生态包清单
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/language-package-inventory_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- inspection
-- package-management
+- 巡检
+- 软件包管理
 - pip
 - npm
 risk: medium

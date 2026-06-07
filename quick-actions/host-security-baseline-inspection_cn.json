@@ -2,13 +2,13 @@
   "name": "主机安全基线巡检",
   "description": "串联主机基线、账号权限、认证日志、网络暴露面、防火墙、可疑进程/连接、文件权限/完整性、证书密钥、计划任务和内核安全参数等只读检查，适合安全维度快速巡检。",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/host-security-baseline-inspection_cn.json",
-  "category": "inspection",
+  "category": "巡检",
   "risk": "medium",
   "tags": [
-    "security",
-    "baseline",
-    "inspection",
-    "host"
+    "安全",
+    "基线",
+    "巡检",
+    "主机"
   ],
   "platform": [
     "linux",

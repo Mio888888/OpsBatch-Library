@@ -6,7 +6,7 @@ if [ "$(uname -s)" = "Linux" ]; then
   if command -v free >/dev/null 2>&1; then
     free -h
   else
-    echo "信息：free not installed; showing key /proc/meminfo fields."
+    echo "信息：未安装 free；显示关键 /proc/meminfo 字段。"
   fi
 
   if [ -r /proc/meminfo ]; then
@@ -19,12 +19,12 @@ elif [ "$(uname -s)" = "Darwin" ]; then
   if command -v vm_stat >/dev/null 2>&1; then
     vm_stat
   else
-    echo "vm_stat 不可用.（vm_stat not available.）"
+    echo "vm_stat 不可用."
   fi
 
   echo
   echo "信息：== memory size =="
   sysctl hw.memsize 2>/dev/null || true
 else
-  echo "未找到受支持的 memory summary command found.（No supported memory summary command found.）"
+  echo "未找到受支持的 内存摘要命令。"
 fi

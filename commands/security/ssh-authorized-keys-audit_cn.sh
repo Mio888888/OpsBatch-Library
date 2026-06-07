@@ -30,7 +30,7 @@ for user in $(list_users); do
     echo "信息：key_count=$(grep -Ev '^[[:space:]]*(#|$)' "$auth_file" 2>/dev/null | wc -l | tr -d ' ')"
     grep -Ev '^[[:space:]]*(#|$)' "$auth_file" 2>/dev/null | head -n "$MAX_KEYS" | awk '{print NR ": " $1 " " $2 " " $3}'
   else
-    echo "authorized_keys 未找到 or not readable.（authorized_keys not found or not readable.）"
+    echo "未找到 authorized_keys 或不可读。"
   fi
   echo
 done

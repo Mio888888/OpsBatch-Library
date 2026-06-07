@@ -1,11 +1,11 @@
 name: 校验软件包文件完整性
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-file-verification_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- inspection
-- package-management
-- integrity
-- verification
+- 巡检
+- 软件包管理
+- 完整性
+- 验证
 risk: medium
 description: 对显式指定软件包执行包管理器支持的文件完整性/链接检查，可能较嘈杂并暴露本地文件修改状态；只读不修复。
 platform:

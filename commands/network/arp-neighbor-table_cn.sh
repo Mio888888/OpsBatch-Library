@@ -8,15 +8,15 @@ if [ "$(uname -s)" = "Linux" ]; then
   elif command -v arp >/dev/null 2>&1; then
     arp -an
   else
-    echo "信息：Neither ip nor arp is installed."
+    echo "信息：未安装 ip 或 arp。"
   fi
 elif [ "$(uname -s)" = "Darwin" ]; then
   if command -v arp >/dev/null 2>&1; then
     echo "信息：== ARP table =="
     arp -an
   else
-    echo "arp 不可用.（arp not available.）"
+    echo "arp 不可用."
   fi
 else
-  echo "未找到受支持的 ARP/neighbor command found.（No supported ARP/neighbor command found.）"
+  echo "未找到受支持的 ARP/邻居命令。"
 fi

@@ -35,14 +35,14 @@ reasons=()
 
 check_docker() {
   if ! command -v docker >/dev/null 2>&1; then
-    echo "Docker CLI 不可用.（Docker CLI not available.）"
+    echo "Docker CLI 不可用."
     return 3
   fi
   if ! docker ps --format '{{.Names}}' >/dev/null 2>&1; then
-    echo "信息：Docker CLI available but cannot list containers."
+    echo "信息：Docker CLI 可用，但无法列出容器。"
     return 3
   fi
-  echo "信息：== Docker containers (bounded) =="
+  echo "信息：== Docker 容器（有界） =="
   docker_lines="$(docker ps --format 'name={{.Names}} status={{.Status}}' 2>/dev/null)"
   if [[ -n "${NAME_FILTER}" ]]; then
     printf '%s\n' "${docker_lines}" | grep -F -- "${NAME_FILTER}" || true
@@ -59,17 +59,17 @@ check_docker() {
 
 check_kubernetes() {
   if ! command -v kubectl >/dev/null 2>&1; then
-    echo "kubectl CLI 不可用.（kubectl CLI not available.）"
+    echo "kubectl CLI 不可用."
     return 3
   fi
   if ! kubectl get pods -n "${NAMESPACE}" --no-headers >/dev/null 2>&1; then
-    echo "信息：kubectl available but cannot list pods in namespace ${NAMESPACE}."
+    echo "信息：kubectl 可用，但无法列出命名空间中的 Pod： ${NAMESPACE}."
     return 3
   fi
-  echo "信息：== Kubernetes pods namespace=${NAMESPACE} (bounded) =="
+  echo "信息：== Kubernetes Pod namespace=${NAMESPACE}（有界） =="
   pod_lines="$(kubectl get pods -n "${NAMESPACE}" --no-headers 2>/dev/null | { if [[ -n "${NAME_FILTER}" ]]; then grep -F -- "${NAME_FILTER}" || true; else head -n 20; fi; })"
   if [[ -z "${pod_lines}" ]]; then
-    echo "信息：No pods matched filter '${NAME_FILTER:-<none>}' in namespace ${NAMESPACE}."
+    echo "信息：没有 Pod 匹配过滤器 '${NAME_FILTER:-<无>}' ，命名空间 ${NAMESPACE}。"
     return 1
   fi
   printf '%s\n' "${pod_lines}"
@@ -140,6 +140,6 @@ if [[ ${#reasons[@]} -gt 0 ]]; then
   reason_text="$(IFS=', '; echo "信息：${reasons[*]}")"
 fi
 
-echo "信息：${status} - mode=${MODE} namespace=${NAMESPACE} filter=${NAME_FILTER:-<none>} (${reason_text})"
-echo "信息：Details: read-only CLI inspection only; no logs, restarts, deletes, scaling, or cluster changes."
+echo "信息：${status} - mode=${MODE} namespace=${NAMESPACE} filter=${NAME_FILTER:-<无>} (${reason_text})"
+echo "信息：详情：仅执行只读 CLI 检查；不查看日志、不重启、不删除、不扩缩容、不变更集群。"
 exit "${exit_code}"

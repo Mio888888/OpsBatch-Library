@@ -10,5 +10,5 @@ if [ "$(uname -s)" = "Linux" ]; then
 elif [ "$(uname -s)" = "Darwin" ]; then
   mount | sort
 else
-  echo "未找到受支持的 mount inspection command found.（No supported mount inspection command found.）"
+  echo "未找到受支持的 挂载检查命令。"
 fi

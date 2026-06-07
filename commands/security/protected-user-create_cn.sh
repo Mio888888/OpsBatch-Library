@@ -8,30 +8,30 @@ NEW_USER_HOME="${NEW_USER_HOME:-}"
 CONFIRM_CREATE_USER="${CONFIRM_CREATE_USER:-}"
 
 if [ -z "$NEW_USER" ]; then
-  echo "拒绝执行： set NEW_USER explicitly.（Refusing to run: set NEW_USER explicitly.）"
+  echo "拒绝执行： set NEW_USER explicitly."
   exit 0
 fi
 
 case "$NEW_USER" in
   *[!a-zA-Z0-9._-]*|'')
-    echo "拒绝执行： NEW_USER contains unsupported characters.（Refusing to run: NEW_USER contains unsupported characters.）"
+    echo "拒绝执行： NEW_USER 包含不支持的字符。"
     exit 0
     ;;
 esac
 
-echo "信息：== planned local user creation =="
+echo "信息：== 计划创建本地用户 =="
 echo "信息：NEW_USER=$NEW_USER"
 echo "信息：NEW_USER_COMMENT=$NEW_USER_COMMENT"
 echo "信息：NEW_USER_SHELL=$NEW_USER_SHELL"
 echo "信息：NEW_USER_HOME=${NEW_USER_HOME:-default}"
 
 if id "$NEW_USER" >/dev/null 2>&1; then
-  echo "拒绝执行： user already exists: $NEW_USER（Refusing to run: user already exists: $NEW_USER）"
+  echo "拒绝执行： 用户已存在: $NEW_USER"
   exit 0
 fi
 
 if [ "$CONFIRM_CREATE_USER" != "CREATE_LOCAL_USER" ]; then
-  echo "仅试运行。 请设置 CONFIRM_CREATE_USER=CREATE_LOCAL_USER after reviewing username, shell, home and password bootstrap plan.（Dry-run only. Set CONFIRM_CREATE_USER=CREATE_LOCAL_USER after reviewing username, shell, home and password bootstrap plan.）"
+  echo "仅试运行。 请设置 CONFIRM_CREATE_USER=CREATE_LOCAL_USER 在审核用户名、shell、主目录和密码初始化计划后。"
   exit 0
 fi
 
@@ -41,7 +41,7 @@ if [ "$(uname -s)" = "Linux" ]; then
   else
     sudo useradd -m -s "$NEW_USER_SHELL" -c "$NEW_USER_COMMENT" "$NEW_USER"
   fi
-  echo "User created. 请设置 an initial password or key through your approved secret process.（User created. Set an initial password or key through your approved secret process.）"
+  echo "用户已创建。请通过已批准的密钥流程设置初始密码或密钥。"
 elif [ "$(uname -s)" = "Darwin" ] && command -v dscl >/dev/null 2>&1; then
   uid="${NEW_USER_UID:-}"
   if [ -z "$uid" ]; then
@@ -55,7 +55,7 @@ elif [ "$(uname -s)" = "Darwin" ] && command -v dscl >/dev/null 2>&1; then
   sudo dscl . -create "/Users/$NEW_USER" PrimaryGroupID "20"
   sudo dscl . -create "/Users/$NEW_USER" NFSHomeDirectory "$home"
   sudo createhomedir -c -u "$NEW_USER" >/dev/null 2>&1 || true
-  echo "User created. 请设置 an initial password or key through your approved secret process.（User created. Set an initial password or key through your approved secret process.）"
+  echo "用户已创建。请通过已批准的密钥流程设置初始密码或密钥。"
 else
-  echo "未找到受支持的 local user creation tool found.（No supported local user creation tool found.）"
+  echo "未找到受支持的 本地用户创建工具。"
 fi

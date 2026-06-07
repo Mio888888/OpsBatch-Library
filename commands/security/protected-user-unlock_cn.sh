@@ -5,20 +5,20 @@ TARGET_USER="${TARGET_USER:-}"
 CONFIRM_UNLOCK_USER="${CONFIRM_UNLOCK_USER:-}"
 
 if [ -z "$TARGET_USER" ]; then
-  echo "拒绝执行： set TARGET_USER explicitly.（Refusing to run: set TARGET_USER explicitly.）"
+  echo "拒绝执行： set TARGET_USER explicitly."
   exit 0
 fi
 
 if ! id "$TARGET_USER" >/dev/null 2>&1; then
-  echo "拒绝执行： user 未找到: $TARGET_USER（Refusing to run: user not found: $TARGET_USER）"
+  echo "拒绝执行： 用户未找到: $TARGET_USER"
   exit 0
 fi
 
-echo "信息：== planned account unlock =="
+echo "信息：== 计划解锁账号 =="
 id "$TARGET_USER" 2>/dev/null || true
 
 if [ "$CONFIRM_UNLOCK_USER" != "UNLOCK_TARGET_USER" ]; then
-  echo "仅试运行。 请设置 CONFIRM_UNLOCK_USER=UNLOCK_TARGET_USER 在确认后 approval and password/key state.（Dry-run only. Set CONFIRM_UNLOCK_USER=UNLOCK_TARGET_USER after confirming approval and password/key state.）"
+  echo "仅试运行。 请设置 CONFIRM_UNLOCK_USER=UNLOCK_TARGET_USER 在确认后 审批和密码/密钥状态后。"
   exit 0
 fi
 
@@ -30,5 +30,5 @@ if [ "$(uname -s)" = "Linux" ]; then
 elif [ "$(uname -s)" = "Darwin" ] && command -v pwpolicy >/dev/null 2>&1; then
   sudo pwpolicy -u "$TARGET_USER" -setpolicy isDisabled=0
 else
-  echo "未找到受支持的 account unlock tool found.（No supported account unlock tool found.）"
+  echo "未找到受支持的 account unlock tool。"
 fi

@@ -1,10 +1,10 @@
 name: 查看系统架构
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/machine-architecture_cn.sh
-category: system
+category: 系统
 tags:
-- inspection
-- system
-- architecture
+- 巡检
+- 系统
+- 架构
 risk: low
 description: 查看机器架构、处理器架构和硬件平台，辅助判断软件包和脚本兼容性。
 platform:

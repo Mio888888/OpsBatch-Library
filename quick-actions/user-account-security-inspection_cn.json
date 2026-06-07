@@ -2,13 +2,13 @@
   "name": "账号与权限安全巡检",
   "description": "串联本地账号、组成员、sudo 权限、登录会话、密码策略、SSH 授权密钥、异常 UID/GID、家目录和认证日志等只读检查，适合账号与权限安全基线巡检。",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/user-account-security-inspection_cn.json",
-  "category": "inspection",
+  "category": "巡检",
   "risk": "medium",
   "tags": [
-    "user",
-    "account",
-    "security",
-    "inspection"
+    "用户",
+    "账号",
+    "安全",
+    "巡检"
   ],
   "platform": [
     "linux",

@@ -1,10 +1,10 @@
 name: 查看进程列表快照
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-list_cn.sh
-category: process
+category: 进程
 tags:
-- inspection
-- process
-- list
+- 巡检
+- 进程
+- 列表
 risk: low
 description: 展示进程列表快照，包含 PID、PPID、用户、状态、CPU/内存占用和运行时长。默认最多显示 40 行，可通过 PROCESS_LIMIT
   调整。

@@ -1,10 +1,10 @@
 name: 查找 D 状态进程
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/blocked-processes_cn.sh
-category: process
+category: 进程
 tags:
-- troubleshooting
-- process
-- blocked
+- 故障排查
+- 进程
+- 阻塞
 risk: low
 description: 查找不可中断睡眠 D 状态进程，并尽量展示等待通道，用于排查 I/O、设备或内核等待导致的卡死线索。
 platform:

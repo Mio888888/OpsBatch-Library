@@ -6,31 +6,31 @@
   "homepage": "https://example.com/opsbatch/ops-library",
   "categories": {
     "commands": [
-      "system",
-      "process",
-      "cpu",
-      "memory",
-      "network",
-      "disk",
-      "package-management",
-      "log",
-      "user",
-      "security",
-      "service",
-      "troubleshooting"
+      "系统",
+      "进程",
+      "CPU",
+      "内存",
+      "网络",
+      "磁盘",
+      "软件包管理",
+      "日志",
+      "用户",
+      "安全",
+      "服务",
+      "故障排查"
     ],
     "scripts": [
-      "shell",
-      "python",
-      "powershell",
-      "monitoring",
-      "inspection",
-      "security",
-      "deployment"
+      "Shell",
+      "Python",
+      "PowerShell",
+      "监控",
+      "巡检",
+      "安全",
+      "部署"
     ],
     "quickActions": [
-      "inspection",
-      "troubleshooting"
+      "巡检",
+      "故障排查"
     ]
   },
   "baseUrl": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main"

@@ -1,11 +1,11 @@
 name: 查看 sudoers 权限摘要
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/sudoers-summary_cn.sh
-category: security
+category: 安全
 tags:
-- inspection
-- user
+- 巡检
+- 用户
 - sudo
-- privilege
+- 权限提升
 risk: medium
 description: 查看 sudo 可用性、常见 sudo 管理组、sudoers 文件位置和指定用户 sudo 权限。只读查询，可能暴露权限配置细节；TARGET_USER
   可选。

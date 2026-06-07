@@ -19,5 +19,5 @@ if [ "$(uname -s)" = "Linux" ]; then
 elif [ "$(uname -s)" = "Darwin" ] && command -v log >/dev/null 2>&1; then
   log show --last 6h --style compact --predicate 'eventMessage CONTAINS[c] "sudo" OR eventMessage CONTAINS[c] "authorization" OR eventMessage CONTAINS[c] "authentication"' 2>/dev/null | tail -n "$LINES" || true
 else
-  echo "未找到受支持的 privilege log source found.（No supported privilege log source found.）"
+  echo "未找到受支持的 提权日志来源。"
 fi

@@ -2,11 +2,11 @@
   "name": "维护健康摘要",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/maintenance-health-summary_cn.sh",
   "language": "shell",
-  "category": "maintenance",
+  "category": "维护",
   "tags": [
-    "maintenance",
-    "health-check",
-    "inspection"
+    "维护",
+    "健康检查",
+    "巡检"
   ],
   "risk": "low",
   "description": "只读输出主机、负载、磁盘、内存、进程和可选服务状态摘要。默认检查根路径，可通过参数或 TARGET_PATH/SERVICE 环境变量覆盖。",

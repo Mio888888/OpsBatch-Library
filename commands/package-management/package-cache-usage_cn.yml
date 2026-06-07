@@ -1,11 +1,11 @@
 name: 查看包管理器缓存占用
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-cache-usage_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- inspection
-- package-management
-- package-cache
-- cleanup
+- 巡检
+- 软件包管理
+- 软件包缓存
+- 清理
 risk: low
 description: 查看常见包管理器缓存目录占用，帮助判断是否存在可清理空间。只读不执行缓存清理。
 platform:

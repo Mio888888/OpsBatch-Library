@@ -4,7 +4,7 @@ set -euo pipefail
 TARGET_PACKAGE="${TARGET_PACKAGE:-}"
 
 if [ -z "$TARGET_PACKAGE" ]; then
-  echo "请设置 TARGET_PACKAGE to inspect package version details, for example TARGET_PACKAGE=openssl.（Set TARGET_PACKAGE to inspect package version details, for example TARGET_PACKAGE=openssl.）"
+  echo "请设置 TARGET_PACKAGE 以检查软件包版本详情，例如 TARGET_PACKAGE=openssl。"
   exit 0
 fi
 

@@ -1,10 +1,10 @@
 name: 查看 CPU steal time
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-steal-time_cn.sh
-category: cpu
+category: CPU
 tags:
-- troubleshooting
-- cpu
-- virtualization
+- 故障排查
+- CPU
+- 虚拟化
 - steal
 risk: low
 description: 查看虚拟化环境中的 CPU steal time，用于判断云主机或虚拟机是否受到宿主机 CPU 争用影响。

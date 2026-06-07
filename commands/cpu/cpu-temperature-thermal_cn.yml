@@ -1,10 +1,10 @@
 name: 查看 CPU 温度与热限制
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-temperature-thermal_cn.sh
-category: cpu
+category: CPU
 tags:
-- inspection
-- cpu
-- thermal
+- 巡检
+- CPU
+- 散热
 risk: low
 description: 查看 CPU 温度、thermal zone 或 macOS 热限制摘要，用于判断降频/散热问题。命令只读，不修改风扇或电源策略。
 platform:

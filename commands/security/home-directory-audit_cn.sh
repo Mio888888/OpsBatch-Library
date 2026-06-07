@@ -15,10 +15,10 @@ if [ -r /etc/passwd ]; then
       ls -ld "$home" 2>/dev/null || true
       owner="$(ls -ldn "$home" 2>/dev/null | awk '{print $3":"$4}')"
       if [ "$owner" != "$uid:$gid" ]; then
-        echo "信息：  warning: home owner numeric uid/gid is $owner, expected $uid:$gid"
+        echo "信息：  警告：主目录所有者数字 uid/gid 为 $owner, 预期 $uid:$gid"
       fi
     else
-      echo "信息：  warning: home directory missing or not a directory"
+      echo "信息：  警告：主目录缺失或不是目录"
     fi
     echo
   done
@@ -28,9 +28,9 @@ elif [ "$(uname -s)" = "Darwin" ] && command -v dscl >/dev/null 2>&1; then
     home="$(dscl . -read "/Users/$user" NFSHomeDirectory 2>/dev/null | awk '{print $2}')"
     shell="$(dscl . -read "/Users/$user" UserShell 2>/dev/null | awk '{print $2}')"
     printf '%s home=%s shell=%s\n' "$user" "$home" "$shell"
-    [ -n "$home" ] && ls -ld "$home" 2>/dev/null || echo "信息：  warning: home directory missing or not readable"
+    [ -n "$home" ] && ls -ld "$home" 2>/dev/null || echo "信息：  警告：主目录缺失或不可读"
     echo
   done
 else
-  echo "未找到受支持的 user home source found.（No supported user home source found.）"
+  echo "未找到受支持的 用户主目录来源。"
 fi

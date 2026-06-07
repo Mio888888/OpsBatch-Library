@@ -1,11 +1,11 @@
 name: 查看可疑网络连接线索
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/suspicious-network-connections_cn.sh
-category: security
+category: 安全
 tags:
-- troubleshooting
-- security
-- network
-- connections
+- 故障排查
+- 安全
+- 网络
+- 连接
 risk: medium
 description: 汇总远端连接频次和常见敏感服务端口连接线索，辅助排查异常连接。只读查询，可能输出内部/外部 IP、端口和进程信息。
 platform:

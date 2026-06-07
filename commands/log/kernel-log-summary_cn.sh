@@ -4,7 +4,7 @@ set -euo pipefail
 LINES="${LINES:-120}"
 PATTERN="${KERNEL_LOG_PATTERN:-error|fail|warn|panic|segfault|oom|blocked|hung|reset|timeout}"
 
-echo "信息：== kernel log summary =="
+echo "信息：== 内核日志摘要 =="
 if [ "$(uname -s)" = "Linux" ]; then
   if command -v journalctl >/dev/null 2>&1; then
     echo "信息：-- journalctl -k --"
@@ -18,5 +18,5 @@ if [ "$(uname -s)" = "Linux" ]; then
 elif [ "$(uname -s)" = "Darwin" ] && command -v log >/dev/null 2>&1; then
   log show --last 6h --style compact --predicate 'eventMessage CONTAINS[c] "kernel" OR eventMessage CONTAINS[c] "panic" OR eventMessage CONTAINS[c] "error"' 2>/dev/null | tail -n "$LINES" || true
 else
-  echo "未找到受支持的 kernel log command found.（No supported kernel log command found.）"
+  echo "未找到受支持的 内核日志命令。"
 fi

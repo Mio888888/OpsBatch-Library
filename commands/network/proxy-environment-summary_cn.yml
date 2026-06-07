@@ -1,11 +1,11 @@
 name: 查看代理环境变量
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/proxy-environment-summary_cn.sh
-category: network
+category: 网络
 tags:
-- inspection
-- network
-- proxy
-- environment
+- 巡检
+- 网络
+- 代理
+- 环境
 risk: low
 description: 查看当前进程环境中的代理变量，并在 macOS 上补充系统代理配置摘要，辅助排查 curl、包管理器或应用出网异常。只读不修改代理配置。
 platform:

@@ -2,13 +2,13 @@
   "name": "受保护权限修复模板",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-permission-fix_cn.sh",
   "language": "shell",
-  "category": "maintenance",
+  "category": "维护",
   "tags": [
-    "maintenance",
-    "permissions",
-    "security",
+    "维护",
+    "权限",
+    "安全",
     "chmod",
-    "protected"
+    "受保护"
   ],
   "risk": "high",
   "description": "检查指定路径当前权限并输出 chmod 计划，默认不修改。真实权限修改可能造成访问暴露或服务不可用，必须显式传入 TARGET_PATH/TARGET_MODE 并设置 CONFIRM_CHMOD=APPLY_TARGET_MODE。",

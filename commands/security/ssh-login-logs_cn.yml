@@ -1,11 +1,11 @@
 name: 查看 SSH 登录日志
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/ssh-login-logs_cn.sh
-category: security
+category: 安全
 tags:
-- user
-- ssh
-- security
-- login
+- 用户
+- SSH
+- 安全
+- 登录
 risk: medium
 description: 查看 SSH 登录成功、失败、无效用户、断开连接等日志。只读查询，可能输出用户名、来源 IP 和认证细节。
 platform:

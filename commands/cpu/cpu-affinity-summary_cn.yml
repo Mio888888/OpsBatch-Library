@@ -1,11 +1,11 @@
 name: 查看 CPU 亲和性摘要
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-affinity-summary_cn.sh
-category: cpu
+category: CPU
 tags:
-- troubleshooting
-- cpu
-- affinity
-- process
+- 故障排查
+- CPU
+- 亲和性
+- 进程
 risk: low
 description: 只读查看当前 Shell 和高 CPU 进程的 CPU 亲和性摘要，辅助判断进程是否被限制在少数核心上。
 platform:

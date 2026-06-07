@@ -1,11 +1,11 @@
 name: 查看占用挂载点的进程
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/mount-busy-processes_cn.sh
-category: disk
+category: 磁盘
 tags:
-- troubleshooting
-- disk
-- mount
-- process
+- 故障排查
+- 磁盘
+- 挂载
+- 进程
 risk: medium
 description: 查看正在占用指定挂载点的进程，适用于卸载失败或设备繁忙排查。命令只读，但可能递归检查挂载点并需要 sudo。
 platform:

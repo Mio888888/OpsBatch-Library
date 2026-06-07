@@ -1,11 +1,11 @@
 name: 查看指定用户详情
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/user/user-detail_cn.sh
-category: user
+category: 用户
 tags:
-- troubleshooting
-- user
-- account
-- detail
+- 故障排查
+- 用户
+- 账号
+- 详情
 risk: low
 description: 查看指定用户的身份、组成员关系、passwd 条目、家目录和 shell。默认查看当前用户，可通过 TARGET_USER 指定目标。
 platform:

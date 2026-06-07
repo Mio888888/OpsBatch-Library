@@ -4,15 +4,15 @@ set -euo pipefail
 TARGET_HOST="${TARGET_HOST:-example.com}"
 MAX_HOPS="${MAX_HOPS:-20}"
 
-echo "信息：Tracing path to $TARGET_HOST with max hops $MAX_HOPS"
+echo "信息：正在跟踪到 $TARGET_HOST 的路径，最大跳数 $MAX_HOPS"
 
 if command -v traceroute >/dev/null 2>&1; then
   traceroute -m "$MAX_HOPS" "$TARGET_HOST"
 elif command -v tracepath >/dev/null 2>&1; then
   tracepath -m "$MAX_HOPS" "$TARGET_HOST"
 elif command -v ping >/dev/null 2>&1; then
-  echo "traceroute/tracepath 未找到; showing ping latency instead.（traceroute/tracepath not found; showing ping latency instead.）"
+  echo "未找到 traceroute/tracepath；改为显示 ping 延迟。"
   ping -c 4 "$TARGET_HOST"
 else
-  echo "信息：No traceroute, tracepath, or ping command found."
+  echo "信息：未找到 traceroute、tracepath 或 ping 命令。"
 fi

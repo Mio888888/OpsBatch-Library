@@ -1,11 +1,11 @@
 name: 检查 inode 使用情况
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-inode-usage_cn.sh
-category: disk
+category: 磁盘
 tags:
-- inspection
-- disk
+- 巡检
+- 磁盘
 - inode
-- filesystem
+- 文件系统
 risk: low
 description: 查看各文件系统 inode 使用率，适用于排查磁盘空间未满但无法创建新文件的场景。只读不修改系统状态。
 platform:

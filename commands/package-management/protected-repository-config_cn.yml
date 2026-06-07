@@ -1,11 +1,11 @@
 name: 受保护调整软件源配置模板
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-repository-config_cn.sh
-category: package-management
+category: 软件包管理
 tags:
-- remediation
-- package-management
-- repository
-- protected
+- 修复
+- 软件包管理
+- 仓库
+- 受保护
 risk: high
 description: 受保护的软件源配置模板。默认只展示计划；必须显式设置 TARGET_REPO_NAME、TARGET_REPO_URL 和 CONFIRM_REPO_CHANGE=APPLY_REPO_CHANGE
   后才可能执行支持的变更，且 apt/yum/dnf 仍要求人工创建已审阅配置。错误软件源可能引入供应链风险、凭证泄露或系统不可用，执行前必须验证签名、信任边界和回滚方案。

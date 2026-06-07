@@ -13,14 +13,14 @@ if [ "$(uname -s)" = "Linux" ]; then
         sudo smartctl -A "/dev/$disk" 2>/dev/null | grep -Ei 'Temperature|Airflow|194|190' || true
       done
     else
-      echo "请设置 TARGET_DEVICE, for example TARGET_DEVICE=/dev/sda.（Set TARGET_DEVICE, for example TARGET_DEVICE=/dev/sda.）"
+      echo "请设置 TARGET_DEVICE，例如 TARGET_DEVICE=/dev/sda。"
     fi
   else
-    echo "信息：smartctl not installed. Install smartmontools to read disk temperature."
+    echo "信息：未安装 smartctl。请安装 smartmontools 读取磁盘温度。"
   fi
 elif [ "$(uname -s)" = "Darwin" ]; then
-  echo "macOS disk temperature usually 需要 smartctl/smartmontools or vendor tools.（macOS disk temperature usually requires smartctl/smartmontools or vendor tools.）"
+  echo "macOS 磁盘温度通常需要 smartctl/smartmontools 或厂商工具。"
   command -v smartctl >/dev/null 2>&1 && [ -n "$TARGET_DEVICE" ] && smartctl -A "$TARGET_DEVICE" 2>/dev/null | grep -Ei 'Temperature|Airflow|194|190' || true
 else
-  echo "未找到受支持的 disk temperature command found.（No supported disk temperature command found.）"
+  echo "未找到受支持的 磁盘温度命令。"
 fi

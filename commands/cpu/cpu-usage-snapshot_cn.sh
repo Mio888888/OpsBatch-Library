@@ -9,7 +9,7 @@ elif command -v top >/dev/null 2>&1; then
   top -bn1 | head -20
 elif [ -r /proc/stat ]; then
   grep '^cpu ' /proc/stat
-  echo "信息：Raw /proc/stat jiffies shown; install sysstat for mpstat percentages."
+  echo "信息：已显示原始 /proc/stat jiffies；安装 sysstat 可获取 mpstat 百分比。"
 else
-  echo "未找到受支持的 CPU usage command found.（No supported CPU usage command found.）"
+  echo "未找到受支持的 CPU 使用率命令。"
 fi

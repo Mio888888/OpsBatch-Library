@@ -40,12 +40,12 @@ if ! awk -v warn="${INODE_WARN}" -v crit="${INODE_CRIT}" 'BEGIN { exit (warn <= 
 fi
 
 if ! command -v df >/dev/null 2>&1; then
-  unknown "df command is not available"
+  unknown "df 命令不可用"
 fi
 
 disk_line="$(df -P "${TARGET_PATH}" 2>/dev/null | awk 'NR==2 {print}')"
 if [[ -z "${disk_line}" ]]; then
-  unknown "could not read disk usage for ${TARGET_PATH}"
+  unknown "无法读取 ${TARGET_PATH} 的磁盘使用率"
 fi
 
 filesystem="$(awk '{print $1}' <<<"${disk_line}")"

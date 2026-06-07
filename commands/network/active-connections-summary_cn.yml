@@ -1,11 +1,11 @@
 name: 查看活动网络连接摘要
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/active-connections-summary_cn.sh
-category: network
+category: 网络
 tags:
-- troubleshooting
-- network
-- connection
-- socket
+- 故障排查
+- 网络
+- 连接
+- 套接字
 risk: low
 description: 查看当前 TCP/UDP 连接及 TCP 状态分布，辅助判断连接积压、TIME_WAIT、ESTABLISHED 等状态是否异常。只读不修改系统状态。
 platform:

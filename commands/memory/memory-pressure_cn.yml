@@ -1,11 +1,11 @@
 name: 查看内存压力与水位
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-pressure_cn.sh
-category: memory
+category: 内存
 tags:
-- troubleshooting
-- memory
-- pressure
-- waterline
+- 故障排查
+- 内存
+- 压力
+- 水位线
 risk: low
 description: 查看可用内存水位和压力线索。Linux 读取 MemAvailable 与 vmstat 快照，macOS 使用 memory_pressure
   或 vm_stat fallback。

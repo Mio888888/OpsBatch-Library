@@ -2,13 +2,13 @@
   "name": "Windows 维护状态摘要",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/windows-maintenance-status-summary_cn.sh",
   "language": "shell",
-  "category": "maintenance",
+  "category": "维护",
   "tags": [
-    "maintenance",
-    "windows",
-    "service",
-    "event-log",
-    "scheduled-task"
+    "维护",
+    "Windows",
+    "服务",
+    "事件日志",
+    "计划任务"
   ],
   "risk": "low",
   "description": "通过可用的 PowerShell 可执行文件只读输出 Windows Update 相关服务、近期系统事件和计划任务样例。不会安装更新、清理日志、重启服务或修改计划任务。",

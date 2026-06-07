@@ -12,7 +12,7 @@ check_cert() {
     echo "信息：-- $cert --"
     openssl x509 -in "$cert" -noout -subject -issuer -dates -fingerprint -sha256 2>/dev/null || true
   else
-    echo "openssl 未找到.（openssl not found.）"
+    echo "openssl 未找到."
     return 1
   fi
 }
@@ -22,7 +22,7 @@ if [ -n "$CERT_PATH" ]; then
   exit 0
 fi
 
-echo "信息：== certificate files under common directories =="
+echo "信息：== 常见目录下的证书文件 =="
 count=0
 for dir in $CERT_DIR; do
   [ -d "$dir" ] || continue

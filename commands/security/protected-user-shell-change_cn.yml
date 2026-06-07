@@ -1,10 +1,10 @@
 name: 受保护修改用户 Shell
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-shell-change_cn.sh
-category: security
+category: 安全
 tags:
-- remediation
-- user
-- shell
+- 修复
+- 用户
+- Shell
 risk: high
 description: 受保护的用户登录 Shell 修改模板。默认只展示计划；只有设置 TARGET_USER、TARGET_SHELL 和 CONFIRM_SHELL_CHANGE=CHANGE_TARGET_SHELL
   后才修改。Shell 变更可能阻断登录或服务启动，执行前必须确认影响。

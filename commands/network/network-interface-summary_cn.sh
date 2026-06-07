@@ -12,14 +12,14 @@ if [ "$(uname -s)" = "Linux" ]; then
   elif command -v ifconfig >/dev/null 2>&1; then
     ifconfig -a
   else
-    echo "信息：Neither ip nor ifconfig is installed."
+    echo "信息：未安装 ip 或 ifconfig。"
   fi
 elif [ "$(uname -s)" = "Darwin" ]; then
   if command -v ifconfig >/dev/null 2>&1; then
     echo "信息：== active interface addresses =="
     ifconfig -a
   else
-    echo "ifconfig 不可用.（ifconfig not available.）"
+    echo "ifconfig 不可用."
   fi
 
   if command -v networksetup >/dev/null 2>&1; then
@@ -28,5 +28,5 @@ elif [ "$(uname -s)" = "Darwin" ]; then
     networksetup -listallhardwareports 2>/dev/null || true
   fi
 else
-  echo "未找到受支持的 network interface command found.（No supported network interface command found.）"
+  echo "未找到受支持的 网络接口命令。"
 fi

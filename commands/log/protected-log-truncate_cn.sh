@@ -5,28 +5,28 @@ LOG_FILE="${LOG_FILE:-}"
 CONFIRM_TRUNCATE="${CONFIRM_TRUNCATE:-}"
 
 if [ -z "$LOG_FILE" ]; then
-  echo "拒绝执行： set LOG_FILE explicitly, for example LOG_FILE=/var/log/myapp/app.log.（Refusing to run: set LOG_FILE explicitly, for example LOG_FILE=/var/log/myapp/app.log.）"
+  echo "拒绝执行： 请显式设置 LOG_FILE，例如 LOG_FILE=/var/log/myapp/app.log。"
   exit 0
 fi
 
 if [ ! -f "$LOG_FILE" ]; then
-  echo "信息：LOG_FILE is not a file or cannot be found: $LOG_FILE"
+  echo "信息：LOG_FILE 不是文件或无法找到： $LOG_FILE"
   exit 0
 fi
 
-echo "信息：== target log file =="
+echo "信息：== 目标日志文件 =="
 ls -lh "$LOG_FILE" 2>/dev/null || true
 echo
-echo "信息：== last 20 lines before truncate =="
+echo "信息：== 截断前最后 20 行 =="
 tail -n 20 "$LOG_FILE" 2>/dev/null || true
 
 if [ "$CONFIRM_TRUNCATE" != "TRUNCATE_LOG_FILE" ]; then
   echo
-  echo "仅试运行。 请设置 CONFIRM_TRUNCATE=TRUNCATE_LOG_FILE to truncate this single file 在确认后 the writer process and backup requirements.（Dry-run only. Set CONFIRM_TRUNCATE=TRUNCATE_LOG_FILE to truncate this single file after confirming the writer process and backup requirements.）"
+  echo "仅试运行。 请设置 CONFIRM_TRUNCATE=TRUNCATE_LOG_FILE ，并仅在确认写入进程和备份要求后截断此单个文件。"
   exit 0
 fi
 
 echo
-echo "信息：Truncating $LOG_FILE. This preserves the file inode but removes existing content."
+echo "信息：正在截断 $LOG_FILE。此操作保留文件 inode，但会移除现有内容。"
 : > "$LOG_FILE"
 ls -lh "$LOG_FILE" 2>/dev/null || true
