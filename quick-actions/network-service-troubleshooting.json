@@ -1,6 +1,6 @@
 {
   "name": "网络与服务排障",
-  "description": "串联基础连通性、DNS、路由、接口、端口监听、活动连接、网卡错误、吞吐采样和服务端口探测，辅助快速定位常见网络/服务问题。",
+  "description": "串联基础连通性、DNS、路由、接口、端口监听、活动连接、网卡错误和吞吐采样，辅助快速定位常见网络/服务问题。",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/network-service-troubleshooting.json",
   "category": "troubleshooting",
   "risk": "medium",
@@ -103,17 +103,6 @@
       "type": "command",
       "ref": "commands/network/arp-neighbor-table.yml",
       "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/arp-neighbor-table.yml",
-      "continueOnError": true
-    },
-    {
-      "name": "检查本机 HTTP 端口",
-      "type": "script",
-      "ref": "scripts/python/check-tcp-port.py",
-      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/python/check-tcp-port.py",
-      "args": [
-        "127.0.0.1",
-        "80"
-      ],
       "continueOnError": true
     },
     {

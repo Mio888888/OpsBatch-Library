@@ -1,6 +1,6 @@
 {
   "name": "每日基础巡检",
-  "description": "串联系统负载、内存、磁盘、服务状态与系统健康摘要，适合作为日常只读巡检入口。",
+  "description": "串联系统负载、内存、磁盘与服务状态检查，适合作为日常只读巡检入口。",
   "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/daily-check.json",
   "category": "inspection",
   "risk": "low",
@@ -43,13 +43,6 @@
       "args": [
         "ssh"
       ],
-      "continueOnError": true
-    },
-    {
-      "name": "生成系统健康摘要",
-      "type": "script",
-      "ref": "scripts/python/health-check.py",
-      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/python/health-check.py",
       "continueOnError": true
     }
   ]
