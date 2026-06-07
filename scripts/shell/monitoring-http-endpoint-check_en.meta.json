@@ -1,0 +1,52 @@
+{
+  "name": "Monitoring HTTP Endpoint Check",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-http-endpoint-check_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "http",
+    "endpoint",
+    "network",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the monitoring http endpoint check script for monitoring operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "target_url",
+      "description": "Target url value.",
+      "required": false,
+      "default": "http://localhost/"
+    },
+    {
+      "name": "expected_status",
+      "description": "Expected status value.",
+      "required": false,
+      "default": "200"
+    },
+    {
+      "name": "timeout_seconds",
+      "description": "Timeout seconds value.",
+      "required": false,
+      "default": "5"
+    },
+    {
+      "name": "latency_warn_ms",
+      "description": "Latency warn ms value.",
+      "required": false,
+      "default": "1000"
+    },
+    {
+      "name": "latency_crit_ms",
+      "description": "Latency crit ms value.",
+      "required": false,
+      "default": "3000"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

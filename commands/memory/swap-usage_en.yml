@@ -1,0 +1,14 @@
+name: View Swap Usage
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/swap-usage_en.sh
+category: memory
+tags:
+- inspection
+- memory
+- swap
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view swap usage workflow.
+platform:
+- linux
+- macos
+parameters: []

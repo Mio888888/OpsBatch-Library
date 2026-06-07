@@ -1,0 +1,14 @@
+name: View Page Cache Info
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/page-cache-info_en.sh
+category: memory
+tags:
+- inspection
+- memory
+- page-cache
+- cache
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view page cache info workflow.
+platform:
+- linux
+parameters: []

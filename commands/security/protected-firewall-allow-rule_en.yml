@@ -1,0 +1,32 @@
+name: Protected Firewall Allow Rule
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-firewall-allow-rule_en.sh
+category: security
+tags:
+- remediation
+- security
+- firewall
+- network
+risk: high
+description: Runs the protected protected firewall allow rule workflow for defensive
+  security inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_PORT
+  description: Target port value.
+  required: true
+  default: null
+- name: TARGET_PROTO
+  description: Target proto value.
+  required: false
+  default: tcp
+- name: TARGET_SOURCE
+  description: Target source value.
+  required: true
+  default: null
+- name: CONFIRM_FIREWALL_ALLOW
+  description: Confirm firewall allow value.
+  required: false
+  default: null

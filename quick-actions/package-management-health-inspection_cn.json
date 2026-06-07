@@ -1,0 +1,96 @@
+{
+  "name": "包管理健康巡检",
+  "description": "串联包管理器识别、已安装包摘要、软件源、更新/安全更新线索、锁与事务、缓存、完整性、历史和语言生态包管理器等只读检查，适合按包管理维度快速巡检与排障。",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/package-management-health-inspection_cn.json",
+  "category": "inspection",
+  "risk": "medium",
+  "tags": [
+    "package-management",
+    "inspection",
+    "health",
+    "packages"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "识别本机包管理器",
+      "type": "command",
+      "ref": "commands/package-management/package-manager-detection_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-manager-detection_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看已安装软件包清单摘要",
+      "type": "command",
+      "ref": "commands/package-management/installed-package-inventory_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/installed-package-inventory_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看软件源与仓库摘要",
+      "type": "command",
+      "ref": "commands/package-management/repository-source-summary_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/repository-source-summary_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看可更新软件包候选",
+      "type": "command",
+      "ref": "commands/package-management/update-candidates_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/update-candidates_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看安全更新线索",
+      "type": "command",
+      "ref": "commands/package-management/security-update-hints_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/security-update-hints_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看包管理锁与事务状态",
+      "type": "command",
+      "ref": "commands/package-management/package-locks-transactions_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-locks-transactions_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看包管理器缓存占用",
+      "type": "command",
+      "ref": "commands/package-management/package-cache-usage_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-cache-usage_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看包版本固定与排除策略",
+      "type": "command",
+      "ref": "commands/package-management/package-pinning-summary_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-pinning-summary_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看最近包管理操作历史",
+      "type": "command",
+      "ref": "commands/package-management/recent-package-history_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/recent-package-history_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看语言生态包管理器配置摘要",
+      "type": "command",
+      "ref": "commands/package-management/language-registry-summary_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/language-registry-summary_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "查看语言生态包清单",
+      "type": "command",
+      "ref": "commands/package-management/language-package-inventory_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/language-package-inventory_cn.yml",
+      "continueOnError": true
+    }
+  ]
+}

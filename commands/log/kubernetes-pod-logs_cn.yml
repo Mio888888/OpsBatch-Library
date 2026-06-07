@@ -1,0 +1,35 @@
+name: 查看 Kubernetes Pod 日志
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/kubernetes-pod-logs_cn.sh
+category: log
+tags:
+- log
+- kubernetes
+- pod
+- container
+risk: medium
+description: 查看单个 Kubernetes Pod 或容器的近期日志。必须设置 POD_NAME，可通过 NAMESPACE、CONTAINER_NAME、SINCE、LINES
+  控制范围；日志可能包含敏感业务数据。
+platform:
+- linux
+- macos
+parameters:
+- name: NAMESPACE
+  description: Kubernetes 命名空间
+  required: false
+  default: default
+- name: POD_NAME
+  description: Pod 名称
+  required: true
+  default: null
+- name: CONTAINER_NAME
+  description: 容器名称
+  required: true
+  default: null
+- name: LINES
+  description: 显示行数
+  required: false
+  default: 120
+- name: SINCE
+  description: 起始时间
+  required: false
+  default: 2h

@@ -1,0 +1,25 @@
+name: View SSH Login Logs
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/ssh-login-logs_en.sh
+category: security
+tags:
+- user
+- ssh
+- security
+- login
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view ssh login logs workflow. Review the output because
+  it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 120
+- name: SSH_LOG_PATTERN
+  description: Ssh log pattern value.
+  required: false
+  default: sshd|Accepted|Failed|Invalid user|Disconnected|Connection closed|authentication
+    failure

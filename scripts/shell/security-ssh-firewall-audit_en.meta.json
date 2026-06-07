@@ -1,0 +1,28 @@
+{
+  "name": "View Security SSH Firewall Audit",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-ssh-firewall-audit_en.sh",
+  "language": "shell",
+  "category": "security",
+  "tags": [
+    "security",
+    "audit",
+    "ssh",
+    "firewall",
+    "access-control",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view security ssh firewall audit script for defensive security inspection or protected remediation. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "30"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

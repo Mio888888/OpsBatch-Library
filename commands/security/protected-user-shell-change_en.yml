@@ -1,0 +1,27 @@
+name: Protected User Shell Change
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-shell-change_en.sh
+category: security
+tags:
+- remediation
+- user
+- shell
+risk: high
+description: Runs the protected protected user shell change workflow for defensive
+  security inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: Target user value.
+  required: true
+  default: null
+- name: TARGET_SHELL
+  description: Target shell value.
+  required: true
+  default: null
+- name: CONFIRM_SHELL_CHANGE
+  description: Confirm shell change value.
+  required: false
+  default: null

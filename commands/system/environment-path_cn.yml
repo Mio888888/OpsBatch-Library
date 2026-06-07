@@ -1,0 +1,14 @@
+name: 查看环境变量与 PATH
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/environment-path_cn.sh
+category: system
+tags:
+- inspection
+- system
+- environment
+- path
+risk: low
+description: 查看 PATH 条目和常见环境变量，辅助排查命令找不到、语言环境或终端环境问题。
+platform:
+- linux
+- macos
+parameters: []

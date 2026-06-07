@@ -1,0 +1,13 @@
+name: 查看 CPU 缓存信息
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-cache-info_cn.sh
+category: cpu
+tags:
+- inspection
+- cpu
+- cache
+risk: low
+description: 查看 CPU L1/L2/L3 缓存大小与共享关系，辅助分析计算密集型任务的性能瓶颈。
+platform:
+- linux
+- macos
+parameters: []

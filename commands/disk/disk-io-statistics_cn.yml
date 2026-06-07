@@ -1,0 +1,14 @@
+name: 查看磁盘 I/O 统计
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-io-statistics_cn.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- io
+- performance
+risk: medium
+description: 连续采样磁盘 I/O 指标，Linux 优先显示 await、util、队列等扩展统计，macOS 显示磁盘吞吐采样。命令只读，但包含短时采样并可能产生额外输出。
+platform:
+- linux
+- macos
+parameters: []

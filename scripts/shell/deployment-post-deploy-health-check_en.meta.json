@@ -1,0 +1,59 @@
+{
+  "name": "Deployment Post Deploy Health Check",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-post-deploy-health-check_en.sh",
+  "language": "shell",
+  "category": "deployment",
+  "tags": [
+    "deployment",
+    "post-deploy",
+    "health-check",
+    "service",
+    "http",
+    "tcp",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only deployment post deploy health check script for deployment operations.",
+  "parameters": [
+    {
+      "name": "HEALTH_URL",
+      "description": "Health url value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "SERVICE",
+      "description": "Service name.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "HOST",
+      "description": "Target host or address.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "PORT",
+      "description": "Target TCP port.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "TIMEOUT",
+      "description": "Timeout value.",
+      "required": false,
+      "default": "10"
+    },
+    {
+      "name": "ATTEMPTS",
+      "description": "Attempts value.",
+      "required": false,
+      "default": "3"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

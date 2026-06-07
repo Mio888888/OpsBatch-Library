@@ -1,0 +1,20 @@
+name: View Home Directory Audit
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/home-directory-audit_en.sh
+category: security
+tags:
+- audit
+- user
+- home
+- permission
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view home directory audit workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: Target user value.
+  required: true
+  default: null

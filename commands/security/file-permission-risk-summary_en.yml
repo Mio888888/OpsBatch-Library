@@ -1,0 +1,28 @@
+name: View File Permission Risk Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/file-permission-risk-summary_en.sh
+category: security
+tags:
+- audit
+- security
+- file
+- permission
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view file permission risk summary workflow. Review
+  the output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: SCAN_ROOT
+  description: Scan root value.
+  required: false
+  default: /
+- name: MAX_DEPTH
+  description: Max depth value.
+  required: false
+  default: 3
+- name: LIMIT
+  description: Limit value.
+  required: false
+  default: 100

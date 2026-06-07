@@ -1,0 +1,35 @@
+name: Protected Package Lock Fix
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-lock-fix_en.sh
+category: package-management
+tags:
+- remediation
+- package-management
+- locks
+- protected
+risk: high
+description: Runs the protected protected package lock fix workflow for package management
+  inspection or protected maintenance. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+parameters:
+- name: PACKAGE_MANAGER
+  description: Package manager value.
+  required: false
+  default: auto
+- name: LOCK_FIX_ACTION
+  description: Lock fix action value.
+  required: false
+  default: audit
+- name: TARGET_LOCK_FIX_SCOPE
+  description: Target lock fix scope value.
+  required: true
+  default: null
+- name: TARGET_LOCK_FILE
+  description: Target lock file value.
+  required: true
+  default: null
+- name: CONFIRM_LOCK_FIX
+  description: Confirm lock fix value.
+  required: false
+  default: null

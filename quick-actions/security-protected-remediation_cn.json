@@ -1,0 +1,82 @@
+{
+  "name": "安全受保护处置与加固",
+  "description": "串联账号、SSH、文件权限、防火墙、可疑文件、可疑服务和内核参数等安全处置/加固模板。所有步骤都是高风险受保护模板，默认只展示计划或拒绝执行，必须在单个命令中显式设置目标变量和确认变量后才会执行真实变更。",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/security-protected-remediation_cn.json",
+  "category": "troubleshooting",
+  "risk": "high",
+  "tags": [
+    "security",
+    "remediation",
+    "hardening",
+    "protected"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "受保护锁定用户账号",
+      "type": "command",
+      "ref": "commands/security/protected-user-lock_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-lock_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护强制下次登录改密",
+      "type": "command",
+      "ref": "commands/security/protected-force-password-change_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-force-password-change_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护重置认证失败锁定",
+      "type": "command",
+      "ref": "commands/security/protected-auth-lock-reset_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-auth-lock-reset_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护应用 SSH 安全配置片段",
+      "type": "command",
+      "ref": "commands/security/protected-ssh-hardening-template_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-ssh-hardening-template_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护调整文件权限",
+      "type": "command",
+      "ref": "commands/security/protected-file-permission-fix_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-file-permission-fix_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护添加防火墙允许规则",
+      "type": "command",
+      "ref": "commands/security/protected-firewall-allow-rule_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-firewall-allow-rule_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护隔离可疑文件",
+      "type": "command",
+      "ref": "commands/security/protected-suspicious-file-quarantine_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-suspicious-file-quarantine_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护停止可疑服务",
+      "type": "command",
+      "ref": "commands/security/protected-suspicious-service-stop_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-suspicious-service-stop_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护应用 Linux sysctl 安全参数",
+      "type": "command",
+      "ref": "commands/security/protected-sysctl-hardening_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-sysctl-hardening_cn.yml",
+      "continueOnError": true
+    }
+  ]
+}

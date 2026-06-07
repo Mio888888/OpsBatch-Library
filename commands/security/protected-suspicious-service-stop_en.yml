@@ -1,0 +1,24 @@
+name: Protected Suspicious Service Stop
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-suspicious-service-stop_en.sh
+category: security
+tags:
+- remediation
+- security
+- service
+- containment
+risk: high
+description: Runs the protected protected suspicious service stop workflow for defensive
+  security inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_SERVICE
+  description: Target service value.
+  required: true
+  default: null
+- name: CONFIRM_STOP_SERVICE
+  description: Confirm stop service value.
+  required: false
+  default: null

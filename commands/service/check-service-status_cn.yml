@@ -1,0 +1,16 @@
+name: 检查服务状态
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/service/check-service-status_cn.sh
+category: service
+tags:
+- service
+- inspection
+risk: low
+description: 检查指定服务的运行状态。默认服务名为 ssh，可通过 SERVICE 环境变量覆盖。
+platform:
+- linux
+- macos
+parameters:
+- name: SERVICE
+  description: 服务名称
+  required: false
+  default: ssh

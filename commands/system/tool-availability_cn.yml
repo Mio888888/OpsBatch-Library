@@ -1,0 +1,14 @@
+name: 查看基础工具可用性
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/tool-availability_cn.sh
+category: system
+tags:
+- inspection
+- system
+- tools
+- runtime
+risk: low
+description: 检查常见 Shell、语言运行时和运维工具是否存在，辅助判断脚本执行环境能力。
+platform:
+- linux
+- macos
+parameters: []

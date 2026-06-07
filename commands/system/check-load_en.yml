@@ -1,0 +1,14 @@
+name: Check System Load
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load_en.sh
+category: system
+tags:
+- inspection
+- system
+- load
+risk: low
+description: Collects read-only information for system inventory and runtime inspection
+  with the check system load workflow.
+platform:
+- linux
+- macos
+parameters: []

@@ -1,0 +1,16 @@
+name: View UID GID Anomalies
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/uid-gid-anomalies_en.sh
+category: security
+tags:
+- audit
+- user
+- uid
+- security
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view uid gid anomalies workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters: []

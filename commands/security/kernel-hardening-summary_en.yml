@@ -1,0 +1,16 @@
+name: View Kernel Hardening Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/kernel-hardening-summary_en.sh
+category: security
+tags:
+- inspection
+- security
+- kernel
+- hardening
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view kernel hardening summary workflow. Review the
+  output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters: []

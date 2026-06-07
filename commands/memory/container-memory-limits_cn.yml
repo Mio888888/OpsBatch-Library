@@ -1,0 +1,14 @@
+name: 查看容器内存限制
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/container-memory-limits_cn.sh
+category: memory
+tags:
+- troubleshooting
+- memory
+- container
+- cgroup
+risk: low
+description: 查看 Linux cgroup v1/v2 内存限制、当前用量和 swap 限制，用于判断容器内存上限；macOS 给出平台限制说明。
+platform:
+- linux
+- macos
+parameters: []

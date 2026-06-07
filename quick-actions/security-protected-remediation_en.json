@@ -1,0 +1,82 @@
+{
+  "name": "Security Protected Remediation and Hardening",
+  "description": "Runs protected security remediation and hardening operations that require explicit confirmation before changing system state.",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/security-protected-remediation_en.json",
+  "category": "troubleshooting",
+  "risk": "high",
+  "tags": [
+    "security",
+    "remediation",
+    "hardening",
+    "protected"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "Protected User Lock",
+      "type": "command",
+      "ref": "commands/security/protected-user-lock_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-lock_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Force Password Change",
+      "type": "command",
+      "ref": "commands/security/protected-force-password-change_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-force-password-change_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Auth Lock Reset",
+      "type": "command",
+      "ref": "commands/security/protected-auth-lock-reset_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-auth-lock-reset_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected SSH Hardening Template",
+      "type": "command",
+      "ref": "commands/security/protected-ssh-hardening-template_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-ssh-hardening-template_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected File Permission Fix",
+      "type": "command",
+      "ref": "commands/security/protected-file-permission-fix_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-file-permission-fix_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Firewall Allow Rule",
+      "type": "command",
+      "ref": "commands/security/protected-firewall-allow-rule_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-firewall-allow-rule_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Suspicious File Quarantine",
+      "type": "command",
+      "ref": "commands/security/protected-suspicious-file-quarantine_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-suspicious-file-quarantine_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Suspicious Service Stop",
+      "type": "command",
+      "ref": "commands/security/protected-suspicious-service-stop_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-suspicious-service-stop_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected sysctl Hardening",
+      "type": "command",
+      "ref": "commands/security/protected-sysctl-hardening_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-sysctl-hardening_en.yml",
+      "continueOnError": true
+    }
+  ]
+}

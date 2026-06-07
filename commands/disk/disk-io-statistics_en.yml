@@ -1,0 +1,16 @@
+name: View Disk I/O Statistics
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-io-statistics_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- io
+- performance
+risk: medium
+description: Collects diagnostic information for disk, filesystem, and storage inspection
+  with the view disk i/o statistics workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters: []

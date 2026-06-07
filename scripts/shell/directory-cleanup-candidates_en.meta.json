@@ -1,0 +1,38 @@
+{
+  "name": "View Directory Cleanup Candidates",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/directory-cleanup-candidates_en.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "disk",
+    "cleanup-candidates",
+    "stale-files"
+  ],
+  "risk": "medium",
+  "description": "Runs the view directory cleanup candidates script for maintenance operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "target_dir",
+      "description": "Target dir value.",
+      "required": false,
+      "default": "."
+    },
+    {
+      "name": "older_than_days",
+      "description": "Older than days value.",
+      "required": false,
+      "default": "30"
+    },
+    {
+      "name": "limit",
+      "description": "Limit value.",
+      "required": false,
+      "default": "50"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

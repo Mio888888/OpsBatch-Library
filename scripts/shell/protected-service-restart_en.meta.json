@@ -1,0 +1,32 @@
+{
+  "name": "Protected Service Restart",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-service-restart_en.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "service",
+    "restart",
+    "protected"
+  ],
+  "risk": "high",
+  "description": "Runs the protected protected service restart script for maintenance operations. It requires explicit intent or confirmation before making state-changing changes.",
+  "parameters": [
+    {
+      "name": "service",
+      "description": "Service name.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "confirm_restart",
+      "description": "Confirm restart value.",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

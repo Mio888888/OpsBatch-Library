@@ -1,0 +1,30 @@
+{
+  "name": "Tail Log File",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/tail-log_en.sh",
+  "language": "shell",
+  "category": "log",
+  "tags": [
+    "log",
+    "troubleshooting"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only tail log file script for log inspection and maintenance diagnostics.",
+  "parameters": [
+    {
+      "name": "log_file",
+      "description": "Log file path.",
+      "required": false,
+      "default": "/var/log/system.log"
+    },
+    {
+      "name": "lines",
+      "description": "Number of lines to display.",
+      "required": false,
+      "default": "100"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "View Deployment Artifact Verification",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-artifact-verification_en.sh",
+  "language": "shell",
+  "category": "deployment",
+  "tags": [
+    "deployment",
+    "artifact",
+    "checksum",
+    "verification",
+    "archive",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only view deployment artifact verification script for deployment operations.",
+  "parameters": [
+    {
+      "name": "ARTIFACT_PATH",
+      "description": "Artifact path value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "CHECKSUM_FILE",
+      "description": "Checksum file value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "EXPECTED_SHA256",
+      "description": "Expected sha256 value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "40"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

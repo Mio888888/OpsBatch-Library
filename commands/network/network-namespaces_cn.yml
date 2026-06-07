@@ -1,0 +1,13 @@
+name: 查看网络命名空间
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-namespaces_cn.sh
+category: network
+tags:
+- inspection
+- network
+- namespace
+- container
+risk: low
+description: 查看 Linux 网络命名空间和命名 netns，辅助排查容器、虚拟化或多网络栈场景。只读不进入或修改命名空间。
+platform:
+- linux
+parameters: []

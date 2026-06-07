@@ -1,0 +1,28 @@
+name: View Security Log Timeline
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/security-log-timeline_en.sh
+category: security
+tags:
+- troubleshooting
+- security
+- logs
+- timeline
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view security log timeline workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 160
+- name: SINCE
+  description: Start time or time window.
+  required: false
+  default: 12 hours ago
+- name: SECURITY_LOG_PATTERN
+  description: Security log pattern value.
+  required: false
+  default: failed|failure|invalid|denied|sudo|su:|sshd|pam|polkit|segfault|audit|apparmor|selinux|firewall|blocked

@@ -1,0 +1,35 @@
+{
+  "name": "账号与权限安全审计",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-account-permission-audit_cn.sh",
+  "language": "shell",
+  "category": "security",
+  "tags": [
+    "security",
+    "audit",
+    "account",
+    "permission",
+    "ssh-key",
+    "filesystem",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "只读审计 UID 0 账号、管理员组、交互式 shell、世界可写目录、setuid/setgid 文件和 authorized_keys 文件元数据；不打印密钥内容，但输出可能包含用户名和路径。",
+  "parameters": [
+    {
+      "name": "SCAN_ROOT",
+      "description": "限定权限与密钥元数据扫描的目录，可作为第一个参数或环境变量传入。",
+      "required": false,
+      "default": "$HOME"
+    },
+    {
+      "name": "LIMIT",
+      "description": "每类结果最多展示的行数。",
+      "required": false,
+      "default": "30"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

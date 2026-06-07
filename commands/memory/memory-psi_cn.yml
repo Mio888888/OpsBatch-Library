@@ -1,0 +1,13 @@
+name: 查看内存压力 PSI
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-psi_cn.sh
+category: memory
+tags:
+- troubleshooting
+- memory
+- psi
+- pressure
+risk: low
+description: 查看 Linux PSI memory stall 指标，用于判断进程是否因内存回收或分配压力发生阻塞。
+platform:
+- linux
+parameters: []

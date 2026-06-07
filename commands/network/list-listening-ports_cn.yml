@@ -1,0 +1,13 @@
+name: 检查本地监听端口
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/list-listening-ports_cn.sh
+category: network
+tags:
+- troubleshooting
+- network
+- port
+risk: low
+description: 查看当前主机监听中的 TCP/UDP 端口，辅助排查服务是否正确监听。
+platform:
+- linux
+- macos
+parameters: []

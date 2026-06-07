@@ -1,0 +1,14 @@
+name: View Logged In Users
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/user/logged-in-users_en.sh
+category: user
+tags:
+- inspection
+- user
+- login
+risk: low
+description: Collects read-only information for user account inspection with the view
+  logged in users workflow.
+platform:
+- linux
+- macos
+parameters: []

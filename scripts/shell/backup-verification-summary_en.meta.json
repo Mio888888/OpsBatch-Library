@@ -1,0 +1,32 @@
+{
+  "name": "View Backup Verification Summary",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/backup-verification-summary_en.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "backup",
+    "verification",
+    "checksum"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only view backup verification summary script for maintenance operations.",
+  "parameters": [
+    {
+      "name": "backup_path",
+      "description": "Backup path value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "manifest_file",
+      "description": "Manifest file value.",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

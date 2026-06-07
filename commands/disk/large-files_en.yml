@@ -1,0 +1,24 @@
+name: View Large Files
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/large-files_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- capacity
+- large-files
+risk: medium
+description: Collects diagnostic information for disk, filesystem, and storage inspection
+  with the view large files workflow. Review the output because it may be noisy or
+  expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_DIR
+  description: Target dir value.
+  required: false
+  default: .
+- name: MIN_SIZE
+  description: Min size value.
+  required: false
+  default: 500M

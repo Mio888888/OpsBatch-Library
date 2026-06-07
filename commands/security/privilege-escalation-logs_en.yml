@@ -1,0 +1,24 @@
+name: View Privilege Escalation Logs
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/privilege-escalation-logs_en.sh
+category: security
+tags:
+- user
+- sudo
+- security
+- privilege
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view privilege escalation logs workflow. Review the
+  output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 120
+- name: PRIVILEGE_PATTERN
+  description: Privilege pattern value.
+  required: false
+  default: sudo|su:|polkit|pkexec|authentication failure|session opened|session closed|COMMAND=

@@ -1,0 +1,32 @@
+{
+  "name": "日志维护摘要",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/log-maintenance-summary_cn.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "log",
+    "summary",
+    "inspection"
+  ],
+  "risk": "medium",
+  "description": "只读分析指定日志尾部，输出文件大小、行数、常见级别计数和近期错误样例。不会轮转、截断或归档日志；输出可能包含日志内容。",
+  "parameters": [
+    {
+      "name": "log_file",
+      "description": "需要分析的日志文件路径",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "lines",
+      "description": "分析日志尾部行数",
+      "required": false,
+      "default": "1000"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

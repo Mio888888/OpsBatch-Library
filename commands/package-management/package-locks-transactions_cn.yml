@@ -1,0 +1,14 @@
+name: 查看包管理锁与事务状态
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-locks-transactions_cn.sh
+category: package-management
+tags:
+- inspection
+- package-management
+- locks
+- transactions
+risk: medium
+description: 查看包管理器相关进程、常见锁文件和事务审计线索，辅助排查卡住的安装/升级；只读不删除锁、不修复事务。
+platform:
+- linux
+- macos
+parameters: []

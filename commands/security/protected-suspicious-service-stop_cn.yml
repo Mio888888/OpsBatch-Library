@@ -1,0 +1,23 @@
+name: 受保护停止可疑服务
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-suspicious-service-stop_cn.sh
+category: security
+tags:
+- remediation
+- security
+- service
+- containment
+risk: high
+description: 受保护的可疑服务停止模板。默认只展示服务状态；只有设置 TARGET_SERVICE 和 CONFIRM_STOP_SERVICE=STOP_TARGET_SERVICE
+  后才在 Linux systemd 上停止服务。误用可能中断业务，执行前必须确认影响、依赖和恢复方案。
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_SERVICE
+  description: 目标服务名称
+  required: true
+  default: null
+- name: CONFIRM_STOP_SERVICE
+  description: 确认停止服务令牌
+  required: false
+  default: null

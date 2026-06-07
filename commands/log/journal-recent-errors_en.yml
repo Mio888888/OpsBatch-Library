@@ -1,0 +1,24 @@
+name: View Journal Recent Errors
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/journal-recent-errors_en.sh
+category: log
+tags:
+- log
+- troubleshooting
+- error
+- journal
+risk: medium
+description: Collects diagnostic information for log inspection and maintenance diagnostics
+  with the view journal recent errors workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: SINCE
+  description: Start time or time window.
+  required: false
+  default: 1 hour ago
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 120

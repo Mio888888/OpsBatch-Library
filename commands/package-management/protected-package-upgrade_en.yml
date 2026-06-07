@@ -1,0 +1,28 @@
+name: Protected Package Upgrade
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-upgrade_en.sh
+category: package-management
+tags:
+- remediation
+- package-management
+- upgrade
+- protected
+risk: high
+description: Runs the protected protected package upgrade workflow for package management
+  inspection or protected maintenance. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: PACKAGE_MANAGER
+  description: Package manager value.
+  required: false
+  default: auto
+- name: TARGET_PACKAGE
+  description: Target package value.
+  required: true
+  default: null
+- name: CONFIRM_UPGRADE
+  description: Confirm upgrade value.
+  required: false
+  default: null

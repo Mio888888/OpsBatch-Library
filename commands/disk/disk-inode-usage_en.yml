@@ -1,0 +1,15 @@
+name: View Disk Inode Usage
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-inode-usage_en.sh
+category: disk
+tags:
+- inspection
+- disk
+- inode
+- filesystem
+risk: low
+description: Collects read-only information for disk, filesystem, and storage inspection
+  with the view disk inode usage workflow.
+platform:
+- linux
+- macos
+parameters: []

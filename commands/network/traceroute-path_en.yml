@@ -1,0 +1,24 @@
+name: View Traceroute Path
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/traceroute-path_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- traceroute
+- path
+risk: medium
+description: Collects diagnostic information for network diagnostics and connectivity
+  troubleshooting with the view traceroute path workflow. Review the output because
+  it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_HOST
+  description: Target host or address.
+  required: false
+  default: example.com
+- name: MAX_HOPS
+  description: Max hops value.
+  required: false
+  default: 20

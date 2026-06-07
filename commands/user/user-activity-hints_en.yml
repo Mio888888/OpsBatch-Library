@@ -1,0 +1,24 @@
+name: View User Activity Hints
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/user/user-activity-hints_en.sh
+category: user
+tags:
+- troubleshooting
+- user
+- activity
+- login
+risk: medium
+description: Collects diagnostic information for user account inspection with the
+  view user activity hints workflow. Review the output because it may be noisy or
+  expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: Target user value.
+  required: true
+  default: null
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 50

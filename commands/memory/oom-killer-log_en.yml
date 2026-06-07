@@ -1,0 +1,14 @@
+name: View OOM Killer Log
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/oom-killer-log_en.sh
+category: memory
+tags:
+- troubleshooting
+- memory
+- oom
+- log
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view oom killer log workflow.
+platform:
+- linux
+parameters: []

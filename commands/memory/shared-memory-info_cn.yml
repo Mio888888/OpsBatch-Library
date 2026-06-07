@@ -1,0 +1,14 @@
+name: 查看共享内存段
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/shared-memory-info_cn.sh
+category: memory
+tags:
+- inspection
+- memory
+- shared-memory
+- ipc
+risk: low
+description: 查看 System V 共享内存段信息。Linux/macOS 使用 ipcs -m，Linux 额外展示 /proc/meminfo 中共享内存字段。
+platform:
+- linux
+- macos
+parameters: []

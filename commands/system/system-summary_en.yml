@@ -1,0 +1,14 @@
+name: View System Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/system-summary_en.sh
+category: system
+tags:
+- inspection
+- system
+- summary
+risk: low
+description: Collects read-only information for system inventory and runtime inspection
+  with the view system summary workflow.
+platform:
+- linux
+- macos
+parameters: []

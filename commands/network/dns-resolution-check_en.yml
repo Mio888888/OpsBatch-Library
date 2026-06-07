@@ -1,0 +1,20 @@
+name: DNS Resolution Check
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/dns-resolution-check_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- dns
+- resolution
+risk: medium
+description: Collects diagnostic information for network diagnostics and connectivity
+  troubleshooting with the dns resolution check workflow. Review the output because
+  it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_HOST
+  description: Target host or address.
+  required: false
+  default: example.com

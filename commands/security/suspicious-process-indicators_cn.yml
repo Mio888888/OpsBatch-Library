@@ -1,0 +1,18 @@
+name: 查看可疑进程线索
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/suspicious-process-indicators_cn.sh
+category: security
+tags:
+- troubleshooting
+- security
+- process
+- indicators
+risk: medium
+description: 查看从临时/可写路径运行的进程、Linux 已删除仍打开文件和高权限长时间运行进程等线索。只读查询，可能输出命令行参数和路径，需注意脱敏。
+platform:
+- linux
+- macos
+parameters:
+- name: PROCESS_LIMIT
+  description: 显示进程数量上限
+  required: false
+  default: 80

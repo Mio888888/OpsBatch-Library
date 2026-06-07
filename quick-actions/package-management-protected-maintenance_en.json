@@ -1,0 +1,61 @@
+{
+  "name": "Package Management Protected Maintenance",
+  "description": "Runs protected package-management maintenance operations that require explicit user intent before changing system state.",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/package-management-protected-maintenance_en.json",
+  "category": "troubleshooting",
+  "risk": "high",
+  "tags": [
+    "package-management",
+    "maintenance",
+    "remediation",
+    "protected"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "Protected Package Install",
+      "type": "command",
+      "ref": "commands/package-management/protected-package-install_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-install_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Package Upgrade",
+      "type": "command",
+      "ref": "commands/package-management/protected-package-upgrade_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-upgrade_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Package Uninstall",
+      "type": "command",
+      "ref": "commands/package-management/protected-package-uninstall_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-uninstall_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Package Cache Cleanup",
+      "type": "command",
+      "ref": "commands/package-management/protected-package-cache-cleanup_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-cache-cleanup_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Repository Config",
+      "type": "command",
+      "ref": "commands/package-management/protected-repository-config_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-repository-config_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Package Lock Fix",
+      "type": "command",
+      "ref": "commands/package-management/protected-package-lock-fix_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-lock-fix_en.yml",
+      "continueOnError": true
+    }
+  ]
+}

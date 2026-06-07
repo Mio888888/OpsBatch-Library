@@ -1,0 +1,75 @@
+{
+  "name": "User Account Protected Operations",
+  "description": "Runs protected user-account operations such as create, lock, unlock, delete, group membership, shell changes, and auth lock reset.",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/user-account-protected-operations_en.json",
+  "category": "troubleshooting",
+  "risk": "high",
+  "tags": [
+    "user",
+    "account",
+    "remediation",
+    "protected"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "Protected User Create",
+      "type": "command",
+      "ref": "commands/security/protected-user-create_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-create_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected User Lock",
+      "type": "command",
+      "ref": "commands/security/protected-user-lock_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-lock_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected User Unlock",
+      "type": "command",
+      "ref": "commands/security/protected-user-unlock_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-unlock_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Force Password Change",
+      "type": "command",
+      "ref": "commands/security/protected-force-password-change_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-force-password-change_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected User Delete",
+      "type": "command",
+      "ref": "commands/security/protected-user-delete_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-delete_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Group Membership Change",
+      "type": "command",
+      "ref": "commands/security/protected-group-membership-change_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-group-membership-change_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected User Shell Change",
+      "type": "command",
+      "ref": "commands/security/protected-user-shell-change_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-shell-change_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Protected Auth Lock Reset",
+      "type": "command",
+      "ref": "commands/security/protected-auth-lock-reset_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-auth-lock-reset_en.yml",
+      "continueOnError": true
+    }
+  ]
+}

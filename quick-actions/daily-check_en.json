@@ -1,0 +1,49 @@
+{
+  "name": "Daily Baseline Inspection",
+  "description": "Runs system load, memory, disk, and service checks as a daily read-only inspection entry point.",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/daily-check_en.json",
+  "category": "inspection",
+  "risk": "low",
+  "tags": [
+    "daily",
+    "inspection",
+    "system"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "Check System Load",
+      "type": "command",
+      "ref": "commands/system/check-load_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Check Memory Usage",
+      "type": "command",
+      "ref": "commands/memory/memory-usage-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-usage-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Check Disk Space",
+      "type": "command",
+      "ref": "commands/disk/disk-usage_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-usage_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Check Service Status",
+      "type": "script",
+      "ref": "scripts/shell/check-service_en.sh",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/check-service_en.sh",
+      "args": [
+        "ssh"
+      ],
+      "continueOnError": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+name: View Network Interface Errors
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-interface-errors_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- interface
+- errors
+- drops
+risk: low
+description: Collects read-only information for network diagnostics and connectivity
+  troubleshooting with the view network interface errors workflow.
+platform:
+- linux
+- macos
+parameters: []

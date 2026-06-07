@@ -1,0 +1,14 @@
+name: View Blocked Processes
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/blocked-processes_en.sh
+category: process
+tags:
+- troubleshooting
+- process
+- blocked
+risk: low
+description: Collects read-only information for process and runtime troubleshooting
+  with the view blocked processes workflow.
+platform:
+- linux
+- macos
+parameters: []

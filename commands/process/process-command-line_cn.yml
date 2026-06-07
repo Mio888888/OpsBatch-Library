@@ -1,0 +1,17 @@
+name: 查看进程启动参数
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-command-line_cn.sh
+category: process
+tags:
+- troubleshooting
+- process
+- command-line
+risk: medium
+description: 查看指定进程的启动命令和参数。命令只读，但启动参数可能包含 Token、密码、连接串或业务路径等敏感信息。
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: 1

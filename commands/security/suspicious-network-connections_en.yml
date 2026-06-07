@@ -1,0 +1,20 @@
+name: View Suspicious Network Connections
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/suspicious-network-connections_en.sh
+category: security
+tags:
+- troubleshooting
+- security
+- network
+- connections
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view suspicious network connections workflow. Review
+  the output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TOP_LIMIT
+  description: Top limit value.
+  required: false
+  default: 30

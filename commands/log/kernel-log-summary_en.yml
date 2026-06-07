@@ -1,0 +1,24 @@
+name: View Kernel Log Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/kernel-log-summary_en.sh
+category: log
+tags:
+- log
+- kernel
+- troubleshooting
+- error
+risk: medium
+description: Collects diagnostic information for log inspection and maintenance diagnostics
+  with the view kernel log summary workflow. Review the output because it may be noisy
+  or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 120
+- name: KERNEL_LOG_PATTERN
+  description: Kernel log pattern value.
+  required: false
+  default: error|fail|warn|panic|segfault|oom|blocked|hung|reset|timeout

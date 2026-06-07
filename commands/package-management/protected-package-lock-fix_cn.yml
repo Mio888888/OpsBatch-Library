@@ -1,0 +1,34 @@
+name: 受保护修复包管理锁与事务
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-lock-fix_cn.sh
+category: package-management
+tags:
+- remediation
+- package-management
+- locks
+- protected
+risk: high
+description: 受保护的包管理锁和事务修复模板。默认只审计进程、锁文件和可选修复方案；只有显式设置 TARGET_LOCK_FIX_SCOPE、LOCK_FIX_ACTION、必要的
+  TARGET_LOCK_FILE 和 CONFIRM_LOCK_FIX=FIX_PACKAGE_LOCK 后才执行有限修复。误删锁或错误修复事务可能破坏包数据库，执行前必须确认无活动包管理进程、已有备份并了解回滚路径。
+platform:
+- linux
+parameters:
+- name: PACKAGE_MANAGER
+  description: 包管理器（apt/yum/dnf/pacman/auto）
+  required: false
+  default: auto
+- name: LOCK_FIX_ACTION
+  description: 锁修复操作类型
+  required: false
+  default: audit
+- name: TARGET_LOCK_FIX_SCOPE
+  description: 锁修复范围
+  required: true
+  default: null
+- name: TARGET_LOCK_FILE
+  description: 目标锁文件路径
+  required: true
+  default: null
+- name: CONFIRM_LOCK_FIX
+  description: 确认锁修复令牌
+  required: false
+  default: null

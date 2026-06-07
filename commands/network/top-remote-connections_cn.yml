@@ -1,0 +1,14 @@
+name: 查看远端连接排行
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/top-remote-connections_cn.sh
+category: network
+tags:
+- troubleshooting
+- network
+- connection
+- remote
+risk: low
+description: 汇总当前连接的远端地址排行，帮助发现异常集中连接、连接风暴或依赖热点。只读统计本机连接，不主动访问远端。
+platform:
+- linux
+- macos
+parameters: []

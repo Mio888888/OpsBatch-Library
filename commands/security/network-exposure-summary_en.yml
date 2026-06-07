@@ -1,0 +1,16 @@
+name: View Network Exposure Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/network-exposure-summary_en.sh
+category: security
+tags:
+- inspection
+- security
+- network
+- exposure
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view network exposure summary workflow. Review the
+  output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters: []

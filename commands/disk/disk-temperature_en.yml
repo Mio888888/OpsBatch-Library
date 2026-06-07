@@ -1,0 +1,19 @@
+name: View Disk Temperature
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-temperature_en.sh
+category: disk
+tags:
+- inspection
+- disk
+- temperature
+- smart
+risk: low
+description: Collects read-only information for disk, filesystem, and storage inspection
+  with the view disk temperature workflow.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_DEVICE
+  description: Target device value.
+  required: true
+  default: null

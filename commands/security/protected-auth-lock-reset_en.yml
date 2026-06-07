@@ -1,0 +1,23 @@
+name: Protected Auth Lock Reset
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-auth-lock-reset_en.sh
+category: security
+tags:
+- remediation
+- user
+- auth
+- unlock
+risk: high
+description: Runs the protected protected auth lock reset workflow for defensive security
+  inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+parameters:
+- name: TARGET_USER
+  description: Target user value.
+  required: true
+  default: null
+- name: CONFIRM_RESET_AUTH_LOCK
+  description: Confirm reset auth lock value.
+  required: false
+  default: null

@@ -1,0 +1,20 @@
+name: View Mount Busy Processes
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/mount-busy-processes_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- mount
+- process
+risk: medium
+description: Collects diagnostic information for disk, filesystem, and storage inspection
+  with the view mount busy processes workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_MOUNT
+  description: Target mount value.
+  required: true
+  default: null

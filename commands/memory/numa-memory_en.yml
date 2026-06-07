@@ -1,0 +1,13 @@
+name: View NUMA Memory
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/numa-memory_en.sh
+category: memory
+tags:
+- troubleshooting
+- memory
+- numa
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view numa memory workflow.
+platform:
+- linux
+parameters: []

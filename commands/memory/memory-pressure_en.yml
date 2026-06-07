@@ -1,0 +1,15 @@
+name: View Memory Pressure
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-pressure_en.sh
+category: memory
+tags:
+- troubleshooting
+- memory
+- pressure
+- waterline
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view memory pressure workflow.
+platform:
+- linux
+- macos
+parameters: []

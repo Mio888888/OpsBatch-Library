@@ -1,0 +1,31 @@
+{
+  "name": "View Maintenance Health Summary",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/maintenance-health-summary_en.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "health-check",
+    "inspection"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only view maintenance health summary script for maintenance operations.",
+  "parameters": [
+    {
+      "name": "target_path",
+      "description": "Target path value.",
+      "required": false,
+      "default": "/"
+    },
+    {
+      "name": "service",
+      "description": "Service name.",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

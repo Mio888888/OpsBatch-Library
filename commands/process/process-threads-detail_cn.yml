@@ -1,0 +1,22 @@
+name: 查看进程线程详情
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-threads-detail_cn.sh
+category: process
+tags:
+- troubleshooting
+- process
+- thread
+- detail
+risk: low
+description: 查看指定进程的线程详情或线程 ID 列表。默认检查 PID 1，可通过 PID 指定目标进程。
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: 1
+- name: PROCESS_LIMIT
+  description: 显示进程数量上限
+  required: false
+  default: 80

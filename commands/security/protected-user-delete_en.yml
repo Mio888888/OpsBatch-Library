@@ -1,0 +1,28 @@
+name: Protected User Delete
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-delete_en.sh
+category: security
+tags:
+- remediation
+- user
+- account
+- delete
+risk: high
+description: Runs the protected protected user delete workflow for defensive security
+  inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: Target user value.
+  required: true
+  default: null
+- name: REMOVE_HOME
+  description: Remove home value.
+  required: false
+  default: false
+- name: CONFIRM_DELETE_USER
+  description: Confirm delete user value.
+  required: false
+  default: null

@@ -1,0 +1,20 @@
+name: View File Integrity Baseline
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/file-integrity-baseline_en.sh
+category: security
+tags:
+- audit
+- security
+- integrity
+- file
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view file integrity baseline workflow. Review the
+  output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: FILE_LIST
+  description: File list value.
+  required: false
+  default: /etc/passwd /etc/group /etc/hosts /etc/sudoers /etc/ssh/sshd_config

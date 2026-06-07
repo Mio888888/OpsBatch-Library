@@ -1,0 +1,28 @@
+name: Log Pattern Search
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/log-pattern-search_en.sh
+category: log
+tags:
+- log
+- grep
+- search
+- troubleshooting
+risk: medium
+description: Collects diagnostic information for log inspection and maintenance diagnostics
+  with the log pattern search workflow. Review the output because it may be noisy
+  or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: LOG_FILE
+  description: Log file path.
+  required: true
+  default: null
+- name: LOG_PATTERN
+  description: Log pattern value.
+  required: false
+  default: error|fail|exception|timeout|critical
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 120

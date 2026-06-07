@@ -1,0 +1,45 @@
+{
+  "name": "View Monitoring Memory Swap Threshold",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-memory-swap-threshold_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "memory",
+    "swap",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only view monitoring memory swap threshold script for monitoring operations.",
+  "parameters": [
+    {
+      "name": "mem_warn",
+      "description": "Mem warn value.",
+      "required": false,
+      "default": "80"
+    },
+    {
+      "name": "mem_crit",
+      "description": "Mem crit value.",
+      "required": false,
+      "default": "90"
+    },
+    {
+      "name": "swap_warn",
+      "description": "Swap warn value.",
+      "required": false,
+      "default": "50"
+    },
+    {
+      "name": "swap_crit",
+      "description": "Swap crit value.",
+      "required": false,
+      "default": "80"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

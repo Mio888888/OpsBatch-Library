@@ -1,0 +1,10 @@
+name: Command Name
+url: https://raw.githubusercontent.com/OWNER/REPO/BRANCH/commands/category/command-name_en.sh
+category: system
+tags:
+- inspection
+risk: low
+description: Describes the command purpose, applicable scenarios, output, and operational notes.
+platform:
+- linux
+parameters: []

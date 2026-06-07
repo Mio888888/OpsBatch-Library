@@ -1,0 +1,45 @@
+{
+  "name": "Protected Temp Cleanup",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-temp-cleanup_en.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "cleanup",
+    "temp",
+    "stale-files",
+    "protected"
+  ],
+  "risk": "high",
+  "description": "Runs the protected protected temp cleanup script for maintenance operations. It requires explicit intent or confirmation before making state-changing changes.",
+  "parameters": [
+    {
+      "name": "target_dir",
+      "description": "Target dir value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "older_than_days",
+      "description": "Older than days value.",
+      "required": false,
+      "default": "7"
+    },
+    {
+      "name": "confirm_delete",
+      "description": "Confirm delete value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "max_depth",
+      "description": "Max depth value.",
+      "required": false,
+      "default": "2"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

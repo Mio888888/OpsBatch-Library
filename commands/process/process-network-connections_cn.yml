@@ -1,0 +1,22 @@
+name: 查看进程网络连接
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-network-connections_cn.sh
+category: process
+tags:
+- troubleshooting
+- process
+- network
+- socket
+risk: medium
+description: 查看指定进程关联的 TCP/UDP 网络连接。命令只读，但可能输出本机连接、远端地址和进程细节，部分平台需要更高权限。
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: 1
+- name: PROCESS_LIMIT
+  description: 显示进程数量上限
+  required: false
+  default: 120

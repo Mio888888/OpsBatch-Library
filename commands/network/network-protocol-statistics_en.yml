@@ -1,0 +1,16 @@
+name: View Network Protocol Statistics
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-protocol-statistics_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- statistics
+- tcp
+- udp
+risk: low
+description: Collects read-only information for network diagnostics and connectivity
+  troubleshooting with the view network protocol statistics workflow.
+platform:
+- linux
+- macos
+parameters: []

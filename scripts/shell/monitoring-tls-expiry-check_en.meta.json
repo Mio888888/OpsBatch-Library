@@ -1,0 +1,53 @@
+{
+  "name": "Monitoring TLS Expiry Check",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-tls-expiry-check_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "tls",
+    "certificate",
+    "security",
+    "network",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the monitoring tls expiry check script for monitoring operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "target_host",
+      "description": "Target host or address.",
+      "required": false,
+      "default": "example.com"
+    },
+    {
+      "name": "target_port",
+      "description": "Target port value.",
+      "required": false,
+      "default": "443"
+    },
+    {
+      "name": "warn_days",
+      "description": "Warn days value.",
+      "required": false,
+      "default": "30"
+    },
+    {
+      "name": "crit_days",
+      "description": "Crit days value.",
+      "required": false,
+      "default": "7"
+    },
+    {
+      "name": "timeout_seconds",
+      "description": "Timeout seconds value.",
+      "required": false,
+      "default": "5"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

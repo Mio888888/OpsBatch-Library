@@ -1,0 +1,41 @@
+{
+  "name": "View Security Suspicious Activity Indicators",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-suspicious-activity-indicators_en.sh",
+  "language": "shell",
+  "category": "security",
+  "tags": [
+    "security",
+    "incident-triage",
+    "process",
+    "network",
+    "auth-log",
+    "indicators",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view security suspicious activity indicators script for defensive security inspection or protected remediation. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "LOG_PATH",
+      "description": "Log path value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "25"
+    },
+    {
+      "name": "SINCE_MINUTES",
+      "description": "Since minutes value.",
+      "required": false,
+      "default": "1440"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

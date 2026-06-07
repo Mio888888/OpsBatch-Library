@@ -1,0 +1,18 @@
+name: View Process Memory Limits
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/process-memory-limits_en.sh
+category: memory
+tags:
+- troubleshooting
+- memory
+- process
+- limits
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view process memory limits workflow.
+platform:
+- linux
+parameters:
+- name: PID
+  description: Process ID.
+  required: false
+  default: 1

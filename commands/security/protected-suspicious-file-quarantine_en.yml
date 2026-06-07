@@ -1,0 +1,28 @@
+name: Protected Suspicious File Quarantine
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-suspicious-file-quarantine_en.sh
+category: security
+tags:
+- remediation
+- security
+- file
+- quarantine
+risk: high
+description: Runs the protected protected suspicious file quarantine workflow for
+  defensive security inspection or protected remediation. It requires explicit intent
+  or confirmation before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_FILE
+  description: Target file value.
+  required: true
+  default: null
+- name: QUARANTINE_DIR
+  description: Quarantine dir value.
+  required: true
+  default: null
+- name: CONFIRM_QUARANTINE
+  description: Confirm quarantine value.
+  required: false
+  default: null

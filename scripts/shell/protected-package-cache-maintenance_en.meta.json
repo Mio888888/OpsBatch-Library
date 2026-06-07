@@ -1,0 +1,33 @@
+{
+  "name": "Protected Package Cache Maintenance",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-package-cache-maintenance_en.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "package-management",
+    "package-cache",
+    "cleanup",
+    "protected"
+  ],
+  "risk": "high",
+  "description": "Runs the protected protected package cache maintenance script for maintenance operations. It requires explicit intent or confirmation before making state-changing changes.",
+  "parameters": [
+    {
+      "name": "cache_target",
+      "description": "Cache target value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "confirm_clean",
+      "description": "Confirm clean value.",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

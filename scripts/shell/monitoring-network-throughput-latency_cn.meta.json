@@ -1,0 +1,58 @@
+{
+  "name": "监控网络吞吐与延迟采样",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-network-throughput-latency_cn.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "network",
+    "throughput",
+    "latency",
+    "monitoring",
+    "sampling",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "对单个网络接口进行短时间字节计数采样，并可对单个主机执行小包数 ping 延迟检查。默认自动选择第一个非 loopback 接口，ping example.com，采样 1 秒，不抓包、不扫描、不修改接口。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。外部 ping 与接口流量信息可能敏感，因此标记为 medium。",
+  "parameters": [
+    {
+      "name": "interface",
+      "description": "要采样的网络接口；为空时自动选择第一个非 loopback 接口，可通过第 1 个参数或 INTERFACE 设置",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "sample_interval",
+      "description": "采样间隔秒数，限制为 1-10，可通过第 2 个参数或 SAMPLE_INTERVAL 设置",
+      "required": false,
+      "default": "1"
+    },
+    {
+      "name": "ping_host",
+      "description": "用于延迟采样的目标主机，可通过第 3 个参数或 PING_HOST 设置",
+      "required": false,
+      "default": "example.com"
+    },
+    {
+      "name": "ping_count",
+      "description": "ping 包数，限制为 1-10，可通过第 4 个参数或 PING_COUNT 设置",
+      "required": false,
+      "default": "3"
+    },
+    {
+      "name": "latency_warn_ms",
+      "description": "平均延迟 warning 阈值毫秒，可通过第 5 个参数或 LATENCY_WARN_MS 设置",
+      "required": false,
+      "default": "100"
+    },
+    {
+      "name": "latency_crit_ms",
+      "description": "平均延迟 critical 阈值毫秒，可通过第 6 个参数或 LATENCY_CRIT_MS 设置",
+      "required": false,
+      "default": "300"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

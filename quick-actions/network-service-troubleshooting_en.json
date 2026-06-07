@@ -1,0 +1,116 @@
+{
+  "name": "Network and Service Troubleshooting",
+  "description": "Runs network interface, route, DNS, connectivity, port, connection, throughput, and process checks for network and service troubleshooting.",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/network-service-troubleshooting_en.json",
+  "category": "troubleshooting",
+  "risk": "medium",
+  "tags": [
+    "network",
+    "service",
+    "troubleshooting"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "View Network Interface Summary",
+      "type": "command",
+      "ref": "commands/network/network-interface-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-interface-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Network Route Table",
+      "type": "command",
+      "ref": "commands/network/network-route-table_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-route-table_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Ping Gateway",
+      "type": "command",
+      "ref": "commands/network/ping-gateway_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/ping-gateway_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View DNS Config Summary",
+      "type": "command",
+      "ref": "commands/network/dns-config-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/dns-config-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "DNS Resolution Check",
+      "type": "command",
+      "ref": "commands/network/dns-resolution-check_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/dns-resolution-check_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Network Connectivity Check",
+      "type": "command",
+      "ref": "commands/network/network-connectivity-check_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-connectivity-check_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View List Listening Ports",
+      "type": "command",
+      "ref": "commands/network/list-listening-ports_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/list-listening-ports_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Active Connections Summary",
+      "type": "command",
+      "ref": "commands/network/active-connections-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/active-connections-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Top Remote Connections",
+      "type": "command",
+      "ref": "commands/network/top-remote-connections_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/top-remote-connections_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Network Socket Processes",
+      "type": "command",
+      "ref": "commands/network/network-socket-processes_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-socket-processes_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Network Interface Errors",
+      "type": "command",
+      "ref": "commands/network/network-interface-errors_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-interface-errors_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Network Throughput Sampling",
+      "type": "command",
+      "ref": "commands/network/network-throughput-sampling_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-throughput-sampling_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View ARP Neighbor Table",
+      "type": "command",
+      "ref": "commands/network/arp-neighbor-table_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/arp-neighbor-table_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Top CPU Processes",
+      "type": "command",
+      "ref": "commands/cpu/top-cpu-processes_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/top-cpu-processes_en.yml",
+      "continueOnError": true
+    }
+  ]
+}

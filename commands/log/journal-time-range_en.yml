@@ -1,0 +1,32 @@
+name: View Journal Time Range
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/journal-time-range_en.sh
+category: log
+tags:
+- log
+- time-range
+- journal
+- troubleshooting
+risk: medium
+description: Collects diagnostic information for log inspection and maintenance diagnostics
+  with the view journal time range workflow. Review the output because it may be noisy
+  or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: SINCE
+  description: Start time or time window.
+  required: false
+  default: 1 hour ago
+- name: UNTIL
+  description: Until value.
+  required: false
+  default: now
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 200
+- name: LOG_PATTERN
+  description: Log pattern value.
+  required: true
+  default: null

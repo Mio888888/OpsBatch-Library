@@ -1,0 +1,28 @@
+name: Protected Log Compress
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/protected-log-compress_en.sh
+category: log
+tags:
+- remediation
+- log
+- compress
+- cleanup
+risk: high
+description: Runs the protected protected log compress workflow for log inspection
+  and maintenance diagnostics. It requires explicit intent or confirmation before
+  making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_LOG_DIR
+  description: Target log dir value.
+  required: true
+  default: null
+- name: OLDER_THAN_DAYS
+  description: Older than days value.
+  required: false
+  default: 7
+- name: CONFIRM_COMPRESS
+  description: Confirm compress value.
+  required: false
+  default: null

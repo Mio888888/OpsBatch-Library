@@ -1,0 +1,28 @@
+name: TCP Port Check
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/tcp-port-check_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- tcp
+- port
+risk: medium
+description: Collects diagnostic information for network diagnostics and connectivity
+  troubleshooting with the tcp port check workflow. Review the output because it may
+  be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_HOST
+  description: Target host or address.
+  required: false
+  default: 127.0.0.1
+- name: TARGET_PORT
+  description: Target port value.
+  required: false
+  default: 80
+- name: TIMEOUT_SECONDS
+  description: Timeout seconds value.
+  required: false
+  default: 5

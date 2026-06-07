@@ -1,0 +1,32 @@
+name: Protected Group Membership Change
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-group-membership-change_en.sh
+category: security
+tags:
+- remediation
+- user
+- group
+- membership
+risk: high
+description: Runs the protected protected group membership change workflow for defensive
+  security inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: Target user value.
+  required: true
+  default: null
+- name: TARGET_GROUP
+  description: Target group value.
+  required: true
+  default: null
+- name: GROUP_ACTION
+  description: Group action value.
+  required: false
+  default: add
+- name: CONFIRM_GROUP_CHANGE
+  description: Confirm group change value.
+  required: false
+  default: null

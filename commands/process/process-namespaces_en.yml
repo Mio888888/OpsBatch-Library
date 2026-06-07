@@ -1,0 +1,19 @@
+name: View Process Namespaces
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-namespaces_en.sh
+category: process
+tags:
+- troubleshooting
+- process
+- namespace
+- container
+risk: low
+description: Collects read-only information for process and runtime troubleshooting
+  with the view process namespaces workflow.
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: Process ID.
+  required: false
+  default: 1

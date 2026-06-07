@@ -1,0 +1,14 @@
+name: View Resource Limits
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/resource-limits_en.sh
+category: system
+tags:
+- inspection
+- system
+- limits
+risk: low
+description: Collects read-only information for system inventory and runtime inspection
+  with the view resource limits workflow.
+platform:
+- linux
+- macos
+parameters: []

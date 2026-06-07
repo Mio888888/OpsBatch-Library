@@ -1,0 +1,52 @@
+{
+  "name": "View Deployment Release Rollback Plan",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-release-rollback-plan_en.sh",
+  "language": "shell",
+  "category": "deployment",
+  "tags": [
+    "deployment",
+    "release",
+    "rollback",
+    "symlink",
+    "plan",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view deployment release rollback plan script for deployment operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "APP_DIR",
+      "description": "App dir value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "RELEASES_DIR",
+      "description": "Releases dir value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "CURRENT_LINK",
+      "description": "Current link value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "CANDIDATE_RELEASE",
+      "description": "Candidate release value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "10"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

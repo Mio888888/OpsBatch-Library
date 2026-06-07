@@ -1,0 +1,37 @@
+{
+  "name": "OpsBatch Community Operations Library",
+  "version": "0.1.0",
+  "author": "Mio",
+  "description": "A bilingual operations content library for OpsBatch, covering baseline inspection, troubleshooting, log review, service status checks, and defensive security inspection.",
+  "homepage": "https://example.com/opsbatch/ops-library",
+  "categories": {
+    "commands": [
+      "system",
+      "process",
+      "cpu",
+      "memory",
+      "network",
+      "disk",
+      "package-management",
+      "log",
+      "user",
+      "security",
+      "service",
+      "troubleshooting"
+    ],
+    "scripts": [
+      "shell",
+      "python",
+      "powershell",
+      "monitoring",
+      "inspection",
+      "security",
+      "deployment"
+    ],
+    "quickActions": [
+      "inspection",
+      "troubleshooting"
+    ]
+  },
+  "baseUrl": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Quick Action Name",
+  "description": "Describes which checks or operations this quick action runs.",
+  "url": "https://raw.githubusercontent.com/OWNER/REPO/BRANCH/quick-actions/quick-action_en.json",
+  "category": "inspection",
+  "risk": "low",
+  "tags": [
+    "inspection"
+  ],
+  "platform": [
+    "linux"
+  ],
+  "steps": [
+    {
+      "name": "Step Name",
+      "type": "command",
+      "ref": "commands/system/check-load_en.yml",
+      "url": "https://raw.githubusercontent.com/OWNER/REPO/BRANCH/commands/system/check-load_en.yml",
+      "continueOnError": true
+    }
+  ]
+}

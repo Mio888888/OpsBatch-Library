@@ -1,0 +1,89 @@
+{
+  "name": "User Account Security Inspection",
+  "description": "Runs read-only user account and permission security inspections covering users, groups, sudoers, sessions, passwords, SSH keys, and auth logs.",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/user-account-security-inspection_en.json",
+  "category": "inspection",
+  "risk": "medium",
+  "tags": [
+    "user",
+    "account",
+    "security",
+    "inspection"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "View Local User Summary",
+      "type": "command",
+      "ref": "commands/security/local-user-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/local-user-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Group Membership Summary",
+      "type": "command",
+      "ref": "commands/security/group-membership-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/group-membership-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View sudoers Summary",
+      "type": "command",
+      "ref": "commands/security/sudoers-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/sudoers-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "Login Session Detail",
+      "type": "command",
+      "ref": "commands/security/login-session-detail_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/login-session-detail_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Password Policy Aging",
+      "type": "command",
+      "ref": "commands/security/password-policy-aging_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/password-policy-aging_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View SSH Authorized Keys Audit",
+      "type": "command",
+      "ref": "commands/security/ssh-authorized-keys-audit_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/ssh-authorized-keys-audit_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View UID GID Anomalies",
+      "type": "command",
+      "ref": "commands/security/uid-gid-anomalies_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/uid-gid-anomalies_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Home Directory Audit",
+      "type": "command",
+      "ref": "commands/security/home-directory-audit_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/home-directory-audit_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View SSH Login Logs",
+      "type": "command",
+      "ref": "commands/security/ssh-login-logs_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/ssh-login-logs_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Auth Failure Logs",
+      "type": "command",
+      "ref": "commands/security/auth-failure-logs_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/auth-failure-logs_en.yml",
+      "continueOnError": true
+    }
+  ]
+}

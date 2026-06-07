@@ -1,0 +1,24 @@
+name: Network Connectivity Check
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-connectivity-check_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- connectivity
+- http
+risk: medium
+description: Collects diagnostic information for network diagnostics and connectivity
+  troubleshooting with the network connectivity check workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_HOST
+  description: Target host or address.
+  required: false
+  default: example.com
+- name: TARGET_URL
+  description: Target url value.
+  required: false
+  default: https://example.com

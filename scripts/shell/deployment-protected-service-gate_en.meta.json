@@ -1,0 +1,59 @@
+{
+  "name": "View Deployment Protected Service Gate",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-protected-service-gate_en.sh",
+  "language": "shell",
+  "category": "deployment",
+  "tags": [
+    "deployment",
+    "protected",
+    "service",
+    "reload",
+    "restart",
+    "validation",
+    "high-risk"
+  ],
+  "risk": "high",
+  "description": "Runs the protected view deployment protected service gate script for deployment operations. It requires explicit intent or confirmation before making state-changing changes.",
+  "parameters": [
+    {
+      "name": "SERVICE",
+      "description": "Service name.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "SERVICE_ACTION",
+      "description": "Service action value.",
+      "required": false,
+      "default": "reload"
+    },
+    {
+      "name": "CONFIRM_SERVICE_ACTION",
+      "description": "Confirm service action value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "VALIDATE_CMD",
+      "description": "Validate cmd value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "HEALTH_URL",
+      "description": "Health url value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "TIMEOUT",
+      "description": "Timeout value.",
+      "required": false,
+      "default": "10"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

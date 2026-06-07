@@ -1,0 +1,40 @@
+name: Protected User Create
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-create_en.sh
+category: security
+tags:
+- remediation
+- user
+- account
+- create
+risk: high
+description: Runs the protected protected user create workflow for defensive security
+  inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: NEW_USER
+  description: New user value.
+  required: true
+  default: null
+- name: NEW_USER_COMMENT
+  description: New user comment value.
+  required: false
+  default: OpsBatch managed user
+- name: NEW_USER_SHELL
+  description: New user shell value.
+  required: false
+  default: /bin/bash
+- name: NEW_USER_HOME
+  description: New user home value.
+  required: true
+  default: null
+- name: CONFIRM_CREATE_USER
+  description: Confirm create user value.
+  required: false
+  default: null
+- name: NEW_USER_UID
+  description: New user uid value.
+  required: true
+  default: null

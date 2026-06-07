@@ -1,0 +1,51 @@
+{
+  "name": "View Monitoring Log Error Counter",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-log-error-counter_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "log",
+    "error-count",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view monitoring log error counter script for monitoring operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "log_file",
+      "description": "Log file path.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "pattern",
+      "description": "Search pattern.",
+      "required": false,
+      "default": "error|critical|fatal"
+    },
+    {
+      "name": "max_lines",
+      "description": "Max lines value.",
+      "required": false,
+      "default": "1000"
+    },
+    {
+      "name": "warn_count",
+      "description": "Warn count value.",
+      "required": false,
+      "default": "1"
+    },
+    {
+      "name": "crit_count",
+      "description": "Crit count value.",
+      "required": false,
+      "default": "10"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

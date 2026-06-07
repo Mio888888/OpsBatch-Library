@@ -1,0 +1,14 @@
+name: 查看文件系统与挂载概览
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/filesystem-mounts_cn.sh
+category: system
+tags:
+- inspection
+- system
+- filesystem
+- mount
+risk: low
+description: 查看文件系统挂载概览和磁盘使用摘要，辅助了解主机存储布局。
+platform:
+- linux
+- macos
+parameters: []

@@ -1,0 +1,14 @@
+name: View Memory Sar Trend
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-sar-trend_en.sh
+category: memory
+tags:
+- inspection
+- memory
+- sar
+- trend
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view memory sar trend workflow.
+platform:
+- linux
+parameters: []

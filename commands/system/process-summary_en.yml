@@ -1,0 +1,14 @@
+name: View Process Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/process-summary_en.sh
+category: system
+tags:
+- inspection
+- system
+- process
+risk: low
+description: Collects read-only information for system inventory and runtime inspection
+  with the view process summary workflow.
+platform:
+- linux
+- macos
+parameters: []

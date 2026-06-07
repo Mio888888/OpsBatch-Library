@@ -1,0 +1,23 @@
+name: 查看 SSH 登录日志
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/ssh-login-logs_cn.sh
+category: security
+tags:
+- user
+- ssh
+- security
+- login
+risk: medium
+description: 查看 SSH 登录成功、失败、无效用户、断开连接等日志。只读查询，可能输出用户名、来源 IP 和认证细节。
+platform:
+- linux
+- macos
+parameters:
+- name: LINES
+  description: 显示行数
+  required: false
+  default: 120
+- name: SSH_LOG_PATTERN
+  description: SSH 日志搜索模式
+  required: false
+  default: sshd|Accepted|Failed|Invalid user|Disconnected|Connection closed|authentication
+    failure

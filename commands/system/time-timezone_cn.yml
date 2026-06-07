@@ -1,0 +1,14 @@
+name: 查看系统时间与时区
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/time-timezone_cn.sh
+category: system
+tags:
+- inspection
+- system
+- time
+- timezone
+risk: low
+description: 查看本地时间、UTC 时间和时区配置，辅助排查时间漂移和日志时间不一致问题。
+platform:
+- linux
+- macos
+parameters: []

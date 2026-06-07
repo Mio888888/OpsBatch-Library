@@ -1,0 +1,27 @@
+name: Protected Logrotate Run
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/protected-logrotate-run_en.sh
+category: log
+tags:
+- remediation
+- log
+- logrotate
+- rotation
+risk: high
+description: Runs the protected protected logrotate run workflow for log inspection
+  and maintenance diagnostics. It requires explicit intent or confirmation before
+  making state-changing changes.
+platform:
+- linux
+parameters:
+- name: LOGROTATE_CONFIG
+  description: Logrotate config value.
+  required: false
+  default: /etc/logrotate.conf
+- name: LOGROTATE_STATE
+  description: Logrotate state value.
+  required: true
+  default: null
+- name: CONFIRM_ROTATE
+  description: Confirm rotate value.
+  required: false
+  default: null

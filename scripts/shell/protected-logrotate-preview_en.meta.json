@@ -1,0 +1,33 @@
+{
+  "name": "Protected Logrotate Preview",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-logrotate-preview_en.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "log",
+    "rotation",
+    "logrotate",
+    "protected"
+  ],
+  "risk": "high",
+  "description": "Runs the protected protected logrotate preview script for maintenance operations. It requires explicit intent or confirmation before making state-changing changes.",
+  "parameters": [
+    {
+      "name": "logrotate_config",
+      "description": "Logrotate config value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "confirm_rotate",
+      "description": "Confirm rotate value.",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

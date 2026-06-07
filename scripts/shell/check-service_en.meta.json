@@ -1,0 +1,24 @@
+{
+  "name": "Check Service Status",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/check-service_en.sh",
+  "language": "shell",
+  "category": "service",
+  "tags": [
+    "service",
+    "inspection"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only check service status script for service status inspection.",
+  "parameters": [
+    {
+      "name": "service",
+      "description": "Service name.",
+      "required": false,
+      "default": "ssh"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

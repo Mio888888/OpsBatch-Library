@@ -1,0 +1,19 @@
+name: 查看进程 namespace 归属
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-namespaces_cn.sh
+category: process
+tags:
+- troubleshooting
+- process
+- namespace
+- container
+risk: low
+description: 查看指定进程的 Linux namespace inode 归属，用于判断进程是否处于独立 PID、mount、network 等命名空间。macOS
+  会输出平台说明。
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: 1

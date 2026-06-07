@@ -1,0 +1,65 @@
+{
+  "name": "View Deployment Preflight Summary",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-preflight-summary_en.sh",
+  "language": "shell",
+  "category": "deployment",
+  "tags": [
+    "deployment",
+    "preflight",
+    "artifact",
+    "checksum",
+    "service",
+    "health-check",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view deployment preflight summary script for deployment operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "APP_DIR",
+      "description": "App dir value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ARTIFACT_PATH",
+      "description": "Artifact path value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "SERVICE",
+      "description": "Service name.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "HEALTH_URL",
+      "description": "Health url value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "CHECKSUM_FILE",
+      "description": "Checksum file value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "RELEASES_DIR",
+      "description": "Releases dir value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "VALIDATE_CMD",
+      "description": "Validate cmd value.",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

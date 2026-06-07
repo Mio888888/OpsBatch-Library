@@ -1,0 +1,15 @@
+{
+  "name": "Script Name",
+  "url": "https://raw.githubusercontent.com/OWNER/REPO/BRANCH/scripts/shell/script-name_en.sh",
+  "language": "shell",
+  "category": "system",
+  "tags": [
+    "inspection"
+  ],
+  "risk": "low",
+  "description": "Describes the script purpose, input parameters, output, and operational notes.",
+  "parameters": [],
+  "platform": [
+    "linux"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Monitoring TCP Port Check",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-tcp-port-check_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "tcp",
+    "port",
+    "network",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the monitoring tcp port check script for monitoring operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "target_host",
+      "description": "Target host or address.",
+      "required": false,
+      "default": "localhost"
+    },
+    {
+      "name": "target_port",
+      "description": "Target port value.",
+      "required": false,
+      "default": "22"
+    },
+    {
+      "name": "timeout_seconds",
+      "description": "Timeout seconds value.",
+      "required": false,
+      "default": "3"
+    },
+    {
+      "name": "latency_warn_ms",
+      "description": "Latency warn ms value.",
+      "required": false,
+      "default": "500"
+    },
+    {
+      "name": "latency_crit_ms",
+      "description": "Latency crit ms value.",
+      "required": false,
+      "default": "1000"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

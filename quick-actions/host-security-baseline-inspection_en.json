@@ -1,0 +1,138 @@
+{
+  "name": "Host Security Baseline Inspection",
+  "description": "Runs read-only host security baseline checks covering accounts, SSH, firewall, exposure, suspicious indicators, permissions, integrity, and certificates.",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/host-security-baseline-inspection_en.json",
+  "category": "inspection",
+  "risk": "medium",
+  "tags": [
+    "security",
+    "baseline",
+    "inspection",
+    "host"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "View Host Security Baseline Summary",
+      "type": "command",
+      "ref": "commands/security/host-security-baseline-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/host-security-baseline-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Kernel Hardening Summary",
+      "type": "command",
+      "ref": "commands/security/kernel-hardening-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/kernel-hardening-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Local User Summary",
+      "type": "command",
+      "ref": "commands/security/local-user-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/local-user-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View UID GID Anomalies",
+      "type": "command",
+      "ref": "commands/security/uid-gid-anomalies_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/uid-gid-anomalies_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View sudoers Summary",
+      "type": "command",
+      "ref": "commands/security/sudoers-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/sudoers-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View SSH Authorized Keys Audit",
+      "type": "command",
+      "ref": "commands/security/ssh-authorized-keys-audit_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/ssh-authorized-keys-audit_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View SSH Server Security Summary",
+      "type": "command",
+      "ref": "commands/security/ssh-server-security-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/ssh-server-security-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Network Exposure Summary",
+      "type": "command",
+      "ref": "commands/security/network-exposure-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/network-exposure-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Firewall Status Summary",
+      "type": "command",
+      "ref": "commands/security/firewall-status-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/firewall-status-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Suspicious Process Indicators",
+      "type": "command",
+      "ref": "commands/security/suspicious-process-indicators_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/suspicious-process-indicators_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Suspicious Network Connections",
+      "type": "command",
+      "ref": "commands/security/suspicious-network-connections_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/suspicious-network-connections_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Security Log Timeline",
+      "type": "command",
+      "ref": "commands/security/security-log-timeline_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/security-log-timeline_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View File Permission Risk Summary",
+      "type": "command",
+      "ref": "commands/security/file-permission-risk-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/file-permission-risk-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View File Integrity Baseline",
+      "type": "command",
+      "ref": "commands/security/file-integrity-baseline_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/file-integrity-baseline_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Certificate Expiry Summary",
+      "type": "command",
+      "ref": "commands/security/certificate-expiry-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/certificate-expiry-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Private Key Permission Audit",
+      "type": "command",
+      "ref": "commands/security/private-key-permission-audit_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/private-key-permission-audit_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Scheduled Startup Items Audit",
+      "type": "command",
+      "ref": "commands/security/scheduled-startup-items-audit_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/scheduled-startup-items-audit_en.yml",
+      "continueOnError": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+name: View Machine Architecture
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/machine-architecture_en.sh
+category: system
+tags:
+- inspection
+- system
+- architecture
+risk: low
+description: Collects read-only information for system inventory and runtime inspection
+  with the view machine architecture workflow.
+platform:
+- linux
+- macos
+parameters: []

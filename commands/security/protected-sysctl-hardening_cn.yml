@@ -1,0 +1,26 @@
+name: 受保护应用 Linux sysctl 安全参数
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-sysctl-hardening_cn.sh
+category: security
+tags:
+- remediation
+- security
+- kernel
+- hardening
+risk: high
+description: 受保护的 Linux sysctl 安全参数调整模板。默认只展示计划；只有设置 SYSCTL_KEY、SYSCTL_VALUE 和 CONFIRM_SYSCTL=APPLY_SYSCTL_VALUE
+  后才执行临时变更。误用可能影响网络或系统行为，执行前必须确认兼容性、持久化和回滚方案。
+platform:
+- linux
+parameters:
+- name: SYSCTL_KEY
+  description: sysctl 参数键名
+  required: true
+  default: null
+- name: SYSCTL_VALUE
+  description: sysctl 参数目标值
+  required: true
+  default: null
+- name: CONFIRM_SYSCTL
+  description: 确认内核参数加固令牌
+  required: false
+  default: null

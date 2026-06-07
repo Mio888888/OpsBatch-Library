@@ -1,0 +1,15 @@
+name: View Readonly Filesystems
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/readonly-filesystems_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- filesystem
+- readonly
+risk: low
+description: Collects read-only information for disk, filesystem, and storage inspection
+  with the view readonly filesystems workflow.
+platform:
+- linux
+- macos
+parameters: []

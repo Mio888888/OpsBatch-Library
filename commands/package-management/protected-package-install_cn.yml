@@ -1,0 +1,27 @@
+name: 受保护安装软件包
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-install_cn.sh
+category: package-management
+tags:
+- remediation
+- package-management
+- install
+- protected
+risk: high
+description: 受保护的软件包安装模板。默认只输出安装计划/依赖预览；只有显式设置 TARGET_PACKAGE 和 CONFIRM_INSTALL=INSTALL_PACKAGE
+  后才执行真实安装。安装会联网并改变系统软件状态，可能引入不兼容依赖或供应链风险，执行前必须确认来源、维护窗口和回滚方案。
+platform:
+- linux
+- macos
+parameters:
+- name: PACKAGE_MANAGER
+  description: 包管理器（apt/yum/dnf/pacman/auto）
+  required: false
+  default: auto
+- name: TARGET_PACKAGE
+  description: 目标软件包名
+  required: true
+  default: null
+- name: CONFIRM_INSTALL
+  description: 确认安装令牌
+  required: false
+  default: null

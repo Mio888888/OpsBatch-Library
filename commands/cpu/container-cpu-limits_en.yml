@@ -1,0 +1,15 @@
+name: View Container CPU Limits
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/container-cpu-limits_en.sh
+category: cpu
+tags:
+- troubleshooting
+- cpu
+- container
+- cgroup
+risk: low
+description: Collects read-only information for CPU diagnostics and capacity inspection
+  with the view container cpu limits workflow.
+platform:
+- linux
+- macos
+parameters: []

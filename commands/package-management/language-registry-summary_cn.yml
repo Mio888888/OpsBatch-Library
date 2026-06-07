@@ -1,0 +1,15 @@
+name: 查看语言生态包管理器配置摘要
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/language-registry-summary_cn.sh
+category: package-management
+tags:
+- inspection
+- package-management
+- registry
+- pip
+- npm
+risk: medium
+description: 查看 pip 和 npm 的版本、registry、缓存和代理等配置摘要，并尽量脱敏令牌字段；可能暴露内部 registry 域名，只读不修改配置。
+platform:
+- linux
+- macos
+parameters: []

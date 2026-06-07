@@ -1,0 +1,14 @@
+name: View List Listening Ports
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/list-listening-ports_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- port
+risk: low
+description: Collects read-only information for network diagnostics and connectivity
+  troubleshooting with the view list listening ports workflow.
+platform:
+- linux
+- macos
+parameters: []

@@ -1,0 +1,20 @@
+name: View Suspicious Process Indicators
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/suspicious-process-indicators_en.sh
+category: security
+tags:
+- troubleshooting
+- security
+- process
+- indicators
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view suspicious process indicators workflow. Review
+  the output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: PROCESS_LIMIT
+  description: Process limit value.
+  required: false
+  default: 80

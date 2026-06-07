@@ -1,0 +1,19 @@
+name: Badblocks Readonly Scan
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/badblocks-readonly-scan_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- badblocks
+- health
+risk: high
+description: Runs the protected badblocks readonly scan workflow for disk, filesystem,
+  and storage inspection. It requires explicit intent or confirmation before making
+  state-changing changes.
+platform:
+- linux
+parameters:
+- name: TARGET_DEVICE
+  description: Target device value.
+  required: true
+  default: null

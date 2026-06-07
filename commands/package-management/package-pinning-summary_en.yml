@@ -1,0 +1,16 @@
+name: View Package Pinning Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-pinning-summary_en.sh
+category: package-management
+tags:
+- inspection
+- package-management
+- pinning
+- hold
+risk: medium
+description: Collects diagnostic information for package management inspection or
+  protected maintenance with the view package pinning summary workflow. Review the
+  output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters: []

@@ -1,0 +1,52 @@
+{
+  "name": "View Monitoring Disk Inode Threshold",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-disk-inode-threshold_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "disk",
+    "inode",
+    "filesystem",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only view monitoring disk inode threshold script for monitoring operations.",
+  "parameters": [
+    {
+      "name": "target_path",
+      "description": "Target path value.",
+      "required": false,
+      "default": "/"
+    },
+    {
+      "name": "usage_warn",
+      "description": "Usage warn value.",
+      "required": false,
+      "default": "80"
+    },
+    {
+      "name": "usage_crit",
+      "description": "Usage crit value.",
+      "required": false,
+      "default": "90"
+    },
+    {
+      "name": "inode_warn",
+      "description": "Inode warn value.",
+      "required": false,
+      "default": "80"
+    },
+    {
+      "name": "inode_crit",
+      "description": "Inode crit value.",
+      "required": false,
+      "default": "90"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

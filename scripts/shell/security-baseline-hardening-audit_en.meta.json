@@ -1,0 +1,29 @@
+{
+  "name": "View Security Baseline Hardening Audit",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-baseline-hardening-audit_en.sh",
+  "language": "shell",
+  "category": "security",
+  "tags": [
+    "security",
+    "audit",
+    "baseline",
+    "hardening",
+    "kernel",
+    "updates",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view security baseline hardening audit script for defensive security inspection or protected remediation. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "20"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

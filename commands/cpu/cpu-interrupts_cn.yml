@@ -1,0 +1,13 @@
+name: 查看 CPU 中断热点
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-interrupts_cn.sh
+category: cpu
+tags:
+- troubleshooting
+- cpu
+- interrupt
+risk: low
+description: 查看 Linux 中断计数最高的中断源，辅助定位网卡、磁盘或硬件中断导致的 CPU 消耗。macOS 给出平台限制说明。
+platform:
+- linux
+- macos
+parameters: []

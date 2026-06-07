@@ -1,0 +1,36 @@
+name: Protected Repository Config
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-repository-config_en.sh
+category: package-management
+tags:
+- remediation
+- package-management
+- repository
+- protected
+risk: high
+description: Runs the protected protected repository config workflow for package management
+  inspection or protected maintenance. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: PACKAGE_MANAGER
+  description: Package manager value.
+  required: false
+  default: auto
+- name: TARGET_REPO_NAME
+  description: Target repo name value.
+  required: true
+  default: null
+- name: TARGET_REPO_URL
+  description: Target repo url value.
+  required: true
+  default: null
+- name: REPO_ACTION
+  description: Repo action value.
+  required: false
+  default: show-plan
+- name: CONFIRM_REPO_CHANGE
+  description: Confirm repo change value.
+  required: false
+  default: null

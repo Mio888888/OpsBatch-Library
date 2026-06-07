@@ -1,0 +1,34 @@
+{
+  "name": "View Inspection Process Service Inventory",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/inspection-process-service-inventory_en.sh",
+  "language": "shell",
+  "category": "inspection",
+  "tags": [
+    "inspection",
+    "inventory",
+    "process",
+    "service",
+    "listeners",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view inspection process service inventory script for inspection operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "SERVICE_FILTER",
+      "description": "Service filter value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "20"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

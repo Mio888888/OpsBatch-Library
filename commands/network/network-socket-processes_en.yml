@@ -1,0 +1,16 @@
+name: View Network Socket Processes
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-socket-processes_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- process
+- socket
+risk: medium
+description: Collects diagnostic information for network diagnostics and connectivity
+  troubleshooting with the view network socket processes workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters: []

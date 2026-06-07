@@ -1,0 +1,46 @@
+{
+  "name": "部署制品校验摘要",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-artifact-verification_cn.sh",
+  "language": "shell",
+  "category": "deployment",
+  "tags": [
+    "deployment",
+    "artifact",
+    "checksum",
+    "verification",
+    "archive",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "只读校验部署制品元数据、SHA-256 摘要、可选 checksum 文件和归档清单预览；不会解压、安装或部署制品。",
+  "parameters": [
+    {
+      "name": "ARTIFACT_PATH",
+      "description": "待校验制品文件路径，可作为第一个参数或环境变量传入。",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "CHECKSUM_FILE",
+      "description": "可选 SHA-256 checksum 文件路径，可作为第二个参数或环境变量传入。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "EXPECTED_SHA256",
+      "description": "可选预期 SHA-256 值。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "LIMIT",
+      "description": "归档预览最多展示的行数。",
+      "required": false,
+      "default": "40"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

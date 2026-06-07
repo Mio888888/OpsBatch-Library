@@ -1,0 +1,24 @@
+name: Protected Filesystem Repair
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/protected-filesystem-repair_en.sh
+category: disk
+tags:
+- remediation
+- disk
+- filesystem
+- fsck
+risk: high
+description: Runs the protected protected filesystem repair workflow for disk, filesystem,
+  and storage inspection. It requires explicit intent or confirmation before making
+  state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_DEVICE
+  description: Target device value.
+  required: true
+  default: null
+- name: CONFIRM_FSCK
+  description: Confirm fsck value.
+  required: false
+  default: null

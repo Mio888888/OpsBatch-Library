@@ -1,0 +1,19 @@
+name: User Detail
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/user/user-detail_en.sh
+category: user
+tags:
+- troubleshooting
+- user
+- account
+- detail
+risk: low
+description: Collects read-only information for user account inspection with the user
+  detail workflow.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: Target user value.
+  required: false
+  default: $(whoami 2>/dev/null || true)

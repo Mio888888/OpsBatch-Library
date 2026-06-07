@@ -1,0 +1,13 @@
+name: 查找僵尸进程
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/zombie-processes_cn.sh
+category: process
+tags:
+- troubleshooting
+- process
+- zombie
+risk: low
+description: 查找 STAT 为 Z 的僵尸进程，并提示关注父进程回收行为。命令只读，不会终止进程。
+platform:
+- linux
+- macos
+parameters: []

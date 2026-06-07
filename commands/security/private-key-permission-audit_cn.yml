@@ -1,0 +1,22 @@
+name: 检查私钥文件权限线索
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/private-key-permission-audit_cn.sh
+category: security
+tags:
+- audit
+- security
+- key
+- permission
+risk: medium
+description: 查找私钥候选文件的权限元数据和组/其他用户可读风险线索。只读查询，不输出密钥正文；路径和权限信息仍可能敏感。
+platform:
+- linux
+- macos
+parameters:
+- name: SCAN_ROOT
+  description: 扫描根目录
+  required: false
+  default: /etc/ssh
+- name: LIMIT
+  description: 显示数量上限
+  required: false
+  default: 100

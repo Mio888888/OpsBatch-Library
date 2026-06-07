@@ -1,0 +1,24 @@
+name: View Process Crash Log Hints
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-crash-log-hints_en.sh
+category: process
+tags:
+- troubleshooting
+- process
+- crash
+- logs
+risk: medium
+description: Collects diagnostic information for process and runtime troubleshooting
+  with the view process crash log hints workflow. Review the output because it may
+  be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: Process ID.
+  required: true
+  default: null
+- name: PROCESS_PATTERN
+  description: Process pattern value.
+  required: true
+  default: null

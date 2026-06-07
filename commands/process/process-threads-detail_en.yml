@@ -1,0 +1,23 @@
+name: Process Threads Detail
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-threads-detail_en.sh
+category: process
+tags:
+- troubleshooting
+- process
+- thread
+- detail
+risk: low
+description: Collects read-only information for process and runtime troubleshooting
+  with the process threads detail workflow.
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: Process ID.
+  required: false
+  default: 1
+- name: PROCESS_LIMIT
+  description: Process limit value.
+  required: false
+  default: 80

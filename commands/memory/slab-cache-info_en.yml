@@ -1,0 +1,14 @@
+name: View Slab Cache Info
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/slab-cache-info_en.sh
+category: memory
+tags:
+- troubleshooting
+- memory
+- slab
+- kernel
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view slab cache info workflow.
+platform:
+- linux
+parameters: []

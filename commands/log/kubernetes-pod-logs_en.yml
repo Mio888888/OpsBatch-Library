@@ -1,0 +1,36 @@
+name: View Kubernetes Pod Logs
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/kubernetes-pod-logs_en.sh
+category: log
+tags:
+- log
+- kubernetes
+- pod
+- container
+risk: medium
+description: Collects diagnostic information for log inspection and maintenance diagnostics
+  with the view kubernetes pod logs workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: NAMESPACE
+  description: Namespace value.
+  required: false
+  default: default
+- name: POD_NAME
+  description: Pod name value.
+  required: true
+  default: null
+- name: CONTAINER_NAME
+  description: Container name value.
+  required: true
+  default: null
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 120
+- name: SINCE
+  description: Start time or time window.
+  required: false
+  default: 2h

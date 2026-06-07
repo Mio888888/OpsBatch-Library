@@ -1,0 +1,24 @@
+name: View Private Key Permission Audit
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/private-key-permission-audit_en.sh
+category: security
+tags:
+- audit
+- security
+- key
+- permission
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view private key permission audit workflow. Review
+  the output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: SCAN_ROOT
+  description: Scan root value.
+  required: false
+  default: /etc/ssh
+- name: LIMIT
+  description: Limit value.
+  required: false
+  default: 100

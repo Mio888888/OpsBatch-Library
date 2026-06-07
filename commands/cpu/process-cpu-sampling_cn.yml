@@ -1,0 +1,14 @@
+name: 采样进程 CPU 使用
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/process-cpu-sampling_cn.sh
+category: cpu
+tags:
+- troubleshooting
+- cpu
+- process
+- sampling
+risk: low
+description: 短周期采样进程 CPU 使用率，减少单次快照误判。优先使用 pidstat，缺失时用 ps 多次快照替代。
+platform:
+- linux
+- macos
+parameters: []

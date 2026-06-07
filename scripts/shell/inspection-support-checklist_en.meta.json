@@ -1,0 +1,40 @@
+{
+  "name": "Inspection Support Checklist",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/inspection-support-checklist_en.sh",
+  "language": "shell",
+  "category": "inspection",
+  "tags": [
+    "inspection",
+    "support-bundle",
+    "checklist",
+    "preflight",
+    "tools",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the inspection support checklist script for inspection operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "TARGET_PATH",
+      "description": "Target path value.",
+      "required": false,
+      "default": "/"
+    },
+    {
+      "name": "OUTPUT_DIR",
+      "description": "Output dir value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "25"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

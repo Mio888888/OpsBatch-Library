@@ -1,0 +1,41 @@
+{
+  "name": "密钥与证书元数据安全审计",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-key-cert-metadata-audit_cn.sh",
+  "language": "shell",
+  "category": "security",
+  "tags": [
+    "security",
+    "audit",
+    "key",
+    "certificate",
+    "permission",
+    "metadata",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "只读扫描限定目录中的密钥/证书类文件元数据、宽权限提示和证书主题/有效期；不打印私钥内容，但路径、权限、证书 subject/issuer 可能敏感。",
+  "parameters": [
+    {
+      "name": "SCAN_ROOT",
+      "description": "限定密钥和证书元数据扫描的目录，可作为第一个参数或环境变量传入。",
+      "required": false,
+      "default": "$HOME"
+    },
+    {
+      "name": "CERT_PATH",
+      "description": "可选指定证书文件路径，可作为第二个参数或环境变量传入。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "LIMIT",
+      "description": "每类结果最多展示的行数。",
+      "required": false,
+      "default": "30"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

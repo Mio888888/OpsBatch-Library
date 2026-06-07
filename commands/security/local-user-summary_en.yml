@@ -1,0 +1,14 @@
+name: View Local User Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/local-user-summary_en.sh
+category: security
+tags:
+- inspection
+- user
+- account
+risk: low
+description: Collects read-only information for defensive security inspection or protected
+  remediation with the view local user summary workflow.
+platform:
+- linux
+- macos
+parameters: []

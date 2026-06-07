@@ -1,0 +1,28 @@
+name: Protected File Permission Fix
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-file-permission-fix_en.sh
+category: security
+tags:
+- remediation
+- security
+- file
+- permission
+risk: high
+description: Runs the protected protected file permission fix workflow for defensive
+  security inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_PATH
+  description: Target path value.
+  required: true
+  default: null
+- name: TARGET_MODE
+  description: Target mode value.
+  required: true
+  default: null
+- name: CONFIRM_CHMOD
+  description: Confirm chmod value.
+  required: false
+  default: null

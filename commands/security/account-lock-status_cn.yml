@@ -1,0 +1,18 @@
+name: 查看账号锁定状态
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/account-lock-status_cn.sh
+category: security
+tags:
+- troubleshooting
+- user
+- account
+- lock
+risk: medium
+description: 查看指定账号是否存在锁定、shadow 标记或认证失败锁定线索。只读查询，可能需要 sudo 并暴露账号安全状态。
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: true
+  default: null

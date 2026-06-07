@@ -1,0 +1,39 @@
+{
+  "name": "监控 CPU Load 阈值",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-load-threshold_cn.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "cpu",
+    "load",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "读取 1 分钟 load average，可按 CPU 核数归一化后与 warning/critical 阈值比较。输出 OK/WARNING/CRITICAL/UNKNOWN 状态行；退出码 0/1/2/3 分别表示 OK/WARNING/CRITICAL/UNKNOWN。默认只读，不修改系统状态。",
+  "parameters": [
+    {
+      "name": "load_warn",
+      "description": "warning 阈值，可通过第 1 个参数或 LOAD_WARN 设置",
+      "required": false,
+      "default": "2.0"
+    },
+    {
+      "name": "load_crit",
+      "description": "critical 阈值，可通过第 2 个参数或 LOAD_CRIT 设置",
+      "required": false,
+      "default": "4.0"
+    },
+    {
+      "name": "normalize_per_cpu",
+      "description": "是否按 CPU 核数归一化 load，可通过第 3 个参数或 NORMALIZE_PER_CPU 设置 true/false",
+      "required": false,
+      "default": "true"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

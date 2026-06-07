@@ -1,0 +1,18 @@
+name: 检查用户家目录状态
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/home-directory-audit_cn.sh
+category: security
+tags:
+- audit
+- user
+- home
+- permission
+risk: medium
+description: 检查用户家目录是否存在、权限和所有者是否与账号 UID/GID 匹配。只读查询，可能输出本地路径和用户信息。
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: true
+  default: null

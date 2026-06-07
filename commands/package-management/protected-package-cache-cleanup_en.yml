@@ -1,0 +1,24 @@
+name: Protected Package Cache Cleanup
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-cache-cleanup_en.sh
+category: package-management
+tags:
+- remediation
+- package-management
+- package-cache
+- cleanup
+risk: high
+description: Runs the protected protected package cache cleanup workflow for package
+  management inspection or protected maintenance. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: CACHE_TARGET
+  description: Cache target value.
+  required: true
+  default: null
+- name: CONFIRM_CLEAN
+  description: Confirm clean value.
+  required: false
+  default: null

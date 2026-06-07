@@ -1,0 +1,35 @@
+{
+  "name": "View Security Account Permission Audit",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-account-permission-audit_en.sh",
+  "language": "shell",
+  "category": "security",
+  "tags": [
+    "security",
+    "audit",
+    "account",
+    "permission",
+    "ssh-key",
+    "filesystem",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view security account permission audit script for defensive security inspection or protected remediation. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "SCAN_ROOT",
+      "description": "Scan root value.",
+      "required": false,
+      "default": "$HOME"
+    },
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "30"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

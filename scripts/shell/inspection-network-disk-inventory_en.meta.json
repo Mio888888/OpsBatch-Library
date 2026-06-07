@@ -1,0 +1,35 @@
+{
+  "name": "View Inspection Network Disk Inventory",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/inspection-network-disk-inventory_en.sh",
+  "language": "shell",
+  "category": "inspection",
+  "tags": [
+    "inspection",
+    "inventory",
+    "network",
+    "disk",
+    "mount",
+    "dns",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view inspection network disk inventory script for inspection operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "TARGET_PATH",
+      "description": "Target path value.",
+      "required": false,
+      "default": "/"
+    },
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "30"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

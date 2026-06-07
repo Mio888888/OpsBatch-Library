@@ -1,0 +1,14 @@
+name: View Recent System Logs
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/recent-system-logs_en.sh
+category: log
+tags:
+- log
+- troubleshooting
+- system
+risk: low
+description: Collects read-only information for log inspection and maintenance diagnostics
+  with the view recent system logs workflow.
+platform:
+- linux
+- macos
+parameters: []

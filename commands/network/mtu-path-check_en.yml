@@ -1,0 +1,24 @@
+name: MTU Path Check
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/mtu-path-check_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- mtu
+- path
+risk: medium
+description: Collects diagnostic information for network diagnostics and connectivity
+  troubleshooting with the mtu path check workflow. Review the output because it may
+  be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_HOST
+  description: Target host or address.
+  required: false
+  default: example.com
+- name: PACKET_SIZE
+  description: Packet size value.
+  required: false
+  default: 1472

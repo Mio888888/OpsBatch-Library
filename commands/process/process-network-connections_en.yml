@@ -1,0 +1,24 @@
+name: View Process Network Connections
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-network-connections_en.sh
+category: process
+tags:
+- troubleshooting
+- process
+- network
+- socket
+risk: medium
+description: Collects diagnostic information for process and runtime troubleshooting
+  with the view process network connections workflow. Review the output because it
+  may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: Process ID.
+  required: false
+  default: 1
+- name: PROCESS_LIMIT
+  description: Process limit value.
+  required: false
+  default: 120

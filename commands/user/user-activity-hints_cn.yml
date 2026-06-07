@@ -1,0 +1,22 @@
+name: 查看账号最近活动线索
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/user/user-activity-hints_cn.sh
+category: user
+tags:
+- troubleshooting
+- user
+- activity
+- login
+risk: medium
+description: 查看指定账号最近登录、失败登录和当前进程活动线索。只读查询，可能输出来源地址、用户名和命令行信息。
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: 目标用户名
+  required: true
+  default: null
+- name: LINES
+  description: 显示行数
+  required: false
+  default: 50

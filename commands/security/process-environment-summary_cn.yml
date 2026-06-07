@@ -1,0 +1,21 @@
+name: 查看进程环境变量摘要
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/process-environment-summary_cn.sh
+category: security
+tags:
+- troubleshooting
+- process
+- environment
+risk: medium
+description: 原样查看指定进程环境变量摘要。命令只读，但可能包含 Token、密钥、密码、凭证或内部地址等敏感信息，复制输出前请先确认脱敏需求。
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: 目标进程 ID
+  required: false
+  default: 1
+- name: PROCESS_LIMIT
+  description: 显示进程数量上限
+  required: false
+  default: 120

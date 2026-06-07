@@ -1,0 +1,24 @@
+name: View Temp Cleanup Candidates
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/temp-cleanup-candidates_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- cleanup
+- temp
+risk: medium
+description: Collects diagnostic information for disk, filesystem, and storage inspection
+  with the view temp cleanup candidates workflow. Review the output because it may
+  be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_DIR
+  description: Target dir value.
+  required: false
+  default: /tmp
+- name: OLDER_THAN_DAYS
+  description: Older than days value.
+  required: false
+  default: 7

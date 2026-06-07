@@ -1,0 +1,20 @@
+name: View Recent Package History
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/recent-package-history_en.sh
+category: package-management
+tags:
+- inspection
+- package-management
+- history
+- audit
+risk: medium
+description: Collects diagnostic information for package management inspection or
+  protected maintenance with the view recent package history workflow. Review the
+  output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: LIMIT
+  description: Limit value.
+  required: false
+  default: 80

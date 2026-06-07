@@ -1,0 +1,14 @@
+name: 查看 CPU 负载压力
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-load-pressure_cn.sh
+category: cpu
+tags:
+- inspection
+- cpu
+- load
+- pressure
+risk: low
+description: 查看系统 load average、逻辑 CPU 数与运行队列/阻塞队列快照，用于判断 CPU 压力是否持续存在。
+platform:
+- linux
+- macos
+parameters: []

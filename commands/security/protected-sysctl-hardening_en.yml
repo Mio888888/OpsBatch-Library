@@ -1,0 +1,27 @@
+name: Protected sysctl Hardening
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-sysctl-hardening_en.sh
+category: security
+tags:
+- remediation
+- security
+- kernel
+- hardening
+risk: high
+description: Runs the protected protected sysctl hardening workflow for defensive
+  security inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+parameters:
+- name: SYSCTL_KEY
+  description: Sysctl key value.
+  required: true
+  default: null
+- name: SYSCTL_VALUE
+  description: Sysctl value value.
+  required: true
+  default: null
+- name: CONFIRM_SYSCTL
+  description: Confirm sysctl value.
+  required: false
+  default: null

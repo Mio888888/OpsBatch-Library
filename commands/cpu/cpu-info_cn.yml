@@ -1,0 +1,13 @@
+name: 查看 CPU 概况
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-info_cn.sh
+category: cpu
+tags:
+- inspection
+- cpu
+- inventory
+risk: low
+description: 查看 CPU 型号、核心数、逻辑 CPU 与架构等基础信息。Linux 优先使用 lscpu，macOS 使用 sysctl。
+platform:
+- linux
+- macos
+parameters: []

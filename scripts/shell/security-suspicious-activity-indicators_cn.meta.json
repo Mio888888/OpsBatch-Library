@@ -1,0 +1,41 @@
+{
+  "name": "可疑进程连接与认证日志线索",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-suspicious-activity-indicators_cn.sh",
+  "language": "shell",
+  "category": "security",
+  "tags": [
+    "security",
+    "incident-triage",
+    "process",
+    "network",
+    "auth-log",
+    "indicators",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "只读输出临时目录进程、网络连接样例、删除后仍打开文件提示和认证日志摘要；不做攻击行为，仅提供防御性线索，输出可能包含用户名、IP、命令行、路径和日志片段。",
+  "parameters": [
+    {
+      "name": "LOG_PATH",
+      "description": "可选认证日志路径，可作为第一个参数或环境变量传入；不提供时使用 journalctl 或常见日志路径。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "LIMIT",
+      "description": "每类结果最多展示的行数。",
+      "required": false,
+      "default": "25"
+    },
+    {
+      "name": "SINCE_MINUTES",
+      "description": "journalctl 认证日志检查的时间窗口。",
+      "required": false,
+      "default": "1440"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

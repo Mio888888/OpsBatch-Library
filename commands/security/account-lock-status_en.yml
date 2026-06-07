@@ -1,0 +1,20 @@
+name: View Account Lock Status
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/account-lock-status_en.sh
+category: security
+tags:
+- troubleshooting
+- user
+- account
+- lock
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view account lock status workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: Target user value.
+  required: true
+  default: null

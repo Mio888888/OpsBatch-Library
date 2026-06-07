@@ -1,0 +1,41 @@
+{
+  "name": "View Security Key Cert Metadata Audit",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-key-cert-metadata-audit_en.sh",
+  "language": "shell",
+  "category": "security",
+  "tags": [
+    "security",
+    "audit",
+    "key",
+    "certificate",
+    "permission",
+    "metadata",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view security key cert metadata audit script for defensive security inspection or protected remediation. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "SCAN_ROOT",
+      "description": "Scan root value.",
+      "required": false,
+      "default": "$HOME"
+    },
+    {
+      "name": "CERT_PATH",
+      "description": "Cert path value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "LIMIT",
+      "description": "Limit value.",
+      "required": false,
+      "default": "30"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

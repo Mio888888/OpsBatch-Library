@@ -1,0 +1,18 @@
+name: 查看用户登录会话详情
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/login-session-detail_cn.sh
+category: security
+tags:
+- inspection
+- user
+- login
+- session
+risk: medium
+description: 查看当前登录会话、活动终端和最近登录记录。只读查询，可能输出用户名、TTY、来源地址和登录时间。
+platform:
+- linux
+- macos
+parameters:
+- name: LINES
+  description: 显示最近登录记录行数
+  required: false
+  default: 20

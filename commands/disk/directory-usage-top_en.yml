@@ -1,0 +1,24 @@
+name: View Directory Usage Top
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/directory-usage-top_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- capacity
+- directory
+risk: medium
+description: Collects diagnostic information for disk, filesystem, and storage inspection
+  with the view directory usage top workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_DIR
+  description: Target dir value.
+  required: false
+  default: .
+- name: DEPTH
+  description: Depth value.
+  required: false
+  default: 1

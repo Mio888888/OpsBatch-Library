@@ -1,0 +1,20 @@
+name: View sudoers Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/sudoers-summary_en.sh
+category: security
+tags:
+- inspection
+- user
+- sudo
+- privilege
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view sudoers summary workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_USER
+  description: Target user value.
+  required: true
+  default: null

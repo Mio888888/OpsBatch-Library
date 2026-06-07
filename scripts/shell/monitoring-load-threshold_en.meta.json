@@ -1,0 +1,39 @@
+{
+  "name": "View Monitoring Load Threshold",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-load-threshold_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "cpu",
+    "load",
+    "monitoring",
+    "threshold",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only view monitoring load threshold script for monitoring operations.",
+  "parameters": [
+    {
+      "name": "load_warn",
+      "description": "Load warn value.",
+      "required": false,
+      "default": "2.0"
+    },
+    {
+      "name": "load_crit",
+      "description": "Load crit value.",
+      "required": false,
+      "default": "4.0"
+    },
+    {
+      "name": "normalize_per_cpu",
+      "description": "Normalize per cpu value.",
+      "required": false,
+      "default": "true"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

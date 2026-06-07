@@ -1,0 +1,75 @@
+{
+  "name": "账号安全受保护运维",
+  "description": "串联创建、锁定、解锁、强制改密、删除、组成员变更、Shell 修改和认证锁定重置等账号安全运维模板。所有步骤默认只展示计划或拒绝执行，必须在单个命令中显式设置目标变量和确认变量后才会执行真实变更。",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/user-account-protected-operations_cn.json",
+  "category": "troubleshooting",
+  "risk": "high",
+  "tags": [
+    "user",
+    "account",
+    "remediation",
+    "protected"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "受保护创建本地用户",
+      "type": "command",
+      "ref": "commands/security/protected-user-create_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-create_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护锁定用户账号",
+      "type": "command",
+      "ref": "commands/security/protected-user-lock_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-lock_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护解锁用户账号",
+      "type": "command",
+      "ref": "commands/security/protected-user-unlock_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-unlock_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护强制下次登录改密",
+      "type": "command",
+      "ref": "commands/security/protected-force-password-change_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-force-password-change_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护删除本地用户",
+      "type": "command",
+      "ref": "commands/security/protected-user-delete_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-delete_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护修改用户组成员",
+      "type": "command",
+      "ref": "commands/security/protected-group-membership-change_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-group-membership-change_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护修改用户 Shell",
+      "type": "command",
+      "ref": "commands/security/protected-user-shell-change_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-shell-change_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "受保护重置认证失败锁定",
+      "type": "command",
+      "ref": "commands/security/protected-auth-lock-reset_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-auth-lock-reset_cn.yml",
+      "continueOnError": true
+    }
+  ]
+}

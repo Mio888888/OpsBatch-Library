@@ -1,0 +1,14 @@
+name: 查看调度与上下文切换
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/scheduler-context-switches_cn.sh
+category: cpu
+tags:
+- troubleshooting
+- cpu
+- scheduler
+- context-switch
+risk: low
+description: 查看运行队列、中断和上下文切换指标，用于判断 CPU 忙是否来自调度抖动或频繁切换。
+platform:
+- linux
+- macos
+parameters: []

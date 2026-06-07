@@ -1,0 +1,28 @@
+name: Protected Old Log Cleanup
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/protected-old-log-cleanup_en.sh
+category: log
+tags:
+- remediation
+- log
+- cleanup
+- delete
+risk: high
+description: Runs the protected protected old log cleanup workflow for log inspection
+  and maintenance diagnostics. It requires explicit intent or confirmation before
+  making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_LOG_DIR
+  description: Target log dir value.
+  required: true
+  default: null
+- name: OLDER_THAN_DAYS
+  description: Older than days value.
+  required: false
+  default: 30
+- name: CONFIRM_DELETE
+  description: Confirm delete value.
+  required: false
+  default: null

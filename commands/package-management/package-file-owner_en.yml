@@ -1,0 +1,19 @@
+name: View Package File Owner
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-file-owner_en.sh
+category: package-management
+tags:
+- inspection
+- package-management
+- ownership
+- file
+risk: low
+description: Collects read-only information for package management inspection or protected
+  maintenance with the view package file owner workflow.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_FILE
+  description: Target file value.
+  required: true
+  default: null

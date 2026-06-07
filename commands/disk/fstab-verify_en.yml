@@ -1,0 +1,14 @@
+name: Fstab Verify
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/fstab-verify_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- fstab
+- mount
+risk: low
+description: Collects read-only information for disk, filesystem, and storage inspection
+  with the fstab verify workflow.
+platform:
+- linux
+parameters: []

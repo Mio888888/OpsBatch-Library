@@ -1,0 +1,13 @@
+name: 查看资源限制
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/resource-limits_cn.sh
+category: system
+tags:
+- inspection
+- system
+- limits
+risk: low
+description: 查看当前 shell 和进程资源限制，例如最大打开文件数、最大进程数等。
+platform:
+- linux
+- macos
+parameters: []

@@ -1,0 +1,22 @@
+name: View Logrotate Status
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/logrotate-status_en.sh
+category: log
+tags:
+- log
+- logrotate
+- rotation
+- inspection
+risk: low
+description: Collects read-only information for log inspection and maintenance diagnostics
+  with the view logrotate status workflow.
+platform:
+- linux
+parameters:
+- name: LOGROTATE_CONFIG
+  description: Logrotate config value.
+  required: false
+  default: /etc/logrotate.conf
+- name: LOGROTATE_STATE
+  description: Logrotate state value.
+  required: false
+  default: /var/lib/logrotate/status

@@ -1,0 +1,19 @@
+name: View Process Command Line
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-command-line_en.sh
+category: process
+tags:
+- troubleshooting
+- process
+- command-line
+risk: medium
+description: Collects diagnostic information for process and runtime troubleshooting
+  with the view process command line workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: PID
+  description: Process ID.
+  required: false
+  default: 1

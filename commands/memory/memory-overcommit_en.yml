@@ -1,0 +1,13 @@
+name: View Memory Overcommit
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-overcommit_en.sh
+category: memory
+tags:
+- troubleshooting
+- memory
+- overcommit
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view memory overcommit workflow.
+platform:
+- linux
+parameters: []

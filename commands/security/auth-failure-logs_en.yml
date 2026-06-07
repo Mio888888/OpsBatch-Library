@@ -1,0 +1,24 @@
+name: View Auth Failure Logs
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/auth-failure-logs_en.sh
+category: security
+tags:
+- user
+- security
+- auth
+- troubleshooting
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view auth failure logs workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 120
+- name: AUTH_PATTERN
+  description: Auth pattern value.
+  required: false
+  default: failed|failure|invalid|authentication error|pam_unix|denied

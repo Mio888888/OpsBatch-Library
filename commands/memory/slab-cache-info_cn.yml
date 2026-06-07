@@ -1,0 +1,13 @@
+name: 查看 Slab 与内核对象缓存
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/slab-cache-info_cn.sh
+category: memory
+tags:
+- troubleshooting
+- memory
+- slab
+- kernel
+risk: low
+description: 查看 Linux Slab/内核对象缓存占用，优先使用 slabtop 单次输出，缺失时读取 /proc/slabinfo。
+platform:
+- linux
+parameters: []

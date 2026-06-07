@@ -1,0 +1,15 @@
+name: 查看磁盘 I/O 进程排行
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/top-disk-io-processes_cn.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- io
+- process
+risk: medium
+description: 查看正在产生磁盘 I/O 的进程。Linux 使用 iotop 或 pidstat，macOS 使用 fs_usage 短采样。命令只读，但可能需要
+  sudo 且采样输出较多。
+platform:
+- linux
+- macos
+parameters: []

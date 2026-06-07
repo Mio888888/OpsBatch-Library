@@ -1,0 +1,15 @@
+name: View Environment Path
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/environment-path_en.sh
+category: system
+tags:
+- inspection
+- system
+- environment
+- path
+risk: low
+description: Collects read-only information for system inventory and runtime inspection
+  with the view environment path workflow.
+platform:
+- linux
+- macos
+parameters: []

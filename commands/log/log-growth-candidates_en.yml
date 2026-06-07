@@ -1,0 +1,28 @@
+name: View Log Growth Candidates
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/log-growth-candidates_en.sh
+category: log
+tags:
+- log
+- capacity
+- growth
+- cleanup
+risk: medium
+description: Collects diagnostic information for log inspection and maintenance diagnostics
+  with the view log growth candidates workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_LOG_DIR
+  description: Target log dir value.
+  required: false
+  default: /var/log
+- name: MIN_SIZE
+  description: Min size value.
+  required: false
+  default: 50M
+- name: MAX_DEPTH
+  description: Max depth value.
+  required: false
+  default: 3

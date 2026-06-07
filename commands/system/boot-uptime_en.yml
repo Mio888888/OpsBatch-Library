@@ -1,0 +1,15 @@
+name: View Boot Uptime
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/boot-uptime_en.sh
+category: system
+tags:
+- inspection
+- system
+- uptime
+- boot
+risk: low
+description: Collects read-only information for system inventory and runtime inspection
+  with the view boot uptime workflow.
+platform:
+- linux
+- macos
+parameters: []

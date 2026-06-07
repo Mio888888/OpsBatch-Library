@@ -1,0 +1,96 @@
+{
+  "name": "Package Management Health Inspection",
+  "description": "Runs read-only package manager health checks covering inventories, repositories, updates, locks, cache, pinning, history, and language registries.",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/package-management-health-inspection_en.json",
+  "category": "inspection",
+  "risk": "medium",
+  "tags": [
+    "package-management",
+    "inspection",
+    "health",
+    "packages"
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ],
+  "steps": [
+    {
+      "name": "View Package Manager Detection",
+      "type": "command",
+      "ref": "commands/package-management/package-manager-detection_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-manager-detection_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Installed Package Inventory",
+      "type": "command",
+      "ref": "commands/package-management/installed-package-inventory_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/installed-package-inventory_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Repository Source Summary",
+      "type": "command",
+      "ref": "commands/package-management/repository-source-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/repository-source-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Update Candidates",
+      "type": "command",
+      "ref": "commands/package-management/update-candidates_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/update-candidates_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Security Update Hints",
+      "type": "command",
+      "ref": "commands/package-management/security-update-hints_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/security-update-hints_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Package Locks Transactions",
+      "type": "command",
+      "ref": "commands/package-management/package-locks-transactions_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-locks-transactions_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Package Cache Usage",
+      "type": "command",
+      "ref": "commands/package-management/package-cache-usage_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-cache-usage_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Package Pinning Summary",
+      "type": "command",
+      "ref": "commands/package-management/package-pinning-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-pinning-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Recent Package History",
+      "type": "command",
+      "ref": "commands/package-management/recent-package-history_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/recent-package-history_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Language Registry Summary",
+      "type": "command",
+      "ref": "commands/package-management/language-registry-summary_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/language-registry-summary_en.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "View Language Package Inventory",
+      "type": "command",
+      "ref": "commands/package-management/language-package-inventory_en.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/language-package-inventory_en.yml",
+      "continueOnError": true
+    }
+  ]
+}

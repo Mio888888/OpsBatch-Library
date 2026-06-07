@@ -1,0 +1,17 @@
+name: View Check Service Status
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/service/check-service-status_en.sh
+category: service
+tags:
+- service
+- inspection
+risk: low
+description: Collects read-only information for service status inspection with the
+  view check service status workflow.
+platform:
+- linux
+- macos
+parameters:
+- name: SERVICE
+  description: Service name.
+  required: false
+  default: ssh

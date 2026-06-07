@@ -1,0 +1,20 @@
+name: Login Session Detail
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/login-session-detail_en.sh
+category: security
+tags:
+- inspection
+- user
+- login
+- session
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the login session detail workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 20

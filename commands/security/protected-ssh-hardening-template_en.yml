@@ -1,0 +1,24 @@
+name: Protected SSH Hardening Template
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-ssh-hardening-template_en.sh
+category: security
+tags:
+- remediation
+- security
+- ssh
+- hardening
+risk: high
+description: Runs the protected protected ssh hardening template workflow for defensive
+  security inspection or protected remediation. It requires explicit intent or confirmation
+  before making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: SSHD_CONFIG
+  description: Sshd config value.
+  required: true
+  default: null
+- name: CONFIRM_SSH_HARDEN
+  description: Confirm ssh harden value.
+  required: false
+  default: null

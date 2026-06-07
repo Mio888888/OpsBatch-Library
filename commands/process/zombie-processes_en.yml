@@ -1,0 +1,14 @@
+name: View Zombie Processes
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/zombie-processes_en.sh
+category: process
+tags:
+- troubleshooting
+- process
+- zombie
+risk: low
+description: Collects read-only information for process and runtime troubleshooting
+  with the view zombie processes workflow.
+platform:
+- linux
+- macos
+parameters: []

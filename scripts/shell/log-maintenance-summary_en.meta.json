@@ -1,0 +1,32 @@
+{
+  "name": "View Log Maintenance Summary",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/log-maintenance-summary_en.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "log",
+    "summary",
+    "inspection"
+  ],
+  "risk": "medium",
+  "description": "Runs the view log maintenance summary script for maintenance operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "log_file",
+      "description": "Log file path.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "lines",
+      "description": "Number of lines to display.",
+      "required": false,
+      "default": "1000"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

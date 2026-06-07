@@ -1,0 +1,15 @@
+name: Check Memory Usage
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-usage-summary_en.sh
+category: memory
+tags:
+- inspection
+- memory
+- usage
+- summary
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the check memory usage workflow.
+platform:
+- linux
+- macos
+parameters: []

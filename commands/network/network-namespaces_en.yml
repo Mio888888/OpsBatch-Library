@@ -1,0 +1,14 @@
+name: View Network Namespaces
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-namespaces_en.sh
+category: network
+tags:
+- inspection
+- network
+- namespace
+- container
+risk: low
+description: Collects read-only information for network diagnostics and connectivity
+  troubleshooting with the view network namespaces workflow.
+platform:
+- linux
+parameters: []

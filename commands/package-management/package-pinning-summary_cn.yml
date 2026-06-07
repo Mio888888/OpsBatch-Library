@@ -1,0 +1,14 @@
+name: 查看包版本固定与排除策略
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-pinning-summary_cn.sh
+category: package-management
+tags:
+- inspection
+- package-management
+- pinning
+- hold
+risk: medium
+description: 汇总包版本固定、hold、exclude、pinning 等策略，帮助判断为什么软件包未升级；可能暴露软件策略和仓库配置，只读不修改。
+platform:
+- linux
+- macos
+parameters: []

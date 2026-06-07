@@ -1,0 +1,16 @@
+name: View Scheduled Startup Items Audit
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/scheduled-startup-items-audit_en.sh
+category: security
+tags:
+- audit
+- security
+- cron
+- startup
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view scheduled startup items audit workflow. Review
+  the output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters: []

@@ -1,0 +1,13 @@
+name: View Hugepages Info
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/hugepages-info_en.sh
+category: memory
+tags:
+- inspection
+- memory
+- hugepages
+risk: low
+description: Collects read-only information for memory diagnostics and pressure inspection
+  with the view hugepages info workflow.
+platform:
+- linux
+parameters: []

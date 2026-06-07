@@ -1,0 +1,58 @@
+{
+  "name": "View Monitoring Network Throughput Latency",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-network-throughput-latency_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "network",
+    "throughput",
+    "latency",
+    "monitoring",
+    "sampling",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the view monitoring network throughput latency script for monitoring operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "interface",
+      "description": "Interface value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "sample_interval",
+      "description": "Sample interval value.",
+      "required": false,
+      "default": "1"
+    },
+    {
+      "name": "ping_host",
+      "description": "Ping host value.",
+      "required": false,
+      "default": "example.com"
+    },
+    {
+      "name": "ping_count",
+      "description": "Ping count value.",
+      "required": false,
+      "default": "3"
+    },
+    {
+      "name": "latency_warn_ms",
+      "description": "Latency warn ms value.",
+      "required": false,
+      "default": "100"
+    },
+    {
+      "name": "latency_crit_ms",
+      "description": "Latency crit ms value.",
+      "required": false,
+      "default": "300"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

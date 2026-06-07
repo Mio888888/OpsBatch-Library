@@ -1,0 +1,20 @@
+name: Filesystem Check Dry Run
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/filesystem-check-dry-run_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- filesystem
+- fsck
+risk: medium
+description: Collects diagnostic information for disk, filesystem, and storage inspection
+  with the filesystem check dry run workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_DEVICE
+  description: Target device value.
+  required: true
+  default: null

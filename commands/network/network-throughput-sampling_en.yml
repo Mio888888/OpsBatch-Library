@@ -1,0 +1,20 @@
+name: Network Throughput Sampling
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-throughput-sampling_en.sh
+category: network
+tags:
+- troubleshooting
+- network
+- throughput
+- sampling
+risk: medium
+description: Collects diagnostic information for network diagnostics and connectivity
+  troubleshooting with the network throughput sampling workflow. Review the output
+  because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: SAMPLE_SECONDS
+  description: Sample seconds value.
+  required: false
+  default: 5

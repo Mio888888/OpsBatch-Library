@@ -1,0 +1,39 @@
+{
+  "name": "Protected Permission Fix",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-permission-fix_en.sh",
+  "language": "shell",
+  "category": "maintenance",
+  "tags": [
+    "maintenance",
+    "permissions",
+    "security",
+    "chmod",
+    "protected"
+  ],
+  "risk": "high",
+  "description": "Runs the protected protected permission fix script for maintenance operations. It requires explicit intent or confirmation before making state-changing changes.",
+  "parameters": [
+    {
+      "name": "target_path",
+      "description": "Target path value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "target_mode",
+      "description": "Target mode value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "confirm_chmod",
+      "description": "Confirm chmod value.",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

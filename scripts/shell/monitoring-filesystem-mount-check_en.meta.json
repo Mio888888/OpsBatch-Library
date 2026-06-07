@@ -1,0 +1,39 @@
+{
+  "name": "Monitoring Filesystem Mount Check",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-filesystem-mount-check_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "filesystem",
+    "mount",
+    "monitoring",
+    "health-check",
+    "read-only"
+  ],
+  "risk": "low",
+  "description": "Runs the read-only monitoring filesystem mount check script for monitoring operations.",
+  "parameters": [
+    {
+      "name": "mount_path",
+      "description": "Mount path value.",
+      "required": false,
+      "default": "/"
+    },
+    {
+      "name": "expected_type",
+      "description": "Expected type value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "fail_if_readonly",
+      "description": "Fail if readonly value.",
+      "required": false,
+      "default": "true"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

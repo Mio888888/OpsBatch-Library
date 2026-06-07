@@ -1,0 +1,16 @@
+name: View Top Disk I/O Processes
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/top-disk-io-processes_en.sh
+category: disk
+tags:
+- troubleshooting
+- disk
+- io
+- process
+risk: medium
+description: Collects diagnostic information for disk, filesystem, and storage inspection
+  with the view top disk i/o processes workflow. Review the output because it may
+  be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters: []

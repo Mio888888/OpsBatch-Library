@@ -1,0 +1,13 @@
+name: 查看本地用户账户摘要
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/local-user-summary_cn.sh
+category: security
+tags:
+- inspection
+- user
+- account
+risk: low
+description: 汇总本地用户账户、UID/GID、家目录和登录 shell，用于快速了解账号基线。
+platform:
+- linux
+- macos
+parameters: []

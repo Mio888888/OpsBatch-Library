@@ -1,0 +1,28 @@
+name: View Container Logs Tail
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/container-logs-tail_en.sh
+category: log
+tags:
+- log
+- container
+- docker
+- podman
+risk: medium
+description: Collects diagnostic information for log inspection and maintenance diagnostics
+  with the view container logs tail workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: CONTAINER_NAME
+  description: Container name value.
+  required: true
+  default: null
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 120
+- name: SINCE
+  description: Start time or time window.
+  required: false
+  default: 2h

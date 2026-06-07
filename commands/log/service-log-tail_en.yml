@@ -1,0 +1,28 @@
+name: Service Log Tail
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/service-log-tail_en.sh
+category: log
+tags:
+- log
+- service
+- troubleshooting
+- journal
+risk: medium
+description: Collects diagnostic information for log inspection and maintenance diagnostics
+  with the service log tail workflow. Review the output because it may be noisy or
+  expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: SERVICE_NAME
+  description: Service name.
+  required: false
+  default: ssh
+- name: SINCE
+  description: Start time or time window.
+  required: false
+  default: 2 hours ago
+- name: LINES
+  description: Number of lines to display.
+  required: false
+  default: 120

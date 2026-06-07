@@ -1,0 +1,16 @@
+name: View Audit Framework Status
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/audit-framework-status_en.sh
+category: security
+tags:
+- inspection
+- security
+- audit
+- logs
+risk: medium
+description: Collects diagnostic information for defensive security inspection or
+  protected remediation with the view audit framework status workflow. Review the
+  output because it may be noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters: []

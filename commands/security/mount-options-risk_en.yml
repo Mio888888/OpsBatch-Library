@@ -1,0 +1,15 @@
+name: View Mount Options Risk
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/mount-options-risk_en.sh
+category: security
+tags:
+- inspection
+- disk
+- mount
+- security
+risk: low
+description: Collects read-only information for defensive security inspection or protected
+  remediation with the view mount options risk workflow.
+platform:
+- linux
+- macos
+parameters: []

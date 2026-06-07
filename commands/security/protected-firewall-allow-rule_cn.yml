@@ -1,0 +1,31 @@
+name: 受保护添加防火墙允许规则
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-firewall-allow-rule_cn.sh
+category: security
+tags:
+- remediation
+- security
+- firewall
+- network
+risk: high
+description: 受保护的防火墙允许规则模板。默认只展示计划；只有设置 TARGET_PORT、TARGET_SOURCE 和 CONFIRM_FIREWALL_ALLOW=APPLY_FIREWALL_ALLOW
+  后才尝试添加窄范围允许规则。误用可能扩大网络暴露面，执行前必须确认来源、窗口和回滚方案。
+platform:
+- linux
+- macos
+parameters:
+- name: TARGET_PORT
+  description: 目标端口号
+  required: true
+  default: null
+- name: TARGET_PROTO
+  description: 协议类型（tcp/udp）
+  required: false
+  default: tcp
+- name: TARGET_SOURCE
+  description: 来源地址（CIDR 或 IP）
+  required: true
+  default: null
+- name: CONFIRM_FIREWALL_ALLOW
+  description: 确认添加防火墙规则令牌
+  required: false
+  default: null

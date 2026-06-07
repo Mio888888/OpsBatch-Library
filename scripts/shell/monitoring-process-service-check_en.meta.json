@@ -1,0 +1,45 @@
+{
+  "name": "Monitoring Process Service Check",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-process-service-check_en.sh",
+  "language": "shell",
+  "category": "monitoring",
+  "tags": [
+    "process",
+    "service",
+    "monitoring",
+    "health-check",
+    "read-only"
+  ],
+  "risk": "medium",
+  "description": "Runs the monitoring process service check script for monitoring operations. Review the output because it may be noisy or expose operational details.",
+  "parameters": [
+    {
+      "name": "target_name",
+      "description": "Target name value.",
+      "required": false,
+      "default": "ssh"
+    },
+    {
+      "name": "mode",
+      "description": "Mode value.",
+      "required": false,
+      "default": "service"
+    },
+    {
+      "name": "min_count",
+      "description": "Min count value.",
+      "required": false,
+      "default": "1"
+    },
+    {
+      "name": "max_count",
+      "description": "Max count value.",
+      "required": false,
+      "default": "0"
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

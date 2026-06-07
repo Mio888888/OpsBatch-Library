@@ -1,0 +1,71 @@
+{
+  "name": "View Deployment Protected Release Switch",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-protected-release-switch_en.sh",
+  "language": "shell",
+  "category": "deployment",
+  "tags": [
+    "deployment",
+    "protected",
+    "release",
+    "rollback",
+    "symlink",
+    "service",
+    "high-risk"
+  ],
+  "risk": "high",
+  "description": "Runs the protected view deployment protected release switch script for deployment operations. It requires explicit intent or confirmation before making state-changing changes.",
+  "parameters": [
+    {
+      "name": "CURRENT_LINK",
+      "description": "Current link value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "TARGET_RELEASE",
+      "description": "Target release value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "CONFIRM_DEPLOY",
+      "description": "Confirm deploy value.",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "ACTION",
+      "description": "Action value.",
+      "required": false,
+      "default": "deploy"
+    },
+    {
+      "name": "VALIDATE_CMD",
+      "description": "Validate cmd value.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "SERVICE",
+      "description": "Service name.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "SERVICE_ACTION",
+      "description": "Service action value.",
+      "required": false,
+      "default": "none"
+    },
+    {
+      "name": "HEALTH_URL",
+      "description": "Health url value.",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux",
+    "macos"
+  ]
+}

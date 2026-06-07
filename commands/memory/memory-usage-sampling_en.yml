@@ -1,0 +1,24 @@
+name: View Memory Usage Sampling
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-usage-sampling_en.sh
+category: memory
+tags:
+- inspection
+- memory
+- sampling
+- trend
+risk: medium
+description: Collects diagnostic information for memory diagnostics and pressure inspection
+  with the view memory usage sampling workflow. Review the output because it may be
+  noisy or expose operational details.
+platform:
+- linux
+- macos
+parameters:
+- name: SAMPLES
+  description: Number of samples to collect.
+  required: false
+  default: 5
+- name: INTERVAL
+  description: Sampling interval in seconds.
+  required: false
+  default: 2

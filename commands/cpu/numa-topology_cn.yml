@@ -1,0 +1,13 @@
+name: 查看 NUMA 拓扑
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/numa-topology_cn.sh
+category: cpu
+tags:
+- inspection
+- cpu
+- numa
+risk: low
+description: 查看 NUMA 节点、Socket/Core/Thread 拓扑或相关 fallback 信息。Linux 优先，macOS 给出平台限制说明。
+platform:
+- linux
+- macos
+parameters: []

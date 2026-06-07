@@ -1,0 +1,24 @@
+name: Protected Log Truncate
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/protected-log-truncate_en.sh
+category: log
+tags:
+- remediation
+- log
+- truncate
+- cleanup
+risk: high
+description: Runs the protected protected log truncate workflow for log inspection
+  and maintenance diagnostics. It requires explicit intent or confirmation before
+  making state-changing changes.
+platform:
+- linux
+- macos
+parameters:
+- name: LOG_FILE
+  description: Log file path.
+  required: true
+  default: null
+- name: CONFIRM_TRUNCATE
+  description: Confirm truncate value.
+  required: false
+  default: null
