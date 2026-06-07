@@ -1,21 +1,43 @@
 # OpsBatch 运维内容库 / OpsBatch Operations Library
 
 [![OpsBatch](https://img.shields.io/badge/OpsBatch-内容库-blue)](https://github.com/your-org/OpsBatch)
-[![Commands](https://img.shields.io/badge/commands-bilingual-green)](commands/)
-[![Shell scripts](https://img.shields.io/badge/shell-bilingual-orange)](scripts/shell/)
-[![Quick actions](https://img.shields.io/badge/quick--actions-bilingual-purple)](quick-actions/)
+[![Commands](https://img.shields.io/badge/commands-196%20pairs-green)](commands/)
+[![Shell scripts](https://img.shields.io/badge/shell-39%20pairs-orange)](scripts/shell/)
+[![Quick actions](https://img.shields.io/badge/quick--actions-8%20pairs-purple)](quick-actions/)
 
-> 面向 OpsBatch 的中英双语运维命令、Shell 脚本和快捷指令仓库。覆盖系统巡检、故障排查、安全审计、部署管理、监控检查等场景。
->
-> A bilingual Chinese/English operations content repository for OpsBatch, covering baseline inspection, troubleshooting, defensive security checks, deployment operations, monitoring checks, and protected maintenance workflows.
+OpsLibrary 是面向 OpsBatch 仓库同步 / 导入能力的双语运维内容库，提供可导入的命令元数据、Shell 脚本、快捷动作和库级元信息。内容覆盖基础巡检、故障排查、日志查看、服务状态检查、安全审计、部署和受保护维护等场景。
 
-## Breaking change: 显式双语文件后缀
+English artifacts are included for OpsBatch users who prefer English names, descriptions, script output, and quick-action steps.
 
-本仓库已升级为显式双语文件结构，不再保留旧的无后缀内容文件。
+## 当前状态 / Current status
 
-This repository now uses explicit bilingual file suffixes and no longer keeps legacy unsuffixed content files.
+计数按双语 stem 组统计；每组都有 `_cn` 与 `_en` 两个语言文件。实际内容文件数量为组数的两倍。
 
-| 旧格式 / Old | 新格式 / New |
+| 内容 / Content | 当前结构 / Current structure | 数量 / Count |
+| :--- | :--- | ---: |
+| 库级元信息 / Library metadata | `library_cn.json` / `library_en.json` | 2 files |
+| 命令 / Commands | `commands/<category>/<name>_cn.yml` + `.sh`，`<name>_en.yml` + `.sh` | 196 bilingual pairs / 392 YAML + 392 Shell files |
+| Shell 脚本库 / Shell script library | `scripts/shell/<name>_cn.meta.json` + `.sh`，`<name>_en.meta.json` + `.sh` | 39 bilingual pairs / 78 metadata + 78 Shell files |
+| 快捷动作 / Quick actions | `quick-actions/<name>_cn.json` / `<name>_en.json` | 8 bilingual pairs / 16 JSON files |
+| 模板 / Templates | `templates/*_cn.*` / `templates/*_en.*` | 8 files |
+| 校验器 / Validator | `tools/validate_library.py` | 1 file |
+
+当前已落地的命令目录按双语组计数：
+
+| Directory | Pairs | Directory | Pairs |
+| :--- | ---: | :--- | ---: |
+| `security` | 42 | `network` | 19 |
+| `disk` | 27 | `cpu` | 18 |
+| `package-management` | 20 | `memory` | 18 |
+| `process` | 17 | `log` | 17 |
+| `system` | 12 | `user` | 5 |
+| `service` | 1 |  |  |
+
+## Breaking change：无后缀旧路径已移除
+
+本仓库已从单语无后缀结构升级为显式 `_cn` / `_en` 双语结构，不再保留旧文件：
+
+| 旧路径 / Old path | 新路径 / New path |
 | :--- | :--- |
 | `library.json` | `library_cn.json` / `library_en.json` |
 | `commands/<category>/<name>.yml` | `commands/<category>/<name>_cn.yml` / `<name>_en.yml` |
@@ -24,20 +46,9 @@ This repository now uses explicit bilingual file suffixes and no longer keeps le
 | `scripts/shell/<name>.sh` | `scripts/shell/<name>_cn.sh` / `<name>_en.sh` |
 | `quick-actions/<name>.json` | `quick-actions/<name>_cn.json` / `<name>_en.json` |
 
-旧 Raw URL 和旧 quick-action `ref` 会失效；请按语言选择 `_cn` 或 `_en` 文件。
+旧 Raw URL 和旧 quick-action `ref` 会失效。OpsBatch 导入或手动执行时必须显式选择 `_cn` 或 `_en` 文件。
 
-Legacy Raw URLs and quick-action refs are breaking; choose `_cn` or `_en` artifacts explicitly.
-
-## 内容一览 / Contents
-
-| 类型 / Type | 说明 / Description |
-| :--- | :--- |
-| `library_cn.json` / `library_en.json` | 库级元信息 / library-level metadata |
-| `commands/` | 双语命令 YAML + 同语言 Shell 执行脚本 / bilingual command YAML plus same-language Shell scripts |
-| `scripts/shell/` | 双语 Shell 脚本库 + 同语言 `.meta.json` / bilingual Shell script library plus same-language metadata |
-| `quick-actions/` | 双语快捷指令，step `ref` 指向同语言资源 / bilingual quick actions whose step refs point to same-language resources |
-| `templates/` | 新增双语内容时使用的模板 / templates for new bilingual content |
-| `tools/validate_library.py` | 内容库结构与格式校验器 / repository validator |
+Legacy Raw URLs and quick-action refs are breaking. Choose `_cn` or `_en` artifacts explicitly.
 
 ## 目录结构 / Directory layout
 
@@ -73,52 +84,79 @@ Legacy Raw URLs and quick-action refs are breaking; choose `_cn` or `_en` artifa
     └── validate_library.py
 ```
 
+当前仓库的脚本库只管理 `scripts/shell/` 下的 Shell 内容；Python / PowerShell 脚本不在当前内容范围内。
+
 ## 快速开始 / Quick start
 
-### 中文示例
+### 在 OpsBatch 中同步 / 导入
+
+在 OpsBatch 的仓库同步或内容导入功能中配置本仓库地址。导入端应按需要选择中文或英文入口：
+
+- 中文库级元信息：`library_cn.json`
+- English library metadata: `library_en.json`
+- 中文命令、脚本和快捷动作：`*_cn.*`
+- English commands, scripts, and quick actions: `*_en.*`
+
+### 直接通过 Raw URL 执行
+
+以下示例均为只读巡检命令。生产环境执行任何远程脚本前，建议先打开对应 `_cn.sh` / `_en.sh` 文件审阅内容。
+
+中文脚本示例：
 
 ```bash
-# 查看系统负载（中文输出/中文元数据）
 curl -fsSL https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load_cn.sh | bash
-
-# 查看磁盘使用情况（中文）
 curl -fsSL https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-usage_cn.sh | bash
 ```
 
-### English examples
+English script examples:
 
 ```bash
-# Check system load (English artifact)
 curl -fsSL https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load_en.sh | bash
-
-# Check disk usage (English artifact)
 curl -fsSL https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-usage_en.sh | bash
 ```
 
-### 本地校验 / Local validation
+带参数执行时仍使用脚本约定的环境变量名；环境变量名不随语言翻译：
 
 ```bash
-python3 tools/validate_library.py
+SAMPLES=10 INTERVAL=5 \
+  curl -fsSL https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-usage-sampling_cn.sh | bash
 ```
 
-校验器会检查：
+## 双语内容约定 / Bilingual content conventions
 
-The validator checks:
+### 语言后缀 / Language suffixes
 
-- `library_cn.json` 与 `library_en.json` 是否存在且字段完整。
-- every localized command YAML has the matching same-language `.sh` file.
-- every Shell script has the matching same-language `.meta.json` file.
-- every `_cn` artifact has an `_en` sibling and every `_en` artifact has a `_cn` sibling.
-- YAML / JSON `url` values point to same-language resources.
-- quick-action step `ref` / `url` values point to same-language resources.
-- no legacy unsuffixed content files remain in the managed content areas.
-- JSON/YAML syntax, risk values, array fields, refs, and Shell syntax are valid.
+- 支持的语言后缀仅为 `_cn` 和 `_en`。
+- 每个中文内容文件必须有同 stem 的英文文件；每个英文内容文件也必须有同 stem 的中文文件。
+- 命令 YAML、命令 `.sh`、脚本 `.meta.json`、脚本 `.sh`、快捷动作 JSON 都必须使用显式语言后缀。
+- managed content 区域不应再出现无后缀旧文件，例如 `library.json`、`commands/**/<name>.yml`、`commands/**/<name>.sh`、`scripts/shell/<name>.sh`、`scripts/shell/<name>.meta.json`、`quick-actions/<name>.json`。
 
-## 文件格式约定 / File format conventions
+### 中文侧与英文侧 / Chinese and English artifacts
 
-### 命令文件 / Command files
+- 中文侧文件：`*_cn.yml`、`*_cn.sh`、`*_cn.meta.json`、`*_cn.json`、`library_cn.json`。
+- English artifacts: `*_en.yml`, `*_en.sh`, `*_en.meta.json`, `*_en.json`, and `library_en.json`.
+- `category` 与 `tags` 是展示分类字段，不是不可翻译的机器字段：中文侧应尽量中文化，英文侧应保持英文。
+- 中文侧 `name`、`description`、`category`、`tags`、`parameters[].description`、`steps[].name`、脚本输出、help / usage、错误提示和注释应尽量中文化。
+- English-side display text should remain English.
+- 技术名词可保留英文，例如 CPU、Shell、Docker、Kubernetes、HTTP、URL、TLS、SSH、I/O、NUMA、SMART。
+- 不翻译执行语义：文件路径、目录名、URL、环境变量名、命令名、命令选项、确认变量、确认 token、参数 `name`、`required`、`default`、`risk`、`platform`。
 
-路径 / Path:
+### Shell 行为一致性 / Shell behavior consistency
+
+`_cn.sh` 与 `_en.sh` 应保持相同执行行为，只允许用户可见文本和注释不同。不得因为本地化改变目标范围、默认值、删除 / 变更行为、确认变量、dry-run 逻辑或保护条件。
+
+## 元数据字段说明 / Metadata fields
+
+### 库级元信息 / Library metadata
+
+- `library_cn.json`：中文库名称、描述和展示分类。
+- `library_en.json`：English library name, description, and display taxonomy.
+- 两者共享 `version`、`author`、`homepage`、`baseUrl` 等结构字段。
+- `categories.commands` 与 `categories.scripts` 必须是数组；当前文件也可包含 `categories.quickActions` 作为展示分类。
+
+### 命令 YAML / Command YAML
+
+路径：
 
 ```text
 commands/<category>/<name>_cn.yml
@@ -127,16 +165,16 @@ commands/<category>/<name>_en.yml
 commands/<category>/<name>_en.sh
 ```
 
-中文 YAML 示例：
+最小中文示例：
 
 ```yaml
 name: 检查系统负载
 url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load_cn.sh
-category: system
+category: 系统
 tags:
-- inspection
-- system
-- load
+- 巡检
+- 系统
+- 负载
 risk: low
 description: 查看系统运行时间和平均负载，用于判断 CPU 压力和基础运行状态。
 platform:
@@ -145,7 +183,7 @@ platform:
 parameters: []
 ```
 
-English YAML example:
+Minimal English example:
 
 ```yaml
 name: Check System Load
@@ -156,36 +194,36 @@ tags:
 - system
 - load
 risk: low
-description: Collects read-only information for system inventory and runtime inspection with the check system load workflow.
+description: Collects read-only system load information.
 platform:
 - linux
 - macos
 parameters: []
 ```
 
-字段 / Fields:
-
-| 字段 / Field | Required | 说明 / Description |
+| 字段 / Field | 必填 / Required | 说明 / Description |
 | :--- | :---: | :--- |
-| `name` | ✅ | 当前语言的显示名称 / display name in the artifact language |
-| `url` | ✅ | 同语言 Shell 脚本 Raw URL / Raw URL for the same-language Shell script |
-| `category` | ✅ | 机器字段，不翻译 / machine field, not localized |
-| `tags` | ✅ | 机器字段，不翻译 / machine field, not localized |
-| `risk` | ✅ | `low` / `medium` / `high` |
-| `description` | ✅ | 当前语言说明 / description in the artifact language |
-| `platform` | ✅ | `linux` / `macos` / `windows` |
-| `parameters` | ✅ | 参数数组；参数名不翻译，参数说明本地化 / parameter names stay stable, descriptions are localized |
+| `name` | 是 / Yes | 当前语言的显示名称 |
+| `url` | 是 / Yes | 同语言 `.sh` 的 HTTP(S) Raw URL；`*_cn.yml` 指向 `*_cn.sh`，`*_en.yml` 指向 `*_en.sh` |
+| `category` | 是 / Yes | 当前语言的展示分类；中文侧中文化，英文侧英文 |
+| `tags` | 是 / Yes | 当前语言的展示标签数组；中文侧中文化，英文侧英文 |
+| `risk` | 是 / Yes | 风险等级：`low` / `medium` / `high` |
+| `description` | 是 / Yes | 当前语言的用途、输出和注意事项说明 |
+| `platform` | 是 / Yes | 适用平台数组：`linux` / `macos` / `windows` |
+| `parameters` | 是 / Yes | 参数定义数组；无参数时为 `[]` |
 
-### Shell 脚本 / Shell scripts
+`parameters` 子字段：
 
-- `_cn.sh` 与 `_en.sh` 必须保持相同执行逻辑。
-- Only user-visible output, help/usage text, error messages, and comments should differ by language.
-- 不翻译变量名、环境变量名、命令选项、路径和确认变量。
-- Do not change protected/high-risk confirmation semantics while localizing text.
+| 字段 | 说明 |
+| :--- | :--- |
+| `name` | 参数名或环境变量名，不翻译 |
+| `description` | 当前语言的参数说明 |
+| `required` | 是否必填，布尔值 |
+| `default` | 默认值；不因语言变化改变语义 |
 
-### Shell 脚本库元数据 / Script metadata
+### Shell 脚本库元数据 / Shell script metadata
 
-路径 / Path:
+路径：
 
 ```text
 scripts/shell/<name>_cn.meta.json
@@ -194,48 +232,160 @@ scripts/shell/<name>_en.meta.json
 scripts/shell/<name>_en.sh
 ```
 
-`url` 必须指向同语言 `.sh` 文件。
+最小中文示例：
 
-The `url` field must point to the same-language `.sh` file.
+```json
+{
+  "name": "检查服务状态",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/check-service_cn.sh",
+  "language": "shell",
+  "category": "服务",
+  "tags": ["服务", "巡检"],
+  "risk": "low",
+  "description": "检查指定服务是否处于运行状态。默认检查 ssh，可通过参数或 SERVICE 环境变量覆盖。",
+  "parameters": [
+    {
+      "name": "service",
+      "description": "服务名称",
+      "required": false,
+      "default": "ssh"
+    }
+  ],
+  "platform": ["linux", "macos"]
+}
+```
 
-### 快捷指令 / Quick actions
+字段与命令 YAML 基本一致，额外包含：
 
-路径 / Path:
+| 字段 / Field | 必填 / Required | 说明 / Description |
+| :--- | :---: | :--- |
+| `language` | 是 / Yes | 当前内容库只管理 Shell 内容，值为 `shell` |
+| `url` | 是 / Yes | 同语言脚本 Raw URL；`*_cn.meta.json` 指向 `*_cn.sh`，`*_en.meta.json` 指向 `*_en.sh` |
+
+### 快捷动作 JSON / Quick-action JSON
+
+路径：
 
 ```text
 quick-actions/<name>_cn.json
 quick-actions/<name>_en.json
 ```
 
-规则 / Rules:
+快捷动作通过文件路径 `ref` 组合命令和脚本，不使用数据库 ID。顶层 `url` 必须指向当前 quick-action JSON；step 的 `ref` 与可选 `url` 必须引用同语言资源。
 
-- `_cn.json` 的 `name`、`description`、`steps[].name` 使用中文。
-- `_en.json` uses English `name`, `description`, and `steps[].name`.
-- `_cn.json` step `ref` / `url` must point only to `_cn` resources.
-- `_en.json` step `ref` / `url` must point only to `_en` resources.
-- Repository quick actions must use file-path refs, not database IDs.
+中文示例：
 
-### 库级元信息 / Library metadata
+```json
+{
+  "name": "每日基础巡检",
+  "description": "串联系统负载、内存、磁盘与服务状态检查，适合作为日常只读巡检入口。",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/daily-check_cn.json",
+  "category": "巡检",
+  "risk": "low",
+  "tags": ["每日", "巡检", "系统"],
+  "platform": ["linux", "macos"],
+  "steps": [
+    {
+      "name": "检查系统负载",
+      "type": "command",
+      "ref": "commands/system/check-load_cn.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load_cn.yml",
+      "continueOnError": true
+    },
+    {
+      "name": "检查默认服务状态",
+      "type": "script",
+      "ref": "scripts/shell/check-service_cn.sh",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/check-service_cn.sh",
+      "args": ["ssh"],
+      "continueOnError": true
+    }
+  ]
+}
+```
 
-- `library_cn.json`: 中文库名称和描述。
-- `library_en.json`: English library name and description.
-- Both files share structural fields such as `version`, `author`, `homepage`, `categories`, and `baseUrl`.
+English step references must use `_en` resources:
 
-## 新增内容流程 / Adding new content
+```json
+{
+  "name": "Check System Load",
+  "type": "command",
+  "ref": "commands/system/check-load_en.yml",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load_en.yml",
+  "continueOnError": true
+}
+```
 
-1. 从 `templates/` 复制对应 `_cn` 和 `_en` 模板。
-2. Keep machine fields stable across languages: `category`, `tags`, `risk`, `platform`, parameter names, defaults, paths, and URLs except for language suffixes.
-3. Localize user-visible fields and script output/comments.
-4. Ensure URLs and refs point to same-language files.
-5. Run:
+`steps[]` 字段：
+
+| 字段 / Field | 说明 / Description |
+| :--- | :--- |
+| `name` | 当前语言的步骤显示名称 |
+| `type` | `command` 或 `script` |
+| `ref` | 仓库根目录相对路径；必须存在且与 quick-action 语言一致 |
+| `url` | 可选 HTTP(S) Raw URL；如存在，目标路径必须与 `ref` 一致 |
+| `args` | 可选参数数组，通常用于脚本步骤 |
+| `continueOnError` | 当前步骤失败时是否继续后续步骤 |
+
+## 新增 / 维护内容流程
+
+1. 从 `templates/` 复制同 stem 的 `_cn` 和 `_en` 模板，例如：
+   - `templates/command_cn.yml` / `templates/command_en.yml`
+   - `templates/script_cn.sh` / `templates/script_en.sh`
+   - `templates/script_cn.meta.json` / `templates/script_en.meta.json`
+   - `templates/quick-action_cn.json` / `templates/quick-action_en.json`
+2. 放到目标目录并保持同 stem 配对，例如 `check-load_cn.yml` 与 `check-load_en.yml`。
+3. 本地化显示字段和 Shell 用户可见文本；保持文件路径、URL、参数名、风险等级、平台、默认值和执行语义一致。
+4. 检查所有 `url`：命令 YAML 和脚本 meta 必须指向同语言 `.sh`；quick-action 顶层 `url` 必须指向当前 JSON 文件。
+5. 检查所有 quick-action `steps[].ref` / `steps[].url`：中文动作只引用 `_cn`，英文动作只引用 `_en`。
+6. 高风险内容先实现 dry-run / 候选摘要，再要求显式目标变量和确认变量，最后才允许真实变更。
+7. 运行校验命令并修复所有错误。
+
+## 校验命令 / Validation
+
+每次修改内容库后至少运行：
 
 ```bash
 python3 tools/validate_library.py
+git diff --check
 ```
 
-## 安全约定 / Safety conventions
+如果修改了校验器，再运行：
 
-- `risk: high` 的命令通常以 `protected-` 开头。
-- High-risk examples must require explicit target and confirmation variables before changing state.
-- 本地化不得弱化确认、dry-run、目标限制、权限检查或保护逻辑。
-- Localization must not weaken confirmations, dry runs, target restrictions, permission checks, or protected execution logic.
+```bash
+python3 -m py_compile tools/validate_library.py
+```
+
+`tools/validate_library.py` 会检查：
+
+- `library_cn.json` / `library_en.json` 存在且字段完整，旧 `library.json` 不存在。
+- JSON / YAML 语法正确。
+- 命令 YAML 必填字段、`risk`、`tags` / `platform` / `parameters` 数组字段正确。
+- 命令 YAML 与同语言 `.sh` 配对，且 `url` 指向同语言 `.sh`。
+- 命令 `.sh` 使用 `_cn` / `_en` 后缀并存在同语言 YAML。
+- `scripts/shell/*.sh` 使用 `_cn` / `_en` 后缀，存在同语言 `.meta.json`，且 meta `url` 指向同语言 `.sh`。
+- `_cn` / `_en` 兄弟文件配对完整。
+- quick-action 必填字段、非空 `steps`、step `type`、`ref` 存在性和语言一致性正确。
+- quick-action 顶层 `url` 指向自身，step `url` 与 `ref` 目标一致。
+- managed content 区域没有无后缀旧文件。
+- Bash 可用时，对命令脚本和 `scripts/shell/*.sh` 执行 `bash -n`。
+
+## 风险与安全约定 / Safety conventions
+
+| 风险 / Risk | 用途 / Use | 要求 / Requirement |
+| :--- | :--- | :--- |
+| `low` | 只读巡检、信息收集 | 不修改系统状态 |
+| `medium` | 可能较重、较吵或暴露敏感运行细节的检查 / 维护 | 明确范围、参数和输出风险 |
+| `high` | 会修改状态或具有破坏性的操作 | 默认 dry-run，要求显式目标和确认变量，说明不可逆风险 |
+
+安全原则：
+
+- 默认只读优先；不要在示例中默认删除、重启、覆盖或批量修改。
+- 高风险脚本必须先展示候选或执行计划，再执行真实变更。
+- 高风险示例必须要求显式目标变量和确认变量，不能因为语言本地化降低保护强度。
+- 本地化不得弱化 dry-run、确认、目标限制、权限检查或破坏性操作保护。
+- 不提交真实 token、密钥、客户环境地址或敏感内部信息。
+
+## License
+
+MIT License
