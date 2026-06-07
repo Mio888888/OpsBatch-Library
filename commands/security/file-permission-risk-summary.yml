@@ -19,8 +19,8 @@ parameters:
 - name: MAX_DEPTH
   description: 最大递归深度
   required: false
-  default: '3'
+  default: 3
 - name: LIMIT
   description: 显示数量上限
   required: false
-  default: '100'
+  default: 100

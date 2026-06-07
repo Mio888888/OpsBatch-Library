@@ -15,4 +15,4 @@ parameters:
 - name: SAMPLE_SECONDS
   description: 采样时长（秒）
   required: false
-  default: '5'
+  default: 5

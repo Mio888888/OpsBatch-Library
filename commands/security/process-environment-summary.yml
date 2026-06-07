@@ -14,8 +14,8 @@ parameters:
 - name: PID
   description: 目标进程 ID
   required: false
-  default: '1'
+  default: 1
 - name: PROCESS_LIMIT
   description: 显示进程数量上限
   required: false
-  default: '120'
+  default: 120

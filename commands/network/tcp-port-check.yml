@@ -20,8 +20,8 @@ parameters:
 - name: TARGET_PORT
   description: 目标端口号
   required: false
-  default: '80'
+  default: 80
 - name: TIMEOUT_SECONDS
   description: 超时时间（秒）
   required: false
-  default: '5'
+  default: 5

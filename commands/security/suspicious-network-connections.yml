@@ -15,4 +15,4 @@ parameters:
 - name: TOP_LIMIT
   description: 显示排名数量上限
   required: false
-  default: '30'
+  default: 30

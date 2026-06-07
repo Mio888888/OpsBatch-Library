@@ -15,7 +15,7 @@ parameters:
 - name: LINES
   description: 显示行数
   required: false
-  default: '160'
+  default: 160
 - name: SINCE
   description: 起始时间
   required: false

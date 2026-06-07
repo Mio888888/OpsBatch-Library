@@ -20,4 +20,4 @@ parameters:
 - name: PACKET_SIZE
   description: 探测包大小（字节）
   required: false
-  default: '1472'
+  default: 1472

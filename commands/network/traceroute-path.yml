@@ -20,4 +20,4 @@ parameters:
 - name: MAX_HOPS
   description: 最大路由跳数
   required: false
-  default: '20'
+  default: 20

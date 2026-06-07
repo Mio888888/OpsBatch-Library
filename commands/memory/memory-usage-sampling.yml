@@ -15,8 +15,8 @@ parameters:
 - name: SAMPLES
   description: 采样次数
   required: false
-  default: '5'
+  default: 5
 - name: INTERVAL
   description: 采样间隔（秒）
   required: false
-  default: '2'
+  default: 2

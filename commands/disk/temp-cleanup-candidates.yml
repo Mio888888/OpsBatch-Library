@@ -19,4 +19,4 @@ parameters:
 - name: OLDER_THAN_DAYS
   description: 超过指定天数
   required: false
-  default: '7'
+  default: 7

@@ -20,7 +20,7 @@ parameters:
 - name: OLDER_THAN_DAYS
   description: 超过指定天数
   required: false
-  default: '7'
+  default: 7
 - name: CONFIRM_DELETE
   description: 确认删除令牌
   required: false

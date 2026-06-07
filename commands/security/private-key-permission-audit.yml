@@ -19,4 +19,4 @@ parameters:
 - name: LIMIT
   description: 显示数量上限
   required: false
-  default: '100'
+  default: 100

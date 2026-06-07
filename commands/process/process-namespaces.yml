@@ -16,4 +16,4 @@ parameters:
 - name: PID
   description: 目标进程 ID
   required: false
-  default: '1'
+  default: 1

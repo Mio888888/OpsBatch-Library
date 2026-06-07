@@ -19,4 +19,4 @@ parameters:
 - name: DEPTH
   description: 目录扫描深度
   required: false
-  default: '1'
+  default: 1

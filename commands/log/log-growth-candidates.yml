@@ -23,4 +23,4 @@ parameters:
 - name: MAX_DEPTH
   description: 最大递归深度
   required: false
-  default: '3'
+  default: 3

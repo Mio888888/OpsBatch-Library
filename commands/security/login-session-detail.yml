@@ -15,4 +15,4 @@ parameters:
 - name: LINES
   description: 显示最近登录记录行数
   required: false
-  default: '20'
+  default: 20

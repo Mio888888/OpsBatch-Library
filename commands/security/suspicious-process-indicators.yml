@@ -15,4 +15,4 @@ parameters:
 - name: PROCESS_LIMIT
   description: 显示进程数量上限
   required: false
-  default: '80'
+  default: 80

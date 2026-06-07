@@ -15,7 +15,7 @@ parameters:
 - name: LINES
   description: 显示行数
   required: false
-  default: '120'
+  default: 120
 - name: KERNEL_LOG_PATTERN
   description: 内核日志搜索模式
   required: false
