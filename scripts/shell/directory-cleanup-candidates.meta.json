@@ -1,5 +1,6 @@
 {
   "name": "目录清理候选报告",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/directory-cleanup-candidates.sh",
   "language": "shell",
   "category": "maintenance",
   "tags": [

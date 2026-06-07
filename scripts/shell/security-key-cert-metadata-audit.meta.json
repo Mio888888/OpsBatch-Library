@@ -1,5 +1,6 @@
 {
   "name": "密钥与证书元数据安全审计",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-key-cert-metadata-audit.sh",
   "language": "shell",
   "category": "security",
   "tags": [

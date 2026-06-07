@@ -1,24 +1,13 @@
 name: 查看 CPU 使用率快照
-command: |
-  if [ "$(uname -s)" = "Darwin" ] && command -v top >/dev/null 2>&1; then
-    top -l 1 | head -20
-  elif command -v mpstat >/dev/null 2>&1; then
-    mpstat 1 1
-  elif command -v top >/dev/null 2>&1; then
-    top -bn1 | head -20
-  elif [ -r /proc/stat ]; then
-    grep '^cpu ' /proc/stat
-    echo "Raw /proc/stat jiffies shown; install sysstat for mpstat percentages."
-  else
-    echo "No supported CPU usage command found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-usage-snapshot.sh
 category: cpu
 tags:
-  - inspection
-  - cpu
-  - usage
+- inspection
+- cpu
+- usage
 risk: low
 description: 查看当前 CPU 使用率快照，优先展示 user/system/iowait/idle/steal 等时间分布。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters: []

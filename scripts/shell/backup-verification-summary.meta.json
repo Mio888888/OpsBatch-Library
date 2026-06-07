@@ -1,5 +1,6 @@
 {
   "name": "备份校验摘要",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/backup-verification-summary.sh",
   "language": "shell",
   "category": "maintenance",
   "tags": [

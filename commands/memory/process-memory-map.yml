@@ -1,20 +1,5 @@
 name: 查看进程内存映射
-command: |
-  if [ "$(uname -s)" = "Linux" ]; then
-    pid="${PID:-1}"
-    echo "Inspecting PID=$pid. Override with PID=<pid> if needed."
-
-    if command -v pmap >/dev/null 2>&1; then
-      pmap -x "$pid"
-    elif [ -r "/proc/$pid/maps" ]; then
-      echo "pmap not installed; showing first 50 lines of /proc/$pid/maps."
-      head -50 "/proc/$pid/maps"
-    else
-      echo "No readable memory map found for PID $pid."
-    fi
-  else
-    echo "Process memory maps in this command rely on Linux /proc or pmap output."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/process-memory-map.sh
 category: memory
 tags:
 - troubleshooting
@@ -29,4 +14,4 @@ parameters:
 - name: PID
   description: 目标进程 ID
   required: false
-  default: "1"
+  default: '1'

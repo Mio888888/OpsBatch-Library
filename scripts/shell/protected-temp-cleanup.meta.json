@@ -1,5 +1,6 @@
 {
   "name": "受保护临时文件清理",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-temp-cleanup.sh",
   "language": "shell",
   "category": "maintenance",
   "tags": [

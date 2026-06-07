@@ -1,40 +1,15 @@
 name: 查看 DNS 配置
-command: |
-  if [ "$(uname -s)" = "Linux" ]; then
-    echo "== /etc/resolv.conf =="
-    if [ -r /etc/resolv.conf ]; then
-      sed -n '1,120p' /etc/resolv.conf
-    else
-      echo "/etc/resolv.conf is not readable."
-    fi
-
-    if command -v resolvectl >/dev/null 2>&1; then
-      echo
-      echo "== resolvectl status =="
-      resolvectl status 2>/dev/null || true
-    elif command -v systemd-resolve >/dev/null 2>&1; then
-      echo
-      echo "== systemd-resolve status =="
-      systemd-resolve --status 2>/dev/null || true
-    fi
-  elif [ "$(uname -s)" = "Darwin" ]; then
-    if command -v scutil >/dev/null 2>&1; then
-      echo "== DNS configuration =="
-      scutil --dns
-    else
-      echo "scutil not available."
-    fi
-  else
-    echo "No supported DNS configuration command found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/dns-config-summary.sh
 category: network
 tags:
-  - inspection
-  - network
-  - dns
-  - config
+- inspection
+- network
+- dns
+- config
 risk: low
-description: 查看本机 DNS 解析器配置。Linux 读取 resolv.conf 并在可用时补充 systemd-resolved 状态，macOS 使用 scutil --dns。只读不修改配置。
+description: 查看本机 DNS 解析器配置。Linux 读取 resolv.conf 并在可用时补充 systemd-resolved 状态，macOS
+  使用 scutil --dns。只读不修改配置。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters: []

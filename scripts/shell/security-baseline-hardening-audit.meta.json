@@ -1,5 +1,6 @@
 {
   "name": "安全基线与加固摘要审计",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-baseline-hardening-audit.sh",
   "language": "shell",
   "category": "security",
   "tags": [

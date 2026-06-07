@@ -1,25 +1,5 @@
 name: 查看进程打开文件
-command: |
-  pid="${PID:-1}"
-  limit="${PROCESS_LIMIT:-80}"
-  echo "Inspecting open files for PID=$pid. Override with PID=<pid>; limit rows with PROCESS_LIMIT=<n>."
-
-  if command -v lsof >/dev/null 2>&1; then
-    echo "== open regular files from lsof =="
-    lsof -nP -p "$pid" 2>/dev/null | awk 'NR==1 || $5 == "REG" || $5 == "DIR"' | head -n "$limit" || echo "Process $pid not found or lsof needs more permission."
-  elif [ "$(uname -s)" = "Linux" ] && [ -d "/proc/$pid/fd" ]; then
-    echo "lsof not found. Showing readable /proc/$pid/fd targets."
-    for fd in /proc/"$pid"/fd/*; do
-      [ -e "$fd" ] || continue
-      target=$(readlink "$fd" 2>/dev/null || true)
-      case "$target" in
-        socket:*|pipe:*|anon_inode:*) continue ;;
-      esac
-      printf '%s -> %s\n' "$(basename "$fd")" "$target"
-    done | head -n "$limit"
-  else
-    echo "No supported open-file command found. Install lsof or inspect /proc on Linux."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-open-files.sh
 category: process
 tags:
 - troubleshooting
@@ -35,8 +15,8 @@ parameters:
 - name: PID
   description: 目标进程 ID
   required: false
-  default: "1"
+  default: '1'
 - name: PROCESS_LIMIT
   description: 显示进程数量上限
   required: false
-  default: "80"
+  default: '80'

@@ -1,55 +1,5 @@
 name: 受保护修改用户组成员
-command: |
-  TARGET_USER="${TARGET_USER:-}"
-  TARGET_GROUP="${TARGET_GROUP:-}"
-  GROUP_ACTION="${GROUP_ACTION:-add}"
-  CONFIRM_GROUP_CHANGE="${CONFIRM_GROUP_CHANGE:-}"
-
-  if [ -z "$TARGET_USER" ] || [ -z "$TARGET_GROUP" ]; then
-    echo "Refusing to run: set TARGET_USER and TARGET_GROUP explicitly."
-    exit 0
-  fi
-
-  if ! id "$TARGET_USER" >/dev/null 2>&1; then
-    echo "Refusing to run: user not found: $TARGET_USER"
-    exit 0
-  fi
-
-  case "$GROUP_ACTION" in
-    add|remove) ;;
-    *) echo "Refusing to run: GROUP_ACTION must be add or remove."; exit 0 ;;
-  esac
-
-  echo "== planned group membership change =="
-  echo "TARGET_USER=$TARGET_USER"
-  echo "TARGET_GROUP=$TARGET_GROUP"
-  echo "GROUP_ACTION=$GROUP_ACTION"
-  echo "Current groups: $(id -Gn "$TARGET_USER" 2>/dev/null || true)"
-
-  if [ "$CONFIRM_GROUP_CHANGE" != "CHANGE_GROUP_MEMBERSHIP" ]; then
-    echo "Dry-run only. Set CONFIRM_GROUP_CHANGE=CHANGE_GROUP_MEMBERSHIP after confirming access impact and approval."
-    exit 0
-  fi
-
-  if [ "$(uname -s)" = "Linux" ]; then
-    if [ "$GROUP_ACTION" = "add" ]; then
-      sudo usermod -aG "$TARGET_GROUP" "$TARGET_USER"
-    else
-      if command -v gpasswd >/dev/null 2>&1; then
-        sudo gpasswd -d "$TARGET_USER" "$TARGET_GROUP"
-      else
-        echo "gpasswd is required to remove a user from a group on this Linux system."
-      fi
-    fi
-  elif [ "$(uname -s)" = "Darwin" ] && command -v dseditgroup >/dev/null 2>&1; then
-    if [ "$GROUP_ACTION" = "add" ]; then
-      sudo dseditgroup -o edit -a "$TARGET_USER" -t user "$TARGET_GROUP"
-    else
-      sudo dseditgroup -o edit -d "$TARGET_USER" -t user "$TARGET_GROUP"
-    fi
-  else
-    echo "No supported group membership tool found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-group-membership-change.sh
 category: security
 tags:
 - remediation
@@ -57,7 +7,8 @@ tags:
 - group
 - membership
 risk: high
-description: 受保护的用户组成员变更模板。默认只展示计划和当前组；只有设置 TARGET_USER、TARGET_GROUP 和 CONFIRM_GROUP_CHANGE=CHANGE_GROUP_MEMBERSHIP 后才添加或移除成员。组变更可能授予或撤销权限，执行前必须确认审批和访问影响。
+description: 受保护的用户组成员变更模板。默认只展示计划和当前组；只有设置 TARGET_USER、TARGET_GROUP 和 CONFIRM_GROUP_CHANGE=CHANGE_GROUP_MEMBERSHIP
+  后才添加或移除成员。组变更可能授予或撤销权限，执行前必须确认审批和访问影响。
 platform:
 - linux
 - macos
@@ -65,11 +16,11 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ""
+  default: ''
 - name: TARGET_GROUP
   description: 目标用户组名
   required: true
-  default: ""
+  default: ''
 - name: GROUP_ACTION
   description: 组成员操作（add/remove）
   required: false
@@ -77,4 +28,4 @@ parameters:
 - name: CONFIRM_GROUP_CHANGE
   description: 确认组成员变更令牌
   required: false
-  default: ""
+  default: ''

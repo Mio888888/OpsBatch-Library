@@ -1,35 +1,5 @@
 name: 受保护停止可疑服务
-command: |
-  TARGET_SERVICE="${TARGET_SERVICE:-}"
-  CONFIRM_STOP_SERVICE="${CONFIRM_STOP_SERVICE:-}"
-
-  if [ -z "$TARGET_SERVICE" ]; then
-    echo "Refusing to run: set TARGET_SERVICE explicitly."
-    exit 0
-  fi
-
-  echo "== planned service stop =="
-  printf 'target_service=%s\n' "$TARGET_SERVICE"
-  if [ "$(uname -s)" = "Linux" ] && command -v systemctl >/dev/null 2>&1; then
-    systemctl status "$TARGET_SERVICE" --no-pager 2>/dev/null | head -60 || true
-  elif [ "$(uname -s)" = "Darwin" ] && command -v launchctl >/dev/null 2>&1; then
-    launchctl list 2>/dev/null | grep -F "$TARGET_SERVICE" || true
-  else
-    echo "No supported service manager status command found."
-  fi
-
-  if [ "$CONFIRM_STOP_SERVICE" != "STOP_TARGET_SERVICE" ]; then
-    echo "Dry-run only. Set CONFIRM_STOP_SERVICE=STOP_TARGET_SERVICE after confirming business impact, dependencies and restart plan."
-    exit 0
-  fi
-
-  if [ "$(uname -s)" = "Linux" ] && command -v systemctl >/dev/null 2>&1; then
-    sudo systemctl stop "$TARGET_SERVICE"
-  elif [ "$(uname -s)" = "Darwin" ] && command -v launchctl >/dev/null 2>&1; then
-    echo "Use launchctl bootout with a reviewed service domain/path; this generic template does not stop macOS services automatically."
-  else
-    echo "No supported service manager found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-suspicious-service-stop.sh
 category: security
 tags:
 - remediation
@@ -37,7 +7,8 @@ tags:
 - service
 - containment
 risk: high
-description: 受保护的可疑服务停止模板。默认只展示服务状态；只有设置 TARGET_SERVICE 和 CONFIRM_STOP_SERVICE=STOP_TARGET_SERVICE 后才在 Linux systemd 上停止服务。误用可能中断业务，执行前必须确认影响、依赖和恢复方案。
+description: 受保护的可疑服务停止模板。默认只展示服务状态；只有设置 TARGET_SERVICE 和 CONFIRM_STOP_SERVICE=STOP_TARGET_SERVICE
+  后才在 Linux systemd 上停止服务。误用可能中断业务，执行前必须确认影响、依赖和恢复方案。
 platform:
 - linux
 - macos
@@ -45,8 +16,8 @@ parameters:
 - name: TARGET_SERVICE
   description: 目标服务名称
   required: true
-  default: ""
+  default: ''
 - name: CONFIRM_STOP_SERVICE
   description: 确认停止服务令牌
   required: false
-  default: ""
+  default: ''

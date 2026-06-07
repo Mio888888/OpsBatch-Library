@@ -1,32 +1,5 @@
 name: 查看 sudoers 权限摘要
-command: |
-  TARGET_USER="${TARGET_USER:-}"
-
-  echo "== sudo availability =="
-  command -v sudo >/dev/null 2>&1 && sudo -V 2>/dev/null | head -5 || echo "sudo command not found or not readable."
-
-  echo
-  echo "== sudo-capable groups from local group database =="
-  if [ -r /etc/group ]; then
-    grep -E '^(sudo|wheel|admin):' /etc/group 2>/dev/null || true
-  fi
-
-  echo
-  echo "== sudoers files =="
-  for path in /etc/sudoers /etc/sudoers.d; do
-    if [ -e "$path" ]; then
-      ls -ld "$path" 2>/dev/null || true
-    fi
-  done
-
-  if [ -n "$TARGET_USER" ]; then
-    echo
-    echo "== sudo privileges for $TARGET_USER =="
-    sudo -l -U "$TARGET_USER" 2>/dev/null || echo "Cannot list sudo privileges for $TARGET_USER; permission may be required."
-  else
-    echo
-    echo "Set TARGET_USER to run sudo -l -U for one user."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/sudoers-summary.sh
 category: security
 tags:
 - inspection
@@ -34,7 +7,8 @@ tags:
 - sudo
 - privilege
 risk: medium
-description: 查看 sudo 可用性、常见 sudo 管理组、sudoers 文件位置和指定用户 sudo 权限。只读查询，可能暴露权限配置细节；TARGET_USER 可选。
+description: 查看 sudo 可用性、常见 sudo 管理组、sudoers 文件位置和指定用户 sudo 权限。只读查询，可能暴露权限配置细节；TARGET_USER
+  可选。
 platform:
 - linux
 - macos
@@ -42,4 +16,4 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ""
+  default: ''

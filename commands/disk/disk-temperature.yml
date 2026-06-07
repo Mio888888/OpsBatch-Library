@@ -1,28 +1,5 @@
 name: 查看磁盘温度
-command: |
-  TARGET_DEVICE="${TARGET_DEVICE:-}"
-
-  if [ "$(uname -s)" = "Linux" ]; then
-    if command -v smartctl >/dev/null 2>&1; then
-      if [ -n "$TARGET_DEVICE" ]; then
-        sudo smartctl -A "$TARGET_DEVICE" 2>/dev/null | grep -Ei 'Temperature|Airflow|194|190' || true
-      elif command -v lsblk >/dev/null 2>&1; then
-        for disk in $(lsblk -dn -o NAME 2>/dev/null); do
-          echo "== /dev/$disk =="
-          sudo smartctl -A "/dev/$disk" 2>/dev/null | grep -Ei 'Temperature|Airflow|194|190' || true
-        done
-      else
-        echo "Set TARGET_DEVICE, for example TARGET_DEVICE=/dev/sda."
-      fi
-    else
-      echo "smartctl not installed. Install smartmontools to read disk temperature."
-    fi
-  elif [ "$(uname -s)" = "Darwin" ]; then
-    echo "macOS disk temperature usually requires smartctl/smartmontools or vendor tools."
-    command -v smartctl >/dev/null 2>&1 && [ -n "$TARGET_DEVICE" ] && smartctl -A "$TARGET_DEVICE" 2>/dev/null | grep -Ei 'Temperature|Airflow|194|190' || true
-  else
-    echo "No supported disk temperature command found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-temperature.sh
 category: disk
 tags:
 - inspection
@@ -38,4 +15,4 @@ parameters:
 - name: TARGET_DEVICE
   description: 目标设备路径（如 /dev/sda）
   required: true
-  default: ""
+  default: ''

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+TARGET_FILE="${TARGET_FILE:-}"
+QUARANTINE_DIR="${QUARANTINE_DIR:-}"
+CONFIRM_QUARANTINE="${CONFIRM_QUARANTINE:-}"
+
+if [ -z "$TARGET_FILE" ] || [ -z "$QUARANTINE_DIR" ]; then
+  echo "Refusing to run: set TARGET_FILE and QUARANTINE_DIR explicitly."
+  exit 0
+fi
+
+if [ ! -f "$TARGET_FILE" ]; then
+  echo "Refusing to run: TARGET_FILE must exist and be a regular file: $TARGET_FILE"
+  exit 0
+fi
+
+echo "== planned file quarantine =="
+ls -l "$TARGET_FILE" 2>/dev/null || true
+if command -v sha256sum >/dev/null 2>&1; then
+  sha256sum "$TARGET_FILE" 2>/dev/null || true
+elif command -v shasum >/dev/null 2>&1; then
+  shasum -a 256 "$TARGET_FILE" 2>/dev/null || true
+fi
+printf 'Would move into quarantine directory: %s\n' "$QUARANTINE_DIR"
+
+if [ "$CONFIRM_QUARANTINE" != "MOVE_TARGET_FILE" ]; then
+  echo "Dry-run only. Set CONFIRM_QUARANTINE=MOVE_TARGET_FILE after confirming the file is not required by a running service and evidence collection is complete."
+  exit 0
+fi
+
+sudo mkdir -p "$QUARANTINE_DIR"
+sudo chmod 700 "$QUARANTINE_DIR"
+target_name="$(basename "$TARGET_FILE")"
+sudo mv -i "$TARGET_FILE" "$QUARANTINE_DIR/$target_name.$(date +%Y%m%d%H%M%S)"
+echo "Moved suspicious file into $QUARANTINE_DIR."

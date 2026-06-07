@@ -1,5 +1,6 @@
 {
   "name": "受保护日志轮转预览",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-logrotate-preview.sh",
   "language": "shell",
   "category": "maintenance",
   "tags": [

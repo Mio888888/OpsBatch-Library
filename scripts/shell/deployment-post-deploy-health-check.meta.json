@@ -1,5 +1,6 @@
 {
   "name": "部署后健康检查",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-post-deploy-health-check.sh",
   "language": "shell",
   "category": "deployment",
   "tags": [

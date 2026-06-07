@@ -1,34 +1,12 @@
 name: 查看 Huge Pages 信息
-command: |
-  if [ "$(uname -s)" = "Linux" ]; then
-    if [ -r /proc/meminfo ]; then
-      echo "== HugePages fields in /proc/meminfo =="
-      grep -E '^(HugePages_Total|HugePages_Free|HugePages_Rsvd|HugePages_Surp|Hugepagesize|Hugetlb|AnonHugePages|ShmemHugePages|FileHugePages):' /proc/meminfo || true
-    else
-      echo "/proc/meminfo is not available."
-    fi
-
-    echo
-    echo "== /sys/kernel/mm/hugepages =="
-    if ls /sys/kernel/mm/hugepages/hugepages-* >/dev/null 2>&1; then
-      for dir in /sys/kernel/mm/hugepages/hugepages-*; do
-        echo "-- ${dir##*/} --"
-        for file in free_hugepages nr_hugepages resv_hugepages surplus_hugepages; do
-          [ -r "$dir/$file" ] && echo "$file=$(cat "$dir/$file")"
-        done
-      done
-    else
-      echo "HugePages sysfs directory not found."
-    fi
-  else
-    echo "Huge Pages inspection in this command relies on Linux /proc and /sys."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/hugepages-info.sh
 category: memory
 tags:
-  - inspection
-  - memory
-  - hugepages
+- inspection
+- memory
+- hugepages
 risk: low
 description: 查看 Linux Huge Pages 与 Transparent Huge Pages 相关内存字段，并只读展示 sysfs 中的大页池状态。
 platform:
-  - linux
+- linux
+parameters: []

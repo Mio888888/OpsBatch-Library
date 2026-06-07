@@ -1,19 +1,5 @@
 name: 查看进程线程数排行
-command: |
-  limit="${PROCESS_LIMIT:-20}"
-  echo "Showing top $limit processes by thread count. Override with PROCESS_LIMIT=<n> if needed."
-
-  if [ "$(uname -s)" = "Linux" ] && ps -eo pid,ppid,user,nlwp,stat,%cpu,%mem,comm --sort=-nlwp >/dev/null 2>&1; then
-    ps -eo pid,ppid,user,nlwp,stat,%cpu,%mem,comm --sort=-nlwp | head -n "$((limit + 1))"
-  elif [ "$(uname -s)" = "Darwin" ]; then
-    if command -v top >/dev/null 2>&1; then
-      top -l 1 -n "$limit" -stats pid,th,command,cpu,mem,state,time -o th 2>/dev/null | awk 'BEGIN {show=0} /^PID[[:space:]]/ {show=1} show {print}'
-    else
-      echo "No supported thread count command found on macOS."
-    fi
-  else
-    ps -eLf 2>/dev/null | awk 'NR>1 {count[$2]++; user[$2]=$3; cmd[$2]=$NF} END {for (pid in count) print pid, user[pid], count[pid], cmd[pid]}' | sort -nrk 3 | head -n "$limit"
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-thread-count.sh
 category: process
 tags:
 - troubleshooting
@@ -28,4 +14,4 @@ parameters:
 - name: PROCESS_LIMIT
   description: 显示进程数量上限
   required: false
-  default: "20"
+  default: '20'

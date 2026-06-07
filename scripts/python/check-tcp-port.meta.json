@@ -1,5 +1,6 @@
 {
   "name": "检查 TCP 端口连通性",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/python/check-tcp-port.py",
   "language": "python",
   "category": "network",
   "tags": [

@@ -1,24 +1,14 @@
 name: 查看挂载点详情
-command: |
-  if [ "$(uname -s)" = "Linux" ]; then
-    if command -v findmnt >/dev/null 2>&1; then
-      findmnt -A -o TARGET,SOURCE,FSTYPE,OPTIONS
-    else
-      mount | sort
-    fi
-  elif [ "$(uname -s)" = "Darwin" ]; then
-    mount | sort
-  else
-    echo "No supported mount inspection command found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/mounts-detail.sh
 category: disk
 tags:
-  - inspection
-  - disk
-  - mount
-  - filesystem
+- inspection
+- disk
+- mount
+- filesystem
 risk: low
 description: 查看系统挂载点、来源设备、文件系统类型和挂载参数，适用于排查挂载异常、只读挂载或网络盘状态。只读不修改系统状态。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters: []

@@ -1,5 +1,6 @@
 {
   "name": "Windows 维护状态摘要",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/windows-maintenance-status-summary.sh",
   "language": "shell",
   "category": "maintenance",
   "tags": [

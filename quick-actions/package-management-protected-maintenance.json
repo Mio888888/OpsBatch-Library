@@ -1,6 +1,7 @@
 {
   "name": "包管理受保护维护",
   "description": "串联安装、升级、卸载、缓存清理、软件源配置和锁/事务修复等高风险包管理维护模板。所有步骤默认只输出计划或拒绝执行，必须在单个命令中显式设置目标变量和确认变量后才会执行真实变更。",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/package-management-protected-maintenance.json",
   "category": "troubleshooting",
   "risk": "high",
   "tags": [
@@ -18,36 +19,42 @@
       "name": "受保护安装软件包",
       "type": "command",
       "ref": "commands/package-management/protected-package-install.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-install.yml",
       "continueOnError": true
     },
     {
       "name": "受保护升级软件包",
       "type": "command",
       "ref": "commands/package-management/protected-package-upgrade.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-upgrade.yml",
       "continueOnError": true
     },
     {
       "name": "受保护卸载软件包",
       "type": "command",
       "ref": "commands/package-management/protected-package-uninstall.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-uninstall.yml",
       "continueOnError": true
     },
     {
       "name": "受保护清理包管理器缓存",
       "type": "command",
       "ref": "commands/package-management/protected-package-cache-cleanup.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-cache-cleanup.yml",
       "continueOnError": true
     },
     {
       "name": "受保护调整软件源配置模板",
       "type": "command",
       "ref": "commands/package-management/protected-repository-config.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-repository-config.yml",
       "continueOnError": true
     },
     {
       "name": "受保护修复包管理锁与事务",
       "type": "command",
       "ref": "commands/package-management/protected-package-lock-fix.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/protected-package-lock-fix.yml",
       "continueOnError": true
     }
   ]

@@ -1,5 +1,6 @@
 {
   "name": "可疑进程连接与认证日志线索",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-suspicious-activity-indicators.sh",
   "language": "shell",
   "category": "security",
   "tags": [

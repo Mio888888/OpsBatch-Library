@@ -1,16 +1,5 @@
 name: 查看 SMART 详细属性
-command: |
-  TARGET_DEVICE="${TARGET_DEVICE:-}"
-  if [ -z "$TARGET_DEVICE" ]; then
-    echo "Set TARGET_DEVICE before running, for example /dev/sda."
-    exit 0
-  fi
-
-  if command -v smartctl >/dev/null 2>&1; then
-    sudo smartctl -A "$TARGET_DEVICE" 2>/dev/null || smartctl -A "$TARGET_DEVICE" 2>/dev/null || true
-  else
-    echo "smartctl not installed. Install smartmontools to view SMART attributes."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/smart-attributes.sh
 category: disk
 tags:
 - inspection
@@ -26,4 +15,4 @@ parameters:
 - name: TARGET_DEVICE
   description: 目标设备路径（如 /dev/sda）
   required: true
-  default: ""
+  default: ''

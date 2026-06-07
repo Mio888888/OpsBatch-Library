@@ -15,15 +15,17 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 COMMAND_REQUIRED_FIELDS = {
     "name",
-    "command",
+    "url",
     "category",
     "tags",
     "risk",
     "description",
     "platform",
+    "parameters",
 }
 SCRIPT_META_REQUIRED_FIELDS = {
     "name",
+    "url",
     "language",
     "category",
     "tags",
@@ -35,6 +37,7 @@ SCRIPT_META_REQUIRED_FIELDS = {
 QUICK_ACTION_REQUIRED_FIELDS = {
     "name",
     "description",
+    "url",
     "category",
     "risk",
     "tags",
@@ -143,6 +146,21 @@ def validate_commands(errors: list[str]) -> None:
         require_fields(path, data, COMMAND_REQUIRED_FIELDS, errors)
         validate_risk(path, data, errors)
 
+        # Every command YAML must have a corresponding .sh script
+        sh_path = path.with_suffix(".sh")
+        if not sh_path.exists():
+            fail(f"{relative(path)}: missing corresponding script {relative(sh_path)}", errors)
+
+        # Validate url field format
+        url = data.get("url", "")
+        if url and not url.startswith("http"):
+            fail(f"{relative(path)}: url must be an HTTP(S) URL, got {url!r}", errors)
+
+        # Validate parameters is a list
+        params = data.get("parameters")
+        if params is not None and not isinstance(params, list):
+            fail(f"{relative(path)}: parameters must be an array", errors)
+
 
 def meta_path_for_script(path: Path) -> Path:
     return path.with_name(f"{path.stem}.meta.json")
@@ -161,6 +179,9 @@ def validate_script_meta(path: Path, errors: list[str]) -> None:
         fail(f"{relative(path)}: platform must be an array", errors)
     if not isinstance(data.get("tags"), list):
         fail(f"{relative(path)}: tags must be an array", errors)
+    url = data.get("url", "")
+    if url and not url.startswith("http"):
+        fail(f"{relative(path)}: url must be an HTTP(S) URL, got {url!r}", errors)
 
 
 def validate_scripts(errors: list[str]) -> None:
@@ -220,6 +241,9 @@ def validate_quick_actions(errors: list[str]) -> None:
             target = ROOT / ref
             if not target.exists():
                 fail(f"{relative(path)}: step {index} ref does not exist: {ref}", errors)
+            step_url = step.get("url")
+            if step_url and not step_url.startswith("http"):
+                fail(f"{relative(path)}: step {index} url must be an HTTP(S) URL, got {step_url!r}", errors)
 
 
 def run_command(command: list[str], errors: list[str], label: str) -> None:
@@ -234,6 +258,11 @@ def validate_script_syntax(errors: list[str]) -> None:
     if bash:
         for path in sorted((ROOT / "scripts" / "shell").glob("*.sh")):
             run_command([bash, "-n", str(path)], errors, f"{relative(path)} shell syntax")
+        # Also validate command .sh scripts
+        command_root = ROOT / "commands"
+        if command_root.is_dir():
+            for path in sorted(command_root.rglob("*.sh")):
+                run_command([bash, "-n", str(path)], errors, f"{relative(path)} shell syntax")
 
     for path in sorted((ROOT / "scripts" / "python").glob("*.py")):
         try:

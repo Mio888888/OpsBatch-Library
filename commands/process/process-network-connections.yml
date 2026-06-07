@@ -1,21 +1,5 @@
 name: 查看进程网络连接
-command: |
-  pid="${PID:-1}"
-  limit="${PROCESS_LIMIT:-120}"
-  echo "Inspecting network connections for PID=$pid. Override with PID=<pid>; limit rows with PROCESS_LIMIT=<n>."
-
-  if command -v lsof >/dev/null 2>&1; then
-    echo "== network sockets from lsof =="
-    lsof -nP -a -p "$pid" -iTCP -iUDP 2>/dev/null | head -n "$limit" || echo "No sockets found or lsof needs more permission."
-  elif [ "$(uname -s)" = "Linux" ] && command -v ss >/dev/null 2>&1; then
-    echo "== sockets with process info from ss =="
-    ss -tunap 2>/dev/null | { head -1; grep -F "pid=$pid," || true; } | head -n "$limit"
-  elif command -v netstat >/dev/null 2>&1; then
-    echo "== sockets from netstat (process mapping may be unavailable) =="
-    netstat -an 2>/dev/null | head -n "$limit"
-  else
-    echo "No supported process network command found. Install lsof or iproute2."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-network-connections.sh
 category: process
 tags:
 - troubleshooting
@@ -31,8 +15,8 @@ parameters:
 - name: PID
   description: 目标进程 ID
   required: false
-  default: "1"
+  default: '1'
 - name: PROCESS_LIMIT
   description: 显示进程数量上限
   required: false
-  default: "120"
+  default: '120'

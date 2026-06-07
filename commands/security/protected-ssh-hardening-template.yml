@@ -1,51 +1,5 @@
 name: 受保护应用 SSH 安全配置片段
-command: |
-  SSHD_CONFIG="${SSHD_CONFIG:-}"
-  CONFIRM_SSH_HARDEN="${CONFIRM_SSH_HARDEN:-}"
-
-  echo "== candidate SSH hardening lines =="
-  cat <<'EOF'
-  PermitRootLogin no
-  PasswordAuthentication no
-  PermitEmptyPasswords no
-  MaxAuthTries 3
-  X11Forwarding no
-  AllowTcpForwarding no
-  EOF
-
-  if [ -z "$SSHD_CONFIG" ]; then
-    echo "Refusing to run: set SSHD_CONFIG explicitly, for example SSHD_CONFIG=/etc/ssh/sshd_config."
-    exit 0
-  fi
-
-  if [ ! -f "$SSHD_CONFIG" ]; then
-    echo "Refusing to run: target file not found: $SSHD_CONFIG"
-    exit 0
-  fi
-
-  echo
-  echo "== target metadata =="
-  ls -l "$SSHD_CONFIG" 2>/dev/null || true
-  echo "Dry-run: would append a dated backup path and review candidate settings for $SSHD_CONFIG."
-
-  if [ "$CONFIRM_SSH_HARDEN" != "APPLY_SSH_HARDENING" ]; then
-    echo "Dry-run only. Set CONFIRM_SSH_HARDEN=APPLY_SSH_HARDENING after confirming console access, rollback, and service reload plan."
-    exit 0
-  fi
-
-  backup="${SSHD_CONFIG}.bak.$(date +%Y%m%d%H%M%S)"
-  sudo cp "$SSHD_CONFIG" "$backup"
-  sudo tee -a "$SSHD_CONFIG" >/dev/null <<'EOF'
-
-  # OpsBatch protected hardening example - review before keeping in production
-  PermitRootLogin no
-  PasswordAuthentication no
-  PermitEmptyPasswords no
-  MaxAuthTries 3
-  X11Forwarding no
-  AllowTcpForwarding no
-  EOF
-  echo "Updated $SSHD_CONFIG. Backup: $backup. Validate with sshd -t before reloading sshd."
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-ssh-hardening-template.sh
 category: security
 tags:
 - remediation
@@ -53,7 +7,8 @@ tags:
 - ssh
 - hardening
 risk: high
-description: 受保护的 SSH 安全配置示例。默认只展示候选配置并拒绝执行；只有显式设置 SSHD_CONFIG 和 CONFIRM_SSH_HARDEN=APPLY_SSH_HARDENING 后才追加配置。误用可能导致 SSH 无法登录，执行前必须确认控制台访问、备份、语法校验和回滚方案。
+description: 受保护的 SSH 安全配置示例。默认只展示候选配置并拒绝执行；只有显式设置 SSHD_CONFIG 和 CONFIRM_SSH_HARDEN=APPLY_SSH_HARDENING
+  后才追加配置。误用可能导致 SSH 无法登录，执行前必须确认控制台访问、备份、语法校验和回滚方案。
 platform:
 - linux
 - macos
@@ -61,8 +16,8 @@ parameters:
 - name: SSHD_CONFIG
   description: sshd 配置文件路径
   required: true
-  default: ""
+  default: ''
 - name: CONFIRM_SSH_HARDEN
   description: 确认 SSH 加固令牌
   required: false
-  default: ""
+  default: ''

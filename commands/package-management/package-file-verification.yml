@@ -1,29 +1,5 @@
 name: 校验软件包文件完整性
-command: |
-  TARGET_PACKAGE="${TARGET_PACKAGE:-}"
-
-  if [ -z "$TARGET_PACKAGE" ]; then
-    echo "Set TARGET_PACKAGE to verify installed package files, for example TARGET_PACKAGE=openssh-client."
-    echo "This can be noisy and may reveal local file modification state."
-    exit 0
-  fi
-
-  echo "== package file verification: $TARGET_PACKAGE =="
-  if command -v dpkg >/dev/null 2>&1; then
-    dpkg -V "$TARGET_PACKAGE" 2>/dev/null || true
-  fi
-  if command -v rpm >/dev/null 2>&1; then
-    rpm -V "$TARGET_PACKAGE" 2>/dev/null || true
-  fi
-  if command -v pacman >/dev/null 2>&1; then
-    pacman -Qkk "$TARGET_PACKAGE" 2>/dev/null | sed -n '1,80p' || true
-  fi
-  if command -v apk >/dev/null 2>&1; then
-    apk audit 2>/dev/null | grep -F "$TARGET_PACKAGE" | sed -n '1,80p' || true
-  fi
-  if command -v brew >/dev/null 2>&1; then
-    brew linkage "$TARGET_PACKAGE" 2>/dev/null | sed -n '1,80p' || true
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/package-file-verification.sh
 category: package-management
 tags:
 - inspection
@@ -39,4 +15,4 @@ parameters:
 - name: TARGET_PACKAGE
   description: 目标软件包名
   required: true
-  default: ""
+  default: ''

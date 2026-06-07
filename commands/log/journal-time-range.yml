@@ -1,28 +1,5 @@
 name: 按时间范围查询日志
-command: |
-  SINCE="${SINCE:-1 hour ago}"
-  UNTIL="${UNTIL:-now}"
-  LINES="${LINES:-200}"
-  LOG_PATTERN="${LOG_PATTERN:-}"
-
-  echo "== logs from $SINCE to $UNTIL =="
-  if command -v journalctl >/dev/null 2>&1; then
-    if [ -n "$LOG_PATTERN" ]; then
-      journalctl --since "$SINCE" --until "$UNTIL" --no-pager 2>/dev/null | grep -Ei "$LOG_PATTERN" | tail -n "$LINES" || true
-    else
-      journalctl --since "$SINCE" --until "$UNTIL" -n "$LINES" --no-pager 2>/dev/null || echo "journalctl query failed; check permissions or time expression."
-    fi
-  elif [ "$(uname -s)" = "Darwin" ] && command -v log >/dev/null 2>&1; then
-    if [ -n "$LOG_PATTERN" ]; then
-      log show --last 1h --style compact 2>/dev/null | grep -Ei "$LOG_PATTERN" | tail -n "$LINES" || true
-      echo "macOS fallback uses --last 1h; use predicate options manually for precise absolute time ranges."
-    else
-      log show --last 1h --style compact 2>/dev/null | tail -n "$LINES" || true
-      echo "macOS fallback uses --last 1h; use predicate options manually for precise absolute time ranges."
-    fi
-  else
-    echo "No supported time-range log source found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/journal-time-range.sh
 category: log
 tags:
 - log
@@ -46,8 +23,8 @@ parameters:
 - name: LINES
   description: 显示行数
   required: false
-  default: "200"
+  default: '200'
 - name: LOG_PATTERN
   description: 日志搜索模式（支持正则）
   required: true
-  default: ""
+  default: ''

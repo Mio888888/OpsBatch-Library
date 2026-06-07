@@ -1,7 +1,5 @@
 name: 命令名称
-command: |
-  TARGET="${TARGET:-default_value}"
-  echo "replace with a safe, reviewable command"
+url: https://raw.githubusercontent.com/OWNER/REPO/BRANCH/commands/category/command-name.sh
 category: system
 tags:
   - inspection
@@ -9,6 +7,7 @@ risk: low
 description: 说明命令用途、适用场景和注意事项。
 platform:
   - linux
+parameters: []
 # 如命令包含动态参数，取消下方注释并填写
 # parameters:
 #   - name: TARGET

@@ -1,32 +1,13 @@
 name: 查看网络命名空间
-command: |
-  if [ "$(uname -s)" = "Linux" ]; then
-    echo "== process network namespaces =="
-    if command -v lsns >/dev/null 2>&1; then
-      lsns -t net
-    else
-      echo "lsns not installed; showing namespace symlinks for first processes."
-      find /proc/[0-9]*/ns/net -maxdepth 0 -type l -print 2>/dev/null | head -40 | while read -r ns; do
-        printf '%s -> ' "$ns"
-        readlink "$ns" 2>/dev/null || true
-      done
-    fi
-
-    if command -v ip >/dev/null 2>&1; then
-      echo
-      echo "== named network namespaces =="
-      ip netns list 2>/dev/null || true
-    fi
-  else
-    echo "Network namespaces are Linux-specific; no macOS equivalent is shown."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/network-namespaces.sh
 category: network
 tags:
-  - inspection
-  - network
-  - namespace
-  - container
+- inspection
+- network
+- namespace
+- container
 risk: low
 description: 查看 Linux 网络命名空间和命名 netns，辅助排查容器、虚拟化或多网络栈场景。只读不进入或修改命名空间。
 platform:
-  - linux
+- linux
+parameters: []

@@ -1,29 +1,5 @@
 name: 查看 Kubernetes Pod 日志
-command: |
-  NAMESPACE="${NAMESPACE:-default}"
-  POD_NAME="${POD_NAME:-}"
-  CONTAINER_NAME="${CONTAINER_NAME:-}"
-  LINES="${LINES:-120}"
-  SINCE="${SINCE:-2h}"
-
-  if ! command -v kubectl >/dev/null 2>&1; then
-    echo "kubectl not found."
-    exit 0
-  fi
-
-  if [ -z "$POD_NAME" ]; then
-    echo "Refusing to run: set POD_NAME explicitly."
-    echo "Pods in namespace $NAMESPACE:"
-    kubectl get pods -n "$NAMESPACE" 2>/dev/null || true
-    exit 0
-  fi
-
-  echo "== Kubernetes logs: namespace=$NAMESPACE pod=$POD_NAME =="
-  if [ -n "$CONTAINER_NAME" ]; then
-    kubectl logs -n "$NAMESPACE" "$POD_NAME" -c "$CONTAINER_NAME" --since="$SINCE" --tail="$LINES" 2>&1 || echo "kubectl logs failed; check namespace, pod, container and permissions."
-  else
-    kubectl logs -n "$NAMESPACE" "$POD_NAME" --since="$SINCE" --tail="$LINES" 2>&1 || echo "kubectl logs failed; check namespace, pod and permissions."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/kubernetes-pod-logs.sh
 category: log
 tags:
 - log
@@ -31,7 +7,8 @@ tags:
 - pod
 - container
 risk: medium
-description: 查看单个 Kubernetes Pod 或容器的近期日志。必须设置 POD_NAME，可通过 NAMESPACE、CONTAINER_NAME、SINCE、LINES 控制范围；日志可能包含敏感业务数据。
+description: 查看单个 Kubernetes Pod 或容器的近期日志。必须设置 POD_NAME，可通过 NAMESPACE、CONTAINER_NAME、SINCE、LINES
+  控制范围；日志可能包含敏感业务数据。
 platform:
 - linux
 - macos
@@ -43,15 +20,15 @@ parameters:
 - name: POD_NAME
   description: Pod 名称
   required: true
-  default: ""
+  default: ''
 - name: CONTAINER_NAME
   description: 容器名称
   required: true
-  default: ""
+  default: ''
 - name: LINES
   description: 显示行数
   required: false
-  default: "120"
+  default: '120'
 - name: SINCE
   description: 起始时间
   required: false

@@ -1,15 +1,5 @@
 name: 查看目录占用排行
-command: |
-  TARGET_DIR="${TARGET_DIR:-.}"
-  DEPTH="${DEPTH:-1}"
-
-  echo "== top directory usage: $TARGET_DIR (depth=$DEPTH) =="
-  if [ -d "$TARGET_DIR" ]; then
-    du -xh -d "$DEPTH" "$TARGET_DIR" 2>/dev/null | sort -hr | head -30
-  else
-    echo "TARGET_DIR is not a directory: $TARGET_DIR"
-    echo "Usage: TARGET_DIR=/var DEPTH=1 sh -c '<this command>'"
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/directory-usage-top.sh
 category: disk
 tags:
 - troubleshooting
@@ -29,4 +19,4 @@ parameters:
 - name: DEPTH
   description: 目录扫描深度
   required: false
-  default: "1"
+  default: '1'

@@ -1,33 +1,15 @@
 name: 查看语言生态包管理器配置摘要
-command: |
-  echo "== language package manager registry/config summary =="
-
-  if command -v pip3 >/dev/null 2>&1 || command -v pip >/dev/null 2>&1; then
-    PIP_BIN="$(command -v pip3 2>/dev/null || command -v pip 2>/dev/null)"
-    echo "-- pip --"
-    "$PIP_BIN" --version 2>/dev/null || true
-    "$PIP_BIN" config list 2>/dev/null | sed -E 's#(password|token|secret|key)[^=]*=.*#\1=***redacted***#Ig' || true
-  else
-    echo "pip not found"
-  fi
-
-  if command -v npm >/dev/null 2>&1; then
-    echo "-- npm --"
-    npm --version 2>/dev/null || true
-    npm config get registry 2>/dev/null | sed 's#.*#registry=& #' || true
-    npm config list 2>/dev/null | grep -E '(^;|registry|prefix|cache|strict-ssl|proxy)' | sed -E 's#(_authToken|password|token|secret|key).*#\1=***redacted***#Ig' || true
-  else
-    echo "npm not found"
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/package-management/language-registry-summary.sh
 category: package-management
 tags:
-  - inspection
-  - package-management
-  - registry
-  - pip
-  - npm
+- inspection
+- package-management
+- registry
+- pip
+- npm
 risk: medium
 description: 查看 pip 和 npm 的版本、registry、缓存和代理等配置摘要，并尽量脱敏令牌字段；可能暴露内部 registry 域名，只读不修改配置。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters: []

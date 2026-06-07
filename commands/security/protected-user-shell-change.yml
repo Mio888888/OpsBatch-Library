@@ -1,52 +1,13 @@
 name: 受保护修改用户 Shell
-command: |
-  TARGET_USER="${TARGET_USER:-}"
-  TARGET_SHELL="${TARGET_SHELL:-}"
-  CONFIRM_SHELL_CHANGE="${CONFIRM_SHELL_CHANGE:-}"
-
-  if [ -z "$TARGET_USER" ] || [ -z "$TARGET_SHELL" ]; then
-    echo "Refusing to run: set TARGET_USER and TARGET_SHELL explicitly."
-    exit 0
-  fi
-
-  if ! id "$TARGET_USER" >/dev/null 2>&1; then
-    echo "Refusing to run: user not found: $TARGET_USER"
-    exit 0
-  fi
-
-  if [ -f /etc/shells ] && ! grep -qx "$TARGET_SHELL" /etc/shells; then
-    echo "Warning: TARGET_SHELL is not listed in /etc/shells: $TARGET_SHELL"
-  fi
-
-  echo "== planned shell change =="
-  echo "TARGET_USER=$TARGET_USER"
-  echo "TARGET_SHELL=$TARGET_SHELL"
-  echo "Current passwd entry:"
-  if command -v getent >/dev/null 2>&1; then
-    getent passwd "$TARGET_USER" 2>/dev/null || true
-  elif [ -r /etc/passwd ]; then
-    awk -F: -v user="$TARGET_USER" '$1 == user {print}' /etc/passwd
-  fi
-
-  if [ "$CONFIRM_SHELL_CHANGE" != "CHANGE_TARGET_SHELL" ]; then
-    echo "Dry-run only. Set CONFIRM_SHELL_CHANGE=CHANGE_TARGET_SHELL after confirming login/service impact."
-    exit 0
-  fi
-
-  if command -v chsh >/dev/null 2>&1; then
-    sudo chsh -s "$TARGET_SHELL" "$TARGET_USER"
-  elif [ "$(uname -s)" = "Darwin" ] && command -v dscl >/dev/null 2>&1; then
-    sudo dscl . -create "/Users/$TARGET_USER" UserShell "$TARGET_SHELL"
-  else
-    echo "No supported shell change tool found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/protected-user-shell-change.sh
 category: security
 tags:
 - remediation
 - user
 - shell
 risk: high
-description: 受保护的用户登录 Shell 修改模板。默认只展示计划；只有设置 TARGET_USER、TARGET_SHELL 和 CONFIRM_SHELL_CHANGE=CHANGE_TARGET_SHELL 后才修改。Shell 变更可能阻断登录或服务启动，执行前必须确认影响。
+description: 受保护的用户登录 Shell 修改模板。默认只展示计划；只有设置 TARGET_USER、TARGET_SHELL 和 CONFIRM_SHELL_CHANGE=CHANGE_TARGET_SHELL
+  后才修改。Shell 变更可能阻断登录或服务启动，执行前必须确认影响。
 platform:
 - linux
 - macos
@@ -54,12 +15,12 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ""
+  default: ''
 - name: TARGET_SHELL
   description: 目标 Shell 路径
   required: true
-  default: ""
+  default: ''
 - name: CONFIRM_SHELL_CHANGE
   description: 确认修改 Shell 令牌，需设为 CHANGE_SHELL_TARGET_USER 才执行
   required: false
-  default: ""
+  default: ''

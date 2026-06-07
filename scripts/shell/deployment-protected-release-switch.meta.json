@@ -1,5 +1,6 @@
 {
   "name": "受保护 Release 切换部署/回滚",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-protected-release-switch.sh",
   "language": "shell",
   "category": "deployment",
   "tags": [

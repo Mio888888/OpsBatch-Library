@@ -1,5 +1,6 @@
 {
   "name": "查看日志尾部",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/tail-log.sh",
   "language": "shell",
   "category": "log",
   "tags": [

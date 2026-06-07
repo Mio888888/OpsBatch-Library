@@ -1,38 +1,5 @@
 name: 检查 SSH 授权密钥
-command: |
-  TARGET_USER="${TARGET_USER:-}"
-  MAX_KEYS="${MAX_KEYS:-20}"
-
-  list_users() {
-    if [ -n "$TARGET_USER" ]; then
-      printf '%s\n' "$TARGET_USER"
-    elif [ -r /etc/passwd ]; then
-      awk -F: '$6 != "" && $7 !~ /(false|nologin|sync|shutdown|halt)$/ {print $1}' /etc/passwd
-    elif [ "$(uname -s)" = "Darwin" ] && command -v dscl >/dev/null 2>&1; then
-      dscl . -list /Users 2>/dev/null | grep -v '^_'
-    fi
-  }
-
-  for user in $(list_users); do
-    if [ "$(uname -s)" = "Darwin" ] && command -v dscl >/dev/null 2>&1; then
-      home="$(dscl . -read "/Users/$user" NFSHomeDirectory 2>/dev/null | awk '{print $2}')"
-    elif command -v getent >/dev/null 2>&1; then
-      home="$(getent passwd "$user" 2>/dev/null | awk -F: '{print $6}')"
-    elif [ -r /etc/passwd ]; then
-      home="$(awk -F: -v user="$user" '$1 == user {print $6}' /etc/passwd)"
-    fi
-
-    auth_file="$home/.ssh/authorized_keys"
-    echo "== $user ($auth_file) =="
-    if [ -f "$auth_file" ]; then
-      ls -ld "$home" "$home/.ssh" "$auth_file" 2>/dev/null || true
-      echo "key_count=$(grep -Ev '^[[:space:]]*(#|$)' "$auth_file" 2>/dev/null | wc -l | tr -d ' ')"
-      grep -Ev '^[[:space:]]*(#|$)' "$auth_file" 2>/dev/null | head -n "$MAX_KEYS" | awk '{print NR ": " $1 " " $2 " " $3}'
-    else
-      echo "authorized_keys not found or not readable."
-    fi
-    echo
-  done
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/security/ssh-authorized-keys-audit.sh
 category: security
 tags:
 - audit
@@ -40,7 +7,8 @@ tags:
 - ssh
 - authorized-keys
 risk: medium
-description: 检查用户 SSH authorized_keys 文件、权限和密钥摘要。只读查询，可能输出公钥指纹材料、用户和家目录路径；可通过 TARGET_USER 限定用户。
+description: 检查用户 SSH authorized_keys 文件、权限和密钥摘要。只读查询，可能输出公钥指纹材料、用户和家目录路径；可通过 TARGET_USER
+  限定用户。
 platform:
 - linux
 - macos
@@ -48,8 +16,8 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ""
+  default: ''
 - name: MAX_KEYS
   description: 最大密钥数量告警阈值
   required: false
-  default: "20"
+  default: '20'

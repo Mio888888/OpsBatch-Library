@@ -1,24 +1,5 @@
 name: 查看进程 namespace 归属
-command: |
-  pid="${PID:-1}"
-  echo "Inspecting namespaces for PID=$pid. Override with PID=<pid> if needed."
-
-  if [ "$(uname -s)" = "Linux" ]; then
-    if [ -d "/proc/$pid/ns" ]; then
-      echo "== /proc/$pid/ns =="
-      for ns in /proc/"$pid"/ns/*; do
-        [ -e "$ns" ] || continue
-        printf '%s -> ' "$(basename "$ns")"
-        readlink "$ns" 2>/dev/null || echo "not readable"
-      done | sort
-      echo
-      echo "Compare namespace inode values across processes to identify shared or isolated namespaces."
-    else
-      echo "Process $pid not found or /proc/$pid/ns is not readable."
-    fi
-  else
-    echo "Linux namespaces are not available on $(uname -s)."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/process-namespaces.sh
 category: process
 tags:
 - troubleshooting
@@ -26,7 +7,8 @@ tags:
 - namespace
 - container
 risk: low
-description: 查看指定进程的 Linux namespace inode 归属，用于判断进程是否处于独立 PID、mount、network 等命名空间。macOS 会输出平台说明。
+description: 查看指定进程的 Linux namespace inode 归属，用于判断进程是否处于独立 PID、mount、network 等命名空间。macOS
+  会输出平台说明。
 platform:
 - linux
 - macos
@@ -34,4 +16,4 @@ parameters:
 - name: PID
   description: 目标进程 ID
   required: false
-  default: "1"
+  default: '1'

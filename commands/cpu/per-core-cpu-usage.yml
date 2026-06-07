@@ -1,24 +1,13 @@
 name: 查看每核 CPU 使用情况
-command: |
-  if command -v mpstat >/dev/null 2>&1; then
-    mpstat -P ALL 1 1
-  elif [ -r /proc/stat ]; then
-    grep -E '^cpu[0-9]+' /proc/stat | head -64
-    echo "Raw per-core /proc/stat jiffies shown; install sysstat for per-core percentages."
-  elif [ "$(uname -s)" = "Darwin" ]; then
-    echo "macOS built-in CLI does not expose simple per-core CPU percentages without privileged powermetrics."
-    sysctl hw.ncpu hw.physicalcpu hw.logicalcpu 2>/dev/null || true
-    top -l 1 | grep -E '^(CPU usage|Load Avg)' || true
-  else
-    echo "No supported per-core CPU command found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/per-core-cpu-usage.sh
 category: cpu
 tags:
-  - inspection
-  - cpu
-  - per-core
+- inspection
+- cpu
+- per-core
 risk: low
 description: 查看每个 CPU 核心的使用情况。Linux 优先使用 mpstat，缺失时展示 /proc/stat 原始计数；macOS 给出内置工具限制说明。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters: []

@@ -1,5 +1,6 @@
 {
   "name": "监控磁盘与 Inode 阈值",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-disk-inode-threshold.sh",
   "language": "shell",
   "category": "monitoring",
   "tags": [

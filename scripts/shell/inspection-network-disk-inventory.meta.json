@@ -1,5 +1,6 @@
 {
   "name": "网络与磁盘巡检清单",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/inspection-network-disk-inventory.sh",
   "language": "shell",
   "category": "inspection",
   "tags": [

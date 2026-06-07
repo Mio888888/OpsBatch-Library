@@ -1,5 +1,6 @@
 {
   "name": "脚本名称",
+  "url": "https://raw.githubusercontent.com/OWNER/REPO/BRANCH/path/to/script",
   "language": "shell",
   "category": "system",
   "tags": [

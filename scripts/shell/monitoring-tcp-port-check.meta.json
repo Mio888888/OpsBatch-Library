@@ -1,5 +1,6 @@
 {
   "name": "监控 TCP 端口连通性",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-tcp-port-check.sh",
   "language": "shell",
   "category": "monitoring",
   "tags": [

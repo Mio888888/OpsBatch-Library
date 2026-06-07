@@ -1,5 +1,6 @@
 {
   "name": "SSH 与防火墙安全审计",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-ssh-firewall-audit.sh",
   "language": "shell",
   "category": "security",
   "tags": [

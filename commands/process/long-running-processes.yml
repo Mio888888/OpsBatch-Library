@@ -1,18 +1,5 @@
 name: 查找长运行进程
-command: |
-  limit="${PROCESS_LIMIT:-30}"
-  echo "Showing top $limit long-running processes. Override with PROCESS_LIMIT=<n> if needed."
-
-  if [ "$(uname -s)" = "Darwin" ]; then
-    ps -axo pid,ppid,user,lstart,etime,comm | head -n "$((limit + 1))"
-  elif ps -eo pid,ppid,user,lstart,etime,comm --sort=start_time >/dev/null 2>&1; then
-    ps -eo pid,ppid,user,lstart,etime,comm --sort=start_time | head -n "$((limit + 1))"
-  else
-    ps aux | awk 'NR==1 || NR<=31'
-  fi
-
-  echo
-  echo "Long-running processes are not necessarily abnormal; compare with expected service lifetimes and deployment history."
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/process/long-running-processes.sh
 category: process
 tags:
 - inspection
@@ -27,4 +14,4 @@ parameters:
 - name: PROCESS_LIMIT
   description: 显示进程数量上限
   required: false
-  default: "30"
+  default: '30'

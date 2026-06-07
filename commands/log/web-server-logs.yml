@@ -1,27 +1,5 @@
 name: 查看 Web 服务日志
-command: |
-  LINES="${LINES:-120}"
-
-  echo "== common web server logs =="
-  found="false"
-  for file in \
-    /var/log/nginx/error.log \
-    /var/log/nginx/access.log \
-    /var/log/apache2/error.log \
-    /var/log/apache2/access.log \
-    /var/log/httpd/error_log \
-    /var/log/httpd/access_log; do
-    if [ -f "$file" ]; then
-      found="true"
-      echo
-      echo "-- $file --"
-      tail -n "$LINES" "$file" 2>/dev/null || echo "Cannot read $file; check permissions."
-    fi
-  done
-
-  if [ "$found" != "true" ]; then
-    echo "No common Nginx/Apache log file found. Set LOG_FILE and use the application-log-tail command for custom paths."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/web-server-logs.sh
 category: log
 tags:
 - log
@@ -36,4 +14,4 @@ parameters:
 - name: LINES
   description: 显示行数
   required: false
-  default: "120"
+  default: '120'

@@ -1,30 +1,5 @@
 name: 受保护卸载挂载点
-command: |
-  TARGET_MOUNT="${TARGET_MOUNT:-}"
-  CONFIRM_UMOUNT="${CONFIRM_UMOUNT:-}"
-
-  if [ -z "$TARGET_MOUNT" ]; then
-    echo "Refusing to run: set TARGET_MOUNT explicitly, for example TARGET_MOUNT=/mnt/data."
-    exit 0
-  fi
-
-  echo "== processes currently using $TARGET_MOUNT =="
-  if command -v lsof >/dev/null 2>&1; then
-    sudo lsof +f -- "$TARGET_MOUNT" 2>/dev/null || lsof +f -- "$TARGET_MOUNT" 2>/dev/null || true
-  elif command -v fuser >/dev/null 2>&1; then
-    sudo fuser -vm "$TARGET_MOUNT" 2>/dev/null || fuser -vm "$TARGET_MOUNT" 2>/dev/null || true
-  fi
-
-  if [ "$CONFIRM_UMOUNT" != "UNMOUNT_TARGET" ]; then
-    echo "Dry-run only. Set CONFIRM_UMOUNT=UNMOUNT_TARGET to unmount after confirming no active workload depends on it."
-    exit 0
-  fi
-
-  if [ "$(uname -s)" = "Darwin" ]; then
-    sudo diskutil unmount "$TARGET_MOUNT"
-  else
-    sudo umount "$TARGET_MOUNT"
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/protected-unmount.sh
 category: disk
 tags:
 - remediation
@@ -32,7 +7,8 @@ tags:
 - mount
 - unmount
 risk: high
-description: 受保护的卸载挂载点示例。默认只查看占用进程；只有设置 TARGET_MOUNT 和 CONFIRM_UMOUNT=UNMOUNT_TARGET 后才卸载。卸载会中断依赖该挂载点的业务，执行前必须确认进程、路径和维护窗口。
+description: 受保护的卸载挂载点示例。默认只查看占用进程；只有设置 TARGET_MOUNT 和 CONFIRM_UMOUNT=UNMOUNT_TARGET
+  后才卸载。卸载会中断依赖该挂载点的业务，执行前必须确认进程、路径和维护窗口。
 platform:
 - linux
 - macos
@@ -40,8 +16,8 @@ parameters:
 - name: TARGET_MOUNT
   description: 目标挂载点路径
   required: true
-  default: ""
+  default: ''
 - name: CONFIRM_UMOUNT
   description: 确认卸载令牌
   required: false
-  default: ""
+  default: ''

@@ -1,50 +1,5 @@
 name: 受保护执行 logrotate
-command: |
-  if [ -n "${LOGROTATE_CONFIG:-}" ]; then
-    LOGROTATE_CONFIG_WAS_SET="true"
-  else
-    LOGROTATE_CONFIG_WAS_SET="false"
-  fi
-  LOGROTATE_CONFIG="${LOGROTATE_CONFIG:-/etc/logrotate.conf}"
-  LOGROTATE_STATE="${LOGROTATE_STATE:-}"
-  CONFIRM_ROTATE="${CONFIRM_ROTATE:-}"
-
-  if ! command -v logrotate >/dev/null 2>&1; then
-    echo "logrotate command not found."
-    exit 0
-  fi
-
-  if [ ! -f "$LOGROTATE_CONFIG" ]; then
-    echo "LOGROTATE_CONFIG is not a file: $LOGROTATE_CONFIG"
-    exit 0
-  fi
-
-  echo "== logrotate dry-run =="
-  if [ -n "$LOGROTATE_STATE" ]; then
-    logrotate -d -s "$LOGROTATE_STATE" "$LOGROTATE_CONFIG" 2>&1 | tail -n 200 || true
-  else
-    logrotate -d "$LOGROTATE_CONFIG" 2>&1 | tail -n 200 || true
-  fi
-
-  if [ "$CONFIRM_ROTATE" != "RUN_LOGROTATE" ]; then
-    echo
-    echo "Dry-run only. Set CONFIRM_ROTATE=RUN_LOGROTATE and LOGROTATE_CONFIG explicitly to execute logrotate after reviewing dry-run output and maintenance window."
-    exit 0
-  fi
-
-  if [ "$LOGROTATE_CONFIG_WAS_SET" != "true" ]; then
-    echo
-    echo "Refusing real run: set LOGROTATE_CONFIG explicitly together with CONFIRM_ROTATE=RUN_LOGROTATE."
-    exit 0
-  fi
-
-  echo
-  echo "Executing logrotate with config $LOGROTATE_CONFIG."
-  if [ -n "$LOGROTATE_STATE" ]; then
-    logrotate -v -s "$LOGROTATE_STATE" "$LOGROTATE_CONFIG"
-  else
-    logrotate -v "$LOGROTATE_CONFIG"
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/protected-logrotate-run.sh
 category: log
 tags:
 - remediation
@@ -52,7 +7,8 @@ tags:
 - logrotate
 - rotation
 risk: high
-description: 受保护执行 logrotate 示例。默认只运行 logrotate -d dry-run；只有同时显式设置 LOGROTATE_CONFIG 和 CONFIRM_ROTATE=RUN_LOGROTATE 后才按指定配置执行真实轮转。误用可能移动、压缩、删除日志或触发 postrotate 脚本，执行前必须审查配置、维护窗口和业务影响。
+description: 受保护执行 logrotate 示例。默认只运行 logrotate -d dry-run；只有同时显式设置 LOGROTATE_CONFIG
+  和 CONFIRM_ROTATE=RUN_LOGROTATE 后才按指定配置执行真实轮转。误用可能移动、压缩、删除日志或触发 postrotate 脚本，执行前必须审查配置、维护窗口和业务影响。
 platform:
 - linux
 parameters:
@@ -63,8 +19,8 @@ parameters:
 - name: LOGROTATE_STATE
   description: logrotate 状态文件路径
   required: true
-  default: ""
+  default: ''
 - name: CONFIRM_ROTATE
   description: 确认轮转令牌
   required: false
-  default: ""
+  default: ''

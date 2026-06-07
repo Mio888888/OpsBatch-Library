@@ -1,6 +1,7 @@
 {
   "name": "每日基础巡检",
   "description": "串联系统负载、内存、磁盘、服务状态与系统健康摘要，适合作为日常只读巡检入口。",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/daily-check.json",
   "category": "inspection",
   "risk": "low",
   "tags": [
@@ -17,24 +18,28 @@
       "name": "检查系统负载",
       "type": "command",
       "ref": "commands/system/check-load.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load.yml",
       "continueOnError": true
     },
     {
       "name": "检查内存使用",
       "type": "command",
       "ref": "commands/memory/memory-usage-summary.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-usage-summary.yml",
       "continueOnError": true
     },
     {
       "name": "检查磁盘空间",
       "type": "command",
       "ref": "commands/disk/disk-usage.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-usage.yml",
       "continueOnError": true
     },
     {
       "name": "检查默认服务状态",
       "type": "script",
       "ref": "scripts/shell/check-service.sh",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/check-service.sh",
       "args": [
         "ssh"
       ],
@@ -44,6 +49,7 @@
       "name": "生成系统健康摘要",
       "type": "script",
       "ref": "scripts/python/health-check.py",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/python/health-check.py",
       "continueOnError": true
     }
   ]

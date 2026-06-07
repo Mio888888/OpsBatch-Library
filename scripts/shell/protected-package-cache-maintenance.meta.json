@@ -1,5 +1,6 @@
 {
   "name": "受保护包缓存维护",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-package-cache-maintenance.sh",
   "language": "shell",
   "category": "maintenance",
   "tags": [

@@ -1,5 +1,6 @@
 {
   "name": "系统与工具巡检清单",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/inspection-system-inventory.sh",
   "language": "shell",
   "category": "inspection",
   "tags": [

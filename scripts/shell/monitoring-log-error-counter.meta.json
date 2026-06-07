@@ -1,5 +1,6 @@
 {
   "name": "监控日志错误计数",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-log-error-counter.sh",
   "language": "shell",
   "category": "monitoring",
   "tags": [

@@ -1,35 +1,5 @@
 name: 受保护清理旧日志
-command: |
-  TARGET_LOG_DIR="${TARGET_LOG_DIR:-}"
-  OLDER_THAN_DAYS="${OLDER_THAN_DAYS:-30}"
-  CONFIRM_DELETE="${CONFIRM_DELETE:-}"
-
-  if [ -z "$TARGET_LOG_DIR" ]; then
-    echo "Refusing to run: set TARGET_LOG_DIR explicitly, for example TARGET_LOG_DIR=/var/log/myapp."
-    exit 0
-  fi
-
-  if [ ! -d "$TARGET_LOG_DIR" ]; then
-    echo "TARGET_LOG_DIR is not a directory: $TARGET_LOG_DIR"
-    exit 0
-  fi
-
-  echo "== old log cleanup candidates under $TARGET_LOG_DIR older than $OLDER_THAN_DAYS days =="
-  find "$TARGET_LOG_DIR" -xdev -type f \
-    \( -name '*.log.*' -o -name '*.gz' -o -name '*.zip' -o -name '*.xz' -o -name '*.bz2' -o -name '*.old' \) \
-    -mtime +"$OLDER_THAN_DAYS" -print 2>/dev/null | head -100
-
-  if [ "$CONFIRM_DELETE" != "DELETE_OLD_LOGS" ]; then
-    echo
-    echo "Dry-run only. Set CONFIRM_DELETE=DELETE_OLD_LOGS to interactively delete matched old log files after reviewing retention and audit requirements."
-    exit 0
-  fi
-
-  echo
-  echo "Deleting matched old logs interactively. Answer each prompt carefully."
-  find "$TARGET_LOG_DIR" -xdev -type f \
-    \( -name '*.log.*' -o -name '*.gz' -o -name '*.zip' -o -name '*.xz' -o -name '*.bz2' -o -name '*.old' \) \
-    -mtime +"$OLDER_THAN_DAYS" -exec rm -i {} \;
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/protected-old-log-cleanup.sh
 category: log
 tags:
 - remediation
@@ -37,7 +7,8 @@ tags:
 - cleanup
 - delete
 risk: high
-description: 受保护清理旧日志示例。默认只列出候选；只有显式设置 TARGET_LOG_DIR 和 CONFIRM_DELETE=DELETE_OLD_LOGS 后才逐项交互删除。误用可能删除审计证据或仍需保留的排障日志，执行前必须确认保留策略、备份和合规要求。
+description: 受保护清理旧日志示例。默认只列出候选；只有显式设置 TARGET_LOG_DIR 和 CONFIRM_DELETE=DELETE_OLD_LOGS
+  后才逐项交互删除。误用可能删除审计证据或仍需保留的排障日志，执行前必须确认保留策略、备份和合规要求。
 platform:
 - linux
 - macos
@@ -45,12 +16,12 @@ parameters:
 - name: TARGET_LOG_DIR
   description: 目标日志目录路径
   required: true
-  default: ""
+  default: ''
 - name: OLDER_THAN_DAYS
   description: 超过指定天数
   required: false
-  default: "30"
+  default: '30'
 - name: CONFIRM_DELETE
   description: 确认删除令牌
   required: false
-  default: ""
+  default: ''

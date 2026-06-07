@@ -32,5 +32,6 @@
       "inspection",
       "troubleshooting"
     ]
-  }
+  },
+  "baseUrl": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main"
 }

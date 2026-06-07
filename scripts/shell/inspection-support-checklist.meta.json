@@ -1,5 +1,6 @@
 {
   "name": "支持信息巡检清单",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/inspection-support-checklist.sh",
   "language": "shell",
   "category": "inspection",
   "tags": [

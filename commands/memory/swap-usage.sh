@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "$(uname -s)" = "Linux" ]; then
+  echo "== free -h =="
+  if command -v free >/dev/null 2>&1; then
+    free -h
+  else
+    echo "free not installed."
+  fi
+
+  echo
+  echo "== swapon --show =="
+  if command -v swapon >/dev/null 2>&1; then
+    swapon --show 2>/dev/null || echo "swapon output is not available."
+  else
+    echo "swapon command not installed."
+  fi
+
+  if [ -r /proc/meminfo ]; then
+    echo
+    echo "== /proc/meminfo swap fields =="
+    grep -E '^(SwapTotal|SwapFree|SwapCached):' /proc/meminfo || true
+  fi
+elif [ "$(uname -s)" = "Darwin" ]; then
+  echo "== sysctl vm.swapusage =="
+  sysctl vm.swapusage 2>/dev/null || echo "vm.swapusage is not available."
+
+  if command -v vm_stat >/dev/null 2>&1; then
+    echo
+    echo "== vm_stat pageins/pageouts =="
+    vm_stat | grep -E 'Pageins|Pageouts|Swapins|Swapouts' || true
+  fi
+else
+  echo "No supported swap usage command found."
+fi

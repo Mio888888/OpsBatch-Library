@@ -1,31 +1,13 @@
 name: 查看 Slab 与内核对象缓存
-command: |
-  if [ "$(uname -s)" = "Linux" ]; then
-    if command -v slabtop >/dev/null 2>&1; then
-      echo "== slabtop -o =="
-      slabtop -o | head -30
-    elif [ -r /proc/slabinfo ]; then
-      echo "slabtop not installed; showing top lines from /proc/slabinfo."
-      head -30 /proc/slabinfo
-    else
-      echo "No readable Slab cache source found."
-    fi
-
-    if [ -r /proc/meminfo ]; then
-      echo
-      echo "== Slab fields in /proc/meminfo =="
-      grep -E '^(Slab|SReclaimable|SUnreclaim):' /proc/meminfo || true
-    fi
-  else
-    echo "Slab cache inspection in this command relies on Linux /proc/slabinfo or slabtop."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/slab-cache-info.sh
 category: memory
 tags:
-  - troubleshooting
-  - memory
-  - slab
-  - kernel
+- troubleshooting
+- memory
+- slab
+- kernel
 risk: low
 description: 查看 Linux Slab/内核对象缓存占用，优先使用 slabtop 单次输出，缺失时读取 /proc/slabinfo。
 platform:
-  - linux
+- linux
+parameters: []

@@ -1,13 +1,5 @@
 name: 检查服务状态
-command: |
-  SERVICE=${SERVICE:-ssh}
-  if command -v systemctl >/dev/null 2>&1; then
-    systemctl status "$SERVICE" --no-pager
-  elif command -v service >/dev/null 2>&1; then
-    service "$SERVICE" status
-  else
-    pgrep -fl "$SERVICE" || true
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/service/check-service-status.sh
 category: service
 tags:
 - service

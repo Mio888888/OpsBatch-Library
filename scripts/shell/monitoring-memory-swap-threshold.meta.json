@@ -1,5 +1,6 @@
 {
   "name": "监控内存与 Swap 阈值",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-memory-swap-threshold.sh",
   "language": "shell",
   "category": "monitoring",
   "tags": [

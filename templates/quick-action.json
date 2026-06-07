@@ -1,6 +1,7 @@
 {
   "name": "快捷指令名称",
   "description": "说明这个快捷指令串联哪些检查或操作。",
+  "url": "https://raw.githubusercontent.com/OWNER/REPO/BRANCH/path/to/quick-action.json",
   "category": "inspection",
   "risk": "low",
   "tags": [
@@ -14,6 +15,7 @@
       "name": "步骤名称",
       "type": "command",
       "ref": "commands/system/check-load.yml",
+      "url": "https://raw.githubusercontent.com/OWNER/REPO/BRANCH/path/to/resource",
       "continueOnError": true
     }
   ]

@@ -1,28 +1,14 @@
 name: 查看磁盘 UUID 与标签
-command: |
-  if [ "$(uname -s)" = "Linux" ]; then
-    if command -v blkid >/dev/null 2>&1; then
-      sudo blkid 2>/dev/null || blkid 2>/dev/null || true
-    elif command -v lsblk >/dev/null 2>&1; then
-      lsblk -o NAME,FSTYPE,LABEL,UUID,PARTUUID,MOUNTPOINTS
-    else
-      echo "Neither blkid nor lsblk is installed."
-    fi
-  elif [ "$(uname -s)" = "Darwin" ]; then
-    diskutil list 2>/dev/null || true
-    echo
-    diskutil info -all 2>/dev/null | grep -E 'Device Identifier|Volume Name|Volume UUID|Disk / Partition UUID|File System Personality' || true
-  else
-    echo "No supported UUID/label command found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-uuid-labels.sh
 category: disk
 tags:
-  - inspection
-  - disk
-  - uuid
-  - label
+- inspection
+- disk
+- uuid
+- label
 risk: low
 description: 查看磁盘、分区或卷的 UUID、PARTUUID 和标签，适用于排查 fstab、自动挂载和设备名漂移问题。只读不修改系统状态。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters: []

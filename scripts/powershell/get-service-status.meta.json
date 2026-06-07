@@ -1,5 +1,6 @@
 {
   "name": "获取 Windows 服务状态",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/powershell/get-service-status.ps1",
   "language": "powershell",
   "category": "service",
   "tags": [

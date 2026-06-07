@@ -1,32 +1,5 @@
 name: 受保护修复文件系统
-command: |
-  TARGET_DEVICE="${TARGET_DEVICE:-}"
-  CONFIRM_FSCK="${CONFIRM_FSCK:-}"
-
-  if [ -z "$TARGET_DEVICE" ]; then
-    echo "Refusing to run: set TARGET_DEVICE explicitly, for example TARGET_DEVICE=/dev/sdb1."
-    exit 0
-  fi
-
-  if [ "$CONFIRM_FSCK" != "REPAIR_FILESYSTEM" ]; then
-    echo "Dry-run only. Set CONFIRM_FSCK=REPAIR_FILESYSTEM only after backups, maintenance window, and unmount are confirmed."
-    if [ "$(uname -s)" = "Linux" ] && command -v fsck >/dev/null 2>&1; then
-      sudo fsck -N "$TARGET_DEVICE" 2>/dev/null || fsck -N "$TARGET_DEVICE" 2>/dev/null || true
-    elif [ "$(uname -s)" = "Darwin" ]; then
-      diskutil verifyVolume "$TARGET_DEVICE" 2>/dev/null || true
-    fi
-    exit 0
-  fi
-
-  if [ "$(uname -s)" = "Linux" ]; then
-    echo "About to run interactive fsck on $TARGET_DEVICE. The filesystem should be unmounted."
-    sudo fsck "$TARGET_DEVICE"
-  elif [ "$(uname -s)" = "Darwin" ]; then
-    echo "About to run diskutil repairVolume on $TARGET_DEVICE. Ensure backups and maintenance window are ready."
-    sudo diskutil repairVolume "$TARGET_DEVICE"
-  else
-    echo "No supported filesystem repair command found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/protected-filesystem-repair.sh
 category: disk
 tags:
 - remediation
@@ -34,7 +7,8 @@ tags:
 - filesystem
 - fsck
 risk: high
-description: 受保护的文件系统修复示例。默认只预览；只有显式设置 TARGET_DEVICE 和 CONFIRM_FSCK=REPAIR_FILESYSTEM 后才执行交互式修复。修复可能导致数据丢失或业务中断，必须提前备份、确认设备、卸载文件系统并安排维护窗口。
+description: 受保护的文件系统修复示例。默认只预览；只有显式设置 TARGET_DEVICE 和 CONFIRM_FSCK=REPAIR_FILESYSTEM
+  后才执行交互式修复。修复可能导致数据丢失或业务中断，必须提前备份、确认设备、卸载文件系统并安排维护窗口。
 platform:
 - linux
 - macos
@@ -42,8 +16,8 @@ parameters:
 - name: TARGET_DEVICE
   description: 目标设备路径（如 /dev/sda）
   required: true
-  default: ""
+  default: ''
 - name: CONFIRM_FSCK
   description: 确认文件系统检查令牌
   required: false
-  default: ""
+  default: ''

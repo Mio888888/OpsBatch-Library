@@ -1,22 +1,14 @@
 name: 查看 CPU 架构与指令集
-command: |
-  if command -v lscpu >/dev/null 2>&1; then
-    lscpu | grep -E 'Architecture|Byte Order|CPU op-mode|Vendor ID|Model name|Flags|Virtualization' || true
-  elif [ "$(uname -s)" = "Darwin" ] && command -v sysctl >/dev/null 2>&1; then
-    sysctl machdep.cpu.brand_string machdep.cpu.features machdep.cpu.leaf7_features hw.optional.arm64 hw.optional.x86_64 2>/dev/null || true
-  elif [ -r /proc/cpuinfo ]; then
-    grep -m 1 -E '^(flags|Features|model name|Hardware|Processor)' /proc/cpuinfo
-  else
-    echo "No supported CPU feature command found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/cpu/cpu-architecture-features.sh
 category: cpu
 tags:
-  - inspection
-  - cpu
-  - architecture
-  - features
+- inspection
+- cpu
+- architecture
+- features
 risk: low
 description: 查看 CPU 架构、虚拟化能力和指令集特性，辅助判断软件兼容性与性能能力。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters: []

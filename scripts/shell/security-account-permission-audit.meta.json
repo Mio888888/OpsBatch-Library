@@ -1,5 +1,6 @@
 {
   "name": "账号与权限安全审计",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/security-account-permission-audit.sh",
   "language": "shell",
   "category": "security",
   "tags": [

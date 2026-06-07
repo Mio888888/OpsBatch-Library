@@ -1,40 +1,14 @@
 name: 查看内存使用总览
-command: |
-  if [ "$(uname -s)" = "Linux" ]; then
-    echo "== free -h =="
-    if command -v free >/dev/null 2>&1; then
-      free -h
-    else
-      echo "free not installed; showing key /proc/meminfo fields."
-    fi
-
-    if [ -r /proc/meminfo ]; then
-      echo
-      echo "== /proc/meminfo key fields =="
-      grep -E '^(MemTotal|MemFree|MemAvailable|Buffers|Cached|SReclaimable|Shmem|SwapTotal|SwapFree):' /proc/meminfo || true
-    fi
-  elif [ "$(uname -s)" = "Darwin" ]; then
-    echo "== vm_stat =="
-    if command -v vm_stat >/dev/null 2>&1; then
-      vm_stat
-    else
-      echo "vm_stat not available."
-    fi
-
-    echo
-    echo "== memory size =="
-    sysctl hw.memsize 2>/dev/null || true
-  else
-    echo "No supported memory summary command found."
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-usage-summary.sh
 category: memory
 tags:
-  - inspection
-  - memory
-  - usage
-  - summary
+- inspection
+- memory
+- usage
+- summary
 risk: low
 description: 查看系统内存使用总览。Linux 优先展示 free 与 /proc/meminfo 关键字段，macOS 使用 vm_stat 和 sysctl，只读不修改系统状态。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters: []

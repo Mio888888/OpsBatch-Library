@@ -8,7 +8,7 @@
 
 | 类型 | 数量 | 说明 |
 | :--- | ---: | :--- |
-| **命令** (YAML) | 196 条 | 覆盖 12 个分类，单条命令可直接在终端执行 |
+| **命令** (YAML) | 196 条 | 覆盖 12 个分类，每条命令通过 URL 远程获取脚本执行 |
 | **脚本** (Shell / Python / PowerShell) | 43 个 | 每个脚本均附带 `.meta.json` 元数据，支持参数化执行 |
 | **快捷指令** (JSON) | 8 套 | 将多条命令和脚本串联为可一键执行的巡检 / 排障流程 |
 | **模板** | 4 份 | 新增内容时的快速复制模板 |
@@ -64,8 +64,10 @@ Shell 脚本按用途可归为：
 ```text
 .
 ├── library.json                 # 运维库元信息（名称、版本、分类索引）
-├── commands/                    # 运维命令 YAML
+├── commands/                    # 运维命令 YAML + 可执行脚本 .sh
 │   ├── system/                  #   系统巡检（12 条）
+│   │   ├── check-load.yml       #     命令元数据（name, url, parameters…）
+│   │   └── check-load.sh        #     可执行脚本（通过 url 远程获取）
 │   ├── process/                 #   进程巡检与排障（17 条）
 │   ├── cpu/                     #   CPU 巡检与排障（18 条）
 │   ├── memory/                  #   内存巡检与排障（18 条）
@@ -103,14 +105,17 @@ https://github.com/your-org/OpsLibrary.git
 
 ### 2. 直接使用
 
-也可以直接浏览 `commands/` 目录下的 YAML 文件，复制 `command` 字段中的命令在终端执行：
+也可以直接通过 GitHub Raw URL 获取并执行脚本：
 
 ```bash
 # 示例：检查系统负载
-uptime
+curl -fsSL https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load.sh | bash
 
 # 示例：查看磁盘使用情况
-df -hT -x tmpfs -x devtmpfs | sort -k6
+curl -fsSL https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/disk/disk-usage.sh | bash
+
+# 示例：带参数执行
+SAMPLES=10 INTERVAL=5 curl -fsSL https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/memory/memory-usage-sampling.sh | bash
 ```
 
 ### 3. 本地校验
@@ -125,14 +130,15 @@ python3 tools/validate_library.py
 
 ### 命令文件
 
-路径：`commands/<category>/<name>.yml`
+路径：`commands/<category>/<name>.yml` + `commands/<category>/<name>.sh`
+
+每条命令由 YAML 元数据 + 可执行脚本组成。YAML 提供参数说明和脚本 URL，`.sh` 文件包含实际执行逻辑。
 
 **无参数命令（静态）：**
 
 ```yaml
 name: 检查系统负载
-command: |
-  uptime
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load.sh
 category: system
 tags:
   - inspection
@@ -141,17 +147,14 @@ description: 查看系统运行时间和平均负载。
 platform:
   - linux
   - macos
+parameters: []
 ```
 
 **含参数命令（动态）：**
 
 ```yaml
 name: 按服务查看日志
-command: |
-  SERVICE_NAME="${SERVICE_NAME:-ssh}"
-  SINCE="${SINCE:-2 hours ago}"
-  LINES="${LINES:-120}"
-  journalctl -u "$SERVICE_NAME" --since "$SINCE" -n "$LINES" --no-pager
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/log/service-log.yml
 category: log
 tags:
   - log
@@ -160,7 +163,6 @@ risk: medium
 description: 按服务名查看近期日志。
 platform:
   - linux
-  - macos
 parameters:
   - name: SERVICE_NAME
     description: 服务名称
@@ -181,13 +183,13 @@ parameters:
 | 字段 | 必填 | 说明 |
 | :--- | :---: | :--- |
 | `name` | ✅ | 命令显示名称 |
-| `command` | ✅ | 实际执行命令，支持 YAML block scalar 多行 |
+| `url` | ✅ | 脚本文件的 GitHub Raw URL，用于远程获取并执行 |
 | `category` | ✅ | 分类，建议与目录名一致 |
 | `tags` | ✅ | 标签数组（如 `inspection`、`troubleshooting`、`protected`） |
 | `risk` | ✅ | 风险等级：`low` / `medium` / `high` |
 | `description` | ✅ | 用途说明和注意事项 |
 | `platform` | ✅ | 适用平台数组：`linux`、`macos`、`windows` |
-| `parameters` | — | 参数定义数组（仅含动态参数的命令需要） |
+| `parameters` | ✅ | 参数定义数组（无动态参数时为空数组 `[]`） |
 
 **`parameters` 子字段：**
 
@@ -216,6 +218,7 @@ scripts/shell/check-service.meta.json
 ```json
 {
   "name": "检查服务状态",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/check-service.sh",
   "language": "shell",
   "category": "service",
   "tags": ["service", "inspection"],
@@ -238,6 +241,7 @@ scripts/shell/check-service.meta.json
 | 字段 | 必填 | 说明 |
 | :--- | :---: | :--- |
 | `name` | ✅ | 脚本显示名称 |
+| `url` | ✅ | 脚本文件的 GitHub Raw URL |
 | `language` | ✅ | 脚本语言：`shell` / `python` / `powershell` |
 | `category` | ✅ | 分类 |
 | `tags` | ✅ | 标签数组（如 `inspection`、`monitoring`、`security`、`deployment`、`protected`） |
@@ -250,12 +254,13 @@ scripts/shell/check-service.meta.json
 
 路径：`quick-actions/<name>.json`
 
-快捷指令通过 `ref` 引用命令和脚本，不重复内联内容，也不依赖数据库 ID：
+快捷指令通过 `ref` 引用命令和脚本，`url` 提供远程获取地址，不重复内联内容，也不依赖数据库 ID：
 
 ```json
 {
   "name": "每日基础巡检",
   "description": "串联系统负载、内存、磁盘、服务状态与系统健康摘要。",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/quick-actions/daily-check.json",
   "category": "inspection",
   "risk": "low",
   "tags": ["daily", "inspection", "system"],
@@ -265,12 +270,14 @@ scripts/shell/check-service.meta.json
       "name": "检查系统负载",
       "type": "command",
       "ref": "commands/system/check-load.yml",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/system/check-load.yml",
       "continueOnError": true
     },
     {
       "name": "生成系统健康摘要",
       "type": "script",
       "ref": "scripts/python/health-check.py",
+      "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/python/health-check.py",
       "continueOnError": true
     }
   ]
@@ -283,7 +290,8 @@ scripts/shell/check-service.meta.json
 | :--- | :--- |
 | `name` | 步骤显示名称 |
 | `type` | `command` 或 `script` |
-| `ref` | 指向命令 YAML 或脚本文件的相对路径 |
+| `ref` | 指向命令 YAML 或脚本文件的相对路径（本地引用） |
+| `url` | 指向资源的 GitHub Raw URL（远程获取） |
 | `args` | 脚本参数数组（可选，仅 `type: script` 时生效） |
 | `continueOnError` | 该步骤失败时是否继续执行后续步骤（默认 `false`） |
 

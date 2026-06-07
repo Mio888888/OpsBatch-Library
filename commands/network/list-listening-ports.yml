@@ -1,19 +1,13 @@
 name: 检查本地监听端口
-command: |
-  if command -v ss >/dev/null 2>&1; then
-    ss -tuln
-  elif command -v netstat >/dev/null 2>&1; then
-    netstat -tuln
-  else
-    lsof -nP -iTCP -sTCP:LISTEN
-  fi
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/network/list-listening-ports.sh
 category: network
 tags:
-  - troubleshooting
-  - network
-  - port
+- troubleshooting
+- network
+- port
 risk: low
 description: 查看当前主机监听中的 TCP/UDP 端口，辅助排查服务是否正确监听。
 platform:
-  - linux
-  - macos
+- linux
+- macos
+parameters: []

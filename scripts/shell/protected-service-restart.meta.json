@@ -1,5 +1,6 @@
 {
   "name": "受保护服务重启模板",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/protected-service-restart.sh",
   "language": "shell",
   "category": "maintenance",
   "tags": [

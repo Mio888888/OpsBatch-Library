@@ -1,5 +1,6 @@
 {
   "name": "监控网络吞吐与延迟采样",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-network-throughput-latency.sh",
   "language": "shell",
   "category": "monitoring",
   "tags": [

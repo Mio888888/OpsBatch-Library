@@ -1,5 +1,6 @@
 {
   "name": "监控容器与 Kubernetes 健康线索",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/monitoring-container-kubernetes-health.sh",
   "language": "shell",
   "category": "monitoring",
   "tags": [

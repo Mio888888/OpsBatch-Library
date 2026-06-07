@@ -1,5 +1,6 @@
 {
   "name": "受保护部署服务 Reload/Restart Gate",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/deployment-protected-service-gate.sh",
   "language": "shell",
   "category": "deployment",
   "tags": [

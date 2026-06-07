@@ -1,5 +1,6 @@
 {
   "name": "检查服务状态",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/check-service.sh",
   "language": "shell",
   "category": "service",
   "tags": [
