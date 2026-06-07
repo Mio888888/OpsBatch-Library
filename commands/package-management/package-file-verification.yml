@@ -15,4 +15,4 @@ parameters:
 - name: TARGET_PACKAGE
   description: 目标软件包名
   required: true
-  default: ''
+  default:

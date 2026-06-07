@@ -16,8 +16,8 @@ parameters:
 - name: TARGET_DEVICE
   description: 目标设备路径（如 /dev/sda）
   required: true
-  default: ''
+  default:
 - name: CONFIRM_FSCK
   description: 确认文件系统检查令牌
   required: false
-  default: ''
+  default:

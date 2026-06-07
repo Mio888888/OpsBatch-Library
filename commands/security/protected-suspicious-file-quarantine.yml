@@ -16,12 +16,12 @@ parameters:
 - name: TARGET_FILE
   description: 目标文件路径
   required: true
-  default: ''
+  default:
 - name: QUARANTINE_DIR
   description: 隔离文件存放目录
   required: true
-  default: ''
+  default:
 - name: CONFIRM_QUARANTINE
   description: 确认隔离文件令牌
   required: false
-  default: ''
+  default:

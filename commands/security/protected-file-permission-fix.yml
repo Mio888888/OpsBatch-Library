@@ -16,12 +16,12 @@ parameters:
 - name: TARGET_PATH
   description: 目标文件或目录路径
   required: true
-  default: ''
+  default:
 - name: TARGET_MODE
   description: 目标权限模式（如 0644）
   required: true
-  default: ''
+  default:
 - name: CONFIRM_CHMOD
   description: 确认修改权限令牌
   required: false
-  default: ''
+  default:

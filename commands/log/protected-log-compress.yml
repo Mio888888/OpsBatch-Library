@@ -16,7 +16,7 @@ parameters:
 - name: TARGET_LOG_DIR
   description: 目标日志目录路径
   required: true
-  default: ''
+  default:
 - name: OLDER_THAN_DAYS
   description: 超过指定天数
   required: false
@@ -24,4 +24,4 @@ parameters:
 - name: CONFIRM_COMPRESS
   description: 确认压缩令牌
   required: false
-  default: ''
+  default:

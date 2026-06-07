@@ -23,12 +23,12 @@ parameters:
 - name: TARGET_LOCK_FIX_SCOPE
   description: 锁修复范围
   required: true
-  default: ''
+  default:
 - name: TARGET_LOCK_FILE
   description: 目标锁文件路径
   required: true
-  default: ''
+  default:
 - name: CONFIRM_LOCK_FIX
   description: 确认锁修复令牌
   required: false
-  default: ''
+  default:

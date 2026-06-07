@@ -16,7 +16,7 @@ parameters:
 - name: TARGET_PORT
   description: 目标端口号
   required: true
-  default: ''
+  default:
 - name: TARGET_PROTO
   description: 协议类型（tcp/udp）
   required: false
@@ -24,8 +24,8 @@ parameters:
 - name: TARGET_SOURCE
   description: 来源地址（CIDR 或 IP）
   required: true
-  default: ''
+  default:
 - name: CONFIRM_FIREWALL_ALLOW
   description: 确认添加防火墙规则令牌
   required: false
-  default: ''
+  default:

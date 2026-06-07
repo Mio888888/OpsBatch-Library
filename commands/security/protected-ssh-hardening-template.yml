@@ -16,8 +16,8 @@ parameters:
 - name: SSHD_CONFIG
   description: sshd 配置文件路径
   required: true
-  default: ''
+  default:
 - name: CONFIRM_SSH_HARDEN
   description: 确认 SSH 加固令牌
   required: false
-  default: ''
+  default:

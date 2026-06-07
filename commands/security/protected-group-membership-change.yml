@@ -16,11 +16,11 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ''
+  default:
 - name: TARGET_GROUP
   description: 目标用户组名
   required: true
-  default: ''
+  default:
 - name: GROUP_ACTION
   description: 组成员操作（add/remove）
   required: false
@@ -28,4 +28,4 @@ parameters:
 - name: CONFIRM_GROUP_CHANGE
   description: 确认组成员变更令牌
   required: false
-  default: ''
+  default:

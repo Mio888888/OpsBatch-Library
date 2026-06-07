@@ -15,12 +15,12 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ''
+  default:
 - name: TARGET_SHELL
   description: 目标 Shell 路径
   required: true
-  default: ''
+  default:
 - name: CONFIRM_SHELL_CHANGE
   description: 确认修改 Shell 令牌，需设为 CHANGE_SHELL_TARGET_USER 才执行
   required: false
-  default: ''
+  default:

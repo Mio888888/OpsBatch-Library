@@ -16,4 +16,4 @@ parameters:
 - name: TARGET_DEVICE
   description: 目标设备路径（如 /dev/sda）
   required: true
-  default: ''
+  default:

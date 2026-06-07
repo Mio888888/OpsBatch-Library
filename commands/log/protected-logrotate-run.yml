@@ -19,8 +19,8 @@ parameters:
 - name: LOGROTATE_STATE
   description: logrotate 状态文件路径
   required: true
-  default: ''
+  default:
 - name: CONFIRM_ROTATE
   description: 确认轮转令牌
   required: false
-  default: ''
+  default:

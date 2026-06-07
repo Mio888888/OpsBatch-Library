@@ -16,8 +16,8 @@ parameters:
 - name: TARGET_SERVICE
   description: 目标服务名称
   required: true
-  default: ''
+  default:
 - name: CONFIRM_STOP_SERVICE
   description: 确认停止服务令牌
   required: false
-  default: ''
+  default:

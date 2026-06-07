@@ -15,12 +15,12 @@ parameters:
 - name: SYSCTL_KEY
   description: sysctl 参数键名
   required: true
-  default: ''
+  default:
 - name: SYSCTL_VALUE
   description: sysctl 参数目标值
   required: true
-  default: ''
+  default:
 - name: CONFIRM_SYSCTL
   description: 确认内核参数加固令牌
   required: false
-  default: ''
+  default:

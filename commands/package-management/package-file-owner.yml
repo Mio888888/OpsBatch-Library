@@ -15,4 +15,4 @@ parameters:
 - name: TARGET_FILE
   description: 目标文件路径
   required: true
-  default: ''
+  default:

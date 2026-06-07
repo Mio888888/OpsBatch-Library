@@ -15,8 +15,8 @@ parameters:
 - name: PID
   description: 目标进程 ID
   required: true
-  default: ''
+  default:
 - name: PROCESS_PATTERN
   description: 进程名或命令行匹配模式
   required: true
-  default: ''
+  default:

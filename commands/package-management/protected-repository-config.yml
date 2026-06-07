@@ -20,11 +20,11 @@ parameters:
 - name: TARGET_REPO_NAME
   description: 仓库名称
   required: true
-  default: ''
+  default:
 - name: TARGET_REPO_URL
   description: 仓库 URL 地址
   required: true
-  default: ''
+  default:
 - name: REPO_ACTION
   description: 仓库操作类型
   required: false
@@ -32,4 +32,4 @@ parameters:
 - name: CONFIRM_REPO_CHANGE
   description: 确认仓库配置变更令牌
   required: false
-  default: ''
+  default:

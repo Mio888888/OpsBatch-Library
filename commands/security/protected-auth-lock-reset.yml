@@ -15,8 +15,8 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ''
+  default:
 - name: CONFIRM_RESET_AUTH_LOCK
   description: 确认重置认证锁定令牌
   required: false
-  default: ''
+  default:

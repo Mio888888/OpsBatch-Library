@@ -15,4 +15,4 @@ parameters:
 - name: TARGET_MOUNT
   description: 目标挂载点路径
   required: true
-  default: ''
+  default:

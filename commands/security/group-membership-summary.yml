@@ -14,4 +14,4 @@ parameters:
 - name: TARGET_GROUP
   description: 目标用户组名
   required: true
-  default: ''
+  default:

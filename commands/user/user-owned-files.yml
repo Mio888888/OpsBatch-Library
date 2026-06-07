@@ -15,11 +15,11 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ''
+  default:
 - name: TARGET_DIR
   description: 目标目录路径
   required: true
-  default: ''
+  default:
 - name: MAX_DEPTH
   description: 最大递归深度
   required: false

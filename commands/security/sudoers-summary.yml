@@ -16,4 +16,4 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ''
+  default:

@@ -16,7 +16,7 @@ parameters:
 - name: TARGET_USER
   description: 目标用户名
   required: true
-  default: ''
+  default:
 - name: MAX_KEYS
   description: 最大密钥数量告警阈值
   required: false

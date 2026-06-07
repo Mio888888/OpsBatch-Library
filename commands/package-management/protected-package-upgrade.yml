@@ -20,8 +20,8 @@ parameters:
 - name: TARGET_PACKAGE
   description: 目标软件包名
   required: true
-  default: ''
+  default:
 - name: CONFIRM_UPGRADE
   description: 确认升级令牌
   required: false
-  default: ''
+  default:

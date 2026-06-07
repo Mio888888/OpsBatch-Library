@@ -16,8 +16,8 @@ parameters:
 - name: CACHE_TARGET
   description: 缓存清理目标
   required: true
-  default: ''
+  default:
 - name: CONFIRM_CLEAN
   description: 确认清理令牌
   required: false
-  default: ''
+  default:

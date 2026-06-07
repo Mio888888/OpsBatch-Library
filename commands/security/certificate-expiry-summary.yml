@@ -15,7 +15,7 @@ parameters:
 - name: CERT_PATH
   description: 证书文件路径
   required: true
-  default: ''
+  default:
 - name: CERT_DIR
   description: 证书搜索目录
   required: false

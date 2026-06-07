@@ -27,4 +27,4 @@ parameters:
 - name: LOG_PATTERN
   description: 日志搜索模式（支持正则）
   required: true
-  default: ''
+  default:

@@ -16,8 +16,8 @@ parameters:
 - name: TARGET_MOUNT
   description: 目标挂载点路径
   required: true
-  default: ''
+  default:
 - name: CONFIRM_UMOUNT
   description: 确认卸载令牌
   required: false
-  default: ''
+  default:
