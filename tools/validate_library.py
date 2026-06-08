@@ -299,10 +299,18 @@ def validate_script_meta(path: Path, errors: list[str]) -> None:
         _base, lang = localized
         expected = relative(path.with_name(f"{meta_stem(path)}.sh"))
         actual = url_path(str(url))
-        if actual != expected:
-            fail(f"{relative(path)}: url must point to same-language script {expected}, got {actual!r}", errors)
-        if ref_language(actual) != lang:
-            fail(f"{relative(path)}: url language must be _{lang}, got {url!r}", errors)
+        if actual == expected:
+            if not (ROOT / expected).exists():
+                fail(f"{relative(path)}: missing local script file {expected}", errors)
+            if ref_language(actual) != lang:
+                fail(f"{relative(path)}: url language must be _{lang}, got {url!r}", errors)
+            return
+
+        if Path(actual).suffix not in SCRIPT_EXTENSIONS:
+            fail(
+                f"{relative(path)}: url must point to same-language script {expected} or an external script URL, got {actual!r}",
+                errors,
+            )
 
 
 def validate_scripts(errors: list[str]) -> None:
@@ -311,11 +319,10 @@ def validate_scripts(errors: list[str]) -> None:
         fail("scripts/: directory is required", errors)
         return
 
-    scripts = sorted(
-        path for path in script_root.rglob("*") if path.is_file() and path.suffix in SCRIPT_EXTENSIONS
-    )
-    if not scripts:
-        fail("scripts/: at least one script file is required", errors)
+    scripts = sorted(path for path in script_root.rglob("*") if path.is_file() and path.suffix in SCRIPT_EXTENSIONS)
+    metadata_files = sorted(script_root.rglob("*.meta.json"))
+    if not scripts and not metadata_files:
+        fail("scripts/: at least one script file or script metadata file is required", errors)
         return
 
     for script in scripts:
@@ -330,8 +337,9 @@ def validate_scripts(errors: list[str]) -> None:
         meta = meta_path_for_script(script)
         if not meta.exists():
             fail(f"{relative(script)}: missing metadata file {relative(meta)}", errors)
-        else:
-            validate_script_meta(meta, errors)
+
+    for meta in metadata_files:
+        validate_script_meta(meta, errors)
 
 def validate_quick_actions(errors: list[str]) -> None:
     quick_action_root = ROOT / "quick-actions"

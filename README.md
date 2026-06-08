@@ -2,7 +2,7 @@
 
 [![OpsBatch](https://img.shields.io/badge/OpsBatch-内容库-blue)](https://github.com/your-org/OpsBatch)
 [![Commands](https://img.shields.io/badge/commands-196%20pairs-green)](commands/)
-[![Shell scripts](https://img.shields.io/badge/shell-39%20pairs-orange)](scripts/shell/)
+[![Shell scripts](https://img.shields.io/badge/shell-40%20pairs-orange)](scripts/shell/)
 [![Quick actions](https://img.shields.io/badge/quick--actions-8%20pairs-purple)](quick-actions/)
 
 OpsLibrary 是面向 OpsBatch 仓库同步 / 导入能力的双语运维内容库，提供可导入的命令元数据、Shell 脚本、快捷动作和库级元信息。内容覆盖基础巡检、故障排查、日志查看、服务状态检查、安全审计、部署和受保护维护等场景。
@@ -17,7 +17,7 @@ English artifacts are included for OpsBatch users who prefer English names, desc
 | :--- | :--- | ---: |
 | 库级元信息 / Library metadata | `library_cn.json` / `library_en.json` | 2 files |
 | 命令 / Commands | `commands/<category>/<name>_cn.yml` + `.sh`，`<name>_en.yml` + `.sh` | 196 bilingual pairs / 392 YAML + 392 Shell files |
-| Shell 脚本库 / Shell script library | `scripts/shell/<name>_cn.meta.json` + `.sh`，`<name>_en.meta.json` + `.sh` | 39 bilingual pairs / 78 metadata + 78 Shell files |
+| Shell 脚本库 / Shell script library | 本地脚本：`scripts/shell/<name>_cn.meta.json` + `.sh`，`<name>_en.meta.json` + `.sh`；外部脚本：双语 `.meta.json` 直接指向上游 Raw URL | 40 bilingual pairs / 80 metadata + 78 local Shell files |
 | 快捷动作 / Quick actions | `quick-actions/<name>_cn.json` / `<name>_en.json` | 8 bilingual pairs / 16 JSON files |
 | 模板 / Templates | `templates/*_cn.*` / `templates/*_en.*` | 8 files |
 | 校验器 / Validator | `tools/validate_library.py` | 1 file |
@@ -84,7 +84,7 @@ Legacy Raw URLs and quick-action refs are breaking. Choose `_cn` or `_en` artifa
     └── validate_library.py
 ```
 
-当前仓库的脚本库只管理 `scripts/shell/` 下的 Shell 内容；Python / PowerShell 脚本不在当前内容范围内。
+当前仓库的脚本库只管理 Shell 内容：默认在 `scripts/shell/` 下托管本地 `.sh`，也允许只维护双语 `.meta.json` 并直接引用可信上游 Shell Raw URL；Python / PowerShell 脚本不在当前内容范围内。
 
 ## 快速开始 / Quick start
 
@@ -232,6 +232,13 @@ scripts/shell/<name>_en.meta.json
 scripts/shell/<name>_en.sh
 ```
 
+若条目直接引用可信上游脚本，可只提供双语元数据文件：
+
+```text
+scripts/shell/<name>_cn.meta.json
+scripts/shell/<name>_en.meta.json
+```
+
 最小中文示例：
 
 ```json
@@ -260,7 +267,7 @@ scripts/shell/<name>_en.sh
 | 字段 / Field | 必填 / Required | 说明 / Description |
 | :--- | :---: | :--- |
 | `language` | 是 / Yes | 当前内容库只管理 Shell 内容，值为 `shell` |
-| `url` | 是 / Yes | 同语言脚本 Raw URL；`*_cn.meta.json` 指向 `*_cn.sh`，`*_en.meta.json` 指向 `*_en.sh` |
+| `url` | 是 / Yes | 默认指向同语言本地脚本 Raw URL；若直接引用可信上游脚本，可指向外部 HTTP(S) Shell Raw URL |
 
 ### 快捷动作 JSON / Quick-action JSON
 
@@ -336,7 +343,7 @@ English step references must use `_en` resources:
    - `templates/quick-action_cn.json` / `templates/quick-action_en.json`
 2. 放到目标目录并保持同 stem 配对，例如 `check-load_cn.yml` 与 `check-load_en.yml`。
 3. 本地化显示字段和 Shell 用户可见文本；保持文件路径、URL、参数名、风险等级、平台、默认值和执行语义一致。
-4. 检查所有 `url`：命令 YAML 和脚本 meta 必须指向同语言 `.sh`；quick-action 顶层 `url` 必须指向当前 JSON 文件。
+4. 检查所有 `url`：命令 YAML 必须指向同语言 `.sh`；脚本 meta 默认指向同语言 `.sh`，直接引用可信上游脚本时可指向外部 HTTP(S) Shell Raw URL；quick-action 顶层 `url` 必须指向当前 JSON 文件。
 5. 检查所有 quick-action `steps[].ref` / `steps[].url`：中文动作只引用 `_cn`，英文动作只引用 `_en`。
 6. 高风险内容先实现 dry-run / 候选摘要，再要求显式目标变量和确认变量，最后才允许真实变更。
 7. 运行校验命令并修复所有错误。
@@ -363,7 +370,7 @@ python3 -m py_compile tools/validate_library.py
 - 命令 YAML 必填字段、`risk`、`tags` / `platform` / `parameters` 数组字段正确。
 - 命令 YAML 与同语言 `.sh` 配对，且 `url` 指向同语言 `.sh`。
 - 命令 `.sh` 使用 `_cn` / `_en` 后缀并存在同语言 YAML。
-- `scripts/shell/*.sh` 使用 `_cn` / `_en` 后缀，存在同语言 `.meta.json`，且 meta `url` 指向同语言 `.sh`。
+- `scripts/shell/*.sh` 使用 `_cn` / `_en` 后缀，存在同语言 `.meta.json`；脚本 meta 使用 `_cn` / `_en` 后缀，成对存在，且 `url` 指向同语言本地 `.sh` 或外部 HTTP(S) 脚本 URL。
 - `_cn` / `_en` 兄弟文件配对完整。
 - quick-action 必填字段、非空 `steps`、step `type`、`ref` 存在性和语言一致性正确。
 - quick-action 顶层 `url` 指向自身，step `url` 与 `ref` 目标一致。

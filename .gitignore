@@ -1,5 +1,7 @@
 # Local Claude/Trellis automation state
 /.claude/
+/.codex/
 /.trellis/
 /AGENTS.md
 /PRD.md
+.ace-tool/
