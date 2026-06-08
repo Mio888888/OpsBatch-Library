@@ -1,0 +1,94 @@
+{
+  "name": "ECS Comprehensive Benchmark",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/ecs-benchmark_en.sh",
+  "language": "shell",
+  "category": "inspection",
+  "tags": [
+    "inspection",
+    "benchmark",
+    "vps",
+    "ecs",
+    "network",
+    "disk",
+    "performance"
+  ],
+  "risk": "medium",
+  "description": "Downloads and runs the upstream spiritLHLS/ecs Shell ECS/VPS comprehensive benchmark wrapper. The upstream script checks system, CPU, memory, disk, streaming unlock, TikTok unlock, return route, IP quality, mail ports, and speed tests. It may install dependencies, update the package manager, consume significant resources, and generate outbound traffic; full/simple modes upload results to pastebin by default, so it is not recommended for production hosts.",
+  "parameters": [
+    {
+      "name": "ECS_MODE",
+      "description": "Run mode passed to upstream -m, for example 1; leave empty to use upstream interactive/default behavior.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_ENGLISH",
+      "description": "Whether to request English output; true/1/yes/on adds -en, false/0/no/off disables it. Empty defaults to English for this wrapper.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_ROUTE_TARGET",
+      "description": "Route or backtrace target passed to upstream -r.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_TARGET_IPV4",
+      "description": "Target IPv4 address passed to upstream -i.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_BASE_ONLY",
+      "description": "When true/1/yes/on, add -base to run only base-information related tests.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_CPU_TYPE",
+      "description": "CPU test type passed to upstream -ctype.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_DISK_TYPE",
+      "description": "Disk test type passed to upstream -dtype.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_MULTI_DISK",
+      "description": "When true/1/yes/on, add -mdisk to enable the upstream multi-disk test option.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_SPEEDTEST_SOURCE",
+      "description": "Speedtest source type passed to upstream -stype.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_SKIP_SPEEDTEST",
+      "description": "When true/1/yes/on, add -bansp to skip speedtest-related checks.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_SKIP_UPLOAD",
+      "description": "When true/1/yes/on, add -banup to skip result upload.",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_EXTRA_ARGS",
+      "description": "Additional arguments appended to upstream ecs.sh. Parsed with shell-style quoting when python3 is available; otherwise split conservatively on whitespace. eval is not used.",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux"
+  ]
+}

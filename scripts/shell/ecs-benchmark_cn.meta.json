@@ -1,0 +1,94 @@
+{
+  "name": "ECS/融合怪综合测评",
+  "url": "https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/scripts/shell/ecs-benchmark_cn.sh",
+  "language": "shell",
+  "category": "巡检",
+  "tags": [
+    "巡检",
+    "基准测试",
+    "VPS",
+    "ECS",
+    "网络",
+    "磁盘",
+    "性能"
+  ],
+  "risk": "medium",
+  "description": "下载并运行 spiritLHLS/ecs 上游 Shell 版融合怪 VPS/ECS 综合测评脚本。该脚本会进行系统、CPU、内存、磁盘、流媒体解锁、TikTok 解锁、回程路由、IP 质量、邮件端口和测速等测试，可能安装依赖、更新包管理器、占用大量资源并产生外联流量；完整/简单模式默认会上传结果到 pastebin，不建议在生产环境运行。",
+  "parameters": [
+    {
+      "name": "ECS_MODE",
+      "description": "传给上游 -m 的运行模式，例如 1；为空时使用上游默认交互或默认模式。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_ENGLISH",
+      "description": "是否请求英文输出；true/1/yes/on 会添加 -en，false/0/no/off 不添加；为空时中文包装器默认不添加 -en。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_ROUTE_TARGET",
+      "description": "传给上游 -r 的回程或路由测试目标。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_TARGET_IPV4",
+      "description": "传给上游 -i 的目标 IPv4 地址。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_BASE_ONLY",
+      "description": "为 true/1/yes/on 时添加 -base，仅运行基础信息相关测试。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_CPU_TYPE",
+      "description": "传给上游 -ctype 的 CPU 测试类型。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_DISK_TYPE",
+      "description": "传给上游 -dtype 的磁盘测试类型。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_MULTI_DISK",
+      "description": "为 true/1/yes/on 时添加 -mdisk，启用上游多磁盘测试选项。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_SPEEDTEST_SOURCE",
+      "description": "传给上游 -stype 的测速源类型。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_SKIP_SPEEDTEST",
+      "description": "为 true/1/yes/on 时添加 -bansp，跳过测速相关测试。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_SKIP_UPLOAD",
+      "description": "为 true/1/yes/on 时添加 -banup，跳过结果上传。",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "ECS_EXTRA_ARGS",
+      "description": "追加传给上游 ecs.sh 的额外参数；有 python3 时按 shell 风格引号解析，否则按空白保守拆分，不使用 eval。",
+      "required": false,
+      "default": ""
+    }
+  ],
+  "platform": [
+    "linux"
+  ]
+}
