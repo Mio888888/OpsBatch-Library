@@ -17,9 +17,9 @@
   "parameters": [
     {
       "name": "-m",
-      "description": "上游脚本运行模式，例如 1；为空时使用上游默认交互或默认模式。",
+      "description": "上游脚本运行模式，默认 1。",
       "required": false,
-      "default": ""
+      "default": "1"
     },
     {
       "name": "-en",

@@ -17,9 +17,9 @@
   "parameters": [
     {
       "name": "-m",
-      "description": "Upstream run mode, for example 1; leave empty to use upstream interactive/default behavior.",
+      "description": "Upstream run mode. Defaults to 1.",
       "required": false,
-      "default": ""
+      "default": "1"
     },
     {
       "name": "-en",
