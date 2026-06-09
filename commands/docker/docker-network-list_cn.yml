@@ -1,0 +1,13 @@
+name: 查看 Docker 网络列表
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-network-list_cn.sh
+category: Docker
+tags:
+- 巡检
+- Docker
+- 网络
+risk: low
+description: 查看 Docker 网络名称、驱动、范围、子网和网关摘要，用于排查容器网络隔离和地址冲突。只读不修改网络。
+platform:
+- linux
+- macos
+parameters: []

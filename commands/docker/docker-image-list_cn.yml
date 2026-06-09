@@ -1,0 +1,21 @@
+name: 查看 Docker 镜像列表
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-image-list_cn.sh
+category: Docker
+tags:
+- 巡检
+- Docker
+- 镜像
+risk: low
+description: 查看 Docker 镜像仓库、标签、ID、创建时间和大小，并补充 dangling 镜像候选。可通过 SHOW_ALL 和 SHOW_DIGESTS 扩展输出。
+platform:
+- linux
+- macos
+parameters:
+- name: SHOW_ALL
+  description: 是否显示中间层镜像
+  required: false
+  default: false
+- name: SHOW_DIGESTS
+  description: 是否显示镜像 digest
+  required: false
+  default: false

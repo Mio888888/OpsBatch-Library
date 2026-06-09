@@ -1,0 +1,22 @@
+name: Protected Restart Docker Container
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/protected-docker-container-restart_en.sh
+category: docker
+tags:
+- remediation
+- docker
+- container
+- restart
+risk: high
+description: Protected Docker container restart template. Shows target container status by default; restarts only when CONTAINER_NAME and CONFIRM_RESTART=RESTART_CONTAINER are set. Misuse can interrupt live traffic.
+platform:
+- linux
+- macos
+parameters:
+- name: CONTAINER_NAME
+  description: Container name or ID.
+  required: true
+  default: null
+- name: CONFIRM_RESTART
+  description: Restart confirmation token.
+  required: false
+  default: null

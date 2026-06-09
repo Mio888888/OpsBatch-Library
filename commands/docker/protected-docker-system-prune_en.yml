@@ -1,0 +1,30 @@
+name: Protected Prune Unused Docker Resources
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/protected-docker-system-prune_en.sh
+category: docker
+tags:
+- remediation
+- docker
+- cleanup
+- disk
+risk: high
+description: Protected Docker system prune template. Shows disk usage and cleanup plan by default; runs only when PRUNE_TARGET and CONFIRM_PRUNE=PRUNE_DOCKER_RESOURCES are set. Cleanup may remove unused images, containers, networks, cache, or volumes.
+platform:
+- linux
+- macos
+parameters:
+- name: PRUNE_TARGET
+  description: Cleanup target, one of system, images, containers, networks, volumes, or builder.
+  required: true
+  default: null
+- name: INCLUDE_VOLUMES
+  description: Whether system prune includes unused volumes.
+  required: false
+  default: false
+- name: UNTIL
+  description: Cleanup time filter, such as 24h or 168h.
+  required: false
+  default: null
+- name: CONFIRM_PRUNE
+  description: Cleanup confirmation token.
+  required: false
+  default: null

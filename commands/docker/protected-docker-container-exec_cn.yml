@@ -1,0 +1,30 @@
+name: 受保护进入 Docker 容器执行命令
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/protected-docker-container-exec_cn.sh
+category: Docker
+tags:
+- 修复
+- Docker
+- 容器
+- exec
+risk: high
+description: 受保护的 docker exec 模板。默认只展示目标容器状态和待执行命令；只有设置 CONTAINER_NAME、EXEC_COMMAND 和 CONFIRM_EXEC=EXEC_IN_CONTAINER 后才执行。命令会在容器内产生实际影响。
+platform:
+- linux
+- macos
+parameters:
+- name: CONTAINER_NAME
+  description: 容器名称或 ID
+  required: true
+  default: null
+- name: EXEC_COMMAND
+  description: 容器内执行命令
+  required: true
+  default: null
+- name: EXEC_USER
+  description: 容器内执行用户
+  required: false
+  default: null
+- name: CONFIRM_EXEC
+  description: 确认执行令牌
+  required: false
+  default: null

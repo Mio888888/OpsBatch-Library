@@ -1,0 +1,21 @@
+name: 查看 Docker 容器列表
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-container-list_cn.sh
+category: Docker
+tags:
+- 巡检
+- Docker
+- 容器
+risk: low
+description: 查看 Docker 容器名称、镜像、状态、端口和 ID。默认包含已停止容器，可通过 SHOW_ALL=false 仅查看运行中容器。
+platform:
+- linux
+- macos
+parameters:
+- name: SHOW_ALL
+  description: 是否包含已停止容器
+  required: false
+  default: true
+- name: SHOW_SIZE
+  description: 是否显示容器可写层大小
+  required: false
+  default: false

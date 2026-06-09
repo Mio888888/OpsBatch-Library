@@ -1,0 +1,22 @@
+name: 受保护重启 Docker 容器
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/protected-docker-container-restart_cn.sh
+category: Docker
+tags:
+- 修复
+- Docker
+- 容器
+- 重启
+risk: high
+description: 受保护的 Docker 容器重启模板。默认只展示目标容器状态；只有设置 CONTAINER_NAME 和 CONFIRM_RESTART=RESTART_CONTAINER 后才执行重启。误用可能中断业务连接。
+platform:
+- linux
+- macos
+parameters:
+- name: CONTAINER_NAME
+  description: 容器名称或 ID
+  required: true
+  default: null
+- name: CONFIRM_RESTART
+  description: 确认重启令牌
+  required: false
+  default: null

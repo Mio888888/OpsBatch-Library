@@ -1,0 +1,18 @@
+name: 查看 Docker 容器详情
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-container-detail_cn.sh
+category: Docker
+tags:
+- 故障排查
+- Docker
+- 容器
+- inspect
+risk: medium
+description: 查看指定 Docker 容器的状态、镜像、网络、端口和挂载摘要。必须设置 CONTAINER_NAME；输出可能包含主机路径等运维细节。
+platform:
+- linux
+- macos
+parameters:
+- name: CONTAINER_NAME
+  description: 容器名称或 ID
+  required: true
+  default: null

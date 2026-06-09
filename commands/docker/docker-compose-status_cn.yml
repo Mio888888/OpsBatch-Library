@@ -1,0 +1,18 @@
+name: 查看 Docker Compose 状态
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-compose-status_cn.sh
+category: Docker
+tags:
+- 巡检
+- Docker
+- Compose
+- 服务
+risk: low
+description: 在当前目录或 COMPOSE_FILE 指定的 Compose 项目中查看服务状态、镜像和配置校验摘要。只读不启动或停止服务。
+platform:
+- linux
+- macos
+parameters:
+- name: COMPOSE_FILE
+  description: Compose 文件路径
+  required: false
+  default: null

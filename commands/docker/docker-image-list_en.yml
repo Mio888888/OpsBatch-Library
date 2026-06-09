@@ -1,0 +1,21 @@
+name: View Docker Image List
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-image-list_en.sh
+category: docker
+tags:
+- inspection
+- docker
+- image
+risk: low
+description: Shows Docker image repositories, tags, IDs, creation age, size, and dangling image candidates. SHOW_ALL and SHOW_DIGESTS can expand the output.
+platform:
+- linux
+- macos
+parameters:
+- name: SHOW_ALL
+  description: Whether to show intermediate image layers.
+  required: false
+  default: false
+- name: SHOW_DIGESTS
+  description: Whether to display image digests.
+  required: false
+  default: false

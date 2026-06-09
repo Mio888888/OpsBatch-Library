@@ -10,6 +10,7 @@
       "process",
       "cpu",
       "memory",
+      "docker",
       "network",
       "disk",
       "package-management",

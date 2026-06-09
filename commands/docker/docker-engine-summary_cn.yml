@@ -1,0 +1,14 @@
+name: 查看 Docker 引擎摘要
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-engine-summary_cn.sh
+category: Docker
+tags:
+- 巡检
+- Docker
+- 引擎
+- 版本
+risk: low
+description: 查看 Docker CLI、Docker daemon、存储驱动和 Linux systemd 服务状态摘要，用于确认 Docker 引擎是否可用。只读不修改系统状态。
+platform:
+- linux
+- macos
+parameters: []

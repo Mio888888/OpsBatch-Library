@@ -1,0 +1,21 @@
+name: View Docker Container List
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-container-list_en.sh
+category: docker
+tags:
+- inspection
+- docker
+- container
+risk: low
+description: Shows Docker container names, images, status, ports, and IDs. Includes stopped containers by default; set SHOW_ALL=false to show only running containers.
+platform:
+- linux
+- macos
+parameters:
+- name: SHOW_ALL
+  description: Whether to include stopped containers.
+  required: false
+  default: true
+- name: SHOW_SIZE
+  description: Whether to display writable layer size.
+  required: false
+  default: false

@@ -1,0 +1,18 @@
+name: View Docker Container Resource Usage
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-container-stats_en.sh
+category: docker
+tags:
+- inspection
+- docker
+- container
+- resource
+risk: low
+description: Uses docker stats --no-stream to show container CPU, memory, network, disk I/O, and PID counts. Set CONTAINER_NAME to inspect one container.
+platform:
+- linux
+- macos
+parameters:
+- name: CONTAINER_NAME
+  description: Container name or ID.
+  required: false
+  default: null

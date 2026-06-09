@@ -1,0 +1,30 @@
+name: Protected Execute Command In Docker Container
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/protected-docker-container-exec_en.sh
+category: docker
+tags:
+- remediation
+- docker
+- container
+- exec
+risk: high
+description: Protected docker exec template. Shows target container status and planned command by default; executes only when CONTAINER_NAME, EXEC_COMMAND, and CONFIRM_EXEC=EXEC_IN_CONTAINER are set. The command can change container state.
+platform:
+- linux
+- macos
+parameters:
+- name: CONTAINER_NAME
+  description: Container name or ID.
+  required: true
+  default: null
+- name: EXEC_COMMAND
+  description: Command to run inside the container.
+  required: true
+  default: null
+- name: EXEC_USER
+  description: User to run as inside the container.
+  required: false
+  default: null
+- name: CONFIRM_EXEC
+  description: Execution confirmation token.
+  required: false
+  default: null

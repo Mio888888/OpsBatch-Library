@@ -1,0 +1,14 @@
+name: View Docker Engine Summary
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/docker-engine-summary_en.sh
+category: docker
+tags:
+- inspection
+- docker
+- engine
+- version
+risk: low
+description: Shows Docker CLI, Docker daemon, storage driver, and Linux systemd service status summary to confirm whether the Docker engine is available. Read-only.
+platform:
+- linux
+- macos
+parameters: []

@@ -1,0 +1,30 @@
+name: 受保护清理 Docker 未使用资源
+url: https://raw.githubusercontent.com/Mio888888/OpsBatch-Library/main/commands/docker/protected-docker-system-prune_cn.sh
+category: Docker
+tags:
+- 修复
+- Docker
+- 清理
+- 磁盘
+risk: high
+description: 受保护的 Docker system prune 模板。默认只展示磁盘占用和清理计划；只有设置 PRUNE_TARGET 和 CONFIRM_PRUNE=PRUNE_DOCKER_RESOURCES 后才执行。清理可能删除未使用镜像、容器、网络、缓存或卷。
+platform:
+- linux
+- macos
+parameters:
+- name: PRUNE_TARGET
+  description: 清理目标，可选 system、images、containers、networks、volumes、builder
+  required: true
+  default: null
+- name: INCLUDE_VOLUMES
+  description: system 清理时是否包含未使用卷
+  required: false
+  default: false
+- name: UNTIL
+  description: 清理时间过滤条件，例如 24h 或 168h
+  required: false
+  default: null
+- name: CONFIRM_PRUNE
+  description: 确认清理令牌
+  required: false
+  default: null
