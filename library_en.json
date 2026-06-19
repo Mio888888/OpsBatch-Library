@@ -10,7 +10,6 @@
       "process",
       "cpu",
       "memory",
-      "docker",
       "network",
       "disk",
       "package-management",
@@ -22,12 +21,13 @@
     ],
     "scripts": [
       "shell",
-      "python",
-      "powershell",
       "monitoring",
       "inspection",
       "security",
-      "deployment"
+      "deployment",
+      "maintenance",
+      "log",
+      "service"
     ],
     "quickActions": [
       "inspection",

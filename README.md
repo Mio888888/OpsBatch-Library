@@ -1,8 +1,8 @@
 # OpsBatch 运维内容库 / OpsBatch Operations Library
 
 [![OpsBatch](https://img.shields.io/badge/OpsBatch-内容库-blue)](https://github.com/your-org/OpsBatch)
-[![Commands](https://img.shields.io/badge/commands-209%20pairs-green)](commands/)
-[![Shell scripts](https://img.shields.io/badge/shell-40%20pairs-orange)](scripts/shell/)
+[![Commands](https://img.shields.io/badge/commands-194%20pairs-green)](commands/)
+[![Shell scripts](https://img.shields.io/badge/shell-38%20pairs-orange)](scripts/shell/)
 [![Quick actions](https://img.shields.io/badge/quick--actions-8%20pairs-purple)](quick-actions/)
 
 OpsLibrary 是面向 OpsBatch 仓库同步 / 导入能力的双语运维内容库，提供可导入的命令元数据、Shell 脚本、快捷动作和库级元信息。内容覆盖基础巡检、故障排查、日志查看、服务状态检查、安全审计、部署和受保护维护等场景。
@@ -16,8 +16,8 @@ English artifacts are included for OpsBatch users who prefer English names, desc
 | 内容 / Content | 当前结构 / Current structure | 数量 / Count |
 | :--- | :--- | ---: |
 | 库级元信息 / Library metadata | `library_cn.json` / `library_en.json` | 2 files |
-| 命令 / Commands | `commands/<category>/<name>_cn.yml` + `.sh`，`<name>_en.yml` + `.sh` | 209 bilingual pairs / 418 YAML + 418 Shell files |
-| Shell 脚本库 / Shell script library | 本地脚本：`scripts/shell/<name>_cn.meta.json` + `.sh`，`<name>_en.meta.json` + `.sh`；外部脚本：双语 `.meta.json` 直接指向上游 Raw URL | 40 bilingual pairs / 80 metadata + 78 local Shell files |
+| 命令 / Commands | `commands/<category>/<name>_cn.yml` + `.sh`，`<name>_en.yml` + `.sh` | 194 bilingual pairs / 388 YAML + 388 Shell files |
+| Shell 脚本库 / Shell script library | 本地脚本：`scripts/shell/<name>_cn.meta.json` + `.sh`，`<name>_en.meta.json` + `.sh`；外部脚本：双语 `.meta.json` 直接指向上游 Raw URL | 38 bilingual pairs / 76 metadata + 74 local Shell files |
 | 快捷动作 / Quick actions | `quick-actions/<name>_cn.json` / `<name>_en.json` | 8 bilingual pairs / 16 JSON files |
 | 模板 / Templates | `templates/*_cn.*` / `templates/*_en.*` | 8 files |
 | 校验器 / Validator | `tools/validate_library.py` | 1 file |
@@ -27,11 +27,11 @@ English artifacts are included for OpsBatch users who prefer English names, desc
 | Directory | Pairs | Directory | Pairs |
 | :--- | ---: | :--- | ---: |
 | `security` | 42 | `network` | 19 |
-| `disk` | 27 | `cpu` | 18 |
-| `package-management` | 20 | `memory` | 18 |
-| `process` | 17 | `log` | 17 |
-| `docker` | 13 | `system` | 12 |
-| `user` | 5 | `service` | 1 |
+| `package-management` | 20 | `cpu` | 18 |
+| `disk` | 26 | `memory` | 18 |
+| `process` | 17 | `system` | 12 |
+| `log` | 16 | `user` | 5 |
+| `service` | 1 | | |
 
 ## Breaking change：无后缀旧路径已移除
 
