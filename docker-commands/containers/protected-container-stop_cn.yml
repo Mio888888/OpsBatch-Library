@@ -1,0 +1,25 @@
+name: "停止容器"
+category: "Docker"
+tags:
+- "容器"
+- "写操作"
+risk: high
+description: "停止容器。仅试运行：未设置 CONFIRM_STOP=STOP_CONTAINER 时只展示容器不停止。停止会中断容器内运行的服务。"
+platform:
+- linux
+- macos
+command: |-
+  docker stop -t ${TIMEOUT} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""
+  - name: "TIMEOUT"
+    description: "优雅停止超时秒数"
+    required: false
+    default: "10"
+  - name: "CONFIRM_STOP"
+    description: "确认停止令牌，需设为 STOP_CONTAINER"
+    required: true
+    default: ""

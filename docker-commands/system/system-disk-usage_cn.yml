@@ -1,0 +1,14 @@
+name: "Docker 磁盘占用汇总"
+category: "Docker"
+tags:
+- "系统"
+- "巡检"
+- "磁盘"
+risk: low
+description: "汇总镜像、容器、卷与构建缓存占用的磁盘空间及可回收量，用于磁盘容量巡检。"
+platform:
+- linux
+- macos
+command: |-
+  docker system df
+parameters: []

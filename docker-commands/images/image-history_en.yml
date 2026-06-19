@@ -1,0 +1,21 @@
+name: "Show Image Build History"
+category: "docker"
+tags:
+- "image"
+- "inspection"
+risk: low
+description: "Show image build history and per-layer size for layer audit and image slimming."
+platform:
+- linux
+- macos
+command: |-
+  docker history --no-trunc=${NO_TRUNC} ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "Target image name or ID"
+    required: true
+    default: ""
+  - name: "NO_TRUNC"
+    description: "Show full commands without truncation"
+    required: false
+    default: "false"

@@ -1,0 +1,22 @@
+name: "Container Resource Stats"
+category: "docker"
+tags:
+- "container"
+- "inspection"
+- "resource"
+risk: low
+description: "Stream or snapshot container CPU, memory, network and disk IO usage for performance and resource inspection."
+platform:
+- linux
+- macos
+command: |-
+  docker stats --no-stream=${NO_STREAM} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID; empty for all"
+    required: false
+    default: ""
+  - name: "NO_STREAM"
+    description: "Return a single snapshot instead of streaming"
+    required: false
+    default: "false"

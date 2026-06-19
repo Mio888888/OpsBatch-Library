@@ -1,0 +1,22 @@
+name: "容器资源占用"
+category: "Docker"
+tags:
+- "容器"
+- "巡检"
+- "资源"
+risk: low
+description: "实时或单次输出容器 CPU、内存、网络与磁盘 IO 资源占用，用于性能与资源巡检。"
+platform:
+- linux
+- macos
+command: |-
+  docker stats --no-stream=${NO_STREAM} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID，留空统计全部"
+    required: false
+    default: ""
+  - name: "NO_STREAM"
+    description: "是否只返回一次快照"
+    required: false
+    default: "false"

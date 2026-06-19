@@ -1,0 +1,22 @@
+name: "Push Image"
+category: "docker"
+tags:
+- "registry"
+- "image"
+- "mutation"
+risk: high
+description: "Push a local image to a remote registry. Dry-run by default. Without CONFIRM_PUSH=REGISTRY_PUSH only the target is shown, nothing is pushed. The image becomes visible on the registry; mind sensitive information leakage."
+platform:
+- linux
+- macos
+command: |-
+  docker push ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "Full image reference including registry"
+    required: true
+    default: ""
+  - name: "CONFIRM_PUSH"
+    description: "Confirm token; must be REGISTRY_PUSH to execute"
+    required: true
+    default: ""

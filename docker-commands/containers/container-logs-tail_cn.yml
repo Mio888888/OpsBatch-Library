@@ -1,0 +1,26 @@
+name: "查看容器日志"
+category: "Docker"
+tags:
+- "容器"
+- "日志"
+- "巡检"
+risk: low
+description: "查看容器最近日志，支持行数与时间窗口过滤，用于应用排障。"
+platform:
+- linux
+- macos
+command: |-
+  docker logs --since ${SINCE} --tail ${LINES} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""
+  - name: "LINES"
+    description: "显示行数"
+    required: false
+    default: "120"
+  - name: "SINCE"
+    description: "起始时间或时间窗口"
+    required: false
+    default: "2h"

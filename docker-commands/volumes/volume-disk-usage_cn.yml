@@ -1,0 +1,14 @@
+name: "卷磁盘占用"
+category: "Docker"
+tags:
+- "卷"
+- "巡检"
+- "磁盘"
+risk: low
+description: "统计每个卷占用磁盘空间，用于持久化存储容量规划与清理决策。"
+platform:
+- linux
+- macos
+command: |-
+  docker system df -v --format '{{range .Volumes}}{{.Name}}\t{{.Size}}\n{{end}}'
+parameters: []

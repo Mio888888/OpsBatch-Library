@@ -1,0 +1,25 @@
+name: "Login to Registry"
+category: "docker"
+tags:
+- "registry"
+- "credential"
+risk: medium
+description: "Log in to a remote registry. Dry-run by default. Without CONFIRM_LOGIN=REGISTRY_LOGIN only the target is shown, no login occurs. Password is entered interactively; mind credential safety."
+platform:
+- linux
+- macos
+command: |-
+  docker login ${REGISTRY} -u ${USERNAME}
+parameters:
+  - name: "REGISTRY"
+    description: "Target registry address"
+    required: true
+    default: ""
+  - name: "USERNAME"
+    description: "Login username"
+    required: true
+    default: ""
+  - name: "CONFIRM_LOGIN"
+    description: "Confirm token; must be REGISTRY_LOGIN to execute"
+    required: true
+    default: ""

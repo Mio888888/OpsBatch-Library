@@ -1,0 +1,29 @@
+name: "删除容器"
+category: "Docker"
+tags:
+- "容器"
+- "写操作"
+risk: high
+description: "删除容器。仅试运行：未设置 CONFIRM_REMOVE=REMOVE_CONTAINER 时只展示容器不删除。删除容器不可逆，关联卷可能一并清除。"
+platform:
+- linux
+- macos
+command: |-
+  docker rm --force=${FORCE} --volumes=${REMOVE_VOLUMES} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""
+  - name: "FORCE"
+    description: "是否强制删除运行中容器"
+    required: false
+    default: "false"
+  - name: "REMOVE_VOLUMES"
+    description: "是否同时删除匿名卷"
+    required: false
+    default: "false"
+  - name: "CONFIRM_REMOVE"
+    description: "确认删除令牌，需设为 REMOVE_CONTAINER"
+    required: true
+    default: ""

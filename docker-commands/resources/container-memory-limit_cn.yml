@@ -1,0 +1,18 @@
+name: "查看容器内存限额"
+category: "Docker"
+tags:
+- "资源"
+- "巡检"
+- "内存"
+risk: low
+description: "输出容器内存与 swap 限额配置，用于内存资源规划与 OOM 风险评估。"
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${CONTAINER} --format 'memory={{.HostConfig.Memory}} memswap={{.HostConfig.MemorySwap}}'
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""

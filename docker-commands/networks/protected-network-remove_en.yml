@@ -1,0 +1,21 @@
+name: "Remove Network"
+category: "docker"
+tags:
+- "network"
+- "mutation"
+risk: high
+description: "Remove a network. Dry-run by default. Without CONFIRM_REMOVE=REMOVE_NETWORK the network is only shown, not removed. Networks with connected containers cannot be removed."
+platform:
+- linux
+- macos
+command: |-
+  docker network rm ${NETWORK}
+parameters:
+  - name: "NETWORK"
+    description: "Target network name or ID"
+    required: true
+    default: ""
+  - name: "CONFIRM_REMOVE"
+    description: "Confirm token; must be REMOVE_NETWORK to execute"
+    required: true
+    default: ""

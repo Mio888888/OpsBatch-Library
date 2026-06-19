@@ -1,0 +1,25 @@
+name: "Remove Image"
+category: "docker"
+tags:
+- "image"
+- "mutation"
+risk: high
+description: "Remove a local image. Dry-run by default. Without CONFIRM_REMOVE=REMOVE_IMAGE only the image is shown, nothing is deleted. Removal is irreversible; confirm no running containers depend on it first."
+platform:
+- linux
+- macos
+command: |-
+  docker rmi --force=${FORCE} ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "Target image name or ID"
+    required: true
+    default: ""
+  - name: "FORCE"
+    description: "Force removal even if referenced by a container"
+    required: false
+    default: "false"
+  - name: "CONFIRM_REMOVE"
+    description: "Confirm token; must be REMOVE_IMAGE to execute"
+    required: true
+    default: ""

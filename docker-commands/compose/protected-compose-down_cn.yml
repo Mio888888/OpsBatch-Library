@@ -1,0 +1,25 @@
+name: "停止并移除 Compose 服务"
+category: "Docker"
+tags:
+- "Compose"
+- "写操作"
+risk: high
+description: "停止并移除 Compose 项目容器与网络。仅试运行：未设置 CONFIRM_DOWN=COMPOSE_DOWN 时只展示项目不下线。REMOVE_VOLUMES=true 会删除卷，数据不可恢复。"
+platform:
+- linux
+- macos
+command: |-
+  docker compose -f ${COMPOSE_FILE} down --volumes=${REMOVE_VOLUMES}
+parameters:
+  - name: "COMPOSE_FILE"
+    description: "Compose 文件路径"
+    required: false
+    default: "docker-compose.yml"
+  - name: "REMOVE_VOLUMES"
+    description: "是否同时删除命名卷"
+    required: false
+    default: "false"
+  - name: "CONFIRM_DOWN"
+    description: "确认停止令牌，需设为 COMPOSE_DOWN"
+    required: true
+    default: ""

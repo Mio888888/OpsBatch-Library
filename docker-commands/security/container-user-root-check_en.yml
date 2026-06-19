@@ -1,0 +1,14 @@
+name: "Check Container Running User"
+category: "docker"
+tags:
+- "security"
+- "inspection"
+- "user"
+risk: low
+description: "Check which user running containers use to identify containers running as root by default (a security risk)."
+platform:
+- linux
+- macos
+command: |-
+  docker ps -q | xargs -r -n1 docker inspect --format '{{.Name}} user={{.Config.User}}'
+parameters: []

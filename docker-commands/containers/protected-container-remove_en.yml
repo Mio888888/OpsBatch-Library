@@ -1,0 +1,29 @@
+name: "Remove Container"
+category: "docker"
+tags:
+- "container"
+- "mutation"
+risk: high
+description: "Remove a container. Dry-run by default. Without CONFIRM_REMOVE=REMOVE_CONTAINER the container is only shown, not removed. Removal is irreversible and may remove associated volumes."
+platform:
+- linux
+- macos
+command: |-
+  docker rm --force=${FORCE} --volumes=${REMOVE_VOLUMES} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""
+  - name: "FORCE"
+    description: "Force remove a running container"
+    required: false
+    default: "false"
+  - name: "REMOVE_VOLUMES"
+    description: "Remove anonymous volumes too"
+    required: false
+    default: "false"
+  - name: "CONFIRM_REMOVE"
+    description: "Confirm token; must be REMOVE_CONTAINER to execute"
+    required: true
+    default: ""

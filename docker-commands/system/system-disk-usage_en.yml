@@ -1,0 +1,14 @@
+name: "Docker Disk Usage Summary"
+category: "docker"
+tags:
+- "system"
+- "inspection"
+- "disk"
+risk: low
+description: "Summarize disk usage and reclaimable space for images, containers, volumes and build cache for capacity inspection."
+platform:
+- linux
+- macos
+command: |-
+  docker system df
+parameters: []

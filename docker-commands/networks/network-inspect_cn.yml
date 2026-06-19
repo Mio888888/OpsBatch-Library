@@ -1,0 +1,17 @@
+name: "查看网络元数据"
+category: "Docker"
+tags:
+- "网络"
+- "巡检"
+risk: low
+description: "输出网络完整元数据 JSON，含子网、网关与已连接容器，用于网络连通性排查。"
+platform:
+- linux
+- macos
+command: |-
+  docker network inspect ${NETWORK}
+parameters:
+  - name: "NETWORK"
+    description: "目标网络名称或 ID"
+    required: true
+    default: ""

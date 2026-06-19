@@ -253,23 +253,29 @@ def main():
     if dry_run:
         print("=== DRY RUN MODE ===\n")
 
-    commands_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'commands')
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # 遍历所有 command 根目录：传统脚本命令 commands/ 与内联原始命令 docker-commands/。
+    command_roots = ['commands', 'docker-commands']
 
     results = []
     errors = []
 
-    for root, dirs, files in os.walk(commands_dir):
-        dirs.sort()
-        for fname in sorted(files):
-            if not fname.endswith(('.yml', '.yaml')):
-                continue
-            filepath = os.path.join(root, fname)
-            try:
-                result = process_file(filepath, dry_run)
-                if result:
-                    results.append(result)
-            except Exception as e:
-                errors.append((filepath, str(e)))
+    for root_name in command_roots:
+        commands_dir = os.path.join(repo_root, root_name)
+        if not os.path.isdir(commands_dir):
+            continue
+        for root, dirs, files in os.walk(commands_dir):
+            dirs.sort()
+            for fname in sorted(files):
+                if not fname.endswith(('.yml', '.yaml')):
+                    continue
+                filepath = os.path.join(root, fname)
+                try:
+                    result = process_file(filepath, dry_run)
+                    if result:
+                        results.append(result)
+                except Exception as e:
+                    errors.append((filepath, str(e)))
 
     # 报告
     print(f"处理完成: {len(results)} 个文件已添加 parameters 字段")

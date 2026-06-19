@@ -1,0 +1,13 @@
+name: "Docker Version"
+category: "docker"
+tags:
+- "system"
+- "inspection"
+risk: low
+description: "Output client and server Docker versions and API versions for compatibility and upgrade troubleshooting."
+platform:
+- linux
+- macos
+command: |-
+  docker version
+parameters: []

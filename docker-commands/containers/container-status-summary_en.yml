@@ -1,0 +1,13 @@
+name: "Container Status Summary"
+category: "docker"
+tags:
+- "container"
+- "inspection"
+risk: low
+description: "Summarize container name, image, status and port mappings in a table for a quick running-state overview."
+platform:
+- linux
+- macos
+command: |-
+  docker ps -a --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'
+parameters: []

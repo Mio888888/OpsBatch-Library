@@ -1,0 +1,17 @@
+name: "校验 Compose 配置"
+category: "Docker"
+tags:
+- "Compose"
+- "巡检"
+risk: low
+description: "解析并输出最终生效的 Compose 配置（含环境变量插值），用于校验编排定义。"
+platform:
+- linux
+- macos
+command: |-
+  docker compose -f ${COMPOSE_FILE} config
+parameters:
+  - name: "COMPOSE_FILE"
+    description: "Compose 文件路径"
+    required: false
+    default: "docker-compose.yml"

@@ -1,0 +1,22 @@
+name: "查看 Docker 事件"
+category: "Docker"
+tags:
+- "容器"
+- "巡检"
+- "审计"
+risk: low
+description: "监听或回放 Docker 守护进程事件（创建/启动/停止/销毁等），用于行为审计与故障复盘。"
+platform:
+- linux
+- macos
+command: |-
+  docker events --since ${SINCE} --until ${UNTIL}
+parameters:
+  - name: "SINCE"
+    description: "起始时间或时间窗口"
+    required: false
+    default: "60s"
+  - name: "UNTIL"
+    description: "结束时间或时间窗口"
+    required: false
+    default: ""

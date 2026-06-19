@@ -1,0 +1,21 @@
+name: "Show Compose Service Status"
+category: "docker"
+tags:
+- "compose"
+- "inspection"
+risk: low
+description: "List services and container status under a Compose project for multi-container orchestration inspection."
+platform:
+- linux
+- macos
+command: |-
+  docker compose -f ${COMPOSE_FILE} ${PROJECT:+-p ${PROJECT}} ps
+parameters:
+  - name: "COMPOSE_FILE"
+    description: "Compose file path"
+    required: false
+    default: "docker-compose.yml"
+  - name: "PROJECT"
+    description: "Compose project name (optional)"
+    required: true
+    default: ""

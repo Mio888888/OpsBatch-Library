@@ -1,0 +1,22 @@
+name: "Show Docker Events"
+category: "docker"
+tags:
+- "container"
+- "inspection"
+- "audit"
+risk: low
+description: "Listen to or replay Docker daemon events (create/start/stop/destroy) for behavior audit and incident review."
+platform:
+- linux
+- macos
+command: |-
+  docker events --since ${SINCE} --until ${UNTIL}
+parameters:
+  - name: "SINCE"
+    description: "Start time or time window"
+    required: false
+    default: "60s"
+  - name: "UNTIL"
+    description: "End time or time window"
+    required: false
+    default: ""

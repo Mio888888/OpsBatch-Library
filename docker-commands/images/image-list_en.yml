@@ -1,0 +1,21 @@
+name: "List Local Images"
+category: "docker"
+tags:
+- "image"
+- "inspection"
+risk: low
+description: "List local images with optional intermediate layers and digests for inventory inspection."
+platform:
+- linux
+- macos
+command: |-
+  docker images --all=${ALL} --digests=${DIGESTS}
+parameters:
+  - name: "ALL"
+    description: "Include intermediate image layers"
+    required: false
+    default: "false"
+  - name: "DIGESTS"
+    description: "Show image digests"
+    required: false
+    default: "false"

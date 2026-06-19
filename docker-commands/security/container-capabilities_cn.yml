@@ -1,0 +1,18 @@
+name: "查看容器 capabilities"
+category: "Docker"
+tags:
+- "安全"
+- "巡检"
+- "权限"
+risk: low
+description: "输出容器已授予的 Linux capabilities，用于权限收敛与最小权限审计。"
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${CONTAINER} --format '{{.HostConfig.CapAdd}}'
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""

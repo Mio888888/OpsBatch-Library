@@ -1,0 +1,21 @@
+name: "Restart Container"
+category: "docker"
+tags:
+- "container"
+- "mutation"
+risk: high
+description: "Restart a container. Dry-run by default. Without CONFIRM_RESTART=RESTART_CONTAINER the container is only shown, not restarted. Restart interrupts services running inside."
+platform:
+- linux
+- macos
+command: |-
+  docker restart ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""
+  - name: "CONFIRM_RESTART"
+    description: "Confirm token; must be RESTART_CONTAINER to execute"
+    required: true
+    default: ""

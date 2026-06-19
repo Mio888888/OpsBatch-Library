@@ -1,0 +1,22 @@
+name: "实时跟踪容器日志"
+category: "Docker"
+tags:
+- "容器"
+- "日志"
+- "巡检"
+risk: low
+description: "实时跟踪容器日志输出，用于在线排障与日志监控。"
+platform:
+- linux
+- macos
+command: |-
+  docker logs --follow --tail ${LINES} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""
+  - name: "LINES"
+    description: "起始显示行数"
+    required: false
+    default: "50"

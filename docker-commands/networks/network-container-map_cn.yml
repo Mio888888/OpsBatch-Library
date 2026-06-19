@@ -1,0 +1,17 @@
+name: "网络容器与 IP 映射"
+category: "Docker"
+tags:
+- "网络"
+- "巡检"
+risk: low
+description: "列出指定网络下所有容器及其 IP，用于网络成员清点与 IP 冲突排查。"
+platform:
+- linux
+- macos
+command: |-
+  docker network inspect ${NETWORK} --format '{{range .Containers}}{{.Name}} {{.IPv4Address}}\n{{end}}'
+parameters:
+  - name: "NETWORK"
+    description: "目标网络名称或 ID"
+    required: true
+    default: ""

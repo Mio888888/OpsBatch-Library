@@ -1,0 +1,18 @@
+name: "查看容器端口映射"
+category: "Docker"
+tags:
+- "容器"
+- "网络"
+- "巡检"
+risk: low
+description: "列出容器端口与宿主机端口映射关系，用于排查端口暴露与连通性问题。"
+platform:
+- linux
+- macos
+command: |-
+  docker port ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""

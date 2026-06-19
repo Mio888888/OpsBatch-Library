@@ -1,0 +1,18 @@
+name: "Show Container FS Changes"
+category: "docker"
+tags:
+- "container"
+- "inspection"
+- "filesystem"
+risk: low
+description: "Show filesystem changes (added/changed/deleted) in a container writable layer for inspecting non-persistent mutations."
+platform:
+- linux
+- macos
+command: |-
+  docker diff ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""

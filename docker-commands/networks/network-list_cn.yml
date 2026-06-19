@@ -1,0 +1,13 @@
+name: "列出网络"
+category: "Docker"
+tags:
+- "网络"
+- "巡检"
+risk: low
+description: "列出所有 Docker 网络，用于网络拓扑巡检与孤立网络排查。"
+platform:
+- linux
+- macos
+command: |-
+  docker network ls
+parameters: []

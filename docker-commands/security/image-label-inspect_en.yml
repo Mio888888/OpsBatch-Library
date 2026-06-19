@@ -1,0 +1,18 @@
+name: "Inspect Image Labels"
+category: "docker"
+tags:
+- "security"
+- "inspection"
+- "image"
+risk: low
+description: "Output image OCI/custom labels as JSON for metadata audit and provenance tracing."
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${IMAGE} --format '{{json .Config.Labels}}'
+parameters:
+  - name: "IMAGE"
+    description: "Target image name or ID"
+    required: true
+    default: ""

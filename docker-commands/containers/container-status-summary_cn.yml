@@ -1,0 +1,13 @@
+name: "容器状态汇总"
+category: "Docker"
+tags:
+- "容器"
+- "巡检"
+risk: low
+description: "以表格形式汇总容器名称、镜像、状态与端口映射，便于快速浏览运行态。"
+platform:
+- linux
+- macos
+command: |-
+  docker ps -a --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'
+parameters: []

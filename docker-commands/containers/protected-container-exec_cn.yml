@@ -1,0 +1,29 @@
+name: "在容器内执行命令"
+category: "Docker"
+tags:
+- "容器"
+- "写操作"
+risk: high
+description: "在运行中容器内执行命令。仅试运行：未设置 CONFIRM_EXEC=EXEC_CONTAINER 时只展示目标不执行。在容器内执行任意命令风险较高，请审阅命令内容。"
+platform:
+- linux
+- macos
+command: |-
+  docker exec ${EXEC_USER:+-u ${EXEC_USER}} ${CONTAINER} ${EXEC_COMMAND}
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""
+  - name: "EXEC_COMMAND"
+    description: "容器内执行命令"
+    required: true
+    default: ""
+  - name: "EXEC_USER"
+    description: "容器内执行用户"
+    required: false
+    default: ""
+  - name: "CONFIRM_EXEC"
+    description: "确认执行令牌，需设为 EXEC_CONTAINER"
+    required: true
+    default: ""

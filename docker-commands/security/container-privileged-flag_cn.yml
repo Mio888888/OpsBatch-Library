@@ -1,0 +1,14 @@
+name: "检查容器特权标志"
+category: "Docker"
+tags:
+- "安全"
+- "巡检"
+- "特权"
+risk: low
+description: "列出所有容器及其 privileged 标志，用于识别以特权模式运行的高风险容器。"
+platform:
+- linux
+- macos
+command: |-
+  docker ps -a --format '{{.Names}}' | xargs -r -n1 docker inspect --format '{{.Name}} privileged={{.HostConfig.Privileged}}'
+parameters: []

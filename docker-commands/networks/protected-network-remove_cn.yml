@@ -1,0 +1,21 @@
+name: "删除网络"
+category: "Docker"
+tags:
+- "网络"
+- "写操作"
+risk: high
+description: "删除网络。仅试运行：未设置 CONFIRM_REMOVE=REMOVE_NETWORK 时只展示网络不删除。仍有容器连接的网络无法删除。"
+platform:
+- linux
+- macos
+command: |-
+  docker network rm ${NETWORK}
+parameters:
+  - name: "NETWORK"
+    description: "目标网络名称或 ID"
+    required: true
+    default: ""
+  - name: "CONFIRM_REMOVE"
+    description: "确认删除令牌，需设为 REMOVE_NETWORK"
+    required: true
+    default: ""

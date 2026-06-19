@@ -1,0 +1,25 @@
+name: "Stop Container"
+category: "docker"
+tags:
+- "container"
+- "mutation"
+risk: high
+description: "Stop a container. Dry-run by default. Without CONFIRM_STOP=STOP_CONTAINER the container is only shown, not stopped. Stopping interrupts services running inside."
+platform:
+- linux
+- macos
+command: |-
+  docker stop -t ${TIMEOUT} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""
+  - name: "TIMEOUT"
+    description: "Graceful stop timeout in seconds"
+    required: false
+    default: "10"
+  - name: "CONFIRM_STOP"
+    description: "Confirm token; must be STOP_CONTAINER to execute"
+    required: true
+    default: ""

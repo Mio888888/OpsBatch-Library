@@ -1,0 +1,14 @@
+name: "Check Container Privileged Flag"
+category: "docker"
+tags:
+- "security"
+- "inspection"
+- "privileged"
+risk: low
+description: "List all containers and their privileged flag to identify high-risk privileged containers."
+platform:
+- linux
+- macos
+command: |-
+  docker ps -a --format '{{.Names}}' | xargs -r -n1 docker inspect --format '{{.Name}} privileged={{.HostConfig.Privileged}}'
+parameters: []

@@ -1,0 +1,13 @@
+name: "Docker 版本"
+category: "Docker"
+tags:
+- "系统"
+- "巡检"
+risk: low
+description: "输出客户端与服务端 Docker 版本与 API 版本，用于版本兼容性与升级排查。"
+platform:
+- linux
+- macos
+command: |-
+  docker version
+parameters: []

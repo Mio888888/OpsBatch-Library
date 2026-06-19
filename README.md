@@ -2,6 +2,7 @@
 
 [![OpsBatch](https://img.shields.io/badge/OpsBatch-内容库-blue)](https://github.com/your-org/OpsBatch)
 [![Commands](https://img.shields.io/badge/commands-194%20pairs-green)](commands/)
+[![Docker commands](https://img.shields.io/badge/docker--commands-52%20pairs-blue)](docker-commands/)
 [![Shell scripts](https://img.shields.io/badge/shell-38%20pairs-orange)](scripts/shell/)
 [![Quick actions](https://img.shields.io/badge/quick--actions-8%20pairs-purple)](quick-actions/)
 
@@ -17,6 +18,7 @@ English artifacts are included for OpsBatch users who prefer English names, desc
 | :--- | :--- | ---: |
 | 库级元信息 / Library metadata | `library_cn.json` / `library_en.json` | 2 files |
 | 命令 / Commands | `commands/<category>/<name>_cn.yml` + `.sh`，`<name>_en.yml` + `.sh` | 194 bilingual pairs / 388 YAML + 388 Shell files |
+| Docker 原始命令 / Docker raw commands | `docker-commands/<category>/<name>_cn.yml`，`<name>_en.yml`（内联 `command:` 字段，无 `.sh`） | 52 bilingual pairs / 104 YAML files |
 | Shell 脚本库 / Shell script library | 本地脚本：`scripts/shell/<name>_cn.meta.json` + `.sh`，`<name>_en.meta.json` + `.sh`；外部脚本：双语 `.meta.json` 直接指向上游 Raw URL | 38 bilingual pairs / 76 metadata + 74 local Shell files |
 | 快捷动作 / Quick actions | `quick-actions/<name>_cn.json` / `<name>_en.json` | 8 bilingual pairs / 16 JSON files |
 | 模板 / Templates | `templates/*_cn.*` / `templates/*_en.*` | 8 files |
@@ -32,6 +34,16 @@ English artifacts are included for OpsBatch users who prefer English names, desc
 | `process` | 17 | `system` | 12 |
 | `log` | 16 | `user` | 5 |
 | `service` | 1 | | |
+
+`docker-commands/`（内联原始命令，按子分类双语组计数）：
+
+| Directory | Pairs | Directory | Pairs |
+| :--- | ---: | :--- | ---: |
+| `containers` | 14 | `images` | 7 |
+| `system` | 5 | `compose` | 5 |
+| `volumes` | 5 | `networks` | 4 |
+| `security` | 4 | `resources` | 3 |
+| `registry` | 3 | `logging` | 2 |
 
 ## Breaking change：无后缀旧路径已移除
 
@@ -62,6 +74,10 @@ Legacy Raw URLs and quick-action refs are breaking. Choose `_cn` or `_en` artifa
 │       ├── <command>_cn.sh
 │       ├── <command>_en.yml
 │       └── <command>_en.sh
+├── docker-commands/
+│   └── <category>/
+│       ├── <command>_cn.yml
+│       └── <command>_en.yml
 ├── scripts/
 │   └── shell/
 │       ├── <script>_cn.meta.json
@@ -74,6 +90,8 @@ Legacy Raw URLs and quick-action refs are breaking. Choose `_cn` or `_en` artifa
 ├── templates/
 │   ├── command_cn.yml
 │   ├── command_en.yml
+│   ├── command-inline_cn.yml
+│   ├── command-inline_en.yml
 │   ├── script_cn.meta.json
 │   ├── script_cn.sh
 │   ├── script_en.meta.json
@@ -156,7 +174,12 @@ SAMPLES=10 INTERVAL=5 \
 
 ### 命令 YAML / Command YAML
 
-路径：
+命令 YAML 支持两种执行形态，二选一：
+
+- **脚本命令**：`commands/<category>/` 下，YAML 的 `url` 指向同语言 `.sh` 脚本，行为在 `.sh` 中实现。
+- **内联原始命令**：`docker-commands/<category>/` 下，YAML 的 `command` 字段直接写原始 shell 命令，不需要 `.sh`。参数通过 `${VAR:-default}` 注入，OpsBatch 执行时按 `parameters[]` 注入环境变量后执行该命令字符串。
+
+脚本命令路径：
 
 ```text
 commands/<category>/<name>_cn.yml
@@ -165,7 +188,14 @@ commands/<category>/<name>_en.yml
 commands/<category>/<name>_en.sh
 ```
 
-最小中文示例：
+内联原始命令路径（无 `.sh`）：
+
+```text
+docker-commands/<category>/<name>_cn.yml
+docker-commands/<category>/<name>_en.yml
+```
+
+最小中文示例（脚本命令）：
 
 ```yaml
 name: 检查系统负载
@@ -201,10 +231,41 @@ platform:
 parameters: []
 ```
 
+内联原始命令示例（`command` 与 `url` 二选一，此处用 `command`）：
+
+```yaml
+name: 查看容器日志
+category: Docker
+tags:
+- 容器
+- 日志
+- 巡检
+risk: low
+description: 查看容器最近日志，支持行数与时间窗口过滤，用于应用排障。
+platform:
+- linux
+- macos
+command: |-
+  docker logs --since ${SINCE} --tail ${LINES} ${CONTAINER}
+parameters:
+- name: CONTAINER
+  description: 目标容器名称或 ID
+  required: true
+  default: ""
+- name: LINES
+  description: 显示行数
+  required: false
+  default: "120"
+- name: SINCE
+  description: 起始时间或时间窗口
+  required: false
+  default: "2h"
+```
+
 | 字段 / Field | 必填 / Required | 说明 / Description |
 | :--- | :---: | :--- |
 | `name` | 是 / Yes | 当前语言的显示名称 |
-| `url` | 是 / Yes | 同语言 `.sh` 的 HTTP(S) Raw URL；`*_cn.yml` 指向 `*_cn.sh`，`*_en.yml` 指向 `*_en.sh` |
+| `url` 或 `command` | 是 / Yes（二选一） | `url`：同语言 `.sh` 的 HTTP(S) Raw URL（脚本命令）；`command`：内联原始 shell 命令字符串，无需 `.sh`（仅 `docker-commands/` 使用）。两者只能存在其一 |
 | `category` | 是 / Yes | 当前语言的展示分类；中文侧中文化，英文侧英文 |
 | `tags` | 是 / Yes | 当前语言的展示标签数组；中文侧中文化，英文侧英文 |
 | `risk` | 是 / Yes | 风险等级：`low` / `medium` / `high` |
@@ -337,13 +398,14 @@ English step references must use `_en` resources:
 ## 新增 / 维护内容流程
 
 1. 从 `templates/` 复制同 stem 的 `_cn` 和 `_en` 模板，例如：
-   - `templates/command_cn.yml` / `templates/command_en.yml`
+   - `templates/command_cn.yml` / `templates/command_en.yml`（脚本命令）
+   - `templates/command-inline_cn.yml` / `templates/command-inline_en.yml`（内联原始命令，写入 `docker-commands/`）
    - `templates/script_cn.sh` / `templates/script_en.sh`
    - `templates/script_cn.meta.json` / `templates/script_en.meta.json`
    - `templates/quick-action_cn.json` / `templates/quick-action_en.json`
 2. 放到目标目录并保持同 stem 配对，例如 `check-load_cn.yml` 与 `check-load_en.yml`。
 3. 本地化显示字段和 Shell 用户可见文本；保持文件路径、URL、参数名、风险等级、平台、默认值和执行语义一致。
-4. 检查所有 `url`：命令 YAML 必须指向同语言 `.sh`；脚本 meta 默认指向同语言 `.sh`，直接引用可信上游脚本时可指向外部 HTTP(S) Shell Raw URL；quick-action 顶层 `url` 必须指向当前 JSON 文件。
+4. 检查执行形态：脚本命令的 `url` 必须指向同语言 `.sh`；内联命令使用 `command` 字段且不能带 `.sh`；脚本 meta 默认指向同语言 `.sh`，直接引用可信上游脚本时可指向外部 HTTP(S) Shell Raw URL；quick-action 顶层 `url` 必须指向当前 JSON 文件。
 5. 检查所有 quick-action `steps[].ref` / `steps[].url`：中文动作只引用 `_cn`，英文动作只引用 `_en`。
 6. 高风险内容先实现 dry-run / 候选摘要，再要求显式目标变量和确认变量，最后才允许真实变更。
 7. 运行校验命令并修复所有错误。
@@ -368,14 +430,15 @@ python3 -m py_compile tools/validate_library.py
 - `library_cn.json` / `library_en.json` 存在且字段完整，旧 `library.json` 不存在。
 - JSON / YAML 语法正确。
 - 命令 YAML 必填字段、`risk`、`tags` / `platform` / `parameters` 数组字段正确。
-- 命令 YAML 与同语言 `.sh` 配对，且 `url` 指向同语言 `.sh`。
-- 命令 `.sh` 使用 `_cn` / `_en` 后缀并存在同语言 YAML。
+- 命令 YAML 必须且只能定义 `url`（脚本命令）或 `command`（内联原始命令）之一；两者不可共存。
+- 脚本命令 YAML 与同语言 `.sh` 配对，且 `url` 指向同语言 `.sh`；内联命令 `command` 不得带 `.sh`，且引用的每个 `${VAR}` 必须在 `parameters` 中声明。
+- 命令 `.sh` 使用 `_cn` / `_en` 后缀并存在同语言 YAML（`commands/` 与 `docker-commands/` 两个根均会校验）。
 - `scripts/shell/*.sh` 使用 `_cn` / `_en` 后缀，存在同语言 `.meta.json`；脚本 meta 使用 `_cn` / `_en` 后缀，成对存在，且 `url` 指向同语言本地 `.sh` 或外部 HTTP(S) 脚本 URL。
 - `_cn` / `_en` 兄弟文件配对完整。
 - quick-action 必填字段、非空 `steps`、step `type`、`ref` 存在性和语言一致性正确。
 - quick-action 顶层 `url` 指向自身，step `url` 与 `ref` 目标一致。
 - managed content 区域没有无后缀旧文件。
-- Bash 可用时，对命令脚本和 `scripts/shell/*.sh` 执行 `bash -n`。
+- Bash 可用时，对 `commands/` 与 `docker-commands/` 下的命令脚本和 `scripts/shell/*.sh` 执行 `bash -n`。
 
 ## 风险与安全约定 / Safety conventions
 

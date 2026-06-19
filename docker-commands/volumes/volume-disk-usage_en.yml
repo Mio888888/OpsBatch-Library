@@ -1,0 +1,14 @@
+name: "Volume Disk Usage"
+category: "docker"
+tags:
+- "volume"
+- "inspection"
+- "disk"
+risk: low
+description: "Report per-volume disk usage for persistent storage capacity planning and cleanup decisions."
+platform:
+- linux
+- macos
+command: |-
+  docker system df -v --format '{{range .Volumes}}{{.Name}}\t{{.Size}}\n{{end}}'
+parameters: []

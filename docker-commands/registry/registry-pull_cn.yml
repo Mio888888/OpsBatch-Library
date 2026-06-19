@@ -1,0 +1,21 @@
+name: "拉取镜像"
+category: "Docker"
+tags:
+- "Registry"
+- "镜像"
+risk: medium
+description: "从远程 Registry 拉取镜像。仅试运行：未设置 CONFIRM_PULL=REGISTRY_PULL 时只展示目标不拉取。会占用网络带宽与本地存储。"
+platform:
+- linux
+- macos
+command: |-
+  docker pull ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "目标镜像完整引用(含 registry)"
+    required: true
+    default: ""
+  - name: "CONFIRM_PULL"
+    description: "确认拉取令牌，需设为 REGISTRY_PULL"
+    required: true
+    default: ""

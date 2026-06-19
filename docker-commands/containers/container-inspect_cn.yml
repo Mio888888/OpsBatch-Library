@@ -1,0 +1,17 @@
+name: "查看容器元数据"
+category: "Docker"
+tags:
+- "容器"
+- "巡检"
+risk: low
+description: "输出容器完整元数据 JSON，用于排查挂载、网络、重启策略与资源限制配置。"
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""

@@ -1,0 +1,25 @@
+name: "删除镜像"
+category: "Docker"
+tags:
+- "镜像"
+- "写操作"
+risk: high
+description: "删除本地镜像。仅试运行：未设置 CONFIRM_REMOVE=REMOVE_IMAGE 时只展示镜像不删除。删除镜像不可逆，请先确认无运行容器依赖。"
+platform:
+- linux
+- macos
+command: |-
+  docker rmi --force=${FORCE} ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "目标镜像名称或 ID"
+    required: true
+    default: ""
+  - name: "FORCE"
+    description: "是否强制删除(即便有容器引用)"
+    required: false
+    default: "false"
+  - name: "CONFIRM_REMOVE"
+    description: "确认删除令牌，需设为 REMOVE_IMAGE"
+    required: true
+    default: ""

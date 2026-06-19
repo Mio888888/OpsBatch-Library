@@ -1,0 +1,22 @@
+name: "推送镜像"
+category: "Docker"
+tags:
+- "Registry"
+- "镜像"
+- "写操作"
+risk: high
+description: "推送本地镜像到远程 Registry。仅试运行：未设置 CONFIRM_PUSH=REGISTRY_PUSH 时只展示目标不推送。推送后镜像对 registry 可见，注意敏感信息泄露风险。"
+platform:
+- linux
+- macos
+command: |-
+  docker push ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "目标镜像完整引用(含 registry)"
+    required: true
+    default: ""
+  - name: "CONFIRM_PUSH"
+    description: "确认推送令牌，需设为 REGISTRY_PUSH"
+    required: true
+    default: ""

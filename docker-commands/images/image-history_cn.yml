@@ -1,0 +1,21 @@
+name: "查看镜像构建历史"
+category: "Docker"
+tags:
+- "镜像"
+- "巡检"
+risk: low
+description: "显示镜像构建历史与每层指令大小，用于镜像分层审计与瘦身分析。"
+platform:
+- linux
+- macos
+command: |-
+  docker history --no-trunc=${NO_TRUNC} ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "目标镜像名称或 ID"
+    required: true
+    default: ""
+  - name: "NO_TRUNC"
+    description: "是否显示完整命令"
+    required: false
+    default: "false"

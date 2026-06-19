@@ -1,0 +1,17 @@
+name: "Inspect Container Metadata"
+category: "docker"
+tags:
+- "container"
+- "inspection"
+risk: low
+description: "Dump full container metadata JSON to inspect mounts, network, restart policy and resource limits."
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""

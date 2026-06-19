@@ -1,0 +1,18 @@
+name: "查看镜像标签"
+category: "Docker"
+tags:
+- "安全"
+- "巡检"
+- "镜像"
+risk: low
+description: "输出镜像的 OCI/自定义标签 JSON，用于镜像元数据审计与来源追溯。"
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${IMAGE} --format '{{json .Config.Labels}}'
+parameters:
+  - name: "IMAGE"
+    description: "目标镜像名称或 ID"
+    required: true
+    default: ""

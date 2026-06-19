@@ -1,0 +1,13 @@
+name: "Docker 系统信息"
+category: "Docker"
+tags:
+- "系统"
+- "巡检"
+risk: low
+description: "输出 Docker 守护进程全局信息（版本、存储驱动、运行时、资源），用于环境基线巡检。"
+platform:
+- linux
+- macos
+command: |-
+  docker info
+parameters: []

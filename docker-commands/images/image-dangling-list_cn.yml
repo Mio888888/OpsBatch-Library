@@ -1,0 +1,14 @@
+name: "列出悬空镜像"
+category: "Docker"
+tags:
+- "镜像"
+- "巡检"
+- "清理候选"
+risk: low
+description: "列出悬空（dangling）镜像，用于定位可清理的未命名中间层。"
+platform:
+- linux
+- macos
+command: |-
+  docker images -f dangling=true
+parameters: []

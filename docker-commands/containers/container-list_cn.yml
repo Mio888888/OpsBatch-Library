@@ -1,0 +1,21 @@
+name: "列出容器"
+category: "Docker"
+tags:
+- "容器"
+- "巡检"
+risk: low
+description: "列出容器，支持包含已停止容器与可写层大小，用于容器清单与状态巡检。"
+platform:
+- linux
+- macos
+command: |-
+  docker ps --all=${ALL} --size=${SIZE}
+parameters:
+  - name: "ALL"
+    description: "是否包含已停止容器"
+    required: false
+    default: "false"
+  - name: "SIZE"
+    description: "是否显示可写层大小"
+    required: false
+    default: "false"

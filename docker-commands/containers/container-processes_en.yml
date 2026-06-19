@@ -1,0 +1,18 @@
+name: "List Container Processes"
+category: "docker"
+tags:
+- "container"
+- "inspection"
+- "process"
+risk: low
+description: "List processes running inside a container to inspect anomalous processes and resource consumers."
+platform:
+- linux
+- macos
+command: |-
+  docker top ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""

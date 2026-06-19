@@ -1,0 +1,26 @@
+name: "Tail Container Logs"
+category: "docker"
+tags:
+- "container"
+- "log"
+- "inspection"
+risk: low
+description: "Tail recent container logs with line count and time window filters for application troubleshooting."
+platform:
+- linux
+- macos
+command: |-
+  docker logs --since ${SINCE} --tail ${LINES} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""
+  - name: "LINES"
+    description: "Number of lines to show"
+    required: false
+    default: "120"
+  - name: "SINCE"
+    description: "Start time or time window"
+    required: false
+    default: "2h"

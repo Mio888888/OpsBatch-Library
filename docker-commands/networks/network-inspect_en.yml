@@ -1,0 +1,17 @@
+name: "Inspect Network Metadata"
+category: "docker"
+tags:
+- "network"
+- "inspection"
+risk: low
+description: "Dump full network metadata JSON including subnet, gateway and connected containers for connectivity troubleshooting."
+platform:
+- linux
+- macos
+command: |-
+  docker network inspect ${NETWORK}
+parameters:
+  - name: "NETWORK"
+    description: "Target network name or ID"
+    required: true
+    default: ""

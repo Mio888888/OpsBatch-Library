@@ -1,0 +1,18 @@
+name: "Show Compose Images"
+category: "docker"
+tags:
+- "compose"
+- "inspection"
+- "image"
+risk: low
+description: "List images used by a Compose project and their containers for image version inspection."
+platform:
+- linux
+- macos
+command: |-
+  docker compose -f ${COMPOSE_FILE} images
+parameters:
+  - name: "COMPOSE_FILE"
+    description: "Compose file path"
+    required: false
+    default: "docker-compose.yml"

@@ -1,0 +1,14 @@
+name: "检查容器运行用户"
+category: "Docker"
+tags:
+- "安全"
+- "巡检"
+- "用户"
+risk: low
+description: "检查运行中容器以何种用户运行，用于识别默认以 root 运行的容器（安全风险）。"
+platform:
+- linux
+- macos
+command: |-
+  docker ps -q | xargs -r -n1 docker inspect --format '{{.Name}} user={{.Config.User}}'
+parameters: []

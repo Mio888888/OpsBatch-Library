@@ -1,0 +1,18 @@
+name: "查看容器重启策略"
+category: "Docker"
+tags:
+- "资源"
+- "巡检"
+- "高可用"
+risk: low
+description: "输出容器重启策略与最大重试次数，用于高可用性配置巡检。"
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${CONTAINER} --format '{{.HostConfig.RestartPolicy.Name}} retries={{.HostConfig.RestartPolicy.MaximumRetryCount}}'
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""

@@ -1,0 +1,10 @@
+name: Command Name
+category: docker
+tags:
+- container
+risk: low
+description: Describe command purpose, applicable scenarios, output, and operational notes.
+platform:
+- linux
+command: docker version
+parameters: []

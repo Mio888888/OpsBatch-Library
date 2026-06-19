@@ -1,0 +1,21 @@
+name: "List Containers"
+category: "docker"
+tags:
+- "container"
+- "inspection"
+risk: low
+description: "List containers with optional stopped containers and writable layer sizes for inventory and status."
+platform:
+- linux
+- macos
+command: |-
+  docker ps --all=${ALL} --size=${SIZE}
+parameters:
+  - name: "ALL"
+    description: "Include stopped containers"
+    required: false
+    default: "false"
+  - name: "SIZE"
+    description: "Show writable layer size"
+    required: false
+    default: "false"

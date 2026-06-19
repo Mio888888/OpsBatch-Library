@@ -1,0 +1,21 @@
+name: "Pull Image"
+category: "docker"
+tags:
+- "registry"
+- "image"
+risk: medium
+description: "Pull an image from a remote registry. Dry-run by default. Without CONFIRM_PULL=REGISTRY_PULL only the target is shown, nothing is pulled. Consumes network bandwidth and local storage."
+platform:
+- linux
+- macos
+command: |-
+  docker pull ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "Full image reference including registry"
+    required: true
+    default: ""
+  - name: "CONFIRM_PULL"
+    description: "Confirm token; must be REGISTRY_PULL to execute"
+    required: true
+    default: ""

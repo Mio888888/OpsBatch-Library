@@ -1,0 +1,18 @@
+name: "Image Size Ranking"
+category: "docker"
+tags:
+- "image"
+- "inspection"
+- "disk"
+risk: low
+description: "Rank local images by size descending to quickly find the largest images consuming disk."
+platform:
+- linux
+- macos
+command: |-
+  docker images --format '{{.Size}}\t{{.Repository}}:{{.Tag}}' | sort -rh | head -n ${LIMIT}
+parameters:
+  - name: "LIMIT"
+    description: "Maximum number of entries to show"
+    required: false
+    default: "10"

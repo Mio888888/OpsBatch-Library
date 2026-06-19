@@ -1,0 +1,14 @@
+name: "Docker Disk Usage Detail"
+category: "docker"
+tags:
+- "system"
+- "inspection"
+- "disk"
+risk: low
+description: "List detailed per-item disk usage for images, containers and volumes for fine-grained disk analysis."
+platform:
+- linux
+- macos
+command: |-
+  docker system df -v
+parameters: []

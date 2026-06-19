@@ -1,0 +1,13 @@
+name: "Docker System Info"
+category: "docker"
+tags:
+- "system"
+- "inspection"
+risk: low
+description: "Dump Docker daemon global info (version, storage driver, runtime, resources) for environment baseline inspection."
+platform:
+- linux
+- macos
+command: |-
+  docker info
+parameters: []

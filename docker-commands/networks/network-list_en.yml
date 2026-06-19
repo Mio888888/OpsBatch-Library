@@ -1,0 +1,13 @@
+name: "List Networks"
+category: "docker"
+tags:
+- "network"
+- "inspection"
+risk: low
+description: "List all Docker networks for topology inspection and orphan network detection."
+platform:
+- linux
+- macos
+command: |-
+  docker network ls
+parameters: []

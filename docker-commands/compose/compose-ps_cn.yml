@@ -1,0 +1,21 @@
+name: "查看 Compose 服务状态"
+category: "Docker"
+tags:
+- "Compose"
+- "巡检"
+risk: low
+description: "列出 Compose 项目下的服务与容器状态，用于多容器编排巡检。"
+platform:
+- linux
+- macos
+command: |-
+  docker compose -f ${COMPOSE_FILE} ${PROJECT:+-p ${PROJECT}} ps
+parameters:
+  - name: "COMPOSE_FILE"
+    description: "Compose 文件路径"
+    required: false
+    default: "docker-compose.yml"
+  - name: "PROJECT"
+    description: "Compose 项目名称（可选）"
+    required: true
+    default: ""

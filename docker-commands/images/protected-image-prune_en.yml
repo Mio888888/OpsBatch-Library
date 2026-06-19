@@ -1,0 +1,26 @@
+name: "Prune Unused Images"
+category: "docker"
+tags:
+- "image"
+- "cleanup"
+- "mutation"
+risk: high
+description: "Prune unused images. Dry-run by default. Without CONFIRM_PRUNE=PRUNE_IMAGES only candidates are counted, nothing is removed. SCOPE=all removes all images unused by containers and is higher risk."
+platform:
+- linux
+- macos
+command: |-
+  docker image prune --filter until=${UNTIL}
+parameters:
+  - name: "UNTIL"
+    description: "Time filter for pruning"
+    required: false
+    default: "24h"
+  - name: "SCOPE"
+    description: "Prune scope: dangling or all"
+    required: false
+    default: "dangling"
+  - name: "CONFIRM_PRUNE"
+    description: "Confirm token; must be PRUNE_IMAGES to execute"
+    required: true
+    default: ""

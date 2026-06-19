@@ -1,0 +1,18 @@
+name: "查看容器 CPU 限额"
+category: "Docker"
+tags:
+- "资源"
+- "巡检"
+- "CPU"
+risk: low
+description: "输出容器 CPU 限额配置（CPU 数、cpuset、配额），用于 CPU 资源规划与争抢排查。"
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${CONTAINER} --format 'cpus={{.HostConfig.NanoCpus}} cpuset={{.HostConfig.CpusetCpus}} quota={{.HostConfig.CpuQuota}}'
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""

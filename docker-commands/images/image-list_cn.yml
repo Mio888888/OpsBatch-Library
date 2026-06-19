@@ -1,0 +1,21 @@
+name: "列出本地镜像"
+category: "Docker"
+tags:
+- "镜像"
+- "巡检"
+risk: low
+description: "列出本地镜像，支持中间层镜像与 digest 显示，用于镜像清单巡检。"
+platform:
+- linux
+- macos
+command: |-
+  docker images --all=${ALL} --digests=${DIGESTS}
+parameters:
+  - name: "ALL"
+    description: "是否包含中间层镜像"
+    required: false
+    default: "false"
+  - name: "DIGESTS"
+    description: "是否显示镜像 digest"
+    required: false
+    default: "false"

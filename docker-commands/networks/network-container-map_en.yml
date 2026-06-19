@@ -1,0 +1,17 @@
+name: "Network Container IP Map"
+category: "docker"
+tags:
+- "network"
+- "inspection"
+risk: low
+description: "List all containers and their IPs on a target network for membership inventory and IP conflict checks."
+platform:
+- linux
+- macos
+command: |-
+  docker network inspect ${NETWORK} --format '{{range .Containers}}{{.Name}} {{.IPv4Address}}\n{{end}}'
+parameters:
+  - name: "NETWORK"
+    description: "Target network name or ID"
+    required: true
+    default: ""

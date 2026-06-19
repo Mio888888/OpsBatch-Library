@@ -1,0 +1,21 @@
+name: "删除卷"
+category: "Docker"
+tags:
+- "卷"
+- "写操作"
+risk: high
+description: "删除卷。仅试运行：未设置 CONFIRM_REMOVE=REMOVE_VOLUME 时只展示卷不删除。删除卷将永久丢失其中数据，不可逆。"
+platform:
+- linux
+- macos
+command: |-
+  docker volume rm ${VOLUME}
+parameters:
+  - name: "VOLUME"
+    description: "目标卷名称"
+    required: true
+    default: ""
+  - name: "CONFIRM_REMOVE"
+    description: "确认删除令牌，需设为 REMOVE_VOLUME"
+    required: true
+    default: ""

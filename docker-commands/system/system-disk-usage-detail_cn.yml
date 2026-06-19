@@ -1,0 +1,14 @@
+name: "Docker 磁盘占用明细"
+category: "Docker"
+tags:
+- "系统"
+- "巡检"
+- "磁盘"
+risk: low
+description: "按镜像、容器、卷逐项详细列出磁盘占用，用于精细化磁盘分析。"
+platform:
+- linux
+- macos
+command: |-
+  docker system df -v
+parameters: []

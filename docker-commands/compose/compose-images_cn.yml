@@ -1,0 +1,18 @@
+name: "查看 Compose 镜像"
+category: "Docker"
+tags:
+- "Compose"
+- "巡检"
+- "镜像"
+risk: low
+description: "列出 Compose 项目使用的镜像与对应容器，用于镜像版本巡检。"
+platform:
+- linux
+- macos
+command: |-
+  docker compose -f ${COMPOSE_FILE} images
+parameters:
+  - name: "COMPOSE_FILE"
+    description: "Compose 文件路径"
+    required: false
+    default: "docker-compose.yml"

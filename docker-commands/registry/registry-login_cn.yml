@@ -1,0 +1,25 @@
+name: "登录 Registry"
+category: "Docker"
+tags:
+- "Registry"
+- "凭证"
+risk: medium
+description: "登录远程 Registry。仅试运行：未设置 CONFIRM_LOGIN=REGISTRY_LOGIN 时只展示目标不登录。会通过交互输入密码，注意凭证安全。"
+platform:
+- linux
+- macos
+command: |-
+  docker login ${REGISTRY} -u ${USERNAME}
+parameters:
+  - name: "REGISTRY"
+    description: "目标 Registry 地址"
+    required: true
+    default: ""
+  - name: "USERNAME"
+    description: "登录用户名"
+    required: true
+    default: ""
+  - name: "CONFIRM_LOGIN"
+    description: "确认登录令牌，需设为 REGISTRY_LOGIN"
+    required: true
+    default: ""

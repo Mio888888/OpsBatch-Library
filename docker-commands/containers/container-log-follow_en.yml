@@ -1,0 +1,22 @@
+name: "Follow Container Logs"
+category: "docker"
+tags:
+- "container"
+- "log"
+- "inspection"
+risk: low
+description: "Follow container log output in real time for live troubleshooting and log monitoring."
+platform:
+- linux
+- macos
+command: |-
+  docker logs --follow --tail ${LINES} ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""
+  - name: "LINES"
+    description: "Initial number of lines to show"
+    required: false
+    default: "50"

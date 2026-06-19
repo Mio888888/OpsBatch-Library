@@ -1,0 +1,18 @@
+name: "Show Container Memory Limit"
+category: "docker"
+tags:
+- "resource"
+- "inspection"
+- "memory"
+risk: low
+description: "Output container memory and swap limit configuration for memory planning and OOM risk assessment."
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${CONTAINER} --format 'memory={{.HostConfig.Memory}} memswap={{.HostConfig.MemorySwap}}'
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""

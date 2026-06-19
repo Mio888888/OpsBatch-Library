@@ -1,0 +1,29 @@
+name: "Execute Command in Container"
+category: "docker"
+tags:
+- "container"
+- "mutation"
+risk: high
+description: "Execute a command inside a running container. Dry-run by default. Without CONFIRM_EXEC=EXEC_CONTAINER only the target is shown, nothing is executed. Arbitrary execution inside a container is high risk; review the command first."
+platform:
+- linux
+- macos
+command: |-
+  docker exec ${EXEC_USER:+-u ${EXEC_USER}} ${CONTAINER} ${EXEC_COMMAND}
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""
+  - name: "EXEC_COMMAND"
+    description: "Command to execute inside the container"
+    required: true
+    default: ""
+  - name: "EXEC_USER"
+    description: "User to run the command as"
+    required: false
+    default: ""
+  - name: "CONFIRM_EXEC"
+    description: "Confirm token; must be EXEC_CONTAINER to execute"
+    required: true
+    default: ""

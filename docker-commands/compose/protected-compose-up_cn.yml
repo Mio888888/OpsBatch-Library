@@ -1,0 +1,25 @@
+name: "启动 Compose 服务"
+category: "Docker"
+tags:
+- "Compose"
+- "写操作"
+risk: high
+description: "启动 Compose 项目服务。仅试运行：未设置 CONFIRM_UP=COMPOSE_UP 时只校验配置不启动。会创建/重建容器并可能修改宿主机资源。"
+platform:
+- linux
+- macos
+command: |-
+  docker compose -f ${COMPOSE_FILE} up --detach=${DETACH}
+parameters:
+  - name: "COMPOSE_FILE"
+    description: "Compose 文件路径"
+    required: false
+    default: "docker-compose.yml"
+  - name: "DETACH"
+    description: "是否后台运行"
+    required: false
+    default: "true"
+  - name: "CONFIRM_UP"
+    description: "确认启动令牌，需设为 COMPOSE_UP"
+    required: true
+    default: ""

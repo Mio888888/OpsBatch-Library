@@ -1,0 +1,26 @@
+name: "Prune Docker System"
+category: "docker"
+tags:
+- "system"
+- "cleanup"
+- "mutation"
+risk: high
+description: "Prune stopped containers, unused networks, dangling images and build cache. Dry-run by default. Without CONFIRM_PRUNE=PRUNE_SYSTEM only candidates are counted, nothing is removed. INCLUDE_VOLUMES=true removes unused volumes and data cannot be recovered."
+platform:
+- linux
+- macos
+command: |-
+  docker system prune --volumes=${INCLUDE_VOLUMES} --filter until=${UNTIL}
+parameters:
+  - name: "INCLUDE_VOLUMES"
+    description: "Also prune unused volumes"
+    required: false
+    default: "false"
+  - name: "UNTIL"
+    description: "Time filter for pruning"
+    required: false
+    default: "24h"
+  - name: "CONFIRM_PRUNE"
+    description: "Confirm token; must be PRUNE_SYSTEM to execute"
+    required: true
+    default: ""

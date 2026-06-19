@@ -1,0 +1,18 @@
+name: "Show Container CPU Limit"
+category: "docker"
+tags:
+- "resource"
+- "inspection"
+- "cpu"
+risk: low
+description: "Output container CPU limit configuration (cpus, cpuset, quota) for CPU planning and contention troubleshooting."
+platform:
+- linux
+- macos
+command: |-
+  docker inspect ${CONTAINER} --format 'cpus={{.HostConfig.NanoCpus}} cpuset={{.HostConfig.CpusetCpus}} quota={{.HostConfig.CpuQuota}}'
+parameters:
+  - name: "CONTAINER"
+    description: "Target container name or ID"
+    required: true
+    default: ""

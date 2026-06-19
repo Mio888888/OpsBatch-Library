@@ -1,0 +1,17 @@
+name: "Inspect Image Metadata"
+category: "docker"
+tags:
+- "image"
+- "inspection"
+risk: low
+description: "Dump full metadata JSON for a target image to inspect config, entrypoint, layers and env."
+platform:
+- linux
+- macos
+command: |-
+  docker image inspect ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "Target image name or ID"
+    required: true
+    default: ""

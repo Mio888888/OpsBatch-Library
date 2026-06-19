@@ -1,0 +1,18 @@
+name: "查看 Docker 守护进程日志"
+category: "Docker"
+tags:
+- "日志"
+- "巡检"
+- "守护进程"
+risk: low
+description: "查看 Docker 守护进程最近的 systemd 日志，用于守护进程故障排查。"
+platform:
+- linux
+- macos
+command: |-
+  journalctl -u docker.service -n ${LINES} --no-pager
+parameters:
+  - name: "LINES"
+    description: "显示行数"
+    required: false
+    default: "100"

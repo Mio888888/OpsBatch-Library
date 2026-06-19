@@ -1,0 +1,14 @@
+name: "列出悬空卷"
+category: "Docker"
+tags:
+- "卷"
+- "巡检"
+- "清理候选"
+risk: low
+description: "列出悬空（未被任何容器引用）卷，用于定位可清理的孤立持久化存储。"
+platform:
+- linux
+- macos
+command: |-
+  docker volume ls -f dangling=true
+parameters: []

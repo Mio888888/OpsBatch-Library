@@ -1,0 +1,25 @@
+name: "Stop and Remove Compose Services"
+category: "docker"
+tags:
+- "compose"
+- "mutation"
+risk: high
+description: "Stop and remove Compose project containers and networks. Dry-run by default. Without CONFIRM_DOWN=COMPOSE_DOWN the project is only shown, not taken down. REMOVE_VOLUMES=true removes volumes and data cannot be recovered."
+platform:
+- linux
+- macos
+command: |-
+  docker compose -f ${COMPOSE_FILE} down --volumes=${REMOVE_VOLUMES}
+parameters:
+  - name: "COMPOSE_FILE"
+    description: "Compose file path"
+    required: false
+    default: "docker-compose.yml"
+  - name: "REMOVE_VOLUMES"
+    description: "Also remove named volumes"
+    required: false
+    default: "false"
+  - name: "CONFIRM_DOWN"
+    description: "Confirm token; must be COMPOSE_DOWN to execute"
+    required: true
+    default: ""

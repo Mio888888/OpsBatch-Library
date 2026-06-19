@@ -1,0 +1,14 @@
+name: "List Dangling Volumes"
+category: "docker"
+tags:
+- "volume"
+- "inspection"
+- "cleanup"
+risk: low
+description: "List dangling volumes (referenced by no container) to locate orphan persistent storage eligible for cleanup."
+platform:
+- linux
+- macos
+command: |-
+  docker volume ls -f dangling=true
+parameters: []

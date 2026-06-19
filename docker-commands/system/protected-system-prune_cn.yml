@@ -1,0 +1,26 @@
+name: "清理 Docker 系统资源"
+category: "Docker"
+tags:
+- "系统"
+- "清理"
+- "写操作"
+risk: high
+description: "清理停止的容器、未使用网络、悬空镜像与构建缓存。仅试运行：未设置 CONFIRM_PRUNE=PRUNE_SYSTEM 时只统计候选不删除。INCLUDE_VOLUMES=true 会删除未使用卷，数据不可恢复。"
+platform:
+- linux
+- macos
+command: |-
+  docker system prune --volumes=${INCLUDE_VOLUMES} --filter until=${UNTIL}
+parameters:
+  - name: "INCLUDE_VOLUMES"
+    description: "是否一并清理未使用卷"
+    required: false
+    default: "false"
+  - name: "UNTIL"
+    description: "清理时间过滤条件"
+    required: false
+    default: "24h"
+  - name: "CONFIRM_PRUNE"
+    description: "确认清理令牌，需设为 PRUNE_SYSTEM"
+    required: true
+    default: ""

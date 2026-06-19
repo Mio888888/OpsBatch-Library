@@ -1,0 +1,17 @@
+name: "查看卷元数据"
+category: "Docker"
+tags:
+- "卷"
+- "巡检"
+risk: low
+description: "输出卷完整元数据 JSON，含挂载点与驱动，用于持久化存储排查。"
+platform:
+- linux
+- macos
+command: |-
+  docker volume inspect ${VOLUME}
+parameters:
+  - name: "VOLUME"
+    description: "目标卷名称"
+    required: true
+    default: ""

@@ -1,0 +1,14 @@
+name: "List Dangling Images"
+category: "docker"
+tags:
+- "image"
+- "inspection"
+- "cleanup"
+risk: low
+description: "List dangling images to locate unnamed intermediate layers eligible for cleanup."
+platform:
+- linux
+- macos
+command: |-
+  docker images -f dangling=true
+parameters: []

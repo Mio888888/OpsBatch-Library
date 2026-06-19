@@ -1,0 +1,25 @@
+name: "Start Compose Services"
+category: "docker"
+tags:
+- "compose"
+- "mutation"
+risk: high
+description: "Start Compose project services. Dry-run by default. Without CONFIRM_UP=COMPOSE_UP only config is validated, nothing is started. Creates/recreates containers and may modify host resources."
+platform:
+- linux
+- macos
+command: |-
+  docker compose -f ${COMPOSE_FILE} up --detach=${DETACH}
+parameters:
+  - name: "COMPOSE_FILE"
+    description: "Compose file path"
+    required: false
+    default: "docker-compose.yml"
+  - name: "DETACH"
+    description: "Run in detached mode"
+    required: false
+    default: "true"
+  - name: "CONFIRM_UP"
+    description: "Confirm token; must be COMPOSE_UP to execute"
+    required: true
+    default: ""

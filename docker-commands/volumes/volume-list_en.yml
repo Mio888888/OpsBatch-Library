@@ -1,0 +1,13 @@
+name: "List Volumes"
+category: "docker"
+tags:
+- "volume"
+- "inspection"
+risk: low
+description: "List all Docker volumes for persistent storage inventory and orphan volume detection."
+platform:
+- linux
+- macos
+command: |-
+  docker volume ls
+parameters: []

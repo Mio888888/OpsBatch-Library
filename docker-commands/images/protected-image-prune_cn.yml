@@ -1,0 +1,26 @@
+name: "清理未使用镜像"
+category: "Docker"
+tags:
+- "镜像"
+- "清理"
+- "写操作"
+risk: high
+description: "清理未使用镜像。仅试运行：未设置 CONFIRM_PRUNE=PRUNE_IMAGES 时只统计候选不删除。SCOPE=all 会清理所有未被容器使用的镜像，风险较高。"
+platform:
+- linux
+- macos
+command: |-
+  docker image prune --filter until=${UNTIL}
+parameters:
+  - name: "UNTIL"
+    description: "清理时间过滤条件"
+    required: false
+    default: "24h"
+  - name: "SCOPE"
+    description: "清理范围 dangling 或 all"
+    required: false
+    default: "dangling"
+  - name: "CONFIRM_PRUNE"
+    description: "确认清理令牌，需设为 PRUNE_IMAGES"
+    required: true
+    default: ""

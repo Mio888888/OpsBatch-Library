@@ -1,0 +1,21 @@
+name: "重启容器"
+category: "Docker"
+tags:
+- "容器"
+- "写操作"
+risk: high
+description: "重启容器。仅试运行：未设置 CONFIRM_RESTART=RESTART_CONTAINER 时只展示容器不重启。重启会中断容器内运行的服务。"
+platform:
+- linux
+- macos
+command: |-
+  docker restart ${CONTAINER}
+parameters:
+  - name: "CONTAINER"
+    description: "目标容器名称或 ID"
+    required: true
+    default: ""
+  - name: "CONFIRM_RESTART"
+    description: "确认重启令牌，需设为 RESTART_CONTAINER"
+    required: true
+    default: ""

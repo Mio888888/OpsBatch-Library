@@ -1,0 +1,17 @@
+name: "查看镜像元数据"
+category: "Docker"
+tags:
+- "镜像"
+- "巡检"
+risk: low
+description: "输出指定镜像的完整元数据 JSON，用于排查镜像配置、入口点、层与环境变量。"
+platform:
+- linux
+- macos
+command: |-
+  docker image inspect ${IMAGE}
+parameters:
+  - name: "IMAGE"
+    description: "目标镜像名称或 ID"
+    required: true
+    default: ""

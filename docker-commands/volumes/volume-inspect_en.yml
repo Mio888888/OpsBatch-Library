@@ -1,0 +1,17 @@
+name: "Inspect Volume Metadata"
+category: "docker"
+tags:
+- "volume"
+- "inspection"
+risk: low
+description: "Dump full volume metadata JSON including mountpoint and driver for persistent storage troubleshooting."
+platform:
+- linux
+- macos
+command: |-
+  docker volume inspect ${VOLUME}
+parameters:
+  - name: "VOLUME"
+    description: "Target volume name"
+    required: true
+    default: ""

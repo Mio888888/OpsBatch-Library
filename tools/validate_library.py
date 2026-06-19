@@ -15,7 +15,6 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 COMMAND_REQUIRED_FIELDS = {
     "name",
-    "url",
     "category",
     "tags",
     "risk",
@@ -23,6 +22,13 @@ COMMAND_REQUIRED_FIELDS = {
     "platform",
     "parameters",
 }
+# Command directories that the validator scans for command YAML files.
+COMMAND_ROOTS = ("commands", "docker-commands")
+# Fields that a command entry may provide as its executable surface. Each
+# command entry must define exactly one of these: a script URL or an inline
+# command string.
+COMMAND_SOURCE_FIELDS = ("url", "command")
+COMMAND_PARAM_RE = re.compile(r"\$\{(?P<name>[A-Z_][A-Z0-9_]*):-(?P<default>[^}]*)\}")
 SCRIPT_META_REQUIRED_FIELDS = {
     "name",
     "url",
@@ -227,45 +233,82 @@ def validate_localized_pair(path: Path, suffix: str, label: str, errors: list[st
     return base, lang
 
 
-def validate_commands(errors: list[str]) -> None:
-    command_root = ROOT / "commands"
-    if not command_root.is_dir():
-        fail("commands/: directory is required", errors)
+def validate_command_entry(path: Path, data: dict[str, Any], localized: tuple[str, str] | None, errors: list[str]) -> None:
+    """Validate a single command YAML entry in either script-url or inline-command mode."""
+    require_fields(path, data, COMMAND_REQUIRED_FIELDS, errors)
+    validate_risk(path, data, errors)
+    validate_array_fields(path, data, {"parameters", "platform", "tags"}, errors)
+
+    has_url = "url" in data
+    has_command = "command" in data
+    if has_url and has_command:
+        fail(f"{relative(path)}: command entry must define only one of url or command, not both", errors)
+    if not has_url and not has_command:
+        fail(f"{relative(path)}: command entry must define either url (script) or command (inline command)", errors)
+
+    if has_command:
+        command_value = data.get("command")
+        if not isinstance(command_value, str) or not command_value.strip():
+            fail(f"{relative(path)}: command must be a non-empty string", errors)
+        else:
+            for match in COMMAND_PARAM_RE.finditer(command_value):
+                name = match.group("name")
+                declared = {
+                    param.get("name") for param in data.get("parameters", [])
+                    if isinstance(param, dict) and param.get("name")
+                }
+                if name not in declared:
+                    fail(f"{relative(path)}: command references parameter {name!r} not declared in parameters", errors)
+        # Inline commands must not ship a sibling .sh file; if one exists it is dead weight.
+        sh_path = path.with_suffix(".sh")
+        if sh_path.exists():
+            fail(f"{relative(path)}: inline-command entry must not have a sibling script {relative(sh_path)}", errors)
         return
 
-    command_files = sorted([*command_root.rglob("*.yml"), *command_root.rglob("*.yaml")])
-    if not command_files:
+    # Script-URL mode: requires a same-language sibling .sh the url points to.
+    sh_path = path.with_suffix(".sh")
+    if not sh_path.exists():
+        fail(f"{relative(path)}: missing corresponding script {relative(sh_path)}", errors)
+    url = data.get("url", "")
+    if validate_http_url(path, url, "url", errors) and localized is not None:
+        _base, lang = localized
+        expected = relative(sh_path)
+        actual = url_path(str(url))
+        if actual != expected:
+            fail(f"{relative(path)}: url must point to same-language script {expected}, got {actual!r}", errors)
+        if ref_language(actual) != lang:
+            fail(f"{relative(path)}: url language must be _{lang}, got {url!r}", errors)
+
+
+def validate_commands(errors: list[str]) -> None:
+    roots_present = []
+    for root_name in COMMAND_ROOTS:
+        root = ROOT / root_name
+        if root.is_dir():
+            roots_present.append((root_name, root))
+
+    # commands/ is mandatory; docker-commands/ is optional.
+    if "commands" not in {name for name, _ in roots_present}:
+        fail("commands/: directory is required", errors)
+        return
+    if not any(root.rglob("*.yml") or root.rglob("*.yaml") for _, root in roots_present):
         fail("commands/: at least one command YAML file is required", errors)
         return
 
-    for path in command_files:
-        localized = validate_localized_pair(path, path.suffix, "command YAML", errors)
-        data = load_yaml(path, errors)
-        if data is None:
-            continue
-        require_fields(path, data, COMMAND_REQUIRED_FIELDS, errors)
-        validate_risk(path, data, errors)
+    for root_name, command_root in roots_present:
+        label = root_name
+        command_files = sorted([*command_root.rglob("*.yml"), *command_root.rglob("*.yaml")])
+        for path in command_files:
+            localized = validate_localized_pair(path, path.suffix, f"{label} YAML", errors)
+            data = load_yaml(path, errors)
+            if data is None:
+                continue
+            validate_command_entry(path, data, localized, errors)
 
-        sh_path = path.with_suffix(".sh")
-        if not sh_path.exists():
-            fail(f"{relative(path)}: missing corresponding script {relative(sh_path)}", errors)
-
-        url = data.get("url", "")
-        if validate_http_url(path, url, "url", errors) and localized is not None:
-            _base, lang = localized
-            expected = relative(sh_path)
-            actual = url_path(str(url))
-            if actual != expected:
-                fail(f"{relative(path)}: url must point to same-language script {expected}, got {actual!r}", errors)
-            if ref_language(actual) != lang:
-                fail(f"{relative(path)}: url language must be _{lang}, got {url!r}", errors)
-
-        validate_array_fields(path, data, {"parameters", "platform", "tags"}, errors)
-
-    for script_path in sorted(command_root.rglob("*.sh")):
-        localized = validate_localized_pair(script_path, ".sh", "command script", errors)
-        if localized is not None and command_metadata_path(script_path) is None:
-            fail(f"{relative(script_path)}: missing corresponding command YAML {relative(script_path.with_suffix('.yml'))}", errors)
+        for script_path in sorted(command_root.rglob("*.sh")):
+            localized = validate_localized_pair(script_path, ".sh", f"{label} script", errors)
+            if localized is not None and command_metadata_path(script_path) is None:
+                fail(f"{relative(script_path)}: missing corresponding command YAML {relative(script_path.with_suffix('.yml'))}", errors)
 
 def meta_path_for_script(path: Path) -> Path:
     return path.with_name(f"{path.stem}.meta.json")
@@ -407,11 +450,12 @@ def validate_script_syntax(errors: list[str]) -> None:
     if bash:
         for path in sorted((ROOT / "scripts" / "shell").glob("*.sh")):
             run_command([bash, "-n", str(path)], errors, f"{relative(path)} shell syntax")
-        # Also validate command .sh scripts
-        command_root = ROOT / "commands"
-        if command_root.is_dir():
-            for path in sorted(command_root.rglob("*.sh")):
-                run_command([bash, "-n", str(path)], errors, f"{relative(path)} shell syntax")
+        # Also validate command .sh scripts across all command roots.
+        for root_name in COMMAND_ROOTS:
+            command_root = ROOT / root_name
+            if command_root.is_dir():
+                for path in sorted(command_root.rglob("*.sh")):
+                    run_command([bash, "-n", str(path)], errors, f"{relative(path)} shell syntax")
 
     for path in sorted((ROOT / "scripts" / "python").glob("*.py")):
         try:
