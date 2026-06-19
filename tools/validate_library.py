@@ -28,7 +28,7 @@ COMMAND_ROOTS = ("commands", "docker-commands")
 # command entry must define exactly one of these: a script URL or an inline
 # command string.
 COMMAND_SOURCE_FIELDS = ("url", "command")
-COMMAND_PARAM_RE = re.compile(r"\$\{(?P<name>[A-Z_][A-Z0-9_]*):-(?P<default>[^}]*)\}")
+COMMAND_PARAM_RE = re.compile(r"\$\{(?P<name>[A-Z_][A-Z0-9_]*)(?::-(?P<default>[^}]*))?\}")
 SCRIPT_META_REQUIRED_FIELDS = {
     "name",
     "url",
