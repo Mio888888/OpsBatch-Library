@@ -1,5 +1,5 @@
 name: "查看 Docker 事件"
-category: "容器"
+category: 容器
 tags:
 - "容器"
 - "巡检"

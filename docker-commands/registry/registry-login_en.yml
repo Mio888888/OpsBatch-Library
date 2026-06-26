@@ -1,5 +1,5 @@
 name: "Login to Registry"
-category: "registry"
+category: registry
 tags:
 - "registry"
 - "credential"

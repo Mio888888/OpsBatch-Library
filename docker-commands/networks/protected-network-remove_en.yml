@@ -1,5 +1,5 @@
 name: "Remove Network"
-category: "networks"
+category: networks
 tags:
 - "network"
 - "mutation"

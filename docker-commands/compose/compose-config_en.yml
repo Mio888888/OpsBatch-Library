@@ -1,5 +1,5 @@
 name: "Validate Compose Config"
-category: "compose"
+category: compose
 tags:
 - "compose"
 - "inspection"

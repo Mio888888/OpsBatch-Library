@@ -1,5 +1,5 @@
 name: "Prune Docker System"
-category: "system"
+category: system
 tags:
 - "system"
 - "cleanup"

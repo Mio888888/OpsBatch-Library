@@ -1,5 +1,5 @@
 name: "查看容器日志驱动"
-category: "日志"
+category: 日志
 tags:
 - "日志"
 - "巡检"

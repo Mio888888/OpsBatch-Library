@@ -1,5 +1,5 @@
 name: "Show Container Log Driver"
-category: "logging"
+category: logging
 tags:
 - "log"
 - "inspection"

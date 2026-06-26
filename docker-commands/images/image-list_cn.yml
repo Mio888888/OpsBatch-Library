@@ -1,5 +1,5 @@
 name: "列出本地镜像"
-category: "镜像"
+category: 镜像
 tags:
 - "镜像"
 - "巡检"

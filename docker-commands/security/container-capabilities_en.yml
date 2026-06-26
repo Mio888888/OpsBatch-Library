@@ -1,5 +1,5 @@
 name: "Show Container Capabilities"
-category: "security"
+category: security
 tags:
 - "security"
 - "inspection"

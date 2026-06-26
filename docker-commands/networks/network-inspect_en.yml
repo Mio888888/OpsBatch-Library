@@ -1,5 +1,5 @@
 name: "Inspect Network Metadata"
-category: "networks"
+category: networks
 tags:
 - "network"
 - "inspection"

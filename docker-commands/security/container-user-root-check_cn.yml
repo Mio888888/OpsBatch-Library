@@ -1,5 +1,5 @@
 name: "检查容器运行用户"
-category: "安全"
+category: 安全
 tags:
 - "安全"
 - "巡检"

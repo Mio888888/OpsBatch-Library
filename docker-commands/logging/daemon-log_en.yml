@@ -1,5 +1,5 @@
 name: "Show Docker Daemon Log"
-category: "logging"
+category: logging
 tags:
 - "log"
 - "inspection"

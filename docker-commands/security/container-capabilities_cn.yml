@@ -1,5 +1,5 @@
 name: "查看容器 capabilities"
-category: "安全"
+category: 安全
 tags:
 - "安全"
 - "巡检"

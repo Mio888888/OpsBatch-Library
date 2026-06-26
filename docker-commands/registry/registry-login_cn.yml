@@ -1,5 +1,5 @@
 name: "登录 Registry"
-category: "镜像仓库"
+category: 镜像仓库
 tags:
 - "Registry"
 - "凭证"

@@ -1,5 +1,5 @@
 name: "拉取镜像"
-category: "镜像仓库"
+category: 镜像仓库
 tags:
 - "Registry"
 - "镜像"

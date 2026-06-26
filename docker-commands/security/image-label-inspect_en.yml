@@ -1,5 +1,5 @@
 name: "Inspect Image Labels"
-category: "security"
+category: security
 tags:
 - "security"
 - "inspection"

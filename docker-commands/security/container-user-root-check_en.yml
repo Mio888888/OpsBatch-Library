@@ -1,5 +1,5 @@
 name: "Check Container Running User"
-category: "security"
+category: security
 tags:
 - "security"
 - "inspection"

@@ -1,5 +1,5 @@
 name: "查看镜像元数据"
-category: "镜像"
+category: 镜像
 tags:
 - "镜像"
 - "巡检"

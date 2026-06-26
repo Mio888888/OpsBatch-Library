@@ -1,5 +1,5 @@
 name: "Docker Disk Usage Summary"
-category: "system"
+category: system
 tags:
 - "system"
 - "inspection"

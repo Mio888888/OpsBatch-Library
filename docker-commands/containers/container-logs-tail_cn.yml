@@ -1,5 +1,5 @@
 name: "查看容器日志"
-category: "容器"
+category: 容器
 tags:
 - "容器"
 - "日志"

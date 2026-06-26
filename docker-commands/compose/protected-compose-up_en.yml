@@ -1,5 +1,5 @@
 name: "Start Compose Services"
-category: "compose"
+category: compose
 tags:
 - "compose"
 - "mutation"

@@ -1,5 +1,5 @@
 name: "Remove Volume"
-category: "volumes"
+category: volumes
 tags:
 - "volume"
 - "mutation"

@@ -1,5 +1,5 @@
 name: "Show Container CPU Limit"
-category: "resources"
+category: resources
 tags:
 - "resource"
 - "inspection"

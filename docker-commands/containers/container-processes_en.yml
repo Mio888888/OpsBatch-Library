@@ -1,5 +1,5 @@
 name: "List Container Processes"
-category: "containers"
+category: containers
 tags:
 - "container"
 - "inspection"

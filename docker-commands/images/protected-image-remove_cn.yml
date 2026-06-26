@@ -1,5 +1,5 @@
 name: "删除镜像"
-category: "镜像"
+category: 镜像
 tags:
 - "镜像"
 - "写操作"

@@ -1,5 +1,5 @@
 name: "Push Image"
-category: "registry"
+category: registry
 tags:
 - "registry"
 - "image"

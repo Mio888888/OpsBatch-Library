@@ -1,5 +1,5 @@
 name: "Show Container Port Mapping"
-category: "containers"
+category: containers
 tags:
 - "container"
 - "network"

@@ -1,5 +1,5 @@
 name: "List Dangling Images"
-category: "images"
+category: images
 tags:
 - "image"
 - "inspection"

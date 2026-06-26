@@ -1,5 +1,5 @@
 name: "Show Compose Service Status"
-category: "compose"
+category: compose
 tags:
 - "compose"
 - "inspection"

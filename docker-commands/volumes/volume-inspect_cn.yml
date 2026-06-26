@@ -1,5 +1,5 @@
 name: "查看卷元数据"
-category: "数据卷"
+category: 数据卷
 tags:
 - "卷"
 - "巡检"

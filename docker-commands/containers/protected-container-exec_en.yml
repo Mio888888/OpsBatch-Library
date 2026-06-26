@@ -1,5 +1,5 @@
 name: "Execute Command in Container"
-category: "containers"
+category: containers
 tags:
 - "container"
 - "mutation"

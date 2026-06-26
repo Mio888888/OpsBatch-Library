@@ -1,5 +1,5 @@
 name: "Remove Image"
-category: "images"
+category: images
 tags:
 - "image"
 - "mutation"

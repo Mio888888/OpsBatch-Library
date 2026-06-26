@@ -1,5 +1,5 @@
 name: "查看 Compose 服务状态"
-category: "编排"
+category: 编排
 tags:
 - "Compose"
 - "巡检"

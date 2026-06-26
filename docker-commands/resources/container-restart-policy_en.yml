@@ -1,5 +1,5 @@
 name: "Show Container Restart Policy"
-category: "resources"
+category: resources
 tags:
 - "resource"
 - "inspection"

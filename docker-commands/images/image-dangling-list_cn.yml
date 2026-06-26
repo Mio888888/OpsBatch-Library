@@ -1,5 +1,5 @@
 name: "列出悬空镜像"
-category: "镜像"
+category: 镜像
 tags:
 - "镜像"
 - "巡检"

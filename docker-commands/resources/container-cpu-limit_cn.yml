@@ -1,5 +1,5 @@
 name: "查看容器 CPU 限额"
-category: "资源"
+category: 资源
 tags:
 - "资源"
 - "巡检"

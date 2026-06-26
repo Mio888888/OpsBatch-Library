@@ -1,5 +1,5 @@
 name: "Stop and Remove Compose Services"
-category: "compose"
+category: compose
 tags:
 - "compose"
 - "mutation"
