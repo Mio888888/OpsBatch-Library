@@ -1,5 +1,5 @@
 name: "校验 Compose 配置"
-category: "Docker"
+category: "编排"
 tags:
 - "Compose"
 - "巡检"

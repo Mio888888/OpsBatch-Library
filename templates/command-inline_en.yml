@@ -1,5 +1,5 @@
 name: Command Name
-category: docker
+category: containers
 tags:
 - container
 risk: low

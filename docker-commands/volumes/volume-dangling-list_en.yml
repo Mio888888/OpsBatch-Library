@@ -1,5 +1,5 @@
 name: "List Dangling Volumes"
-category: "docker"
+category: "volumes"
 tags:
 - "volume"
 - "inspection"

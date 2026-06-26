@@ -1,5 +1,5 @@
 name: "List Networks"
-category: "docker"
+category: "networks"
 tags:
 - "network"
 - "inspection"

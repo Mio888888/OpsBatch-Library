@@ -1,5 +1,5 @@
 name: "Show Container FS Changes"
-category: "docker"
+category: "containers"
 tags:
 - "container"
 - "inspection"

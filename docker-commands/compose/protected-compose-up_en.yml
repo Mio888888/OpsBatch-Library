@@ -1,5 +1,5 @@
 name: "Start Compose Services"
-category: "docker"
+category: "compose"
 tags:
 - "compose"
 - "mutation"

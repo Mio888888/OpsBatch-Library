@@ -1,5 +1,5 @@
 name: "Docker 磁盘占用汇总"
-category: "Docker"
+category: "系统"
 tags:
 - "系统"
 - "巡检"

@@ -1,5 +1,5 @@
 name: "Tail Container Logs"
-category: "docker"
+category: "containers"
 tags:
 - "container"
 - "log"

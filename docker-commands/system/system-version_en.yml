@@ -1,5 +1,5 @@
 name: "Docker Version"
-category: "docker"
+category: "system"
 tags:
 - "system"
 - "inspection"

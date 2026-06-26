@@ -1,5 +1,5 @@
 name: "Follow Container Logs"
-category: "docker"
+category: "containers"
 tags:
 - "container"
 - "log"

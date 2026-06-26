@@ -1,5 +1,5 @@
 name: "Remove Network"
-category: "docker"
+category: "networks"
 tags:
 - "network"
 - "mutation"

@@ -1,5 +1,5 @@
 name: "Container Status Summary"
-category: "docker"
+category: "containers"
 tags:
 - "container"
 - "inspection"

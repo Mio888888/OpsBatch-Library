@@ -1,5 +1,5 @@
 name: "Remove Container"
-category: "docker"
+category: "containers"
 tags:
 - "container"
 - "mutation"

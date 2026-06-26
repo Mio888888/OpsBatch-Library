@@ -1,5 +1,5 @@
 name: "Inspect Image Metadata"
-category: "docker"
+category: "images"
 tags:
 - "image"
 - "inspection"

@@ -170,7 +170,7 @@ SAMPLES=10 INTERVAL=5 \
 - `library_cn.json`：中文库名称、描述和展示分类。
 - `library_en.json`：English library name, description, and display taxonomy.
 - 两者共享 `version`、`author`、`homepage`、`baseUrl` 等结构字段。
-- `categories.commands` 与 `categories.scripts` 必须是数组；当前文件也可包含 `categories.quickActions` 作为展示分类。
+- `categories.commands`、`categories.scripts`、`categories.dockerCommands` 必须是数组；三者平级，分别对应 `commands/`、`scripts/`、`docker-commands/` 三个根的展示分类。当前文件也可包含 `categories.quickActions` 作为展示分类。
 
 ### 命令 YAML / Command YAML
 
@@ -235,7 +235,7 @@ parameters: []
 
 ```yaml
 name: 查看容器日志
-category: Docker
+category: 容器
 tags:
 - 容器
 - 日志

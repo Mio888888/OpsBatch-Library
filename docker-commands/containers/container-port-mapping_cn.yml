@@ -1,5 +1,5 @@
 name: "查看容器端口映射"
-category: "Docker"
+category: "容器"
 tags:
 - "容器"
 - "网络"

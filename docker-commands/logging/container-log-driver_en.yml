@@ -1,5 +1,5 @@
 name: "Show Container Log Driver"
-category: "docker"
+category: "logging"
 tags:
 - "log"
 - "inspection"

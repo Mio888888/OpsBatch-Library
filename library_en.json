@@ -10,7 +10,6 @@
       "process",
       "cpu",
       "memory",
-      "docker",
       "network",
       "disk",
       "package-management",
@@ -19,6 +18,18 @@
       "security",
       "service",
       "troubleshooting"
+    ],
+    "dockerCommands": [
+      "containers",
+      "images",
+      "registry",
+      "compose",
+      "networks",
+      "volumes",
+      "resources",
+      "logging",
+      "system",
+      "security"
     ],
     "scripts": [
       "shell",

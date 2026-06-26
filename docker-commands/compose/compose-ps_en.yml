@@ -1,5 +1,5 @@
 name: "Show Compose Service Status"
-category: "docker"
+category: "compose"
 tags:
 - "compose"
 - "inspection"

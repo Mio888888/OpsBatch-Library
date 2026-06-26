@@ -1,5 +1,5 @@
 name: "List Local Images"
-category: "docker"
+category: "images"
 tags:
 - "image"
 - "inspection"

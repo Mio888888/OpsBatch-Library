@@ -1,5 +1,5 @@
 name: "Inspect Container Metadata"
-category: "docker"
+category: "containers"
 tags:
 - "container"
 - "inspection"

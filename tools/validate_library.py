@@ -215,7 +215,7 @@ def validate_library_json(errors: list[str]) -> None:
         if not isinstance(categories, dict):
             fail(f"{relative(path)}: categories must be an object", errors)
         else:
-            for field in ("commands", "scripts"):
+            for field in ("commands", "scripts", "dockerCommands"):
                 if not isinstance(categories.get(field), list):
                     fail(f"{relative(path)}: categories.{field} must be an array", errors)
         validate_http_url(path, data.get("homepage"), "homepage", errors)

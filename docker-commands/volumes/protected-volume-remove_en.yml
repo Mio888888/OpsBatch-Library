@@ -1,5 +1,5 @@
 name: "Remove Volume"
-category: "docker"
+category: "volumes"
 tags:
 - "volume"
 - "mutation"

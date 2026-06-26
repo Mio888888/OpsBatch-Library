@@ -1,5 +1,5 @@
 name: "Show Docker Events"
-category: "docker"
+category: "containers"
 tags:
 - "container"
 - "inspection"

@@ -1,5 +1,5 @@
 name: "查看 Docker 守护进程日志"
-category: "Docker"
+category: "日志"
 tags:
 - "日志"
 - "巡检"

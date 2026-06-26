@@ -1,5 +1,5 @@
 name: 命令名称
-category: Docker
+category: 容器
 tags:
 - 容器
 risk: low

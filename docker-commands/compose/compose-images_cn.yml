@@ -1,5 +1,5 @@
 name: "查看 Compose 镜像"
-category: "Docker"
+category: "编排"
 tags:
 - "Compose"
 - "巡检"

@@ -1,5 +1,5 @@
 name: "Docker Disk Usage Detail"
-category: "docker"
+category: "system"
 tags:
 - "system"
 - "inspection"

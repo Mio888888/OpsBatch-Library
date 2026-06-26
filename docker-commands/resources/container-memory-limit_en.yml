@@ -1,5 +1,5 @@
 name: "Show Container Memory Limit"
-category: "docker"
+category: "resources"
 tags:
 - "resource"
 - "inspection"

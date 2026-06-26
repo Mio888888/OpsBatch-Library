@@ -1,5 +1,5 @@
 name: "查看容器重启策略"
-category: "Docker"
+category: "资源"
 tags:
 - "资源"
 - "巡检"

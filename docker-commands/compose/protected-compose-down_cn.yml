@@ -1,5 +1,5 @@
 name: "停止并移除 Compose 服务"
-category: "Docker"
+category: "编排"
 tags:
 - "Compose"
 - "写操作"

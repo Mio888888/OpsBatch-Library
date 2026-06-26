@@ -1,5 +1,5 @@
 name: "清理未使用镜像"
-category: "Docker"
+category: "镜像"
 tags:
 - "镜像"
 - "清理"

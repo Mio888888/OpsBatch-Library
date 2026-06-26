@@ -1,5 +1,5 @@
 name: "Remove Image"
-category: "docker"
+category: "images"
 tags:
 - "image"
 - "mutation"

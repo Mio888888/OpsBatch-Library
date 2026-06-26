@@ -1,5 +1,5 @@
 name: "实时跟踪容器日志"
-category: "Docker"
+category: "容器"
 tags:
 - "容器"
 - "日志"

@@ -1,5 +1,5 @@
 name: "Volume Disk Usage"
-category: "docker"
+category: "volumes"
 tags:
 - "volume"
 - "inspection"

@@ -1,5 +1,5 @@
 name: "Prune Unused Images"
-category: "docker"
+category: "images"
 tags:
 - "image"
 - "cleanup"

@@ -1,5 +1,5 @@
 name: "查看容器元数据"
-category: "Docker"
+category: "容器"
 tags:
 - "容器"
 - "巡检"

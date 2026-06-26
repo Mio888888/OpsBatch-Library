@@ -1,5 +1,5 @@
 name: "Show Image Build History"
-category: "docker"
+category: "images"
 tags:
 - "image"
 - "inspection"

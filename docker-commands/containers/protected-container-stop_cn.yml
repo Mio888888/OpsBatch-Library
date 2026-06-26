@@ -1,5 +1,5 @@
 name: "停止容器"
-category: "Docker"
+category: "容器"
 tags:
 - "容器"
 - "写操作"

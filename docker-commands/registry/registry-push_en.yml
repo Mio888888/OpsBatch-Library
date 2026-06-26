@@ -1,5 +1,5 @@
 name: "Push Image"
-category: "docker"
+category: "registry"
 tags:
 - "registry"
 - "image"

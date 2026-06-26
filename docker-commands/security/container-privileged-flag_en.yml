@@ -1,5 +1,5 @@
 name: "Check Container Privileged Flag"
-category: "docker"
+category: "security"
 tags:
 - "security"
 - "inspection"
